@@ -16,7 +16,16 @@ app.get('/', (req, res) => {
 
 // Servidor con web sockets
 io.on('connection', socket => {
-   console.log(socket.id);
+
+   console.log(`Clientes conectados: ${io.engine.clientsCount}`);
+   console.log(`Id del socket conectado: ${socket.id}`);
+   socket.on('disconnect', () => {
+      console.log(`El socket ${socket.id} se ha desconectado`)
+   });
+
+   socket.conn.once(`upgrade`, () => {
+      console.log(`Hemos pasado de http long polling a ${socket.conn.transport.name}`);
+   });
 });
 
 httpServer.listen(3000);
