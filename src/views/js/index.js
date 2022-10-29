@@ -22,4 +22,24 @@ socket.io.on('reconnect', () =>{
 
 socket.on(`connect_error`, () => {
    console.log(`No pude conectarme 🥲`);
+});
+
+socket.on("newGame", (data) => {
+   text.textContent = data;
+});
+
+socket.on("everyone", (data) => {
+   console.warn(data);
+});
+
+// boton para emitir al server
+const emitToserver = document.querySelector("#emit-to-server");
+emitToserver.addEventListener("click", () => {
+   socket.emit("serverClick", "hola servidor 👀");
+});
+
+// boton para el ultimo
+const emitLast = document.getElementById("#emit-to-last");
+emitLast.addEventListener("click", () => {
+   socket.emit("click-last", "click a el ultimo 🦄");
 })
