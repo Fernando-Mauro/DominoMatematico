@@ -17,7 +17,9 @@ app.get('/', (req, res) => {
 
 // Servidor con web sockets
 io.on('connection', socket => {
-
+   socket.on("circle position", (data) => {
+      socket.broadcast.emit("moveCircle", data);
+   });
 });
 
 httpServer.listen(3300);
