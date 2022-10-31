@@ -15,23 +15,24 @@ app.get('/', (req, res) => {
    res.sendFile(__dirname + "/views/index.html")
 });
 
-// Servidor con web sockets
-io.on('connection', socket => {
-   socket.connectedRoom = null;
-   socket.on("connect-to-room", (room) => {
-      if(socket.connectedRoom){
-         socket.leave(socket.connectedRoom);
-      }
-      socket.connectedRoom = room;
-      socket.join(room);
+const teachers = io.of("teachers");
+const students = io.of("students");
+
+teachers.on("connection", socket => {
+   socket.on("send-message", (data) => {
+      emitMessage(data, teachers);
    });
-   socket.on("message", (message) => {
-      const room = socket.connectedRoom;
-      io.to(room).emit("send-message", {
-         message,
-         room
-      });
-   });
+   // console.log("Namespace de maestros conectado");
 });
 
+students.on("connection", socket => {
+   // console.log("Namespace de estudiantes conectado");
+   socket.on("send-message", (data) => {
+      emitMessage(data, students);
+   })
+});
+
+function emitMessage(data, user){
+   user.emit("mensaje", data);
+}
 httpServer.listen(3300);

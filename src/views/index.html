@@ -8,16 +8,9 @@
    <title>Domino</title>
 </head>
 <body>
-   <ul id="room-1" class="room"></ul>
-   <ul id="room-2" class="room"></ul>
-   <ul id="room-3" class="room"></ul>
-
-   <button id="connect-1">Room 1</button>
-   <button id="connect-2">Room 2</button>
-   <button id="connect-3">Room 3</button>
-
-   <button id="send-message">Enviar mensaje!</button>
-
+   <h1>Chat de <span id="namespace"></span></h1>
+   <ul id="chat"></ul>
+   <button id="send-message">Enviar Mensaje</button>
    <script src="/socket.io/socket.io.js"></script>
    <script src="./js/index.js"></script>
 </body>

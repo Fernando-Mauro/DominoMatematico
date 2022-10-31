@@ -1,34 +1,32 @@
-const socket = io();
+const user = prompt("Escribe tu usuaio");
+const profes = ["RetaxMaster", "JuanDC", "GNDX"];
+let socketNameSpace, group;
 
-// seleccionar botones
-const connect1 = document.querySelector("#connect-1"); 
-const connect2 = document.querySelector("#connect-2"); 
-const connect3 = document.querySelector("#connect-3"); 
+const chat = document.querySelector("#chat");
+const namespace = document.querySelector("#namespace");
 
-// eventos
-
-connect1.addEventListener("click", () => {
-   socket.emit("connect-to-room", "room-1");
+if(profes.includes(user)){
+   socketNameSpace = io("/teachers");
+   group = "teachers";
+}else{
+   socketNameSpace = io("/students");
+   group = "students";
+}
+socketNameSpace.on("connect", () => {
+   namespace.textContent = group;
 });
-connect2.addEventListener("click", () => {
-   socket.emit("connect-to-room", "room-2");
-});
-connect3.addEventListener("click", () => {
-   socket.emit("connect-to-room", "room-3");
-});
 
-// Enviar mensaje
+// Envio de mensajes
 const sendMessage = document.querySelector("#send-message");
-
 sendMessage.addEventListener("click", () => {
-   const message = prompt("Escribe tu mensaje:");
-   socket.emit("message", message);
+   const mensaje = prompt("Escribe tu mensaje 📧: ");
+   socketNameSpace.emit("send-message", {user, mensaje});
 });
 
-// recibir el mensaje
-socket.on("send-message", (data) => {
-   const {room,message} = data;
+socketNameSpace.on("mensaje", (data) => {
+   const {user, mensaje} = data;
    const li = document.createElement("li");
-   li.textContent = message;
-   document.querySelector(`#${room}`).appendChild(li);
-});
+   const hora = new Date();
+   li.textContent = `${user}:${mensaje} ${hora.getHours()}:${hora.getMinutes()}`;
+   chat.appendChild(li);
+})
