@@ -1,32 +1,17 @@
-const user = prompt("Escribe tu usuaio");
-const profes = ["RetaxMaster", "JuanDC", "GNDX"];
-let socketNameSpace, group;
+const socket = io();
+const send = document.querySelector("#send");
+const reconnect = document.querySelector("#reconnect");
+const disconnect = document.querySelector("#disconnect");
 
-const chat = document.querySelector("#chat");
-const namespace = document.querySelector("#namespace");
-
-if(profes.includes(user)){
-   socketNameSpace = io("/teachers");
-   group = "teachers";
-}else{
-   socketNameSpace = io("/students");
-   group = "students";
-}
-socketNameSpace.on("connect", () => {
-   namespace.textContent = group;
+send.addEventListener("click", () => {
+   if(socket.connected)
+      socket.emit("isConnect", "!estas conectado?");
 });
 
-// Envio de mensajes
-const sendMessage = document.querySelector("#send-message");
-sendMessage.addEventListener("click", () => {
-   const mensaje = prompt("Escribe tu mensaje 📧: ");
-   socketNameSpace.emit("send-message", {user, mensaje});
+disconnect.addEventListener("click", () => {
+   socket.disconnect();
 });
 
-socketNameSpace.on("mensaje", (data) => {
-   const {user, mensaje} = data;
-   const li = document.createElement("li");
-   const hora = new Date();
-   li.textContent = `${user}:${mensaje} ${hora.getHours()}:${hora.getMinutes()}`;
-   chat.appendChild(li);
+reconnect.addEventListener("click", () => {
+   socket.connect();
 })
