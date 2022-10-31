@@ -1,28 +1,34 @@
 const socket = io();
 
-const circle = document.querySelector("#circle");
+// seleccionar botones
+const connect1 = document.querySelector("#connect-1"); 
+const connect2 = document.querySelector("#connect-2"); 
+const connect3 = document.querySelector("#connect-3"); 
 
-function drag(evento){
-   const position = {
-      top: evento.clientY + "px",
-      left: evento.clientX + "px"
-   };
-   dragCircle(position);
-   socket.emit("circle position", position);
-}
+// eventos
 
-function dragCircle(data) {
-   circle.style.top = data.top;
-   circle.style.left = data.left;
-} 
-socket.on("moveCircle", (data) => {
-   dragCircle(data);
+connect1.addEventListener("click", () => {
+   socket.emit("connect-to-room", "room-1");
+});
+connect2.addEventListener("click", () => {
+   socket.emit("connect-to-room", "room-2");
+});
+connect3.addEventListener("click", () => {
+   socket.emit("connect-to-room", "room-3");
 });
 
-document.addEventListener("mousedown", () => {
-   document.addEventListener("mousemove", drag)
+// Enviar mensaje
+const sendMessage = document.querySelector("#send-message");
+
+sendMessage.addEventListener("click", () => {
+   const message = prompt("Escribe tu mensaje:");
+   socket.emit("message", message);
 });
 
-document.addEventListener("mouseup", () => {
-   document.removeEventListener("mousemove", drag);
+// recibir el mensaje
+socket.on("send-message", (data) => {
+   const {room,message} = data;
+   const li = document.createElement("li");
+   li.textContent = message;
+   document.querySelector(`#${room}`).appendChild(li);
 });

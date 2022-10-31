@@ -17,8 +17,20 @@ app.get('/', (req, res) => {
 
 // Servidor con web sockets
 io.on('connection', socket => {
-   socket.on("circle position", (data) => {
-      socket.broadcast.emit("moveCircle", data);
+   socket.connectedRoom = null;
+   socket.on("connect-to-room", (room) => {
+      if(socket.connectedRoom){
+         socket.leave(socket.connectedRoom);
+      }
+      socket.connectedRoom = room;
+      socket.join(room);
+   });
+   socket.on("message", (message) => {
+      const room = socket.connectedRoom;
+      io.to(room).emit("send-message", {
+         message,
+         room
+      });
    });
 });
 
