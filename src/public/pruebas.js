@@ -26,7 +26,11 @@ joinBtn.addEventListener("click", () => {
    socket.emit("joinGame", idRoom)
 });
 
-
+// Start the game
+const startBtn = document.querySelector("#startGame");
+startBtn.addEventListener("click", () => {
+   socket.emit("startGame");
+});
 
 
 

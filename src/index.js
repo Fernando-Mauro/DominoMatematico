@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 // Juegos activos
-const gamesInline = [];
-const idsGamesInline = [];
+const gamesInline = new Map();
+
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
    socket.connectedRooms = [];
@@ -36,9 +36,9 @@ io.on("connection", (socket) => {
 
       // Crear la sala
       socket.join(idRoom);
+      socket.actualGame = newGame;
       socket.connectedRooms.push(idRoom);
-      gamesInline.push(newGame);
-      idsGamesInline.push(idRoom);
+      gamesInline.set(idRoom, newGame);
 
       socket.emit("newGameCreate", {
          piezas: newGame.piezas,
@@ -48,10 +48,8 @@ io.on("connection", (socket) => {
 
    // Join to room
    socket.on("joinGame", (idRoom) => {
-      if(idsGamesInline.includes(idRoom)){
-         gamesInline.forEach(game => {
-
-         });
+      if(gamesInline.has(idRoom)){
+         gamesInline.get(idRoom).players.push(socket.id);
          socket.join(idRoom)
       }else{
          socket.emit("error", {
@@ -61,8 +59,15 @@ io.on("connection", (socket) => {
       }
    });
 
+   // Start the game
+   socket.on("startGame", () => {
+      socket.actualGame.startGame();
+      console.log(socket.actualGame.players[0].hand);
+   });
+   // returns the actives games
    socket.on("inLineGames", () => {
-      socket.emit("inLineGames", idsGamesInline);
+      const serializedMap = [...gamesInline.entries()];
+      socket.emit("inLineGames", serializedMap);
    });
 });
 
