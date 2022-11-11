@@ -8,13 +8,15 @@ const httpServer = createServer(app);
 const io = new Server(httpServer); 
 const uuidv4 = require("uuid");
 const Game = require("./createNewGame.js");
+const Player = require("./player.js")
 const path = require('path');
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public/Html')));
 
 
 // servidor con http
 app.get('/', (req, res) => {
-   res.sendFile(  __dirname + "/public/pruebas.html")
+   res.sendFile(  __dirname + "/public/Html/index.html")
 });
 
 // Juegos activos
@@ -32,7 +34,7 @@ io.on("connection", (socket) => {
       }
 
       const idRoom = uuidv4.v4();
-      const newGame = new Game(socket.id, idRoom);
+      const newGame = new Game(socket, idRoom);
 
       // Crear la sala
       socket.join(idRoom);
@@ -49,7 +51,8 @@ io.on("connection", (socket) => {
    // Join to room
    socket.on("joinGame", (idRoom) => {
       if(gamesInline.has(idRoom)){
-         gamesInline.get(idRoom).players.push(socket.id);
+         const memberRoom = new Player(socket);
+         gamesInline.get(idRoom).players.push(memberRoom);
          socket.join(idRoom)
       }else{
          socket.emit("error", {
@@ -62,12 +65,17 @@ io.on("connection", (socket) => {
    // Start the game
    socket.on("startGame", () => {
       socket.actualGame.startGame();
-      console.log(socket.actualGame.players[0].hand);
+      socket.actualGame.players.forEach(player => {
+         player.socketPlayer.emit("sendPieces", {pieces: player.hand});
+      })
    });
    // returns the actives games
    socket.on("inLineGames", () => {
+      // console.log(gamesInline);
       const serializedMap = [...gamesInline.entries()];
+      console.log(JSON.stringify(serializedMap));   
       socket.emit("inLineGames", serializedMap);
+      
    });
 });
 

@@ -1,12 +1,6 @@
+const Player = require("./player.js");
 function returnRandomPiece(){
    return Math.floor(Math.random() * (28 - 0) + 0);
-}
-
-class Player{
-   constructor(idPlayer){
-      this.idPlayer = idPlayer;
-      this.hand = [];
-   }
 }
 
 class Game{
@@ -42,8 +36,8 @@ class Game{
                this.piezas[positionRandom].used = true;
             }
          }
-         console.log(player.hand);
       });
    }
 }
 module.exports = Game;
+// module.exports = Player;

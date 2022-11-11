@@ -4,7 +4,8 @@
   "description": "Some fun",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "tailstart": "npx tailwindcss -i ./src/public/CSS/input.css -o ./src/public/CSS/output.css --watch"
   },
   "author": "Fernando Mauro",
   "license": "MIT",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "bufferutil": "^4.0.7",
     "nodemon": "^2.0.20",
+    "tailwindcss": "^3.2.3",
     "utf-8-validate": "^5.0.10"
   }
 }

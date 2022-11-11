@@ -1,0 +1,36 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.main{
+   width: 100%;
+}
+.ficha{
+   display: flex;
+   width: 250px;
+   height: 100px;
+   gap: 5px;
+   padding: 10px;
+   /* background-color: blue; */
+}
+.color{
+   width: 100%;
+   display: flex;
+   justify-content: end;
+}
+.first{
+   width: 50%;
+   padding-right: 10px;
+   height: 100%;
+   background-color: blue;
+}
+.second{
+   width: 50%;
+   height: 100%;
+   background-color: brown;
+}
+#game{
+   margin: 0 auto;
+   border: 3px solid blue;
+}

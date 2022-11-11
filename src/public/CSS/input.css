@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+   @apply text-creme;
+}
+
+/* Parte de arriba */
+.top-half{
+   @apply rounded-t-xl w-20 h-20 border-2 border-gray-600;
+}
+/* parte de abajo */
+.bottom-half{
+   @apply rounded-b-xl w-20 h-20 border-2 border-gray-600;
+}
+/* el circulo */
+.bolita{
+   @apply  w-5 h-5 rounded-full bg-black;
+}
+/* diferentes formas */
+.one-ball{
+   @apply flex justify-center items-center;
+}
+
+/* dos bolitas */
+.two-balls{
+   @apply relative;
+}
+.two-balls .bolita:first-child{
+   @apply absolute top-[10%] left-[10%];
+}
+
+.two-balls .bolita:last-child{
+   @apply absolute bottom-[10%] right-[10%];
+}
+
+/* tres bolitas */
+.three-balls{
+   @apply relative;
+}
+.three-balls .bolita:first-child{
+   @apply top-[10%] left-[10%] absolute;
+}
+
+.three-balls .bolita:nth-child(2){
+   @apply top-[37%] left-[36%] absolute;
+}
+
+.three-balls .bolita:last-child{
+   @apply bottom-[10%] right-[10%] absolute;
+}
+
+/* Cuatro bolitas */
+.four-balls{
+   @apply relative;
+}
+.four-balls .bolita:first-child{
+   @apply top-[10%] left-[10%] absolute;
+}
+.four-balls .bolita:nth-child(2){
+   @apply right-[10%] top-[10%] absolute;
+}
+.four-balls .bolita:nth-child(3){
+   @apply bottom-[10%] left-[10%] absolute;
+}
+.four-balls .bolita:nth-child(4){
+   @apply right-[10%] bottom-[10%] absolute;
+}
+
+/* cinco bolitas */
+.five-balls{
+   @apply relative;
+}
+.five-balls .bolita:first-child{
+   @apply top-[10%] left-[10%] absolute;
+}
+.five-balls .bolita:nth-child(2){
+   @apply right-[10%] top-[10%] absolute;
+}
+.five-balls .bolita:nth-child(3){
+   @apply bottom-[10%] left-[10%] absolute;
+}
+.five-balls .bolita:nth-child(4){
+   @apply right-[10%] bottom-[10%] absolute;
+}
+.five-balls .bolita:last-child{
+   @apply right-[38%] bottom-[38%] absolute;
+}
+/* Seis bolitas */
+.six-balls{
+   @apply relative;
+}
+.six-balls .bolita:first-child{
+   @apply top-[10%] left-[10%] absolute;
+}
+.six-balls .bolita:nth-child(2){
+   @apply top-[41%] left-[10%] absolute;
+}
+.six-balls .bolita:nth-child(3){
+   @apply top-[70%] left-[10%] absolute;
+}
+.six-balls .bolita:nth-child(4){
+   @apply top-[10%] right-[10%] absolute;
+}
+.six-balls .bolita:nth-child(5){
+   @apply top-[41%] right-[10%] absolute;
+}
+.six-balls .bolita:nth-child(6){
+   @apply top-[70%] right-[10%] absolute;
+}
+/* terminan las fichas */
+.rainbown{
+   background: rgb(131,58,180);
+   background: -moz-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+   background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+}
+.container-cards i{
+   @apply text-7xl;
+}
+.container-cards{
+   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.card{
+   @apply cursor-pointer w-40 h-40 flex flex-col justify-center content-center items-center gap-5 rounded-xl ring-2 ring-creme shadow-custom hover:shadow-custom-hover hover:ease-in duration-200;
+}
+.image-slider{
+   @apply bg-cover bg-center bg-no-repeat;
+}

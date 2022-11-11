@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../CSS/colores.css">
+   <link rel="stylesheet" href="../CSS/output.css">
+   <title>Domino de colores</title>
+</head>
+<body class="p-10">
+   <button class="bg-red-500"  id="newGameBtn">Crear nuevo juego</button>
+   <button class="bg-red-500" id="gamesInline">Ver juegos activos</button>
+   <button class="bg-red-500" id="joinToRoom">Unete a una sala</button>
+   <input class="bg-red-500" type="text" name="joinRoom" id="inputId">
+   <button class="bg-red-500" id="joinToGame">Unirnos A esta sala</button>
+   <button class="bg-red-500" id="startGame">Comenza Juego</button>
+   <main class="w-full flex justify-around">
+      <div class="piece">
+         <div class="top-half">
+         </div>
+         <div class="bottom-half rounded-b-xl w-20 h-20 border-2 border-gray-600">
+
+         </div>
+      </div>
+      <div class="piece">
+         <div class="top-half one-ball">
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half">
+
+         </div>
+      </div>
+      <div class="piece">
+         <div class="top-half two-balls">
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half">
+
+         </div>
+      </div>
+      <div class="piece">
+         <div class="top-half three-balls">
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half"></div>
+      </div>
+      <div class="piece">
+         <div class="top-half four-balls">
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half"></div>
+      </div>
+      <div class="piece">
+         <div class="top-half five-balls">
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half"></div>
+      </div>
+      <div class="piece">
+         <div class="top-half six-balls">
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+            <div class="bolita"></div>
+         </div>
+         <div class="bottom-half">
+
+         </div>
+      </div>
+   </main>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="../Javascript/general.js"></script>  
+</body>
+</html>

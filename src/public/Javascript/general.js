@@ -33,11 +33,25 @@ startBtn.addEventListener("click", () => {
 });
 
 socket.on("sendPieces", data => {
-   console.log(data);
+   data.pieces.forEach(piece => {
+      const containPiece = document.createElement("div");
+      containPiece.classList.add("piece");
+      const topHalf = document.createElement("div");
+      topHalf.classList.add("top-half", "")
+   })
 });
 
 
+`
+<div class="piece">
+      <div class="top-half one-ball">
+         <div class="bolita"></div>
+      </div>
+      <div class="bottom-half">
 
+      </div>
+</div>
+`
 
 
 
