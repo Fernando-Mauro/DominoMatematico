@@ -71,10 +71,16 @@ io.on("connection", (socket) => {
    });
    // returns the actives games
    socket.on("inLineGames", () => {
-      // console.log(gamesInline);
-      const serializedMap = [...gamesInline.entries()];
-      console.log(JSON.stringify(serializedMap));   
-      socket.emit("inLineGames", serializedMap);
+      let llaves = [];
+      gamesInline.forEach(gameActive => {
+         llaves.push({
+            idGame: gameActive.idRoom,
+            numberPlayers: gameActive.players.length 
+         });
+      });   
+      // const serializedMap = [...gamesInline.entries()];
+      // console.log(JSON.stringify(serializedMap));   
+      socket.emit("inLineGames", llaves);
       
    });
 });

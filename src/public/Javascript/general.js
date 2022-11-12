@@ -1,5 +1,6 @@
 const socket = io();
 
+const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Create a new game
 const newGameBtn = document.querySelector("#newGameBtn");
 newGameBtn.addEventListener("click", () => {
@@ -33,28 +34,34 @@ startBtn.addEventListener("click", () => {
 });
 
 socket.on("sendPieces", data => {
+   const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
       const containPiece = document.createElement("div");
       containPiece.classList.add("piece");
+
       const topHalf = document.createElement("div");
-      topHalf.classList.add("top-half", "")
+      topHalf.classList.add("top-half", `${piecesCode[piece.first - 1]}`);
+      for(let i = 0; i < piece.first; ++i){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         topHalf.appendChild(bolita);
+      }
+
+      const bottomHalf = document.createElement("div");
+      bottomHalf.classList.add("bottom-half", `${piecesCode[piece.second - 1]}`);
+      for(let i = 0; i < piece.second; ++i){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         bottomHalf.appendChild(bolita);
+      }
+
+      containPiece.appendChild(topHalf);
+      containPiece.appendChild(bottomHalf);
+      
+      piecesContainer.appendChild(containPiece);
+      
    })
 });
-
-
-`
-<div class="piece">
-      <div class="top-half one-ball">
-         <div class="bolita"></div>
-      </div>
-      <div class="bottom-half">
-
-      </div>
-</div>
-`
-
-
-
 
 // Catch errors
 socket.on("error", (data) => {

@@ -1,4 +1,5 @@
 const Player = require("./player.js");
+
 function returnRandomPiece(){
    return Math.floor(Math.random() * (28 - 0) + 0);
 }
@@ -30,7 +31,7 @@ class Game{
       this.players.forEach(player => { 
          while(player.hand.length <= 7){
             const positionRandom = returnRandomPiece();
-            console.log(positionRandom);
+            // console.log(positionRandom);
             if(!this.piezas[positionRandom].used){
                player.hand.push(this.piezas[positionRandom]);
                this.piezas[positionRandom].used = true;
