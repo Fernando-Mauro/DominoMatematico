@@ -24,18 +24,23 @@ class Game{
             });
          }
       }
+      console.log(piezas.length);
       return piezas;
    }
    // start game
    startGame(){
       this.players.forEach(player => { 
-         while(player.hand.length <= 7){
-            const positionRandom = returnRandomPiece();
-            // console.log(positionRandom);
-            if(!this.piezas[positionRandom].used){
-               player.hand.push(this.piezas[positionRandom]);
-               this.piezas[positionRandom].used = true;
+         while(player.hand.length != 7){
+            let positionRandom = returnRandomPiece();
+            while(this.piezas[positionRandom].used && positionRandom < 28){
+               if(positionRandom == 27){
+                  positionRandom = 0;
+               }else{
+                  positionRandom++;
+               }
             }
+            player.hand.push(this.piezas[positionRandom]);
+            this.piezas[positionRandom].used = true;
          }
       });
    }
