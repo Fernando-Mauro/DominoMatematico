@@ -25,7 +25,7 @@ const gamesInline = new Map();
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
    socket.connectedRooms = [];
-
+   console.log(`El socket ${socket.id} se ha conectado`);
    // Create a new game
    socket.on("newGame", () => {
       // Leave all rooms
@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
          socket.connectedRooms.forEach(room => socket.leave(room));
       }
 
-      const idRoom = uuidv4.v4();
+      const idRoom = uuidv4.v4().split("-")[0];
       const newGame = new Game(socket, idRoom);
 
       // Crear la sala
@@ -65,9 +65,16 @@ io.on("connection", (socket) => {
    // Start the game
    socket.on("startGame", () => {
       socket.actualGame.startGame();
-      socket.actualGame.players.forEach(player => {
-         player.socketPlayer.emit("sendPieces", {pieces: player.hand});
-      })
+      if(!socket.actualGame.startedGame){
+         socket.actualGame.players.forEach(player => {
+            player.socketPlayer.emit("sendPieces", {pieces: player.hand});
+         });
+      }
+      socket.actualGame.startedGame = true;
+   });
+   // Pushing a piece
+   socket.on("pushPiece", (piece) => {
+      socket.actualGame.pushingPiece(piece);
    });
    // returns the actives games
    socket.on("inLineGames", () => {

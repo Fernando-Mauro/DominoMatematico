@@ -1,5 +1,7 @@
 const socket = io();
 
+const isMyTurn = true;
+
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Create a new game
 const newGameBtn = document.querySelector("#newGameBtn");
@@ -7,7 +9,8 @@ newGameBtn.addEventListener("click", () => {
    socket.emit("newGame");
 });
 socket.on("newGameCreate", (data) => {
-   console.log(data);
+   const spanIdRoom = document.querySelector("#idRoom");
+   spanIdRoom.textContent = data.idRoom;
 });
 
 // See actives games
@@ -59,6 +62,9 @@ socket.on("sendPieces", data => {
       containPiece.appendChild(bottomHalf);
       
       piecesContainer.appendChild(containPiece);
+      containPiece.addEventListener("click",() => {
+         pushPiece(piece.first, piece.second);
+      });
       
    })
 });
@@ -66,4 +72,8 @@ socket.on("sendPieces", data => {
 // Catch errors
 socket.on("error", (data) => {
    console.error(data);
-})
+});
+
+function pushPiece(first, second){
+   socket.emit("pushPiece", {first, second, isMyTurn});
+}

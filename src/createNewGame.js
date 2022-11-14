@@ -10,6 +10,8 @@ class Game{
       this.idRoom = idRoom;
       this.piezas = this.generarPiezas();
       this.players = [this.owner];
+      this.startedGame = false;
+      this.queueGame = [];
    }
 
    // Generar las piezas
@@ -24,13 +26,12 @@ class Game{
             });
          }
       }
-      console.log(piezas.length);
       return piezas;
    }
    // start game
    startGame(){
       this.players.forEach(player => { 
-         while(player.hand.length != 7){
+         while(player.hand.length <= 7){
             let positionRandom = returnRandomPiece();
             while(this.piezas[positionRandom].used && positionRandom < 28){
                if(positionRandom == 27){
@@ -43,6 +44,22 @@ class Game{
             this.piezas[positionRandom].used = true;
          }
       });
+   }
+   pushingPiece(piece){
+      if(piece.isMyTurn){
+         if(this.queueGame.length != 0){
+            const tail = this.queueGame.at(-1);
+            const head = this.queueGame[0];
+            console.log(`tail is ${tail.first} ${tail.second}`);
+            console.log(`head is ${head.first} ${head.second}`);
+
+         }else{
+            this.queueGame.push({
+               first: piece.first,
+               second : piece.second
+            });
+         }
+      }
    }
 }
 module.exports = Game;
