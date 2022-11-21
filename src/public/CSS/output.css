@@ -644,11 +644,6 @@ video {
   font-weight: 600;
 }
 
-.text-bring-yellow {
-  --tw-text-opacity: 1;
-  color: rgb(255 210 63 / var(--tw-text-opacity));
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -657,6 +652,11 @@ video {
 .text-orange-600 {
   --tw-text-opacity: 1;
   color: rgb(234 88 12 / var(--tw-text-opacity));
+}
+
+.text-bring-yellow {
+  --tw-text-opacity: 1;
+  color: rgb(255 210 63 / var(--tw-text-opacity));
 }
 
 * {

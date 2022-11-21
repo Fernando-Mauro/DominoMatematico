@@ -1,6 +1,6 @@
 const socket = io();
 
-const isMyTurn = true;
+let isMyTurn = false;
 
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Create a new game
@@ -39,6 +39,10 @@ startBtn.addEventListener("click", () => {
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
+      if(piece.first == 6 && piece.second == 6){
+         isMyTurn = true;
+         console.warn('es tu turno');
+      } 
       const containPiece = document.createElement("div");
       containPiece.classList.add("piece");
 
@@ -63,7 +67,10 @@ socket.on("sendPieces", data => {
       
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click",() => {
-         pushPiece(piece.first, piece.second);
+         if(isMyTurn){
+            socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn});
+            isMyTurn = false;
+         }
       });
       
    })
@@ -74,6 +81,7 @@ socket.on("error", (data) => {
    console.error(data);
 });
 
-function pushPiece(first, second){
-   socket.emit("pushPiece", {first, second, isMyTurn});
-}
+socket.on("myTurn", () => {
+   console.log("%c Es tu turno", "color:green; background-color:white");
+   isMyTurn = true;
+});

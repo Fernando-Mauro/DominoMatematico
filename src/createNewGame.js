@@ -12,6 +12,7 @@ class Game{
       this.players = [this.owner];
       this.startedGame = false;
       this.queueGame = [];
+      this.turn = undefined;
    }
 
    // Generar las piezas
@@ -30,8 +31,8 @@ class Game{
    }
    // start game
    startGame(){
-      this.players.forEach(player => { 
-         while(player.hand.length <= 7){
+      this.players.forEach((player,index) => { 
+         while(player.hand.length < 7){
             let positionRandom = returnRandomPiece();
             while(this.piezas[positionRandom].used && positionRandom < 28){
                if(positionRandom == 27){
@@ -40,6 +41,7 @@ class Game{
                   positionRandom++;
                }
             }
+            if(this.piezas[positionRandom].first == 6 && this.piezas[positionRandom].second == 6) this.turn = index;
             player.hand.push(this.piezas[positionRandom]);
             this.piezas[positionRandom].used = true;
          }
@@ -50,16 +52,29 @@ class Game{
          if(this.queueGame.length != 0){
             const tail = this.queueGame.at(-1);
             const head = this.queueGame[0];
-            console.log(`tail is ${tail.first} ${tail.second}`);
-            console.log(`head is ${head.first} ${head.second}`);
-
+            if(piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second){
+               this.queueGame.unshift(piece)
+            }else if(piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second){
+               this.queueGame.push(piece);
+            }
          }else{
             this.queueGame.push({
                first: piece.first,
                second : piece.second
             });
          }
+         console.clear();
+         console.log(this.queueGame);
+         this.nextTurn();
       }
+   }
+   nextTurn(){
+      this.turn++;
+      console.log(this.turn);
+      if(this.turn >= this.players.length){
+         this.turn = 0;
+      }
+      this.players[this.turn].socketPlayer.emit("myTurn");
    }
 }
 module.exports = Game;

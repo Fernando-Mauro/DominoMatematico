@@ -74,7 +74,10 @@ io.on("connection", (socket) => {
    });
    // Pushing a piece
    socket.on("pushPiece", (piece) => {
-      socket.actualGame.pushingPiece(piece);
+      // socket.actualGame.pushingPiece(piece);
+      // console.log(gamesInline);
+      const arrId = [...socket.rooms];
+      gamesInline.get(arrId[1]).pushingPiece(piece);
    });
    // returns the actives games
    socket.on("inLineGames", () => {
