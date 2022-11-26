@@ -16,9 +16,14 @@
    <input class="bg-red-500" type="text" name="joinRoom" id="inputId">
    <button class="bg-red-500" id="joinToGame">Unirnos A esta sala</button>
    <button class="bg-red-500" id="startGame">Comenza Juego</button>
-   <main class="w-full flex justify-around" id="pieces-container">
+   <main class="w-full flex justify-around mb-5" id="pieces-container">
       
    </main>
+   <div class="turn-container">
+      <span id="turn-enable" class="bg-green-500 p-5 inline-block hidden">Es tu turno</span>
+      <span id="turn-disable" class="bg-red-500 p-5 inline-block">No es tu turno</span>
+   </div>
+
    <script src="/socket.io/socket.io.js"></script>
    <script src="../Javascript/general.js"></script>  
 </body>

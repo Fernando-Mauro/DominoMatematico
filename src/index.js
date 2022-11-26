@@ -25,7 +25,6 @@ const gamesInline = new Map();
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
    socket.connectedRooms = [];
-   console.log(`El socket ${socket.id} se ha conectado`);
    // Create a new game
    socket.on("newGame", () => {
       // Leave all rooms
@@ -50,13 +49,13 @@ io.on("connection", (socket) => {
 
    // Join to room
    socket.on("joinGame", (idRoom) => {
-      if(gamesInline.has(idRoom)){
+      if(gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4){
          const memberRoom = new Player(socket);
          gamesInline.get(idRoom).players.push(memberRoom);
-         socket.join(idRoom)
+         socket.join(idRoom);
       }else{
          socket.emit("error", {
-            message : "No existe la sala",
+            message : "No existe la sala o ya te encuentras en otra sala",
             id : idRoom
          });
       }
@@ -78,6 +77,9 @@ io.on("connection", (socket) => {
       // console.log(gamesInline);
       const arrId = [...socket.rooms];
       gamesInline.get(arrId[1]).pushingPiece(piece);
+      io.in(arrId[1]).emit("sendQueue", {
+         queueGame: gamesInline.get(arrId[1]).queueGame
+      });
    });
    // returns the actives games
    socket.on("inLineGames", () => {

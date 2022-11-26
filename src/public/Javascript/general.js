@@ -26,7 +26,6 @@ socket.on("inLineGames", (actives) => {
 const joinBtn = document.querySelector("#joinToGame");
 joinBtn.addEventListener("click", () => {
    const idRoom = document.querySelector("#inputId").value;
-   console.log(idRoom);
    socket.emit("joinGame", idRoom)
 });
 
@@ -41,7 +40,7 @@ socket.on("sendPieces", data => {
    data.pieces.forEach(piece => {
       if(piece.first == 6 && piece.second == 6){
          isMyTurn = true;
-         console.warn('es tu turno');
+         activeTurn();
       } 
       const containPiece = document.createElement("div");
       containPiece.classList.add("piece");
@@ -68,8 +67,9 @@ socket.on("sendPieces", data => {
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click",() => {
          if(isMyTurn){
-            socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn});
+            socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
             isMyTurn = false;
+            activeTurn();
          }
       });
       
@@ -82,6 +82,21 @@ socket.on("error", (data) => {
 });
 
 socket.on("myTurn", () => {
-   console.log("%c Es tu turno", "color:green; background-color:white");
-   isMyTurn = true;
+   activeTurn();
 });
+
+socket.on("badPiece", () => {
+   alert('Pieza invalida');
+   activeTurn();
+});
+
+socket.on("sendQueue", (data) => {
+   console.log(data.queueGame);
+})
+function activeTurn(){
+   const turnActive = document.querySelector("#turn-enable");
+   const turnDisactive = document.querySelector("#turn-disable");
+   turnActive.classList.toggle("hidden");
+   turnDisactive.classList.toggle("hidden");
+   isMyTurn = true;
+}

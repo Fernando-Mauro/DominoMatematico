@@ -54,28 +54,31 @@ class Game{
             const head = this.queueGame[0];
             if(piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second){
                this.queueGame.unshift(piece)
+               this.nextTurn();
             }else if(piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second){
                this.queueGame.push(piece);
+               this.nextTurn();
+            }else{
+               this.players[this.turn].socketPlayer.emit("badPiece");
             }
          }else{
             this.queueGame.push({
                first: piece.first,
                second : piece.second
             });
+            this.nextTurn();
          }
-         console.clear();
-         console.log(this.queueGame);
-         this.nextTurn();
+         
       }
    }
    nextTurn(){
       this.turn++;
-      console.log(this.turn);
       if(this.turn >= this.players.length){
          this.turn = 0;
       }
       this.players[this.turn].socketPlayer.emit("myTurn");
    }
+   
 }
 module.exports = Game;
 // module.exports = Player;
