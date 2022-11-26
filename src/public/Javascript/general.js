@@ -67,9 +67,12 @@ socket.on("sendPieces", data => {
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click",() => {
          if(isMyTurn){
+            console.log('Enviando una pieza');
             socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
-            isMyTurn = false;
+            // isMyTurn = false;
             activeTurn();
+            isMyTurn = false;
+            containPiece.innerHTML = "";
          }
       });
       
