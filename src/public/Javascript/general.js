@@ -1,6 +1,7 @@
 const socket = io();
 
 let isMyTurn = false;
+let queueGame = [];
 
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Create a new game
@@ -66,14 +67,22 @@ socket.on("sendPieces", data => {
       
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click",() => {
-         if(isMyTurn){
-            console.log('Enviando una pieza');
+         if(queueGame.length != 0){
+            if(isMyTurn && isValid({first: piece.first,second: piece.second})){
+               console.log('Enviando una pieza');
+               socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
+               // isMyTurn = false;
+               activeTurn();
+               isMyTurn = false;
+               containPiece.innerHTML = "";
+            }
+         }else{
             socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
-            // isMyTurn = false;
             activeTurn();
             isMyTurn = false;
             containPiece.innerHTML = "";
          }
+         
       });
       
    })
@@ -94,7 +103,8 @@ socket.on("badPiece", () => {
 });
 
 socket.on("sendQueue", (data) => {
-   console.log(data.queueGame);
+   queueGame = data.queueGame;
+   console.log(queueGame);
 })
 function activeTurn(){
    const turnActive = document.querySelector("#turn-enable");
@@ -102,4 +112,19 @@ function activeTurn(){
    turnActive.classList.toggle("hidden");
    turnDisactive.classList.toggle("hidden");
    isMyTurn = true;
+}
+function isValid(piece){
+   if(queueGame.length != 0){
+      const tail = queueGame.at(-1);
+      const head = queueGame[0];
+      const coincide = (piece.first == head.first ? 1 : piece.first == head.second ? 2 : piece.second == head.first ? 1 : piece.second == head.second ? 2 : undefined);
+      console.log(coincide);
+      if(piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second){
+         return true;
+      }else if(piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second){
+         return true;
+      }else{
+         return false;
+      }
+   }
 }
