@@ -52,29 +52,49 @@ pushingPiece(piece){
       if(this.queueGame.length != 0){
          const tail = this.queueGame.at(-1);
          const head = this.queueGame[0];
-         let coincide;
-         if(piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second){
-            coincide = (piece.first == head.first ? 1 : piece.first == head.second ? 2 : piece.second == head.first ? 1 : piece.second == head.second ? 2 : undefined);
-            if(coincide == 1){
-               this.queueGame[0].first = "*";
-            }else{
-               this.queueGame[0].second = "*";
-            }
-            this.queueGame.unshift(piece)
+         if(piece.first == head.first){
+            piece.first = "*";
+            this.queueGame[0].first = "*";
+            this.queueGame.unshift(piece);
             this.nextTurn();
-         }else if(piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second){
-            coincide = (piece.first == tail.first ? 3 : piece.first == tail.second ? 4 : piece.second == tail.first ? 3 : piece.second == tail.second ? 4 : undefined);
-            if(coincide == 3){
-               this.queueGame.at(-1).first = "*";
-            }else{
-               this.queueGame.at(-1).second = "*";
-            }
+         }else if(piece.first == head.second){
+            piece.first = "*";
+            this.queueGame[0].second = "*";
+            this.queueGame.unshift(piece);
+            this.nextTurn();
+         }else if(piece.second == head.first){
+            piece.second = "*";
+            this.queueGame[0].first = "*";
+            this.queueGame.unshift(piece);
+            this.nextTurn();
+         }else if(piece.second == head.second ){
+            piece.second = "*";
+            this.queueGame[0].second = "*";
+            this.queueGame.unshift(piece);
+            this.nextTurn();
+         }else if(piece.first == tail.first){
+            piece.first = "*",
+            this.queueGame.at(-1).first = "*";
+            this.queueGame.push(piece);
+            this.nextTurn();
+         }else if(piece.first == tail.second){
+            piece.first = "*";
+            this.queueGame.at(-1).second = "*";
+            this.queueGame.push(piece);
+            this.nextTurn();
+         }else if(piece.second == tail.first){
+            piece.second = "*";
+            this.queueGame.at(-1).first = "*";
+            this.queueGame.push(piece);
+            this.nextTurn();
+         }else if(piece.second == tail.second){
+            piece.second = "*";
+            this.queueGame.at(-1).second = "*";
             this.queueGame.push(piece);
             this.nextTurn();
          }else{
             this.players[this.turn].socketPlayer.emit("badPiece");
          }
-
       }else{
          this.queueGame.push({
             first: piece.first,
