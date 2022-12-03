@@ -81,6 +81,11 @@ io.on("connection", (socket) => {
          queueGame: gamesInline.get(arrId[1]).queueGame
       });
    });
+   // SKip the turn of the current socket
+   socket.on("skipTurn", () => {
+      const arrId = [...socket.rooms];
+      gamesInline.get(arrId[1]).nextTurn();
+   });
    // returns the actives games
    socket.on("inLineGames", () => {
       let llaves = [];

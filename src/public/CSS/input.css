@@ -7,15 +7,15 @@
 
 /* Parte de arriba */
 .top-half{
-   @apply rounded-t-xl w-20 h-20 border-2 border-gray-600;
+   @apply sm:w-20 sm:h-20 rounded-t-xl w-12 h-12 border-2 border-gray-600;
 }
 /* parte de abajo */
 .bottom-half{
-   @apply rounded-b-xl w-20 h-20 border-2 border-gray-600;
+   @apply sm:w-20 sm:h-20 rounded-b-xl w-12 h-12 border-2 border-gray-600;
 }
 /* el circulo */
 .bolita{
-   @apply  w-5 h-5 rounded-full bg-black;
+   @apply  sm:w-5 sm:h-5 h-3 w-3 rounded-full bg-black;
 }
 /* diferentes formas */
 .one-ball{

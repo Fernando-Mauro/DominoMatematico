@@ -36,6 +36,14 @@ startBtn.addEventListener("click", () => {
    socket.emit("startGame");
 });
 
+const skipTurn = document.querySelector("#skip-turn");
+skipTurn.addEventListener("click", () => {
+   if(isMyTurn){
+      activeTurn();
+      isMyTurn = false;
+      socket.emit("skipTurn");
+   }
+});
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
