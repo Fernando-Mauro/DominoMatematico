@@ -112,7 +112,6 @@ socket.on("badPiece", () => {
 
 socket.on("sendQueue", (data) => {
    queueGame = data.queueGame;
-   console.log(queueGame); 
    construirCola(data);
 })
 function activeTurn(){
@@ -138,17 +137,23 @@ function isValid(piece){
    }
 }
 function construirCola(data){
-   const contenedor = document.querySelectorAll("#gameContainer");
+   console.log(data);
+   const contenedor = document.getElementById("gameContainer");
    const lastPiece = data.lastPiece;
    if(lastPiece == "tail"){
-
-   }else if(lastPiece == "head"){
-
-   }else if(lastPiece == "middle"){
       const topHalf = document.createElement("div");
-      let numberBallsTop = data.queueGame[0].first[];
+      let size = data.queueGame.at(-1).first.length;
+      console.log("tamaño " + size);
+      let numberBallsTop;
+      if(size == undefined){
+         numberBallsTop = data.queueGame.at(-1).first;
+      }else{
+         numberBallsTop = data.queueGame.at(-1).first[size - 1];
+      }
       // Aqui me quede haciendo las comprobaciones
+      console.log(numberBallsTop);
       numberBallsTop = parseInt(numberBallsTop);
+      console.log(numberBallsTop);
       topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
       for(let i = 0; i <  numberBallsTop; i++){
          const bolita = document.createElement("div");
@@ -157,7 +162,88 @@ function construirCola(data){
       }
 
       const bottomHalf = document.createElement("div");
-      let numberBallsBottom = data.queueGame[0].first.at(-1);
+      size = data.queueGame.at(-1).second.length;
+      let numberBallsBottom;
+      if(size == undefined){
+         numberBallsTop = data.queueGame.at(-1).second;
+      }else{
+         numberBallsTop = data.queueGame.at(-1).second[size - 1];
+      }
+      console.log("tamaño " + size);
+
+      numberBallsBottom = parseInt(numberBallsBottom);
+      bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
+      for(let i = 0; i <  numberBallsBottom; i++){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         bottomHalf.appendChild(bolita);
+      }
+      const containPiece = document.createElement("div");
+      containPiece.classList.add("piece");
+      containPiece.appendChild(topHalf);
+      containPiece.appendChild(bottomHalf);
+      contenedor.appendChild(containPiece);
+   }else if(lastPiece == "head"){
+      const topHalf = document.createElement("div");
+      let size = data.queueGame[0].first.length;
+      console.log("tamaño " + size);
+      let numberBallsTop ;
+      if(size == undefined){
+         numberBallsTop = data.queueGame[0].first;
+      }else{
+         numberBallsTop = data.queueGame[0].first[size - 1];
+      }
+      
+      // Aqui me quede haciendo las comprobaciones
+      console.log(numberBallsTop);
+      numberBallsTop = parseInt(numberBallsTop);
+      console.log(numberBallsTop);
+      topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
+      for(let i = 0; i <  numberBallsTop; i++){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         topHalf.appendChild(bolita);
+      }
+
+      const bottomHalf = document.createElement("div");
+      size = data.queueGame[0].second.length;
+      let numberBallsBottom;
+      if(size == undefined){
+         numberBallsTop = data.queueGame[0].second;
+      }else{
+         numberBallsBottom = data.queueGame[0].second[size - 1];
+      }
+      console.log("tamaño " + size);
+
+      
+      numberBallsBottom = parseInt(numberBallsBottom);
+      bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
+      for(let i = 0; i <  numberBallsBottom; i++){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         bottomHalf.appendChild(bolita);
+      }
+      const containPiece = document.createElement("div");
+      containPiece.classList.add("piece");
+      containPiece.appendChild(topHalf);
+      containPiece.appendChild(bottomHalf);
+      contenedor.appendChild(containPiece);
+   }else if(lastPiece == "middle"){
+      const topHalf = document.createElement("div");
+      let numberBallsTop = data.queueGame[0].first;
+      // Aqui me quede haciendo las comprobaciones
+      console.log(numberBallsTop);
+      numberBallsTop = parseInt(numberBallsTop);
+      console.log(numberBallsTop);
+      topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
+      for(let i = 0; i <  numberBallsTop; i++){
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         topHalf.appendChild(bolita);
+      }
+
+      const bottomHalf = document.createElement("div");
+      let numberBallsBottom = data.queueGame[0].first;
       numberBallsBottom = parseInt(numberBallsBottom);
       bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
       for(let i = 0; i <  numberBallsBottom; i++){
