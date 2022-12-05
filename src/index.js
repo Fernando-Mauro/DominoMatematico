@@ -76,9 +76,11 @@ io.on("connection", (socket) => {
       // socket.actualGame.pushingPiece(piece);
       // console.log(gamesInline);
       const arrId = [...socket.rooms];
-      gamesInline.get(arrId[1]).pushingPiece(piece);
+      const last = gamesInline.get(arrId[1]).pushingPiece(piece);
+      // console.log(last);
       io.in(arrId[1]).emit("sendQueue", {
-         queueGame: gamesInline.get(arrId[1]).queueGame
+         queueGame: gamesInline.get(arrId[1]).queueGame,
+         lastPiece : last
       });
    });
    // SKip the turn of the current socket

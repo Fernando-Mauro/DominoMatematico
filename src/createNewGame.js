@@ -53,45 +53,54 @@ pushingPiece(piece){
          const tail = this.queueGame.at(-1);
          const head = this.queueGame[0];
          if(piece.first == head.first){
-            piece.first = "*";
+            piece.first = "*" + piece.first;
             this.queueGame[0].first = "*";
             this.queueGame.unshift(piece);
             this.nextTurn();
+            return "head";
          }else if(piece.first == head.second){
-            piece.first = "*";
+            piece.first = "*" + piece.first;
             this.queueGame[0].second = "*";
             this.queueGame.unshift(piece);
             this.nextTurn();
+            return "head";
          }else if(piece.second == head.first){
-            piece.second = "*";
+            piece.second = "*" + piece.second;
             this.queueGame[0].first = "*";
             this.queueGame.unshift(piece);
             this.nextTurn();
+            return "head";
          }else if(piece.second == head.second ){
-            piece.second = "*";
+            piece.second = "*" + piece.second;
             this.queueGame[0].second = "*";
             this.queueGame.unshift(piece);
             this.nextTurn();
+            return "head";
          }else if(piece.first == tail.first){
-            piece.first = "*",
+            piece.first = "*" +piece.first;
             this.queueGame.at(-1).first = "*";
             this.queueGame.push(piece);
             this.nextTurn();
+            return "tail";
          }else if(piece.first == tail.second){
-            piece.first = "*";
+            piece.first = "*" + piece.first;
             this.queueGame.at(-1).second = "*";
             this.queueGame.push(piece);
             this.nextTurn();
+            return "tail";
          }else if(piece.second == tail.first){
-            piece.second = "*";
+            piece.second = "*" + piece.second;
             this.queueGame.at(-1).first = "*";
             this.queueGame.push(piece);
             this.nextTurn();
+            return "tail";
          }else if(piece.second == tail.second){
-            piece.second = "*";
+            piece.second = "*" + piece.second;
             this.queueGame.at(-1).second = "*";
             this.queueGame.push(piece);
             this.nextTurn();
+            return "tail";
+
          }else{
             this.players[this.turn].socketPlayer.emit("badPiece");
          }
@@ -101,6 +110,7 @@ pushingPiece(piece){
             second : piece.second
          });
          this.nextTurn();
+         return "middle";
       }
       
    }
