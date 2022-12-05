@@ -137,13 +137,11 @@ function isValid(piece){
    }
 }
 function construirCola(data){
-   console.log(data);
    const contenedor = document.getElementById("gameContainer");
    const lastPiece = data.lastPiece;
    if(lastPiece == "tail"){
       const topHalf = document.createElement("div");
       let size = data.queueGame.at(-1).first.length;
-      console.log("tamaño " + size);
       let numberBallsTop;
       if(size == undefined){
          numberBallsTop = data.queueGame.at(-1).first;
@@ -151,7 +149,6 @@ function construirCola(data){
          numberBallsTop = data.queueGame.at(-1).first[size - 1];
       }
       // Aqui me quede haciendo las comprobaciones
-      console.log(numberBallsTop);
       numberBallsTop = parseInt(numberBallsTop);
       console.log(numberBallsTop);
       topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
@@ -169,7 +166,6 @@ function construirCola(data){
       }else{
          numberBallsTop = data.queueGame.at(-1).second[size - 1];
       }
-      console.log("tamaño " + size);
 
       numberBallsBottom = parseInt(numberBallsBottom);
       bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
@@ -186,7 +182,6 @@ function construirCola(data){
    }else if(lastPiece == "head"){
       const topHalf = document.createElement("div");
       let size = data.queueGame[0].first.length;
-      console.log("tamaño " + size);
       let numberBallsTop ;
       if(size == undefined){
          numberBallsTop = data.queueGame[0].first;
@@ -195,9 +190,7 @@ function construirCola(data){
       }
       
       // Aqui me quede haciendo las comprobaciones
-      console.log(numberBallsTop);
       numberBallsTop = parseInt(numberBallsTop);
-      console.log(numberBallsTop);
       topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
       for(let i = 0; i <  numberBallsTop; i++){
          const bolita = document.createElement("div");
@@ -212,10 +205,7 @@ function construirCola(data){
          numberBallsTop = data.queueGame[0].second;
       }else{
          numberBallsBottom = data.queueGame[0].second[size - 1];
-      }
-      console.log("tamaño " + size);
-
-      
+      }      
       numberBallsBottom = parseInt(numberBallsBottom);
       bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
       for(let i = 0; i <  numberBallsBottom; i++){
