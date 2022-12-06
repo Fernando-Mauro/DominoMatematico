@@ -44,6 +44,10 @@ skipTurn.addEventListener("click", () => {
       socket.emit("skipTurn");
    }
 });
+socket.on("connectedRoom", () => {
+   alert("Te has conectado a la sala correctamente");
+});
+
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {

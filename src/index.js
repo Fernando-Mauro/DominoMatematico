@@ -24,6 +24,7 @@ const gamesInline = new Map();
 
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
+   console.log(`Un nuevo jugador se ha conectado: ${io.engine.clientsCount}`);
    socket.connectedRooms = [];
    // Create a new game
    socket.on("newGame", () => {
@@ -53,6 +54,7 @@ io.on("connection", (socket) => {
          const memberRoom = new Player(socket);
          gamesInline.get(idRoom).players.push(memberRoom);
          socket.join(idRoom);
+         socket.emit("ConnecteRoom");
       }else{
          socket.emit("error", {
             message : "No existe la sala o ya te encuentras en otra sala",
@@ -103,10 +105,5 @@ io.on("connection", (socket) => {
       
    });
 });
-
-
-
-
-
 // Puerto
 httpServer.listen(3300);
