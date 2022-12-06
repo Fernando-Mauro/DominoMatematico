@@ -38,7 +38,7 @@ startBtn.addEventListener("click", () => {
 
 const skipTurn = document.querySelector("#skip-turn");
 skipTurn.addEventListener("click", () => {
-   if(isMyTurn){
+   if (isMyTurn) {
       activeTurn();
       isMyTurn = false;
       socket.emit("skipTurn");
@@ -47,16 +47,16 @@ skipTurn.addEventListener("click", () => {
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
-      if(piece.first == 6 && piece.second == 6){
+      if (piece.first == 6 && piece.second == 6) {
          isMyTurn = true;
          activeTurn();
-      } 
+      }
       const containPiece = document.createElement("div");
       containPiece.classList.add("piece");
 
       const topHalf = document.createElement("div");
       topHalf.classList.add("top-half", `${piecesCode[piece.first - 1]}`);
-      for(let i = 0; i < piece.first; ++i){
+      for (let i = 0; i < piece.first; ++i) {
          const bolita = document.createElement("div");
          bolita.classList.add("bolita");
          topHalf.appendChild(bolita);
@@ -64,7 +64,7 @@ socket.on("sendPieces", data => {
 
       const bottomHalf = document.createElement("div");
       bottomHalf.classList.add("bottom-half", `${piecesCode[piece.second - 1]}`);
-      for(let i = 0; i < piece.second; ++i){
+      for (let i = 0; i < piece.second; ++i) {
          const bolita = document.createElement("div");
          bolita.classList.add("bolita");
          bottomHalf.appendChild(bolita);
@@ -72,27 +72,25 @@ socket.on("sendPieces", data => {
 
       containPiece.appendChild(topHalf);
       containPiece.appendChild(bottomHalf);
-      
+
       piecesContainer.appendChild(containPiece);
-      containPiece.addEventListener("click",() => {
-         if(queueGame.length != 0){
-            if(isMyTurn && isValid({first: piece.first,second: piece.second})){
-               console.log('Enviando una pieza');
-               socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
-               // isMyTurn = false;
+      containPiece.addEventListener("click", () => {
+         if (queueGame.length != 0) {
+            if (isMyTurn && isValid({ first: piece.first, second: piece.second })) {
+               socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
                activeTurn();
                isMyTurn = false;
                containPiece.innerHTML = "";
             }
-         }else{
-            socket.emit("pushPiece", {first: piece.first,second: piece.second, isMyTurn, id: socket.id});
+         } else {
+            socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
             activeTurn();
             isMyTurn = false;
             containPiece.innerHTML = "";
          }
-         
+
       });
-      
+
    })
 });
 
@@ -113,120 +111,208 @@ socket.on("badPiece", () => {
 socket.on("sendQueue", (data) => {
    queueGame = data.queueGame;
    construirCola(data);
-})
-function activeTurn(){
+});
+
+function activeTurn() {
    const turnActive = document.querySelector("#turn-enable");
    const turnDisactive = document.querySelector("#turn-disable");
    turnActive.classList.toggle("hidden");
    turnDisactive.classList.toggle("hidden");
    isMyTurn = true;
 }
-function isValid(piece){
-   if(queueGame.length != 0){
+
+function isValid(piece) {
+   if (queueGame.length != 0) {
       const tail = queueGame.at(-1);
       const head = queueGame[0];
-      const coincide = (piece.first == head.first ? 1 : piece.first == head.second ? 2 : piece.second == head.first ? 1 : piece.second == head.second ? 2 : undefined);
-      console.log(coincide);
-      if(piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second){
+      if (piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second) {
          return true;
-      }else if(piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second){
+      } else if (piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second) {
          return true;
-      }else{
+      } else {
          return false;
       }
    }
 }
-function construirCola(data){
+
+function construirCola(data) {
    const contenedor = document.getElementById("gameContainer");
    const lastPiece = data.lastPiece;
-   if(lastPiece == "tail"){
-      const topHalf = document.createElement("div");
-      let size = data.queueGame.at(-1).first.length;
-      let numberBallsTop;
-      if(size == undefined){
-         numberBallsTop = data.queueGame.at(-1).first;
-      }else{
-         numberBallsTop = data.queueGame.at(-1).first[size - 1];
-      }
-      // Aqui me quede haciendo las comprobaciones
-      numberBallsTop = parseInt(numberBallsTop);
-      console.log(numberBallsTop);
-      topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
-      for(let i = 0; i <  numberBallsTop; i++){
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         topHalf.appendChild(bolita);
+   console.log(data);
+   if (lastPiece == "tail") {
+      console.log("Tail");
+      if (typeof (data.queueGame.at(-1).first) == 'string') {
+         const topHalf = document.createElement("div");
+         let size = data.queueGame.at(-1).first.length;
+         let numberBallsTop;
+         if (size == undefined) {
+            numberBallsTop = data.queueGame.at(-1).first;
+         } else {
+            numberBallsTop = data.queueGame.at(-1).first[size - 1];
+         }
+         numberBallsTop = parseInt(numberBallsTop);
+         for (let i = 0; i < numberBallsTop; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            topHalf.appendChild(bolita);
+         }
+
+         const bottomHalf = document.createElement("div");
+         size = data.queueGame.at(-1).second.length;
+         let numberBallsBottom;
+         if (size == undefined) {
+            numberBallsBottom = data.queueGame.at(-1).second;
+         } else {
+            numberBallsBottom = data.queueGame.at(-1).second[size - 1];
+         }
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
+         numberBallsBottom = parseInt(numberBallsBottom);
+         bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
+         topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
+         for (let i = 0; i < numberBallsBottom; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            bottomHalf.appendChild(bolita);
+         }
+         const containPiece = document.createElement("div");
+         containPiece.classList.add(`piece${rowCase}`);
+         containPiece.appendChild(topHalf);
+         containPiece.appendChild(bottomHalf);
+         contenedor.appendChild(containPiece);
+      } else {
+         const topHalf = document.createElement("div");
+         let size = data.queueGame.at(-1).second.length;
+         let numberBallsTop;
+         if (size == undefined) {
+            numberBallsTop = data.queueGame.at(-1).second;
+         } else {
+            numberBallsTop = data.queueGame.at(-1).second[size - 1];
+         }
+         numberBallsTop = parseInt(numberBallsTop);
+         topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]);
+         for (let i = 0; i < numberBallsTop; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            topHalf.appendChild(bolita);
+         }
+
+         const bottomHalf = document.createElement("div");
+         size = data.queueGame.at(-1).first.length;
+         let numberBallsBottom;
+         if (size == undefined) {
+            numberBallsBottom = data.queueGame.at(-1).first;
+         } else {
+            numberBallsBottom = data.queueGame.at(-1).first[size - 1];
+         }
+
+         numberBallsBottom = parseInt(numberBallsBottom);
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
+         bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
+         topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
+         for (let i = 0; i < numberBallsBottom; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            bottomHalf.appendChild(bolita);
+         }
+         const containPiece = document.createElement("div");
+         containPiece.classList.add(`piece${rowCase}`);
+         containPiece.appendChild(topHalf);
+         containPiece.appendChild(bottomHalf);
+         contenedor.appendChild(containPiece);
       }
 
-      const bottomHalf = document.createElement("div");
-      size = data.queueGame.at(-1).second.length;
-      let numberBallsBottom;
-      if(size == undefined){
-         numberBallsTop = data.queueGame.at(-1).second;
-      }else{
-         numberBallsTop = data.queueGame.at(-1).second[size - 1];
-      }
+   } else if (lastPiece == "head") {
+      console.log("Head");
+      if (typeof (data.queueGame[0].first) == 'string') {
+         const lastElementHead = document.getElementById("gameContainer").childNodes[0];
+         const topHalf = document.createElement("div");
+         let size = data.queueGame[0].second.length;
+         let numberBallsTop;
+         if (size == undefined) {
+            numberBallsTop = data.queueGame[0].second;
+         } else {
+            numberBallsTop = data.queueGame[0].second[size - 1];
+         }
 
-      numberBallsBottom = parseInt(numberBallsBottom);
-      bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
-      for(let i = 0; i <  numberBallsBottom; i++){
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         bottomHalf.appendChild(bolita);
-      }
-      const containPiece = document.createElement("div");
-      containPiece.classList.add("piece");
-      containPiece.appendChild(topHalf);
-      containPiece.appendChild(bottomHalf);
-      contenedor.appendChild(containPiece);
-   }else if(lastPiece == "head"){
-      const topHalf = document.createElement("div");
-      let size = data.queueGame[0].first.length;
-      let numberBallsTop ;
-      if(size == undefined){
-         numberBallsTop = data.queueGame[0].first;
-      }else{
-         numberBallsTop = data.queueGame[0].first[size - 1];
-      }
-      
-      // Aqui me quede haciendo las comprobaciones
-      numberBallsTop = parseInt(numberBallsTop);
-      topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
-      for(let i = 0; i <  numberBallsTop; i++){
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         topHalf.appendChild(bolita);
-      }
+         // Aqui me quede haciendo las comprobaciones
+         numberBallsTop = parseInt(numberBallsTop);
+         for (let i = 0; i < numberBallsTop; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            topHalf.appendChild(bolita);
+         }
 
-      const bottomHalf = document.createElement("div");
-      size = data.queueGame[0].second.length;
-      let numberBallsBottom;
-      if(size == undefined){
-         numberBallsTop = data.queueGame[0].second;
-      }else{
-         numberBallsBottom = data.queueGame[0].second[size - 1];
-      }      
-      numberBallsBottom = parseInt(numberBallsBottom);
-      bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
-      for(let i = 0; i <  numberBallsBottom; i++){
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         bottomHalf.appendChild(bolita);
+         const bottomHalf = document.createElement("div");
+         size = data.queueGame[0].first.length;
+         let numberBallsBottom;
+         if (size == undefined) {
+            numberBallsBottom = data.queueGame[0].first;
+         } else {
+            numberBallsBottom = data.queueGame[0].first[size - 1];
+         }
+         numberBallsBottom = parseInt(numberBallsBottom);
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
+         bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
+         topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
+         for (let i = 0; i < numberBallsBottom; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            bottomHalf.appendChild(bolita);
+         }
+         const containPiece = document.createElement("div");
+         containPiece.classList.add(`piece${rowCase}`);
+         containPiece.appendChild(topHalf);
+         containPiece.appendChild(bottomHalf);
+         contenedor.insertBefore(containPiece, lastElementHead);
+      } else {
+         const lastElementHead = document.getElementById("gameContainer").childNodes[0];
+         const topHalf = document.createElement("div");
+         let size = data.queueGame[0].first.length;
+         let numberBallsTop;
+         if (size == undefined) {
+            numberBallsTop = data.queueGame[0].first;
+         } else {
+            numberBallsTop = data.queueGame[0].first[size - 1];
+         }
+
+         // Aqui me quede haciendo las comprobaciones
+         numberBallsTop = parseInt(numberBallsTop);
+         for (let i = 0; i < numberBallsTop; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            topHalf.appendChild(bolita);
+         }
+
+         const bottomHalf = document.createElement("div");
+         size = data.queueGame[0].second.length;
+         let numberBallsBottom;
+         if (size == undefined) {
+            numberBallsBottom = data.queueGame[0].second;
+         } else {
+            numberBallsBottom = data.queueGame[0].second[size - 1];
+         }
+         numberBallsBottom = parseInt(numberBallsBottom);
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
+         bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
+         topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
+         for (let i = 0; i < numberBallsBottom; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            bottomHalf.appendChild(bolita);
+         }
+         const containPiece = document.createElement("div");
+         containPiece.classList.add(`piece${rowCase}`);
+         containPiece.appendChild(topHalf);
+         containPiece.appendChild(bottomHalf);
+         contenedor.insertBefore(containPiece, lastElementHead);
       }
-      const containPiece = document.createElement("div");
-      containPiece.classList.add("piece");
-      containPiece.appendChild(topHalf);
-      containPiece.appendChild(bottomHalf);
-      contenedor.appendChild(containPiece);
-   }else if(lastPiece == "middle"){
+   } else if (lastPiece == "middle") {
+      console.log("middle");
       const topHalf = document.createElement("div");
       let numberBallsTop = data.queueGame[0].first;
-      // Aqui me quede haciendo las comprobaciones
-      console.log(numberBallsTop);
       numberBallsTop = parseInt(numberBallsTop);
-      console.log(numberBallsTop);
-      topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]); 
-      for(let i = 0; i <  numberBallsTop; i++){
+      topHalf.classList.add("top-half-row", piecesCode[numberBallsTop - 1]);
+      for (let i = 0; i < numberBallsTop; i++) {
          const bolita = document.createElement("div");
          bolita.classList.add("bolita");
          topHalf.appendChild(bolita);
@@ -235,14 +321,14 @@ function construirCola(data){
       const bottomHalf = document.createElement("div");
       let numberBallsBottom = data.queueGame[0].first;
       numberBallsBottom = parseInt(numberBallsBottom);
-      bottomHalf.classList.add("bottom-half", piecesCode[numberBallsBottom - 1]); 
-      for(let i = 0; i <  numberBallsBottom; i++){
+      bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom - 1]);
+      for (let i = 0; i < numberBallsBottom; i++) {
          const bolita = document.createElement("div");
          bolita.classList.add("bolita");
          bottomHalf.appendChild(bolita);
       }
       const containPiece = document.createElement("div");
-      containPiece.classList.add("piece");
+      containPiece.classList.add("piece-row");
       containPiece.appendChild(topHalf);
       containPiece.appendChild(bottomHalf);
       contenedor.appendChild(containPiece);
