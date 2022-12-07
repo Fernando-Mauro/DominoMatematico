@@ -7,7 +7,7 @@
    <link rel="shortcut icon" href="../assets/domino.png" type="image/x-icon">
    <link rel="stylesheet" href="../CSS/colores.css">
    <link rel="stylesheet" href="../CSS/output.css">
-   <title>Domino de colores</title>
+   <title>Domino de princesas</title>
 </head>
 <body class="p-10">
    <div class="table-game w-full h-auto" id="gameContainer">
@@ -28,8 +28,14 @@
       <span id="turn-disable" class="bg-red-500 p-5 inline-block">No es tu turno</span>
       <button class="bg-yellow-500" id="skip-turn">Salta tu turno</button>
    </div>
-
+   <style>
+      .bottom-half, .top-half, .bottom-half-row, .top-half-row{
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+      }
+   </style>
    <script src="/socket.io/socket.io.js"></script>
-   <script src="../Javascript/colores.js"></script>  
+   <script src="../Javascript/princesas.js"></script>  
 </body>
 </html>

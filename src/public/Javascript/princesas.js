@@ -3,7 +3,7 @@ const socket = io();
 let isMyTurn = false;
 let queueGame = [];
 
-const piecesCode = ["white","red", "blue", "purple", "green", "yellow", "pink"];
+const piecesCode = ["../assets/princesas/ana.png","../assets/princesas/ariel.png", "../assets/princesas/bella.png", "../assets/princesas/blancaNieves.png", "../assets/princesas/cenicienta.png", "../assets/princesas/elsa.png", "../assets/princesas/tiana.png"];
 
 // Create a new game
 const newGameBtn = document.querySelector("#newGameBtn");
@@ -61,7 +61,7 @@ socket.on("sendPieces", data => {
 
       const topHalf = document.createElement("div");
       topHalf.classList.add("top-half", `${piecesCode[piece.first - 1]}`);
-      topHalf.style.backgroundColor = piecesCode[piece.first];
+      topHalf.style.backgroundImage = `url(${piecesCode[piece.first]})`;
       // for (let i = 0; i < piece.first; ++i) {
       //    const bolita = document.createElement("div");
       //    bolita.classList.add("bolita");
@@ -70,7 +70,7 @@ socket.on("sendPieces", data => {
 
       const bottomHalf = document.createElement("div");
       bottomHalf.classList.add("bottom-half", `${piecesCode[piece.second - 1]}`);
-      bottomHalf.style.backgroundColor = piecesCode[piece.second];
+      bottomHalf.style.backgroundImage = `url(${piecesCode[piece.second]}`;
       console.log(`La pieza recibio en la parte de arriba un numero {${piece.first}} y por lo tanto un color: ${piecesCode[piece.first]}`);
       console.log(`La pieza recibio en la parte de abajo un numero {${piece.second}} y por lo tanto un color: ${piecesCode[piece.second]}`);
       console.log("----------------------------------------------------------------------------");
@@ -161,7 +161,7 @@ function construirCola(data) {
             numberBallsTop = data.queueGame.at(-1).first[size - 1];
          }
          numberBallsTop = parseInt(numberBallsTop);
-         topHalf.style.backgroundColor = piecesCode[numberBallsTop];
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
          // for (let i = 0; i < numberBallsTop; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -180,7 +180,7 @@ function construirCola(data) {
          numberBallsBottom = parseInt(numberBallsBottom);
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         bottomHalf.style.backgroundColor = piecesCode[numberBallsBottom];
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
          // for (let i = 0; i < numberBallsBottom; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -202,7 +202,7 @@ function construirCola(data) {
          }
          numberBallsTop = parseInt(numberBallsTop);
          topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]);
-         topHalf.style.backgroundColor = piecesCode[numberBallsTop];
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
          // for (let i = 0; i < numberBallsTop; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -222,7 +222,7 @@ function construirCola(data) {
          const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         bottomHalf.style.backgroundColor = piecesCode[numberBallsBottom];
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
          // for (let i = 0; i < numberBallsBottom; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -250,7 +250,7 @@ function construirCola(data) {
 
          // Aqui me quede haciendo las comprobaciones
          numberBallsTop = parseInt(numberBallsTop);
-         topHalf.style.backgroundColor = piecesCode[numberBallsTop];
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
          // for (let i = 0; i < numberBallsTop; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -269,7 +269,7 @@ function construirCola(data) {
          const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         bottomHalf.style.backgroundColor = piecesCode[numberBallsBottom];
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
          // for (let i = 0; i < numberBallsBottom; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -293,7 +293,7 @@ function construirCola(data) {
 
          // Aqui me quede haciendo las comprobaciones
          numberBallsTop = parseInt(numberBallsTop);
-         topHalf.style.backgroundColor = piecesCode[numberBallsTop];
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
          // for (let i = 0; i < numberBallsTop; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -312,7 +312,7 @@ function construirCola(data) {
          const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         bottomHalf.style.backgroundColor = piecesCode[numberBallsBottom];
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
          // for (let i = 0; i < numberBallsBottom; i++) {
          //    const bolita = document.createElement("div");
          //    bolita.classList.add("bolita");
@@ -330,7 +330,7 @@ function construirCola(data) {
       let numberBallsTop = data.queueGame[0].first;
       numberBallsTop = parseInt(numberBallsTop);
       topHalf.classList.add("top-half-row", piecesCode[numberBallsTop - 1]);
-      topHalf.style.backgroundColor = piecesCode[numberBallsTop];
+      topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
       // for (let i = 0; i < numberBallsTop; i++) {
       //    const bolita = document.createElement("div");
       //    bolita.classList.add("bolita");
@@ -340,8 +340,8 @@ function construirCola(data) {
       const bottomHalf = document.createElement("div");
       let numberBallsBottom = data.queueGame[0].first;
       numberBallsBottom = parseInt(numberBallsBottom);
-      bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom - 1]);
-      bottomHalf.style.backgroundColor = piecesCode[numberBallsBottom];
+      bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom]);
+      bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
       // for (let i = 0; i < numberBallsBottom; i++) {
       //    const bolita = document.createElement("div");
       //    bolita.classList.add("bolita");
