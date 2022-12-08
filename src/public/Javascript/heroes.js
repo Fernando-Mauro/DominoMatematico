@@ -3,7 +3,8 @@ const socket = io();
 let isMyTurn = false;
 let queueGame = [];
 
-const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
+const piecesCode = ["../assets/princesas/ana.png","../assets/princesas/ariel.png", "../assets/princesas/bella.png", "../assets/princesas/blancaNieves.png", "../assets/princesas/cenicienta.png", "../assets/princesas/elsa.png", "../assets/princesas/tiana.png"];
+
 // Create a new game
 const newGameBtn = document.querySelector("#newGameBtn");
 newGameBtn.addEventListener("click", () => {
@@ -13,7 +14,7 @@ socket.on("newGameCreate", (data) => {
    const spanIdRoom = document.querySelector("#idRoom");
    spanIdRoom.textContent = data.idRoom;
 });
- 
+
 // See actives games
 const inLineGames = document.querySelector("#gamesInline");
 inLineGames.addEventListener("click", () => {
@@ -59,20 +60,25 @@ socket.on("sendPieces", data => {
       containPiece.classList.add("piece");
 
       const topHalf = document.createElement("div");
-      topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
-      for (let i = 0; i < piece.first; ++i) {
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         topHalf.appendChild(bolita);
-      }
+      topHalf.classList.add("top-half", `${piecesCode[piece.first - 1]}`);
+      topHalf.style.backgroundImage = `url(${piecesCode[piece.first]})`;
+      // for (let i = 0; i < piece.first; ++i) {
+      //    const bolita = document.createElement("div");
+      //    bolita.classList.add("bolita");
+      //    topHalf.appendChild(bolita);
+      // }
 
       const bottomHalf = document.createElement("div");
-      bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
-      for (let i = 0; i < piece.second; ++i) {
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         bottomHalf.appendChild(bolita);
-      }
+      bottomHalf.classList.add("bottom-half", `${piecesCode[piece.second - 1]}`);
+      bottomHalf.style.backgroundImage = `url(${piecesCode[piece.second]}`;
+      console.log(`La pieza recibio en la parte de arriba un numero {${piece.first}} y por lo tanto un color: ${piecesCode[piece.first]}`);
+      console.log(`La pieza recibio en la parte de abajo un numero {${piece.second}} y por lo tanto un color: ${piecesCode[piece.second]}`);
+      console.log("----------------------------------------------------------------------------");
+      // for (let i = 0; i < piece.second; ++i) {
+      //    const bolita = document.createElement("div");
+      //    bolita.classList.add("bolita");
+      //    bottomHalf.appendChild(bolita);
+      // }
 
       containPiece.appendChild(topHalf);
       containPiece.appendChild(bottomHalf);
@@ -155,11 +161,12 @@ function construirCola(data) {
             numberBallsTop = data.queueGame.at(-1).first[size - 1];
          }
          numberBallsTop = parseInt(numberBallsTop);
-         for (let i = 0; i < numberBallsTop; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            topHalf.appendChild(bolita);
-         }
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
+         // for (let i = 0; i < numberBallsTop; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    topHalf.appendChild(bolita);
+         // }
 
          const bottomHalf = document.createElement("div");
          size = data.queueGame.at(-1).second.length;
@@ -169,15 +176,16 @@ function construirCola(data) {
          } else {
             numberBallsBottom = data.queueGame.at(-1).second[size - 1];
          }
-         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '-column';
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          numberBallsBottom = parseInt(numberBallsBottom);
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         for (let i = 0; i < numberBallsBottom; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            bottomHalf.appendChild(bolita);
-         }
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
+         // for (let i = 0; i < numberBallsBottom; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    bottomHalf.appendChild(bolita);
+         // }
          const containPiece = document.createElement("div");
          containPiece.classList.add(`piece${rowCase}`);
          containPiece.appendChild(topHalf);
@@ -194,11 +202,12 @@ function construirCola(data) {
          }
          numberBallsTop = parseInt(numberBallsTop);
          topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]);
-         for (let i = 0; i < numberBallsTop; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            topHalf.appendChild(bolita);
-         }
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
+         // for (let i = 0; i < numberBallsTop; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    topHalf.appendChild(bolita);
+         // }
 
          const bottomHalf = document.createElement("div");
          size = data.queueGame.at(-1).first.length;
@@ -210,14 +219,15 @@ function construirCola(data) {
          }
 
          numberBallsBottom = parseInt(numberBallsBottom);
-         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '-column';
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         for (let i = 0; i < numberBallsBottom; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            bottomHalf.appendChild(bolita);
-         }
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
+         // for (let i = 0; i < numberBallsBottom; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    bottomHalf.appendChild(bolita);
+         // }
          const containPiece = document.createElement("div");
          containPiece.classList.add(`piece${rowCase}`);
          containPiece.appendChild(topHalf);
@@ -240,11 +250,12 @@ function construirCola(data) {
 
          // Aqui me quede haciendo las comprobaciones
          numberBallsTop = parseInt(numberBallsTop);
-         for (let i = 0; i < numberBallsTop; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            topHalf.appendChild(bolita);
-         }
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
+         // for (let i = 0; i < numberBallsTop; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    topHalf.appendChild(bolita);
+         // }
 
          const bottomHalf = document.createElement("div");
          size = data.queueGame[0].first.length;
@@ -255,14 +266,15 @@ function construirCola(data) {
             numberBallsBottom = data.queueGame[0].first[size - 1];
          }
          numberBallsBottom = parseInt(numberBallsBottom);
-         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '-column';
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         for (let i = 0; i < numberBallsBottom; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            bottomHalf.appendChild(bolita);
-         }
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
+         // for (let i = 0; i < numberBallsBottom; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    bottomHalf.appendChild(bolita);
+         // }
          const containPiece = document.createElement("div");
          containPiece.classList.add(`piece${rowCase}`);
          containPiece.appendChild(topHalf);
@@ -281,11 +293,12 @@ function construirCola(data) {
 
          // Aqui me quede haciendo las comprobaciones
          numberBallsTop = parseInt(numberBallsTop);
-         for (let i = 0; i < numberBallsTop; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            topHalf.appendChild(bolita);
-         }
+         topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
+         // for (let i = 0; i < numberBallsTop; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    topHalf.appendChild(bolita);
+         // }
 
          const bottomHalf = document.createElement("div");
          size = data.queueGame[0].second.length;
@@ -296,14 +309,15 @@ function construirCola(data) {
             numberBallsBottom = data.queueGame[0].second[size - 1];
          }
          numberBallsBottom = parseInt(numberBallsBottom);
-         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '-column';
+         const rowCase = (numberBallsBottom == numberBallsTop)? '-row': '';
          bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
          topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-         for (let i = 0; i < numberBallsBottom; i++) {
-            const bolita = document.createElement("div");
-            bolita.classList.add("bolita");
-            bottomHalf.appendChild(bolita);
-         }
+         bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
+         // for (let i = 0; i < numberBallsBottom; i++) {
+         //    const bolita = document.createElement("div");
+         //    bolita.classList.add("bolita");
+         //    bottomHalf.appendChild(bolita);
+         // }
          const containPiece = document.createElement("div");
          containPiece.classList.add(`piece${rowCase}`);
          containPiece.appendChild(topHalf);
@@ -316,21 +330,23 @@ function construirCola(data) {
       let numberBallsTop = data.queueGame[0].first;
       numberBallsTop = parseInt(numberBallsTop);
       topHalf.classList.add("top-half-row", piecesCode[numberBallsTop - 1]);
-      for (let i = 0; i < numberBallsTop; i++) {
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         topHalf.appendChild(bolita);
-      }
+      topHalf.style.backgroundImage = `url(${piecesCode[numberBallsTop]})`;
+      // for (let i = 0; i < numberBallsTop; i++) {
+      //    const bolita = document.createElement("div");
+      //    bolita.classList.add("bolita");
+      //    topHalf.appendChild(bolita);
+      // }
 
       const bottomHalf = document.createElement("div");
       let numberBallsBottom = data.queueGame[0].first;
       numberBallsBottom = parseInt(numberBallsBottom);
-      bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom - 1]);
-      for (let i = 0; i < numberBallsBottom; i++) {
-         const bolita = document.createElement("div");
-         bolita.classList.add("bolita");
-         bottomHalf.appendChild(bolita);
-      }
+      bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom]);
+      bottomHalf.style.backgroundImage = `url(${piecesCode[numberBallsBottom]})`;
+      // for (let i = 0; i < numberBallsBottom; i++) {
+      //    const bolita = document.createElement("div");
+      //    bolita.classList.add("bolita");
+      //    bottomHalf.appendChild(bolita);
+      // }
       const containPiece = document.createElement("div");
       containPiece.classList.add("piece-row");
       containPiece.appendChild(topHalf);

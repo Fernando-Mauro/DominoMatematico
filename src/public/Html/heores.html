@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="../assets/domino.png" type="image/x-icon">
+   <link rel="stylesheet" href="../CSS/colores.css">
+   <link rel="stylesheet" href="../CSS/output.css">
+   <title>Domino de Heroes</title>
+</head>
+<body class="p-10">
+   <div class="table-game w-full h-auto" id="gameContainer">
+
+   </div>
+   <h3 class="text-black">EL id de tu juego es <span class="text-orange-600" id="idRoom"></span></h3>
+   <button class="bg-red-500"  id="newGameBtn">Crear nuevo juego</button>
+   <button class="bg-red-500" id="gamesInline">Ver juegos activos</button>
+   <button class="bg-red-500" id="joinToRoom">Unete a una sala</button>
+   <input class="bg-red-500" type="text" name="joinRoom" id="inputId">
+   <button class="bg-red-500" id="joinToGame">Unirnos A esta sala</button>
+   <button class="bg-red-500" id="startGame">Comenza Juego</button>
+   <main class="w-full flex justify-around mb-5" id="pieces-container">
+      
+   </main>
+   <div class="turn-container">
+      <span id="turn-enable" class="bg-green-500 p-5 inline-block hidden">Es tu turno</span>
+      <span id="turn-disable" class="bg-red-500 p-5 inline-block">No es tu turno</span>
+      <button class="bg-yellow-500" id="skip-turn">Salta tu turno</button>
+   </div>
+   <style>
+      .bottom-half, .top-half, .bottom-half-row, .top-half-row{
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+      }
+   </style>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="../Javascript/heroes.js"></script>  
+</body>
+</html>

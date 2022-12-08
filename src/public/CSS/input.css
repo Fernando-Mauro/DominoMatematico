@@ -5,6 +5,13 @@
    @apply text-creme;
 }
 
+.piece-column{
+   @apply left-10 relative;
+}
+.piece{
+   @apply hover:scale-125 cursor-pointer ease-in duration-300;
+}
+
 .piece-row{
    /* @apply w-12 sm:w-20 sm:h-40 h-24; */
    @apply flex flex-row;
@@ -18,11 +25,11 @@
    @apply sm:w-20 sm:h-20 rounded-r-xl w-12 h-12 border-2 border-gray-600;
 }
 /* Parte de arriba */
-.top-half{
+.top-half-column{
    @apply sm:w-20 sm:h-20 rounded-t-xl w-12 h-12 border-2 border-gray-600;
 }
 /* parte de abajo */
-.bottom-half{
+.bottom-half-column{
    @apply sm:w-20 sm:h-20 rounded-b-xl w-12 h-12 border-2 border-gray-600;
 }
 /* el circulo */
