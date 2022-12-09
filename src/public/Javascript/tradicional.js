@@ -1,5 +1,6 @@
 const socket = io();
 
+let lastFirst, lastSecond;
 let isMyTurn = false;
 let queueGame = [];
 
@@ -48,6 +49,34 @@ socket.on("connectedRoom", () => {
    alert("Te has conectado a la sala correctamente");
 });
 
+const pushHead = document.getElementById("push-head");
+const pushTail = document.getElementById("push-tail");
+pushHead.addEventListener("click",() => {
+   comprobatePiece(lastFirst, lastSecond);
+   const hiddenModal = document.getElementById("popup-modal");
+   const modal = new Modal(hiddenModal);
+   modal.hide();
+   let body = document.getElementsByTagName("body");
+   let backDrop = body[0].lastChild;
+   body[0].removeChild(backDrop);
+   backDrop = body[0].lastChild;
+   body[0].removeChild(backDrop);
+});
+pushTail.addEventListener("click",() => {
+   comprobatePiece(lastFirst, lastSecond);
+   const hiddenModal = document.getElementById("popup-modal");
+   const modal = new Modal(hiddenModal);
+   modal.hide();
+   let body = document.getElementsByTagName("body");
+   let backDrop = body[0].lastChild;
+   body[0].removeChild(backDrop);
+   backDrop = body[0].lastChild;
+   body[0].removeChild(backDrop);
+});
+         
+function comprobatePiece(first, second){
+   console.log(first,second);
+}
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
@@ -76,22 +105,43 @@ socket.on("sendPieces", data => {
 
       containPiece.appendChild(topHalf);
       containPiece.appendChild(bottomHalf);
-
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click", () => {
-         if (queueGame.length != 0) {
-            if (isMyTurn && isValid({ first: piece.first, second: piece.second })) {
-               socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
-               activeTurn();
-               isMyTurn = false;
-               containPiece.innerHTML = "";
-            }
-         } else {
-            socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
-            activeTurn();
-            isMyTurn = false;
-            containPiece.innerHTML = "";
-         }
+         const hiddenModal = document.getElementById("popup-modal");
+         const modal = new Modal(hiddenModal);
+         modal.show();
+         // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
+         lastFirst = piece.first;
+         lastSecond = piece.second;
+         // modal.hide();
+         // pushHead.addEventListener("click", () => {
+         //    comprobatePiece(piece.first, piece.second);
+         //    modal.hide();
+         //    const body = document.getElementsByTagName("body");
+         //    const backDrop = body[0].lastChild;
+         //    body[0].removeChild(backDrop);
+         // });
+         // pushTail.addEventListener("click", () => {
+         //    comprobatePiece(piece.first, piece.second);
+         //    modal.hide();
+         //    const body = document.getElementsByTagName("body");
+         //    const backDrop = body[0].lastChild;
+         //    body[0].removeChild(backDrop);
+         //    // hiddenModal.classList.toggle("hidden");
+         // });
+         // if (queueGame.length != 0) {
+         //    if (isMyTurn && isValid({ first: piece.first, second: piece.second })) {
+         //       socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
+         //       activeTurn();
+         //       isMyTurn = false;
+         //       containPiece.innerHTML = "";
+         //    }
+         // } else {
+         //    socket.emit("pushPiece", { first: piece.first, second: piece.second, isMyTurn, id: socket.id });
+         //    activeTurn();
+         //    isMyTurn = false;
+         //    containPiece.innerHTML = "";
+         // }
 
       });
 
