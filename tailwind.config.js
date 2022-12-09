@@ -17,6 +17,7 @@ module.exports = {
         "secondary-light": "#c9ada7",
         "creme": "#f2e9e4",
         "bring-yellow": "#ffd23f",
+        "cobao": "#ed1b24"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",

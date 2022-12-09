@@ -3,7 +3,7 @@ const socket = io();
 let lastFirst, lastSecond;
 let isMyTurn = false;
 let queueGame = [];
-
+let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Create a new game
 const newGameBtn = document.querySelector("#newGameBtn");
@@ -52,7 +52,7 @@ socket.on("connectedRoom", () => {
 const pushHead = document.getElementById("push-head");
 const pushTail = document.getElementById("push-tail");
 pushHead.addEventListener("click",() => {
-   comprobatePiece(lastFirst, lastSecond);
+   comprobatePiece(lastFirst, lastSecond, "head");
    const hiddenModal = document.getElementById("popup-modal");
    const modal = new Modal(hiddenModal);
    modal.hide();
@@ -63,7 +63,7 @@ pushHead.addEventListener("click",() => {
    body[0].removeChild(backDrop);
 });
 pushTail.addEventListener("click",() => {
-   comprobatePiece(lastFirst, lastSecond);
+   comprobatePiece(lastFirst, lastSecond, "tail");
    const hiddenModal = document.getElementById("popup-modal");
    const modal = new Modal(hiddenModal);
    modal.hide();
@@ -74,8 +74,20 @@ pushTail.addEventListener("click",() => {
    body[0].removeChild(backDrop);
 });
          
-function comprobatePiece(first, second){
-   console.log(first,second);
+function comprobatePiece(first, second, side){
+   if (queueGame.length != 0) {
+      if (isMyTurn && isValid({ first: first, second: second, side: side })) {
+         socket.emit("pushPiece", { first: first, second:second, isMyTurn, id: socket.id, side: side });
+         activeTurn();
+         isMyTurn = false;
+         lastContainPiece.innerHTML = "";
+      }
+   } else {
+      socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
+      activeTurn();
+      isMyTurn = false;
+      lastContainPiece.innerHTML = "";
+   }
 }
 socket.on("sendPieces", data => {
    const piecesContainer = document.querySelector("#pieces-container");
@@ -107,12 +119,20 @@ socket.on("sendPieces", data => {
       containPiece.appendChild(bottomHalf);
       piecesContainer.appendChild(containPiece);
       containPiece.addEventListener("click", () => {
-         const hiddenModal = document.getElementById("popup-modal");
-         const modal = new Modal(hiddenModal);
-         modal.show();
-         // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
+        if(queueGame.length != 0){
+            const hiddenModal = document.getElementById("popup-modal");
+            const modal = new Modal(hiddenModal);
+            modal.show();
+            // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
+            lastFirst = piece.first;
+            lastSecond = piece.second;
+            lastContainPiece = containPiece;
+        }else{
          lastFirst = piece.first;
-         lastSecond = piece.second;
+            lastSecond = piece.second;
+            lastContainPiece = containPiece;
+            comprobatePiece(piece.first, piece.second, "middle");
+        }
          // modal.hide();
          // pushHead.addEventListener("click", () => {
          //    comprobatePiece(piece.first, piece.second);
@@ -177,15 +197,18 @@ function activeTurn() {
 
 function isValid(piece) {
    if (queueGame.length != 0) {
-      const tail = queueGame.at(-1);
-      const head = queueGame[0];
-      if (piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second) {
-         return true;
-      } else if (piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second) {
-         return true;
-      } else {
-         return false;
+      if(piece.side == "tail"){
+         const tail = queueGame.at(-1);
+         if (piece.first == tail.first || piece.first == tail.second || piece.second == tail.first || piece.second == tail.second) {
+            return true;
+         }
+      }else if(piece.side == "head"){
+         const head = queueGame[0];
+         if (piece.first == head.first || piece.first == head.second || piece.second == head.first || piece.second == head.second) {
+            return true;
+         }
       }
+      return false;
    }
 }
 
