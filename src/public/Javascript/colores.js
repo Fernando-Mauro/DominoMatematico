@@ -60,7 +60,7 @@ socket.on("sendPieces", data => {
       containPiece.classList.add("piece");
 
       const topHalf = document.createElement("div");
-      topHalf.classList.add("top-half", `${piecesCode[piece.first - 1]}`);
+      topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
       topHalf.style.backgroundColor = piecesCode[piece.first];
       // for (let i = 0; i < piece.first; ++i) {
       //    const bolita = document.createElement("div");
@@ -69,8 +69,9 @@ socket.on("sendPieces", data => {
       // }
 
       const bottomHalf = document.createElement("div");
-      bottomHalf.classList.add("bottom-half", `${piecesCode[piece.second - 1]}`);
+      bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
       bottomHalf.style.backgroundColor = piecesCode[piece.second];
+      console.log(containPiece, piecesContainer);
       console.log(`La pieza recibio en la parte de arriba un numero {${piece.first}} y por lo tanto un color: ${piecesCode[piece.first]}`);
       console.log(`La pieza recibio en la parte de abajo un numero {${piece.second}} y por lo tanto un color: ${piecesCode[piece.second]}`);
       console.log("----------------------------------------------------------------------------");
