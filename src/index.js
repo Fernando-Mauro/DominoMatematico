@@ -27,14 +27,14 @@ io.on("connection", (socket) => {
    console.log(`Un nuevo jugador se ha conectado: ${io.engine.clientsCount}`);
    socket.connectedRooms = [];
    // Create a new game
-   socket.on("newGame", () => {
+   socket.on("newGame", (userName) => {
       // Leave all rooms
       if(socket.connectedRooms.length != 0){
          socket.connectedRooms.forEach(room => socket.leave(room));
       }
 
       const idRoom = uuidv4.v4().split("-")[0];
-      const newGame = new Game(socket, idRoom);
+      const newGame = new Game(socket, idRoom, userName);
 
       // Crear la sala
       socket.join(idRoom);
@@ -49,16 +49,16 @@ io.on("connection", (socket) => {
    });
 
    // Join to room
-   socket.on("joinGame", (idRoom) => {
-      if(gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4){
-         const memberRoom = new Player(socket);
-         gamesInline.get(idRoom).players.push(memberRoom);
-         socket.join(idRoom);
-         socket.emit("ConnecteRoom");
+   socket.on("joinGame", (data) => {
+      if(gamesInline.has(data.idRoom) && socket.rooms.size == 1 && gamesInline.get(data.idRoom).players.length < 4){
+         const memberRoom = new Player(socket, data.userName);
+         gamesInline.get(data.idRoom).players.push(memberRoom);
+         socket.join(data.idRoom);
+         socket.emit("connectedRoom", {idRoom: data.idRoom});
       }else{
          socket.emit("error", {
             message : "No existe la sala o ya te encuentras en otra sala",
-            id : idRoom
+            id : data.idRoom
          });
       }
    });
