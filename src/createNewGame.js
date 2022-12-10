@@ -13,6 +13,7 @@ class Game {
       this.startedGame = false;
       this.queueGame = [];
       this.turn = undefined;
+      this.mula = false;
    }
 
    // Generar las piezas
@@ -41,11 +42,32 @@ class Game {
                   positionRandom++;
                }
             }
-            if (this.piezas[positionRandom].first == 6 && this.piezas[positionRandom].second == 6) this.turn = index;
+            if (this.piezas[positionRandom].first == 6 && this.piezas[positionRandom].second == 6){
+               // index--;
+               this.turn = index;
+               this.mula = true;
+               // this.nextTurn();
+            } 
             player.hand.push(this.piezas[positionRandom]);
             this.piezas[positionRandom].used = true;
          }
       });
+      let bandera = true;
+      if(!this.mula){
+         for(let i = 5; i >= 0; --i){
+            this.players.forEach((player, index) => {
+               player.hand.forEach(pieza => {
+                  if(pieza.first == i && pieza.second == i && bandera){
+                     this.turn = index;
+                     bandera = false;
+                     console.log(`El jugador con la mula es ${player.name} y la mula es: ${i}`)
+                     // player.socketPlayer.emit("myTurn", this.players[this.turn].name)
+                     // return;
+                  }
+               })
+            })
+         }
+      }
    }
    pushingPiece(piece) {
       if (piece.isMyTurn) {
@@ -126,7 +148,10 @@ class Game {
       if (this.turn >= this.players.length) {
          this.turn = 0;
       }
-      this.players[this.turn].socketPlayer.emit("myTurn");
+      this.players[this.turn].socketPlayer.emit("myTurn", this.players[this.turn].name);
+      this.players.forEach((player) => {
+         player.socketPlayer.emit("changeCurrentTurn", {name: this.players[this.turn].name});
+      })
    }
 
 }

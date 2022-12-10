@@ -37,14 +37,7 @@ startBtn.addEventListener("click", () => {
    socket.emit("startGame");
 });
 
-const skipTurn = document.querySelector("#skip-turn");
-skipTurn.addEventListener("click", () => {
-   if (isMyTurn) {
-      activeTurn();
-      isMyTurn = false;
-      socket.emit("skipTurn");
-   }
-});
+
 socket.on("connectedRoom", () => {
    alert("Te has conectado a la sala correctamente");
 });

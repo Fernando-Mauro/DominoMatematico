@@ -5,17 +5,27 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="shortcut icon" href="../assets/domino.png" type="image/x-icon">
-   <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+   <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
    <link rel="stylesheet" href="../CSS/output.css">
    <title>Domino tradicional</title>
 </head>
 
 <body class="p-10 bg-creme">
-
+   <div id="inicio"></div>
+   <div class="z-50 buttons w-full px-4 pt-4 top-0 left-0 flex justify-between fixed">
+      <a href="#inicio" class="cursor-pointer inline-block">
+         <img src="../assets/arrowUp.svg" class="w-10 h-10 hover:scale-150" alt="">
+      </a>
+      <a href="#final" class="cursor-pointer  inline-block">
+         <img src="../assets/arrowDown.svg" class="w-10 h-10 rotate-180 hover:scale-150" alt="">
+      </a>
+   </div>
    <main class="w-full h-auto flex items-center gap-20 flex-col" id="main-container">
-      <div class="logo-cobao w-32">
+      <div class="logo-cobao w-32 inline-block">
          <img src="../assets/cobaoLogo.png" class="animate-rotar animate-rotando w-32 h-32" alt="">
+      </div>
+      <div class="logo-cobao w-32 inline-block">
+         <img src="../assets/favicon.png" class="animate-rotar animate-rotando w-32 h-32" alt="">
       </div>
       <div class="options w-90 mx-auto">
          <ul class="w-full flex flex-col items-center gap-10">
@@ -112,13 +122,13 @@
       </div>
    </main>
 
-   <div id="popup-modal" tabindex="-1"
+   <div id="desition-modal" tabindex="-1"
       class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
       <div class="relative w-full h-full max-w-md md:h-auto">
          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button type="button"
                class="absolute top-3 right-2.5 text-gray-400 bg-red-600   rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-               data-modal-toggle="popup-modal">
+               data-modal-toggle="desition-modal">
                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -135,17 +145,20 @@
                </svg> -->
                <img src="../assets/favicon.png" class="w-20 h-20 mx-auto" alt="">
                <h3 class="mb-5 text-lg font-normal text-black">¿Dónde quieres poner la ficha?</h3>
-               <button id="push-head" data-modal-toggle="popup-modal" type="button"
+               <button id="push-head" data-modal-toggle="desition-modal" type="button"
                   class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                   Arriba
                </button>
-               <button id="push-tail" data-modal-toggle="popup-modal" type="button"
+               <button id="push-tail" data-modal-toggle="desition-modal" type="button"
                   class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Abajo</button>
             </div>
          </div>
       </div>
    </div>
-   <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+   <!-- <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script> -->
+   <!-- <script src="../path/to/flowbite/dist/flowbite.js"></script> -->
+   <div id="final"></div>
+   <script src="../../../node_modules/flowbite/dist/flowbite.js" type="module"></script>
    <script src="/socket.io/socket.io.js"></script>
    <script src="../Javascript/interface.js"></script>
    <!-- <script src="../Javascript/tradicional.js"></script> -->

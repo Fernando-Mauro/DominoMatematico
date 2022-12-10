@@ -10,10 +10,13 @@ const uuidv4 = require("uuid");
 const Game = require("./createNewGame.js");
 const Player = require("./player.js")
 const path = require('path');
+// app.use(express.static(path.join(__dirname, '../node_modules/flowbite/dist/flowbite.js')));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/public/Html')));
 
-
+app.get("/node_modules/flowbite/dist/flowbite.js", (req, res) => {
+   res.sendFile(path.resolve(__dirname + "/../node_modules/flowbite/dist/flowbite.js"))
+});
 // servidor con http
 app.get('/', (req, res) => {
    res.sendFile(  __dirname + "/public/Html/index.html")
@@ -21,6 +24,7 @@ app.get('/', (req, res) => {
 
 // Juegos activos
 const gamesInline = new Map();
+
 
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
@@ -69,6 +73,7 @@ io.on("connection", (socket) => {
       if(!socket.actualGame.startedGame){
          socket.actualGame.players.forEach(player => {
             player.socketPlayer.emit("sendPieces", {pieces: player.hand});
+            player.socketPlayer.emit("changeCurrentTurn", {name: socket.actualGame.players[socket.actualGame.turn].name});
          });
       }
       socket.actualGame.startedGame = true;
