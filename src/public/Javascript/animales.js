@@ -4,7 +4,7 @@ let lastFirst, lastSecond;
 let isMyTurn = false;
 let queueGame = [];
 let lastContainPiece = "";
-const piecesCode = ["../assets/heroes/america.png", "../assets/heroes/hulk.png", "../assets/heroes/ironman.png", "../assets/heroes/panter.png", "../assets/heroes/pool.png", "../assets/heroes/spiderman.png", "../assets/heroes/thor.jpg"];
+const piecesCode = ["../assets/animales/conejo.png", "../assets/animales/gato.jpg", "../assets/animales/mariposa.webp", "../assets/animales/oso.webp", "../assets/animales/perro.jpg", "../assets/animales/pez.webp", "../assets/animales/tortuga.png"];
 
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");

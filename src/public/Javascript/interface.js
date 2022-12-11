@@ -523,9 +523,11 @@ function checkWin(){
    }
 }
 socket.on("winner", (data) => {
-   const textwiner = document.querySelector("#name-winer");
-   textwiner.textContent = `${data.name} ha ganado!`;
-   const modal = document.querySelector("#lose-game");
-   const smmodal = new Modal(modal);
-   smmodal.show();
+   if(data.name != nameUser){
+      const textwiner = document.querySelector("#name-winer");
+      textwiner.textContent = `${data.name} ha ganado!`;
+      const modal = document.querySelector("#lose-game");
+      const smmodal = new Modal(modal);
+      smmodal.show();
+   }
 })

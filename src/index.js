@@ -97,8 +97,10 @@ io.on("connection", (socket) => {
    });
    socket.on("eat-piece", () => {
       const arrId = [...socket.rooms];
-      const piece = gamesInline.get(arrId[1]).eatPieces();
-      socket.emit("eatedPiece", piece);
+      if(gamesInline.get(arrId[1]).players.length < 4){
+         const piece = gamesInline.get(arrId[1]).eatPieces();
+         socket.emit("eatedPiece", piece);
+      }
    });
    socket.on("winner", (data) => {
       const arrId = [...socket.rooms];

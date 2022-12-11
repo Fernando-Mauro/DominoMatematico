@@ -4,8 +4,8 @@ let lastFirst, lastSecond;
 let isMyTurn = false;
 let queueGame = [];
 let lastContainPiece = "";
-const piecesCode = ["../assets/heroes/america.png", "../assets/heroes/hulk.png", "../assets/heroes/ironman.png", "../assets/heroes/panter.png", "../assets/heroes/pool.png", "../assets/heroes/spiderman.png", "../assets/heroes/thor.jpg"];
-
+// const piecesCode = ["../assets/animales/conejo.png", "../assets/animales/gato.jpg", "../assets/animales/mariposa.webp", "../assets/animales/oso.webp", "../assets/animales/perro.jpg", "../assets/animales/pez.webp", "../assets/animales/tortuga.png"];
+const piecesCode = "../assets/matematicas/";
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
 newGameBtn.addEventListener("click", () => {
@@ -152,7 +152,8 @@ socket.on("sendPieces", data => {
 
       const topHalf = document.createElement("div");
       topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
-      topHalf.style.backgroundImage = `url(${piecesCode[piece.first]})`;
+      // topHalf.style.backgroundImage = `url(${piecesCode[piece.first]})`;
+      
       // for (let i = 0; i < piece.first; ++i) {
       //    const bolita = document.createElement("div");
       //    bolita.classList.add("bolita");
@@ -161,13 +162,13 @@ socket.on("sendPieces", data => {
 
       const bottomHalf = document.createElement("div");
       bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
-      bottomHalf.style.backgroundImage = `url(${piecesCode[piece.second]})`;   
+      // bottomHalf.style.backgroundImage = `url(${piecesCode[piece.second]})`;   
       // for (let i = 0; i < piece.second; ++i) {
       //    const bolita = document.createElement("div");
       //    bolita.classList.add("bolita");
       //    bottomHalf.appendChild(bolita);
       // }
-
+      selectBackground(topHalf, bottomHalf, piece.first, piece.second);
       containPiece.appendChild(topHalf);
       containPiece.appendChild(bottomHalf);
       piecesContainer.appendChild(containPiece);
@@ -548,3 +549,16 @@ socket.on("winner", (data) => {
       smmodal.show();
    }
 })
+
+function selectBackground(firstContainer, secondContainer, first, second){
+   if(first == 0 && second == 0){
+      firstContainer.style.backgroundImage = `url(${piecesCode}${first}/1.png)`;
+      secondContainer.style.backgroundImage = `url(${piecesCode}${second}/2.png)`;
+   }else if(first == 0 && second == 1){
+      firstContainer.style.backgroundImage = `url(${piecesCode}${first}/3.png)`;
+      secondContainer.style.backgroundImage = `url(${piecesCode}${second}/1.png)`;                  
+   }else if(first == 0 && second == 2){
+      firstContainer.style.backgroundImage = `url(${piecesCode}${first}/2)`;
+      secondContainer.style.backgroundImage = `url(${piecesCode}${second}/2)`;                        
+   }
+}
