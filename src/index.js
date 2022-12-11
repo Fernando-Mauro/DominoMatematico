@@ -73,7 +73,11 @@ io.on("connection", (socket) => {
       if(!socket.actualGame.startedGame){
          socket.actualGame.players.forEach(player => {
             player.socketPlayer.emit("sendPieces", {pieces: player.hand});
-            player.socketPlayer.emit("changeCurrentTurn", {name: socket.actualGame.players[socket.actualGame.turn].name});
+            try{
+               player.socketPlayer.emit("changeCurrentTurn", {name: socket.actualGame.players[socket.actualGame.turn].name});
+            }catch(err){
+               console.log("Ha habido un error al enviar el turno actual");
+            }
          });
       }
       socket.actualGame.startedGame = true;

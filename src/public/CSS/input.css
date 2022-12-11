@@ -5,7 +5,9 @@
    @apply text-creme;
 }
 
-
+#pieces-container{
+   @apply flex-wrap;
+}
 .piece{
    @apply hover:scale-125 cursor-pointer ease-in duration-300;
 }
@@ -16,19 +18,19 @@
 }
 /* Parte de arriba horizontal */
 .top-half-row{
-   @apply sm:w-20 sm:h-20 rounded-l-xl w-12 h-12 border-2 border-gray-600;
+   @apply sm:w-28 sm:h-28 rounded-l-xl w-20 h-20 border-2 border-gray-600;
 }
 /* parte de abajo horizontal*/
 .bottom-half-row{
-   @apply sm:w-20 sm:h-20 rounded-r-xl w-12 h-12 border-2 border-gray-600;
+   @apply sm:w-28 sm:h-28 rounded-r-xl w-20 h-20 border-2 border-gray-600;
 }
 /* Parte de arriba */
 .top-half-column{
-   @apply sm:w-20 sm:h-20 rounded-t-xl w-12 h-12 border-2 border-gray-600;
+   @apply sm:w-28 sm:h-28 rounded-t-xl w-20 h-20 border-2 border-gray-600;
 }
 /* parte de abajo */
 .bottom-half-column{
-   @apply sm:w-20 sm:h-20 rounded-b-xl w-12 h-12 border-2 border-gray-600;
+   @apply sm:w-28 sm:h-28 rounded-b-xl w-20 h-20 border-2 border-gray-600;
 }
 /* el circulo */
 .bolita{
