@@ -14,6 +14,8 @@ class Game {
       this.queueGame = [];
       this.turn = undefined;
       this.mula = false;
+      this.numberUse = 0;
+      this.notUsed = [];
    }
 
    // Generar las piezas
@@ -50,8 +52,14 @@ class Game {
             } 
             player.hand.push(this.piezas[positionRandom]);
             this.piezas[positionRandom].used = true;
+            this.numberUse++;
          }
       });
+      this.piezas.forEach(pieza => {
+         if(!pieza.used){
+            this.notUsed.push(pieza);
+         }
+      })
       let bandera = true;
       if(!this.mula){
          for(let i = 5; i >= 0; --i){
@@ -148,12 +156,19 @@ class Game {
       if (this.turn >= this.players.length) {
          this.turn = 0;
       }
-      this.players[this.turn].socketPlayer.emit("myTurn", this.players[this.turn].name);
+      // this.players[this.turn].socketPlayer.emit("myTurn", this.players[this.turn].name);
       this.players.forEach((player) => {
          player.socketPlayer.emit("changeCurrentTurn", {name: this.players[this.turn].name});
       })
    }
-
+   eatPieces(){
+      if(this.numberUse <= 28){
+         this.numberUse++;
+         const last = this.notUsed[0];
+         this.notUsed.shift();
+         return last;
+      }
+   }
 }
 module.exports = Game;
 // module.exports = Player; 

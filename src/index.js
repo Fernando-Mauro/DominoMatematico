@@ -95,6 +95,18 @@ io.on("connection", (socket) => {
       const arrId = [...socket.rooms];
       gamesInline.get(arrId[1]).nextTurn();
    });
+   socket.on("eat-piece", () => {
+      const arrId = [...socket.rooms];
+      const piece = gamesInline.get(arrId[1]).eatPieces();
+      socket.emit("eatedPiece", piece);
+   });
+   socket.on("winner", (data) => {
+      const arrId = [...socket.rooms];
+      // gamesInline.get(arrId[1]).nextTurn();
+      gamesInline.get(arrId[1]).players.forEach(player => {
+         player.socketPlayer.emit("winner", data);
+      })
+   });
    // returns the actives games
    socket.on("inLineGames", () => {
       let llaves = [];

@@ -61,7 +61,7 @@ function remakeDom(data) {
    const parentNode = document.getElementsByTagName("body");
    parentNode[0].insertBefore(handContainer, nodeReference);
    const tableGame = document.createElement("main");
-   tableGame.classList.add("table-game", "w-full", "h-auto", "min-h-[100px]", "bg-creme-black", "my-8");
+   tableGame.classList.add("table-game", "w-full", "h-auto", "min-h-[100px]", "bg-creme-black", "my-8", "flex", "flex-col", "items-center", "justify-center", "p-12");
    tableGame.setAttribute("id", "gameContainer");
    parentNode[0].insertBefore(tableGame, handContainer);
    const containerSpan = document.createElement("div");
@@ -111,6 +111,8 @@ socket.on("sendPieces", data => {
    currentTurn.classList.add("inline-block", "text-center", "mx-auto", "bg-yellow-200", "text-red-800", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
    // currentTurn.textContent = "Panchito";
    currentTurn.setAttribute("id", "current-turn");
+   
+   // saltar turno
    const skipButton = document.createElement("button");
    skipButton.classList.add("block", "text-center", "bg-blue-800", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
    skipButton.setAttribute("id", "skip-turn");
@@ -122,6 +124,14 @@ socket.on("sendPieces", data => {
          socket.emit("skipTurn");
       }
    });
+   // comer piezas
+   const eatPieces = document.createElement("button");
+   eatPieces.classList.add("block", "text-center", "bg-rose-600", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
+   eatPieces.setAttribute("id", "eat-piece");
+   eatPieces.textContent = "Comer Piezas";
+   eatPieces.addEventListener("click", () => {
+      socket.emit("eat-piece");
+   });
 
    // agregarlos al dom
    const parentNode = document.getElementsByTagName("body");
@@ -129,6 +139,7 @@ socket.on("sendPieces", data => {
    parentNode[0].insertBefore(spanInactive, document.querySelector("#pieces-container"));
    parentNode[0].insertBefore(currentTurn, document.querySelector("#pieces-container"));
    parentNode[0].insertBefore(skipButton, document.querySelector("#pieces-container"));
+   parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
    const piecesContainer = document.querySelector("#pieces-container");
    data.pieces.forEach(piece => {
       if (piece.first == 6 && piece.second == 6) {
@@ -204,13 +215,13 @@ function comprobatePiece(first, second, side) {
          socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
          activeTurn();
          isMyTurn = false;
-         lastContainPiece.innerHTML = "";
+         lastContainPiece.remove();
       }
    } else {
       socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
       activeTurn();
       isMyTurn = false;
-      lastContainPiece.innerHTML = "";
+      lastContainPiece.remove();
    }
 }
 socket.on("sendQueue", (data) => {
@@ -425,8 +436,9 @@ pushHead.addEventListener("click", () => {
    modal.hide();
    let backDrop = document.querySelector("[modal-backdrop]");
    backDrop.remove();
-   let secondBackDrop = document.querySelector("[modal-backdrop]");
-   secondBackDrop.remove();
+   // let secondBackDrop = document.querySelector("[modal-backdrop]");
+   // secondBackDrop.remove();
+   checkWin();
 });
 pushTail.addEventListener("click", () => {
    comprobatePiece(lastFirst, lastSecond, "tail");
@@ -435,8 +447,9 @@ pushTail.addEventListener("click", () => {
    modal.hide();
    let backDrop = document.querySelector("[modal-backdrop]");
    backDrop.remove();
-   let secondBackDrop = document.querySelector("[modal-backdrop]");
-   secondBackDrop.remove();
+   // let secondBackDrop = document.querySelector("[modal-backdrop]");
+   // secondBackDrop.remove();
+   checkWin();
 });
 socket.on("myTurn", () => {
    activeTurn();
@@ -457,3 +470,62 @@ function isValid(piece) {
       return false;
    }
 }
+socket.on("eatedPiece", (piece) => {
+      const piecesContainer = document.querySelector("#pieces-container");
+      const containPiece = document.createElement("div");
+      containPiece.classList.add("piece");
+      const topHalf = document.createElement("div");
+      topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
+      for (let i = 0; i < piece.first; ++i) {
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         topHalf.appendChild(bolita);
+      }
+
+      const bottomHalf = document.createElement("div");
+      bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
+      for (let i = 0; i < piece.second; ++i) {
+         const bolita = document.createElement("div");
+         bolita.classList.add("bolita");
+         bottomHalf.appendChild(bolita);
+      }
+
+      containPiece.appendChild(topHalf);
+      containPiece.appendChild(bottomHalf);
+      piecesContainer.appendChild(containPiece);
+      containPiece.addEventListener("click", () => {
+         if (isMyTurn) {
+            if (queueGame.length != 0) {
+               const hiddenModal = document.getElementById("desition-modal");
+               const modal = new Modal(hiddenModal);
+               modal.show();
+               // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
+               lastFirst = piece.first;
+               lastSecond = piece.second;
+               lastContainPiece = containPiece;
+            } else {
+               lastFirst = piece.first;
+               lastSecond = piece.second;
+               lastContainPiece = containPiece;
+               comprobatePiece(piece.first, piece.second, "middle");
+            }
+         }
+      });
+});
+function checkWin(){
+   const piecesContainer = document.querySelector("#pieces-container");
+   console.log("comprobando");
+   if(piecesContainer.childElementCount == 0){
+      const modal = document.querySelector("#wined-game");
+      const smmodal = new Modal(modal);
+      smmodal.show();
+      socket.emit("winner", {name: nameUser});
+   }
+}
+socket.on("winner", (data) => {
+   const textwiner = document.querySelector("#name-winer");
+   textwiner.textContent = `${data.name} ha ganado!`;
+   const modal = document.querySelector("#lose-game");
+   const smmodal = new Modal(modal);
+   smmodal.show();
+})

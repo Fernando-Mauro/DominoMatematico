@@ -5,9 +5,7 @@
    @apply text-creme;
 }
 
-.piece-column{
-   @apply left-10 relative;
-}
+
 .piece{
    @apply hover:scale-125 cursor-pointer ease-in duration-300;
 }
