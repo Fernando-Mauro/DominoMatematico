@@ -1,14 +1,20 @@
-// Usando express
+// Requerir express
 const express = require('express');
+
 const {createServer} = require('http');
+
 const {Server} = require('socket.io');
 
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer); 
+// Para crear ID unicos
+
 const uuidv4 = require("uuid");
+// Clases que intervienen
 const Game = require("./createNewGame.js");
 const Player = require("./player.js")
+
 const path = require('path');
 // app.use(express.static(path.join(__dirname, '../node_modules/flowbite/dist/flowbite.js')));
 app.use(express.static(path.join(__dirname, '/public')));
