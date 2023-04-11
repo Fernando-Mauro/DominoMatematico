@@ -35,9 +35,12 @@ const gamesInline = new Map();
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
    console.log(`Un nuevo jugador se ha conectado: ${io.engine.clientsCount}`);
+
    socket.connectedRooms = [];
+
    // Create a new game
    socket.on("newGame", (userName) => {
+      
       // Leave all rooms
       if(socket.connectedRooms.length != 0){
          socket.connectedRooms.forEach(room => socket.leave(room));
@@ -64,7 +67,9 @@ io.on("connection", (socket) => {
          const memberRoom = new Player(socket, data.userName);
          gamesInline.get(data.idRoom).players.push(memberRoom);
          socket.join(data.idRoom);
-         socket.emit("connectedRoom", {idRoom: data.idRoom});
+         socket.emit("connectedRoom", {
+            idRoom: data.idRoom
+         });
       }else{
          socket.emit("error", {
             message : "No existe la sala o ya te encuentras en otra sala",
@@ -75,19 +80,34 @@ io.on("connection", (socket) => {
 
    // Start the game
    socket.on("startGame", () => {
+      
+      // Comenzar el juego (repartir piezas y asignar turno)
       socket.actualGame.startGame();
-      if(!socket.actualGame.startedGame){
-         socket.actualGame.players.forEach(player => {
-            player.socketPlayer.emit("sendPieces", {pieces: player.hand});
-            try{
-               player.socketPlayer.emit("changeCurrentTurn", {name: socket.actualGame.players[socket.actualGame.turn].name});
-            }catch(err){
-               console.log("Ha habido un error al enviar el turno actual");
-            }
+
+      // Comprobar que el juego no se intente iniciar dos veces
+      if(socket.actualGame.startedGame) return;
+
+      // Emitir los eventos de enviar piezas a cada jugador
+      socket.actualGame.players.forEach((player, index) => {
+         player.socketPlayer.emit("sendPieces", {
+            pieces: player.hand
          });
-      }
+         if(socket.actualGame.turn === index){
+            player.socketPlayer.emit("turn", {
+               name: player.name
+            })
+         }else{
+            const { name } = socket.actualGame.players[socket.actualGame.turn];
+            player.socketPlayer.emit("notTurn", {
+               name: name
+            })
+         }
+      });
+
       socket.actualGame.startedGame = true;
    });
+
+
    // Pushing a piece
    socket.on("pushPiece", (piece) => {
       // socket.actualGame.pushingPiece(piece);

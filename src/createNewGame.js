@@ -15,7 +15,7 @@ class Game {
       this.turn = undefined;
       this.mula = false;
       this.numberUse = 0;
-      this.notUsed = [];
+      this.notUsed = new Set();
    }
 
    // Generar las piezas
@@ -34,32 +34,34 @@ class Game {
    }
    // start game
    startGame() {
+
+      // Generar las 7 fichas para cada jugador
       this.players.forEach((player, index) => {
          while (player.hand.length < 7) {
             let positionRandom = returnRandomPiece();
+
             while (this.piezas[positionRandom].used && positionRandom < 28) {
-               if (positionRandom == 27) {
-                  positionRandom = 0;
-               } else {
-                  positionRandom++;
-               }
+               positionRandom = positionRandom === 27 ? 0 : positionRandom + 1;
             }
-            if (this.piezas[positionRandom].first == 6 && this.piezas[positionRandom].second == 6){
-               // index--;
+            // Si aleatoriamente se asigna la mula del 6 el primer turno es del jugador con la mula del 6
+            if (this.piezas[positionRandom].first === 6 && this.piezas[positionRandom].second === 6){
                this.turn = index;
                this.mula = true;
-               // this.nextTurn();
             } 
             player.hand.push(this.piezas[positionRandom]);
             this.piezas[positionRandom].used = true;
             this.numberUse++;
          }
       });
+
+      // Agregar al set las piezas que no se estan ocupando
       this.piezas.forEach(pieza => {
          if(!pieza.used){
-            this.notUsed.push(pieza);
+            this.notUsed.add(pieza);
          }
-      })
+      });
+      
+      // Si no se repartio la mula del 6
       let bandera = true;
       if(!this.mula){
          for(let i = 5; i >= 0; --i){
@@ -68,9 +70,7 @@ class Game {
                   if(pieza.first == i && pieza.second == i && bandera){
                      this.turn = index;
                      bandera = false;
-                     console.log(`El jugador con la mula es ${player.name} y la mula es: ${i}`)
-                     // player.socketPlayer.emit("myTurn", this.players[this.turn].name)
-                     // return;
+                     return;
                   }
                })
             })
