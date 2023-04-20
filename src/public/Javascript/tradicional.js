@@ -1,5 +1,5 @@
 const socket = io();
-let nameUser;
+let userName;
 let lastFirst, lastSecond;
 let isMyTurn = false;
 let queueGame = [];
@@ -14,7 +14,7 @@ newGameBtn.addEventListener("click", () => {
     const name  = document.querySelector("#input-name").value;
 
     if (name.length != 0) {
-        nameUser = name;
+        userName = name;
         socket.emit("newGame", name);
     }
 
@@ -33,8 +33,7 @@ const joinBtn = document.querySelector("#joinToGame");
 
 joinBtn.addEventListener("click", () => {
     const idRoom = document.querySelector("#codigoGame").value;
-    const userName = document.querySelector("#userNameJoin").value;
-
+    userName = document.querySelector("#userNameJoin").value;
     if (idRoom.length != 0 && userName.length != 0) {
         socket.emit("joinGame", {
             idRoom,
@@ -45,7 +44,6 @@ joinBtn.addEventListener("click", () => {
 
 // Joined succesfully
 socket.on("connectedRoom", (data) => {
-    console.log(`Te has unido a la sala`);
     remakeDom(data)
 });
 
@@ -155,11 +153,15 @@ socket.on("sendPieces", data => {
     parentNode[0].insertBefore(currentTurn, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(skipButton, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
+
     const piecesContainer = document.querySelector("#pieces-container");
+    
     data.pieces.forEach(piece => {
+        // Contenedor de la pieza
         const containPiece = document.createElement("div");
         containPiece.classList.add("piece");
 
+        // Mitad de arriba
         const topHalf = document.createElement("div");
         topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
         for (let i = 0; i < piece.first; ++i) {
@@ -168,6 +170,7 @@ socket.on("sendPieces", data => {
             topHalf.appendChild(bolita);
         }
 
+        // Mitad de abajo
         const bottomHalf = document.createElement("div");
         bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
         for (let i = 0; i < piece.second; ++i) {
@@ -179,28 +182,19 @@ socket.on("sendPieces", data => {
         containPiece.appendChild(topHalf);
         containPiece.appendChild(bottomHalf);
         piecesContainer.appendChild(containPiece);
-        containPiece.addEventListener("click", () => {
-            if (isMyTurn) {
-                if (queueGame.length != 0) {
-                    toggleCustomModal();
-                    // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
-                    lastFirst = piece.first;
-                    lastSecond = piece.second;
-                    lastContainPiece = containPiece;
-                } else {
-                    lastFirst = piece.first;
-                    lastSecond = piece.second;
-                    lastContainPiece = containPiece;
-                    comprobatePiece(piece.first, piece.second, "middle");
-                }
-            }
-        });
+        containPiece.addEventListener("click", () => clickPiece(piece,containPiece));
     })
 });
 
 // change current turn
 socket.on("changeCurrentTurn", (data) => {
+
     changeCurrentTurn(data.name);
+    if(data.name == userName){
+        activeTurn(data.name);
+    }else{
+        desactivateTurn(data.name);
+    }
 });
 
 function changeCurrentTurn(currentTurn) {
@@ -208,6 +202,7 @@ function changeCurrentTurn(currentTurn) {
     const spanTurn = document.querySelector("#current-turn");
     spanTurn.innerText = `Es turno de: ${currentTurn}`;
 }
+
 // Activar el turno
 function activeTurn(name) {
     const turnActive = document.querySelector("#turn-enable");
@@ -217,6 +212,8 @@ function activeTurn(name) {
     isMyTurn = true;
     changeCurrentTurn(name);
 }
+
+// desactivar turno
 function desactivateTurn(name){
     const turnDisactive = document.querySelector("#turn-disable");
     turnDisactive.classList.remove("hidden");
@@ -225,32 +222,46 @@ function desactivateTurn(name){
     isMyTurn = false;
     changeCurrentTurn(name)
 }
+
+// Comprobar que la pieza sea valida
 function comprobatePiece(first, second, side) {
     if (queueGame.length != 0) {
         if (isMyTurn && isValid({ first: first, second: second, side: side })) {
             socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
-            activeTurn();
-            isMyTurn = false;
             lastContainPiece.remove();
         }
     } else {
         socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
-        activeTurn();
-        isMyTurn = false;
         lastContainPiece.remove();
     }
 }
+
 socket.on("sendQueue", (data) => {
     queueGame = data.queueGame;
     construirCola(data);
 });
+
+const construirColaTemp = (data) => {
+    const contenedor = document.getElementById("gameContainer");
+    const lastPieceSend = data.lastPiece;
+
+    // Si la ultima pieza se agrego abajo
+    if(lastPieceSend === "tail"){
+        const piece = data.queueGame.at(-1);
+        const first = "" ;
+    }else if(lastPieceSend === "head"){
+        
+    }
+}
+// Construir el tablero
 function construirCola(data) {
     const contenedor = document.getElementById("gameContainer");
     const lastPiece = data.lastPiece;
-    console.log(data);
+    console.log(data.queueGame);
     if (lastPiece == "tail") {
         console.log("Tail");
-        if (typeof (data.queueGame.at(-1).first) == 'string') {
+        // Si la first esta ocupado
+        if ( typeof(data.queueGame.at(-1).first) == 'string') {
             const topHalf = document.createElement("div");
             let size = data.queueGame.at(-1).first.length;
             let numberBallsTop;
@@ -260,6 +271,8 @@ function construirCola(data) {
                 numberBallsTop = data.queueGame.at(-1).first[size - 1];
             }
             numberBallsTop = parseInt(numberBallsTop);
+            
+            // Agregar a la pieza el numero de puntos
             for (let i = 0; i < numberBallsTop; i++) {
                 const bolita = document.createElement("div");
                 bolita.classList.add("bolita");
@@ -443,6 +456,7 @@ function construirCola(data) {
         contenedor.appendChild(containPiece);
     }
 }
+
 const pushHead = document.getElementById("push-head");
 const pushTail = document.getElementById("push-tail");
 
@@ -461,6 +475,7 @@ pushTail.addEventListener("click", () => {
 socket.on("turn", ({ name }) =>  activeTurn(name));
 socket.on("notTurn", ({ name }) => desactivateTurn(name));
 
+// Comprobar que la pieza sea valida arriba o abajo
 function isValid(piece) {
     if (queueGame.length != 0) {
         if (piece.side == "tail") {
@@ -500,24 +515,7 @@ socket.on("eatedPiece", (piece) => {
     containPiece.appendChild(topHalf);
     containPiece.appendChild(bottomHalf);
     piecesContainer.appendChild(containPiece);
-    containPiece.addEventListener("click", () => {
-        if (isMyTurn) {
-            if (queueGame.length != 0) {
-                const hiddenModal = document.getElementById("desition-modal");
-                const modal = new Modal(hiddenModal);
-                modal.show();
-                // console.log(piece.path[1].childNodes[0],piece.path[1].childNodes[1]);
-                lastFirst = piece.first;
-                lastSecond = piece.second;
-                lastContainPiece = containPiece;
-            } else {
-                lastFirst = piece.first;
-                lastSecond = piece.second;
-                lastContainPiece = containPiece;
-                comprobatePiece(piece.first, piece.second, "middle");
-            }
-        }
-    });
+    containPiece.addEventListener("click", () => clickPiece(piece,containPiece));
 });
 function checkWin() {
     const piecesContainer = document.querySelector("#pieces-container");
@@ -526,11 +524,11 @@ function checkWin() {
         const modal = document.querySelector("#wined-game");
         const smmodal = new Modal(modal);
         smmodal.show();
-        socket.emit("winner", { name: nameUser });
+        socket.emit("winner", { name: userName });
     }
 }
 socket.on("winner", (data) => {
-    if (data.name != nameUser) {
+    if (data.name != userName) {
         const textwiner = document.querySelector("#name-winer");
         textwiner.textContent = `${data.name} ha ganado!`;
         const modal = document.querySelector("#lose-game");
@@ -550,3 +548,19 @@ const toggleCustomModal = () => {
 // Cerra el modal si se presiona afuera
 const overlay = document.querySelector("#overlay")
 overlay.addEventListener("click", toggleCustomModal)
+
+const clickPiece = (piece, containPiece) => {
+    if (isMyTurn) {
+        if (queueGame.length != 0) {
+            toggleCustomModal();
+            lastFirst = piece.first;
+            lastSecond = piece.second;
+            lastContainPiece = containPiece;
+        } else {
+            lastFirst = piece.first;
+            lastSecond = piece.second;
+            lastContainPiece = containPiece;
+            comprobatePiece(piece.first, piece.second, "middle");
+        }
+    }
+}

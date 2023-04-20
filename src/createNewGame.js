@@ -15,7 +15,7 @@ class Game {
       this.turn = undefined;
       this.mula = false;
       this.numberUse = 0;
-      this.notUsed = new Set();
+      this.notUsed = [];
    }
 
    // Generar las piezas
@@ -57,7 +57,7 @@ class Game {
       // Agregar al set las piezas que no se estan ocupando
       this.piezas.forEach(pieza => {
          if(!pieza.used){
-            this.notUsed.add(pieza);
+            this.notUsed.push(pieza);
          }
       });
       
@@ -153,7 +153,7 @@ class Game {
    }
    nextTurn() {
       this.turn++;
-      if (this.turn >= this.players.length) {
+      if(this.turn >= this.players.length) {
          this.turn = 0;
       }
       // this.players[this.turn].socketPlayer.emit("myTurn", this.players[this.turn].name);

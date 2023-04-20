@@ -110,17 +110,14 @@ io.on("connection", (socket) => {
 
    // Pushing a piece
    socket.on("pushPiece", (piece) => {
-      // socket.actualGame.pushingPiece(piece);
-      // console.log(gamesInline);
       const arrId = [...socket.rooms];
       const last = gamesInline.get(arrId[1]).pushingPiece(piece);
-      // console.log(last);
+
       io.in(arrId[1]).emit("sendQueue", {
          queueGame: gamesInline.get(arrId[1]).queueGame,
          lastPiece : last
       });
    });
-   // SKip the turn of the current socket
    socket.on("skipTurn", () => {
       const arrId = [...socket.rooms];
       gamesInline.get(arrId[1]).nextTurn();
