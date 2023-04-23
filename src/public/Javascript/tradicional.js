@@ -413,7 +413,7 @@ socket.on("eatedPiece", (piece) => {
 function checkWin() {
     const piecesContainer = document.querySelector("#pieces-container");
     console.log("comprobando");
-    if (piecesContainer.childElementCount == 0) {
+    if (piecesContainer.childElementCount === 0) {
         const modal = document.querySelector("#wined-game");
         const smmodal = new Modal(modal);
         smmodal.show();
@@ -421,6 +421,11 @@ function checkWin() {
     }
 }
 socket.on("winner", (data) => {
+    
+    document.addEventListener("click", () => {
+        window.location.href = "../Html/index.html";
+    });
+
     if (data.name != userName) {
         const textwiner = document.querySelector("#name-winer");
         textwiner.textContent = `${data.name} ha ganado!`;
