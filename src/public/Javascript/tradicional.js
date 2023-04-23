@@ -11,7 +11,7 @@ const newGameBtn = document.querySelector("#btn-new-game");
 
 newGameBtn.addEventListener("click", () => {
 
-    const name  = document.querySelector("#input-name").value;
+    const name = document.querySelector("#input-name").value;
 
     if (name.length != 0) {
         userName = name;
@@ -66,11 +66,11 @@ function remakeDom({ idRoom }) {
     const handContainer = document.createElement('div');
     handContainer.classList.add("w-full", "flex", "justify-around", "my-8");
     handContainer.setAttribute("id", "pieces-container");
-    
+
     // Nodo ocupado para referencia en donde insertar
     const nodeReference = document.getElementById("desition-modal");
     const parentNode = document.getElementsByTagName("body");
-    
+
     parentNode[0].insertBefore(handContainer, nodeReference);
     const tableGame = document.createElement("main");
     tableGame.classList.add("table-game", "w-full", "h-auto", "min-h-[100px]", "bg-creme-black", "my-8", "flex", "flex-col", "items-center", "justify-center", "p-12");
@@ -81,7 +81,7 @@ function remakeDom({ idRoom }) {
     containerSpan.setAttribute("id", "containerSpan");
     containerSpan.classList.add("w-full", "text-center", "font-bold", "text-xl", "text-red-600", "my-4");
     containerSpan.innerText = "El id de tu juego es: ";
-    
+
     const span = document.createElement("span");
     span.classList.add("text-black", "text-center", "w-full");
     span.textContent = idRoom;
@@ -106,8 +106,8 @@ function ownerConstruction() {
 socket.on("sendPieces", data => {
     // Eliminar boton de start game, en caso de que exista
     const button = document.querySelector("#btn-start");
-    if(button) button.remove();
-   
+    if (button) button.remove();
+
     // Si es el turno
     const spanActive = document.createElement("span");
     spanActive.classList.add("block", "text-center", "mx-auto", "bg-green-400", "text-green-800", "text-md", "font-medium", "px-2.5", "py-0.5", "rounded", "hidden");
@@ -155,7 +155,7 @@ socket.on("sendPieces", data => {
     parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
 
     const piecesContainer = document.querySelector("#pieces-container");
-    
+
     data.pieces.forEach(piece => {
         // Contenedor de la pieza
         const containPiece = document.createElement("div");
@@ -182,7 +182,7 @@ socket.on("sendPieces", data => {
         containPiece.appendChild(topHalf);
         containPiece.appendChild(bottomHalf);
         piecesContainer.appendChild(containPiece);
-        containPiece.addEventListener("click", () => clickPiece(piece,containPiece));
+        containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
     })
 });
 
@@ -190,9 +190,9 @@ socket.on("sendPieces", data => {
 socket.on("changeCurrentTurn", (data) => {
 
     changeCurrentTurn(data.name);
-    if(data.name == userName){
+    if (data.name == userName) {
         activeTurn(data.name);
-    }else{
+    } else {
         desactivateTurn(data.name);
     }
 });
@@ -214,7 +214,7 @@ function activeTurn(name) {
 }
 
 // desactivar turno
-function desactivateTurn(name){
+function desactivateTurn(name) {
     const turnDisactive = document.querySelector("#turn-disable");
     turnDisactive.classList.remove("hidden");
     const turnActive = document.querySelector("#turn-enable");
@@ -241,218 +241,108 @@ socket.on("sendQueue", (data) => {
     construirCola(data);
 });
 
-const construirColaTemp = (data) => {
+const construirCola = (data) => {
     const contenedor = document.getElementById("gameContainer");
-    const lastPieceSend = data.lastPiece;
-
+    const lastInformation = data.lastInformation;
     // Si la ultima pieza se agrego abajo
-    if(lastPieceSend === "tail"){
+    if (lastInformation.side === "tail") {
         const piece = data.queueGame.at(-1);
-        const first = "" ;
-    }else if(lastPieceSend === "head"){
-        
-    }
-}
-// Construir el tablero
-function construirCola(data) {
-    const contenedor = document.getElementById("gameContainer");
-    const lastPiece = data.lastPiece;
-    console.log(data.queueGame);
-    if (lastPiece == "tail") {
-        console.log("Tail");
-        // Si la first esta ocupado
-        if ( typeof(data.queueGame.at(-1).first) == 'string') {
-            const topHalf = document.createElement("div");
-            let size = data.queueGame.at(-1).first.length;
-            let numberBallsTop;
-            if (size == undefined) {
-                numberBallsTop = data.queueGame.at(-1).first;
-            } else {
-                numberBallsTop = data.queueGame.at(-1).first[size - 1];
-            }
-            numberBallsTop = parseInt(numberBallsTop);
-            
-            // Agregar a la pieza el numero de puntos
-            for (let i = 0; i < numberBallsTop; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                topHalf.appendChild(bolita);
-            }
+        const first = typeof (piece.first) === "string" ? parseInt(piece.first.at(-1)) : piece.first;
+        const second = typeof (piece.second) === "string" ? parseInt(piece.second.at(-1)) : piece.second;
+        const firstHalf = document.createElement("div");
+        const secondHalf = document.createElement("div");
 
-            const bottomHalf = document.createElement("div");
-            size = data.queueGame.at(-1).second.length;
-            let numberBallsBottom;
-            if (size == undefined) {
-                numberBallsBottom = data.queueGame.at(-1).second;
-            } else {
-                numberBallsBottom = data.queueGame.at(-1).second[size - 1];
-            }
-            const rowCase = (numberBallsBottom == numberBallsTop) ? '-row' : '-column';
-            numberBallsBottom = parseInt(numberBallsBottom);
-            bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
-            topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-            for (let i = 0; i < numberBallsBottom; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                bottomHalf.appendChild(bolita);
-            }
-            const containPiece = document.createElement("div");
-            containPiece.classList.add(`piece${rowCase}`);
-            containPiece.appendChild(topHalf);
-            containPiece.appendChild(bottomHalf);
-            contenedor.appendChild(containPiece);
-        } else {
-            const topHalf = document.createElement("div");
-            let size = data.queueGame.at(-1).second.length;
-            let numberBallsTop;
-            if (size == undefined) {
-                numberBallsTop = data.queueGame.at(-1).second;
-            } else {
-                numberBallsTop = data.queueGame.at(-1).second[size - 1];
-            }
-            numberBallsTop = parseInt(numberBallsTop);
-            topHalf.classList.add("top-half", piecesCode[numberBallsTop - 1]);
-            for (let i = 0; i < numberBallsTop; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                topHalf.appendChild(bolita);
-            }
-
-            const bottomHalf = document.createElement("div");
-            size = data.queueGame.at(-1).first.length;
-            let numberBallsBottom;
-            if (size == undefined) {
-                numberBallsBottom = data.queueGame.at(-1).first;
-            } else {
-                numberBallsBottom = data.queueGame.at(-1).first[size - 1];
-            }
-
-            numberBallsBottom = parseInt(numberBallsBottom);
-            const rowCase = (numberBallsBottom == numberBallsTop) ? '-row' : '-column';
-            bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
-            topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-            for (let i = 0; i < numberBallsBottom; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                bottomHalf.appendChild(bolita);
-            }
-            const containPiece = document.createElement("div");
-            containPiece.classList.add(`piece${rowCase}`);
-            containPiece.appendChild(topHalf);
-            containPiece.appendChild(bottomHalf);
-            contenedor.appendChild(containPiece);
-        }
-
-    } else if (lastPiece == "head") {
-        console.log("Head");
-        if (typeof (data.queueGame[0].first) == 'string') {
-            const lastElementHead = document.getElementById("gameContainer").childNodes[0];
-            const topHalf = document.createElement("div");
-            let size = data.queueGame[0].second.length;
-            let numberBallsTop;
-            if (size == undefined) {
-                numberBallsTop = data.queueGame[0].second;
-            } else {
-                numberBallsTop = data.queueGame[0].second[size - 1];
-            }
-
-            // Aqui me quede haciendo las comprobaciones
-            numberBallsTop = parseInt(numberBallsTop);
-            for (let i = 0; i < numberBallsTop; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                topHalf.appendChild(bolita);
-            }
-
-            const bottomHalf = document.createElement("div");
-            size = data.queueGame[0].first.length;
-            let numberBallsBottom;
-            if (size == undefined) {
-                numberBallsBottom = data.queueGame[0].first;
-            } else {
-                numberBallsBottom = data.queueGame[0].first[size - 1];
-            }
-            numberBallsBottom = parseInt(numberBallsBottom);
-            const rowCase = (numberBallsBottom == numberBallsTop) ? '-row' : '-column';
-            bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
-            topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-            for (let i = 0; i < numberBallsBottom; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                bottomHalf.appendChild(bolita);
-            }
-            const containPiece = document.createElement("div");
-            containPiece.classList.add(`piece${rowCase}`);
-            containPiece.appendChild(topHalf);
-            containPiece.appendChild(bottomHalf);
-            contenedor.insertBefore(containPiece, lastElementHead);
-        } else {
-            const lastElementHead = document.getElementById("gameContainer").childNodes[0];
-            const topHalf = document.createElement("div");
-            let size = data.queueGame[0].first.length;
-            let numberBallsTop;
-            if (size == undefined) {
-                numberBallsTop = data.queueGame[0].first;
-            } else {
-                numberBallsTop = data.queueGame[0].first[size - 1];
-            }
-
-            // Aqui me quede haciendo las comprobaciones
-            numberBallsTop = parseInt(numberBallsTop);
-            for (let i = 0; i < numberBallsTop; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                topHalf.appendChild(bolita);
-            }
-
-            const bottomHalf = document.createElement("div");
-            size = data.queueGame[0].second.length;
-            let numberBallsBottom;
-            if (size == undefined) {
-                numberBallsBottom = data.queueGame[0].second;
-            } else {
-                numberBallsBottom = data.queueGame[0].second[size - 1];
-            }
-            numberBallsBottom = parseInt(numberBallsBottom);
-            const rowCase = (numberBallsBottom == numberBallsTop) ? '-row' : '-column';
-            bottomHalf.classList.add(`bottom-half${rowCase}`, piecesCode[numberBallsBottom - 1]);
-            topHalf.classList.add(`top-half${rowCase}`, piecesCode[numberBallsTop - 1]);
-            for (let i = 0; i < numberBallsBottom; i++) {
-                const bolita = document.createElement("div");
-                bolita.classList.add("bolita");
-                bottomHalf.appendChild(bolita);
-            }
-            const containPiece = document.createElement("div");
-            containPiece.classList.add(`piece${rowCase}`);
-            containPiece.appendChild(topHalf);
-            containPiece.appendChild(bottomHalf);
-            contenedor.insertBefore(containPiece, lastElementHead);
-        }
-    } else if (lastPiece == "middle") {
-        console.log("middle");
-        const topHalf = document.createElement("div");
-        let numberBallsTop = data.queueGame[0].first;
-        numberBallsTop = parseInt(numberBallsTop);
-        topHalf.classList.add("top-half-row", piecesCode[numberBallsTop - 1]);
-        for (let i = 0; i < numberBallsTop; i++) {
+        for (let i = 0; i < first; ++i) {
             const bolita = document.createElement("div");
             bolita.classList.add("bolita");
-            topHalf.appendChild(bolita);
+            firstHalf.appendChild(bolita);
         }
 
-        const bottomHalf = document.createElement("div");
-        let numberBallsBottom = data.queueGame[0].first;
-        numberBallsBottom = parseInt(numberBallsBottom);
-        bottomHalf.classList.add("bottom-half-row", piecesCode[numberBallsBottom - 1]);
-        for (let i = 0; i < numberBallsBottom; i++) {
+        for (let i = 0; i < second; ++i) {
             const bolita = document.createElement("div");
             bolita.classList.add("bolita");
-            bottomHalf.appendChild(bolita);
+            secondHalf.appendChild(bolita);
+        }
+
+        const rowCase = (first == second) ? '-row' : '-column';
+        // si first esta ocupado
+        (lastInformation.half === "first") ? secondHalf.classList.add(`bottom-half${rowCase}`, piecesCode[second - 1]) : secondHalf.classList.add(`top-half${rowCase}`, piecesCode[second - 1]);
+        (lastInformation.half === "second") ? firstHalf.classList.add(`bottom-half${rowCase}`, piecesCode[first - 1]) : firstHalf.classList.add(`top-half${rowCase}`, piecesCode[first - 1]);
+
+        const containPiece = document.createElement("div");
+        if (lastInformation.half === "first") {
+            containPiece.classList.add(`piece${rowCase}`);
+            containPiece.appendChild(firstHalf);
+            containPiece.appendChild(secondHalf);
+        } else {
+            containPiece.classList.add(`piece${rowCase}`);
+            containPiece.appendChild(secondHalf);
+            containPiece.appendChild(firstHalf);
+        }
+
+        contenedor.appendChild(containPiece);
+    } else if (lastInformation.side === "head") {
+        const lastElementHead = document.getElementById("gameContainer").childNodes[0];
+
+        const piece = data.queueGame[0];
+        const first = typeof (piece.first) === "string" ? parseInt(piece.first.at(-1)) : piece.first;
+        const second = typeof (piece.second) === "string" ? parseInt(piece.second.at(-1)) : piece.second;
+        const firstHalf = document.createElement("div");
+        const secondHalf = document.createElement("div");
+
+        for (let i = 0; i < first; ++i) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            firstHalf.appendChild(bolita);
+        }
+
+        for (let i = 0; i < second; ++i) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            secondHalf.appendChild(bolita);
+        }
+
+        const rowCase = (first == second) ? '-row' : '-column';
+        // si first esta ocupado
+        (lastInformation.half === "second") ? secondHalf.classList.add(`bottom-half${rowCase}`, piecesCode[second - 1]) : secondHalf.classList.add(`top-half${rowCase}`, piecesCode[second - 1]);
+        (lastInformation.half === "first") ? firstHalf.classList.add(`bottom-half${rowCase}`, piecesCode[first - 1]) : firstHalf.classList.add(`top-half${rowCase}`, piecesCode[first - 1]);
+
+        const containPiece = document.createElement("div");
+        if (lastInformation.half === "second") {
+            containPiece.classList.add(`piece${rowCase}`);
+            containPiece.appendChild(firstHalf);
+            containPiece.appendChild(secondHalf);
+        } else {
+            containPiece.classList.add(`piece${rowCase}`);
+            containPiece.appendChild(secondHalf);
+            containPiece.appendChild(firstHalf);
+        }
+
+        contenedor.insertBefore(containPiece, lastElementHead);
+    } else if (lastInformation.side == "middle") {
+        const firstHalf = document.createElement("div");
+        let first = data.queueGame[0].first;
+        first = parseInt(first);
+        firstHalf.classList.add("top-half-row", piecesCode[first - 1]);
+        for (let i = 0; i < first; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            firstHalf.appendChild(bolita);
+        }
+
+        const secondHalf = document.createElement("div");
+        let second = data.queueGame[0].first;
+        second = parseInt(second);
+        secondHalf.classList.add("bottom-half-row", piecesCode[second - 1]);
+        for (let i = 0; i < second; i++) {
+            const bolita = document.createElement("div");
+            bolita.classList.add("bolita");
+            secondHalf.appendChild(bolita);
         }
         const containPiece = document.createElement("div");
         containPiece.classList.add("piece-row");
-        containPiece.appendChild(topHalf);
-        containPiece.appendChild(bottomHalf);
+        containPiece.appendChild(firstHalf);
+        containPiece.appendChild(secondHalf);
         contenedor.appendChild(containPiece);
     }
 }
@@ -472,7 +362,7 @@ pushTail.addEventListener("click", () => {
     checkWin();
 });
 
-socket.on("turn", ({ name }) =>  activeTurn(name));
+socket.on("turn", ({ name }) => activeTurn(name));
 socket.on("notTurn", ({ name }) => desactivateTurn(name));
 
 // Comprobar que la pieza sea valida arriba o abajo
@@ -515,7 +405,7 @@ socket.on("eatedPiece", (piece) => {
     containPiece.appendChild(topHalf);
     containPiece.appendChild(bottomHalf);
     piecesContainer.appendChild(containPiece);
-    containPiece.addEventListener("click", () => clickPiece(piece,containPiece));
+    containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
 });
 function checkWin() {
     const piecesContainer = document.querySelector("#pieces-container");
@@ -564,3 +454,68 @@ const clickPiece = (piece, containPiece) => {
         }
     }
 }
+
+const seeInlineGames = document.querySelector("#see-inline-games");
+
+seeInlineGames.addEventListener("click", () => {
+    socket.emit("inLineGames");
+});
+
+socket.on("inLineGames", (data) => {
+    const roomList = document.querySelector("#unordered-list-inline-games");
+    roomList.innerHTML = "";
+    let llaves = [...data];
+
+    llaves.forEach(room => {
+        // Crea el elemento LI
+        const li = document.createElement("li");
+        li.classList.add("flex", "justify-between", "items-center", "py-2", "border-b");
+
+        // Crea el elemento DIV para el idRoom y ownerRoom
+        const idOwnerDiv = document.createElement("div");
+        idOwnerDiv.classList.add("flex", "items-center", "mr-4");
+
+        const ownerDiv = document.createElement("div");
+        ownerDiv.classList.add("flex", "items-center", "mr-4");
+
+        // Crea el elemento SPAN para el idRoom
+        const idRoomSpan = document.createElement("span");
+        idRoomSpan.textContent = `ID: ${room.idGame}`;
+        idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2");
+
+        // Crea el elemento SPAN para el ownerRoom
+        const ownerRoomSpan = document.createElement("span");
+        ownerRoomSpan.textContent = `Owner: ${room.ownerName}`;
+        ownerRoomSpan.classList.add("text-red-500");
+
+        // Agrega los elementos SPAN al DIV idOwnerDiv
+        idOwnerDiv.appendChild(idRoomSpan);
+        ownerDiv.appendChild(ownerRoomSpan);
+
+        // Crea el elemento SPAN para el numberPlayers
+        const numberPlayersSpan = document.createElement("span");
+        numberPlayersSpan.textContent = `Number of Players: ${room.numberPlayers}`;
+        numberPlayersSpan.classList.add("text-yellow-500");
+
+        // Crea el elemento BUTTON para unirse a la sala
+        const joinButton = document.createElement("button");
+        joinButton.textContent = "Unirse a esta sala";
+        joinButton.classList.add("bg-blue-500", "text-white", "rounded", "px-4", "py-2");
+
+        // Agrega los elementos DIV, SPAN y BUTTON al LI
+        li.appendChild(idOwnerDiv);
+        li.appendChild(ownerDiv);
+        li.appendChild(numberPlayersSpan);
+        li.appendChild(joinButton);
+        // Agrega el LI a la lista UL
+        roomList.appendChild(li);
+
+    });
+
+    // Agrega una clase a la lista UL para que se pueda hacer responsive con TailwindCSS
+    roomList.classList.add("flex", "flex-col", "sm:flex-row", "sm:flex-wrap", "sm:-mx-2");
+    // Agrega una clase a cada elemento LI para que se pueda hacer responsive con TailwindCSS
+    roomList.querySelectorAll("li").forEach(li => {
+        li.classList.add("w-full", "sm:w-1/2", "md:w-1/3", "px-2", "mb-4");
+    });
+})

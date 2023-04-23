@@ -34,13 +34,10 @@ const gamesInline = new Map();
 
 // Cuando se conecte un usuario
 io.on("connection", (socket) => {
-   console.log(`Un nuevo jugador se ha conectado: ${io.engine.clientsCount}`);
-
    socket.connectedRooms = [];
 
    // Create a new game
    socket.on("newGame", (userName) => {
-      
       // Leave all rooms
       if(socket.connectedRooms.length != 0){
          socket.connectedRooms.forEach(room => socket.leave(room));
@@ -55,6 +52,7 @@ io.on("connection", (socket) => {
       socket.connectedRooms.push(idRoom);
       gamesInline.set(idRoom, newGame);
 
+
       socket.emit("newGameCreate", {
          piezas: newGame.piezas,
          idRoom : newGame.idRoom
@@ -62,18 +60,24 @@ io.on("connection", (socket) => {
    });
 
    // Join to room
-   socket.on("joinGame", (data) => {
-      if(gamesInline.has(data.idRoom) && socket.rooms.size == 1 && gamesInline.get(data.idRoom).players.length < 4){
-         const memberRoom = new Player(socket, data.userName);
-         gamesInline.get(data.idRoom).players.push(memberRoom);
-         socket.join(data.idRoom);
+   socket.on("joinGame", ({idRoom, userName}) => {
+      
+      // Comprobar que la sala exista, que solo esta conectado a una sala, y que la sala aun no este llena
+      if(gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4){
+         
+         const memberRoom = new Player(socket, userName);
+         gamesInline.get(idRoom).players.push(memberRoom);
+
+         socket.join(idRoom);
+         
          socket.emit("connectedRoom", {
-            idRoom: data.idRoom
+            idRoom: idRoom
          });
+
       }else{
          socket.emit("error", {
             message : "No existe la sala o ya te encuentras en otra sala",
-            id : data.idRoom
+            id : idRoom
          });
       }
    });
@@ -110,46 +114,59 @@ io.on("connection", (socket) => {
 
    // Pushing a piece
    socket.on("pushPiece", (piece) => {
-      const arrId = [...socket.rooms];
-      const last = gamesInline.get(arrId[1]).pushingPiece(piece);
+      // Socket.rooms contiene las salas a las cuales esta conectada el socket
+      // pero la posicion [0] es el id del socket y a partir de la segunda es una sala
 
-      io.in(arrId[1]).emit("sendQueue", {
-         queueGame: gamesInline.get(arrId[1]).queueGame,
-         lastPiece : last
+      const [, idRoom] = [...socket.rooms];
+      const last = gamesInline.get(idRoom).pushingPiece(piece);
+
+      io.in(idRoom).emit("sendQueue", {
+         queueGame: gamesInline.get(idRoom).queueGame,
+         lastInformation : last
       });
    });
+
+
    socket.on("skipTurn", () => {
-      const arrId = [...socket.rooms];
-      gamesInline.get(arrId[1]).nextTurn();
+
+      const [,idRoom] = [...socket.rooms];
+      gamesInline.get(idRoom).nextTurn();
+
    });
+
    socket.on("eat-piece", () => {
-      const arrId = [...socket.rooms];
-      if(gamesInline.get(arrId[1]).players.length < 4){
-         const piece = gamesInline.get(arrId[1]).eatPieces();
+      const [,idRoom] = [...socket.rooms];
+      if(gamesInline.get(idRoom).players.length < 4){
+
+         const piece = gamesInline.get(idRoom).eatPieces();
          socket.emit("eatedPiece", piece);
+
       }
    });
    socket.on("winner", (data) => {
-      const arrId = [...socket.rooms];
-      // gamesInline.get(arrId[1]).nextTurn();
-      gamesInline.get(arrId[1]).players.forEach(player => {
+
+      const [,idRoom] = [...socket.rooms];
+      gamesInline.get(idRoom).players.forEach(player => {
          player.socketPlayer.emit("winner", data);
-      })
+      });
+
    });
-   // returns the actives games
+
    socket.on("inLineGames", () => {
       let llaves = [];
       gamesInline.forEach(gameActive => {
          llaves.push({
             idGame: gameActive.idRoom,
-            numberPlayers: gameActive.players.length 
+            numberPlayers: gameActive.players.length,
+            ownerName: gameActive.owner.name
          });
       });   
-      // const serializedMap = [...gamesInline.entries()];
-      // console.log(JSON.stringify(serializedMap));   
+      console.log(llaves);
       socket.emit("inLineGames", llaves);
       
    });
+
 });
+
 // Puerto
 httpServer.listen(3300);

@@ -88,25 +88,37 @@ class Game {
                   this.queueGame.at(-1).first = "*";
                   this.queueGame.push(piece);
                   this.nextTurn();
-                  return "tail";
+                  return {
+                     side: "tail",
+                     half: "first"
+                  };
                } else if (piece.first == tail.second) {
                   piece.first = "*" + piece.first;
                   this.queueGame.at(-1).second = "*";
                   this.queueGame.push(piece);
                   this.nextTurn();
-                  return "tail";
+                  return {
+                     side: "tail",
+                     half: "first"
+                  };
                } else if (piece.second == tail.first) {
                   piece.second = "*" + piece.second;
                   this.queueGame.at(-1).first = "*";
                   this.queueGame.push(piece);
                   this.nextTurn();
-                  return "tail";
+                  return {
+                     side: "tail",
+                     half: "second"
+                  };
                } else if (piece.second == tail.second) {
                   piece.second = "*" + piece.second;
                   this.queueGame.at(-1).second = "*";
                   this.queueGame.push(piece);
                   this.nextTurn();
-                  return "tail";
+                  return {
+                     side: "tail",
+                     half: "second"
+                  };
                } else {
                   this.players[this.turn].socketPlayer.emit("badPiece");
                }
@@ -117,25 +129,37 @@ class Game {
                   this.queueGame[0].first = "*";
                   this.queueGame.unshift(piece);
                   this.nextTurn();
-                  return "head";
+                  return {
+                     side: "head",
+                     half: "first"
+                  };
                } else if (piece.first == head.second) {
                   piece.first = "*" + piece.first;
                   this.queueGame[0].second = "*";
                   this.queueGame.unshift(piece);
                   this.nextTurn();
-                  return "head";
+                  return {
+                     side: "head",
+                     half: "first"
+                  };
                } else if (piece.second == head.first) {
                   piece.second = "*" + piece.second;
                   this.queueGame[0].first = "*";
                   this.queueGame.unshift(piece);
                   this.nextTurn();
-                  return "head";
+                  return {
+                     side: "head",
+                     half: "second"
+                  };
                } else if (piece.second == head.second) {
                   piece.second = "*" + piece.second;
                   this.queueGame[0].second = "*";
                   this.queueGame.unshift(piece);
                   this.nextTurn();
-                  return "head";
+                  return {
+                     side: "head",
+                     half: "second"
+                  };
                } else {
                   this.players[this.turn].socketPlayer.emit("badPiece");
                }
@@ -146,7 +170,10 @@ class Game {
                second: piece.second
             });
             this.nextTurn();
-            return "middle";
+            return {
+               side: "middle",
+               half: undefined
+            };
          }
       } 
 
