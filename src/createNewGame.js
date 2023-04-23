@@ -5,7 +5,7 @@ function returnRandomPiece() {
 }
 
 class Game {
-   constructor(owner, idRoom, userName) {
+   constructor(owner, idRoom, userName, modeGame) {
       this.owner = new Player(owner, userName);
       this.idRoom = idRoom;
       this.piezas = this.generarPiezas();
@@ -16,6 +16,7 @@ class Game {
       this.mula = false;
       this.numberUse = 0;
       this.notUsed = [];
+      this.modeGame = modeGame;
    }
 
    // Generar las piezas

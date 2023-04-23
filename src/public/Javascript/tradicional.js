@@ -5,6 +5,7 @@ let isMyTurn = false;
 let queueGame = [];
 let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
+let modeGame = "tradicional";
 
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
@@ -15,7 +16,7 @@ newGameBtn.addEventListener("click", () => {
 
     if (name.length != 0) {
         userName = name;
-        socket.emit("newGame", name);
+        socket.emit("newGame", {userName, modeGame});
     }
 
 });
@@ -34,10 +35,12 @@ const joinBtn = document.querySelector("#joinToGame");
 joinBtn.addEventListener("click", () => {
     const idRoom = document.querySelector("#codigoGame").value;
     userName = document.querySelector("#userNameJoin").value;
+
     if (idRoom.length != 0 && userName.length != 0) {
         socket.emit("joinGame", {
             idRoom,
-            userName
+            userName,
+            modeGame
         });
     }
 });

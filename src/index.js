@@ -37,14 +37,14 @@ io.on("connection", (socket) => {
    socket.connectedRooms = [];
 
    // Create a new game
-   socket.on("newGame", (userName) => {
+   socket.on("newGame", ({userName, modeGame}) => {
       // Leave all rooms
       if(socket.connectedRooms.length != 0){
          socket.connectedRooms.forEach(room => socket.leave(room));
       }
 
       const idRoom = uuidv4.v4().split("-")[0];
-      const newGame = new Game(socket, idRoom, userName);
+      const newGame = new Game(socket, idRoom, userName, modeGame);
 
       // Crear la sala
       socket.join(idRoom);
@@ -60,10 +60,10 @@ io.on("connection", (socket) => {
    });
 
    // Join to room
-   socket.on("joinGame", ({idRoom, userName}) => {
+   socket.on("joinGame", ({idRoom, userName, modeGame}) => {
       
       // Comprobar que la sala exista, que solo esta conectado a una sala, y que la sala aun no este llena
-      if(gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4){
+      if(gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4 && gamesInline.get(idRoom).modeGame === modeGame){
          
          const memberRoom = new Player(socket, userName);
          gamesInline.get(idRoom).players.push(memberRoom);
