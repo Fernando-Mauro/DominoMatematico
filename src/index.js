@@ -152,16 +152,17 @@ io.on("connection", (socket) => {
 
    });
 
-   socket.on("inLineGames", () => {
+   socket.on("inLineGames", ({modeGame}) => {
       let llaves = [];
       gamesInline.forEach(gameActive => {
-         llaves.push({
-            idGame: gameActive.idRoom,
-            numberPlayers: gameActive.players.length,
-            ownerName: gameActive.owner.name
-         });
+         if(gameActive.modeGame === modeGame){
+            llaves.push({
+               idGame: gameActive.idRoom,
+               numberPlayers: gameActive.players.length,
+               ownerName: gameActive.owner.name
+            });   
+         }
       });   
-      console.log(llaves);
       socket.emit("inLineGames", llaves);
       
    });

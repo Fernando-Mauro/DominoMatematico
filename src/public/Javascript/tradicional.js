@@ -32,10 +32,8 @@ socket.on("newGameCreate", (data) => {
 
 const joinBtn = document.querySelector("#joinToGame");
 
-joinBtn.addEventListener("click", () => {
-    const idRoom = document.querySelector("#codigoGame").value;
+const jointToRoom = (idRoom) => {
     userName = document.querySelector("#userNameJoin").value;
-
     if (idRoom.length != 0 && userName.length != 0) {
         socket.emit("joinGame", {
             idRoom,
@@ -43,6 +41,11 @@ joinBtn.addEventListener("click", () => {
             modeGame
         });
     }
+}
+joinBtn.addEventListener("click", (idGame) => {
+    const idRoom = idGame || document.querySelector("#codigoGame").value;
+    console.log("click",idRoom, idGame);
+    jointToRoom(idRoom);
 });
 
 // Joined succesfully
@@ -466,7 +469,9 @@ const clickPiece = (piece, containPiece) => {
 const seeInlineGames = document.querySelector("#see-inline-games");
 
 seeInlineGames.addEventListener("click", () => {
-    socket.emit("inLineGames");
+    socket.emit("inLineGames", {
+        modeGame
+    });
 });
 
 socket.on("inLineGames", (data) => {
@@ -477,19 +482,19 @@ socket.on("inLineGames", (data) => {
     llaves.forEach(room => {
         // Crea el elemento LI
         const li = document.createElement("li");
-        li.classList.add("flex", "justify-between", "items-center", "py-2", "border-b");
+        li.classList.add("flex", "justify-between","snap-center", "items-center", "py-2","flex-col","md:flex-row", "border-b-[1px]", "border-gray-500",  "p-4", "gap-8");
 
         // Crea el elemento DIV para el idRoom y ownerRoom
         const idOwnerDiv = document.createElement("div");
         idOwnerDiv.classList.add("flex", "items-center", "mr-4");
 
         const ownerDiv = document.createElement("div");
-        ownerDiv.classList.add("flex", "items-center", "mr-4");
+        ownerDiv.classList.add("flex", "items-center", "mr-4", );
 
         // Crea el elemento SPAN para el idRoom
         const idRoomSpan = document.createElement("span");
         idRoomSpan.textContent = `ID: ${room.idGame}`;
-        idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2");
+        idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2", );
 
         // Crea el elemento SPAN para el ownerRoom
         const ownerRoomSpan = document.createElement("span");
@@ -503,13 +508,16 @@ socket.on("inLineGames", (data) => {
         // Crea el elemento SPAN para el numberPlayers
         const numberPlayersSpan = document.createElement("span");
         numberPlayersSpan.textContent = `Number of Players: ${room.numberPlayers}`;
-        numberPlayersSpan.classList.add("text-yellow-500");
+        numberPlayersSpan.classList.add("text-yellow-500", "border-1", "border-black");
 
         // Crea el elemento BUTTON para unirse a la sala
         const joinButton = document.createElement("button");
         joinButton.textContent = "Unirse a esta sala";
         joinButton.classList.add("bg-blue-500", "text-white", "rounded", "px-4", "py-2");
 
+        joinButton.addEventListener("click", () => {
+            
+        });
         // Agrega los elementos DIV, SPAN y BUTTON al LI
         li.appendChild(idOwnerDiv);
         li.appendChild(ownerDiv);
@@ -520,10 +528,4 @@ socket.on("inLineGames", (data) => {
 
     });
 
-    // Agrega una clase a la lista UL para que se pueda hacer responsive con TailwindCSS
-    roomList.classList.add("flex", "flex-col", "sm:flex-row", "sm:flex-wrap", "sm:-mx-2");
-    // Agrega una clase a cada elemento LI para que se pueda hacer responsive con TailwindCSS
-    roomList.querySelectorAll("li").forEach(li => {
-        li.classList.add("w-full", "sm:w-1/2", "md:w-1/3", "px-2", "mb-4");
-    });
 })
