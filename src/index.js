@@ -155,7 +155,7 @@ io.on("connection", (socket) => {
    socket.on("inLineGames", ({modeGame}) => {
       let llaves = [];
       gamesInline.forEach(gameActive => {
-         if(gameActive.modeGame === modeGame){
+         if(gameActive.modeGame === modeGame && gameActive.players.length < 4){
             llaves.push({
                idGame: gameActive.idRoom,
                numberPlayers: gameActive.players.length,

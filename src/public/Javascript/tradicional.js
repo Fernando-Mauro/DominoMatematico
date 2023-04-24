@@ -7,6 +7,7 @@ let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 let modeGame = "tradicional";
 
+
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
 
@@ -42,9 +43,10 @@ const jointToRoom = (idRoom) => {
         });
     }
 }
-joinBtn.addEventListener("click", (idGame) => {
-    const idRoom = idGame || document.querySelector("#codigoGame").value;
-    console.log("click",idRoom, idGame);
+joinBtn.addEventListener("click", () => {
+    document.querySelector("[modal-backdrop]").remove();
+
+    const idRoom = document.querySelector("#codigoGame").value;
     jointToRoom(idRoom);
 });
 
@@ -516,7 +518,17 @@ socket.on("inLineGames", (data) => {
         joinButton.classList.add("bg-blue-500", "text-white", "rounded", "px-4", "py-2");
 
         joinButton.addEventListener("click", () => {
-            
+            // Ocultar el modal actual 
+            const firstTarget = document.querySelector("#list-inline-games");
+            const firstTargetModal = new Modal(firstTarget);
+            firstTargetModal.hide();
+            // Mostrar el otro modal
+            const inputCodeGame = document.querySelector("#codigoGame");
+            inputCodeGame.value = room.idGame;
+            inputCodeGame.disabled = "disabled";
+            const target = document.querySelector("#authentication-modal");
+            const modal = new Modal(target);
+            modal.show();
         });
         // Agrega los elementos DIV, SPAN y BUTTON al LI
         li.appendChild(idOwnerDiv);
