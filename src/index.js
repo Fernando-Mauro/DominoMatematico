@@ -23,6 +23,15 @@ app.use(express.static(path.join(__dirname, '/public/Html')));
 app.get("/node_modules/flowbite/dist/flowbite.js", (req, res) => {
    res.sendFile(path.resolve(__dirname + "/../node_modules/flowbite/dist/flowbite.js"))
 });
+
+app.get("/node_modules/swiper/swiper-bundle.min.js", (req, res) => {
+   res.sendFile(path.resolve(__dirname + "/../node_modules/swiper/swiper-bundle.min.js"))
+});
+
+app.get("/node_modules/swiper/swiper.min.css", (req, res) => {
+   res.sendFile(path.resolve(__dirname + "/../node_modules/swiper/swiper.min.css"))
+});
+
 // servidor con http
 app.get('/', (req, res) => {
    res.sendFile(  __dirname + "/public/Html/index.html")
