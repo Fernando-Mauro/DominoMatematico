@@ -6,8 +6,8 @@ let queueGame = [];
 let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 let modeGame = "tradicional";
-
-
+let tiempoRestante = 60; // tiempo en segundos
+let intervalo;
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
 
@@ -133,6 +133,16 @@ socket.on("sendPieces", data => {
     currentTurn.classList.add("inline-block", "text-center", "mx-auto", "bg-yellow-200", "text-red-800", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
     currentTurn.setAttribute("id", "current-turn");
 
+    // Temporizador
+    const temporizador = document.createElement("div");
+    temporizador.textContent = "Tiempo restante:";
+    temporizador.setAttribute("id", "temporizador");
+    temporizador.classList.add("hidden","block", "text-center", "mx-auto", "bg-orange-200", "text-red-800", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
+    const tiempo = document.createElement("span");
+    tiempo.setAttribute("id", "tiempo");
+    tiempo.classList.add("text-black");
+    temporizador.appendChild(tiempo);
+
     // Boton para saltar turno
     const skipButton = document.createElement("button");
     skipButton.classList.add("block", "text-center", "bg-blue-800", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
@@ -158,6 +168,7 @@ socket.on("sendPieces", data => {
     const parentNode = document.getElementsByTagName("body");
     parentNode[0].insertBefore(spanActive, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(spanInactive, document.querySelector("#pieces-container"));
+    parentNode[0].insertBefore(temporizador, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(currentTurn, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(skipButton, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
@@ -213,12 +224,16 @@ function changeCurrentTurn(currentTurn) {
 
 // Activar el turno
 function activeTurn(name) {
+    console.log("hola");
     const turnActive = document.querySelector("#turn-enable");
     turnActive.classList.remove("hidden");
     const turnDisactive = document.querySelector("#turn-disable");
     turnDisactive.classList.add("hidden");
     isMyTurn = true;
     changeCurrentTurn(name);
+    document.querySelector("#temporizador").classList.remove("hidden");
+    tiempoRestante =60;
+    intervalo = setInterval(actualizarContador, 1000);
 }
 
 // desactivar turno
@@ -228,7 +243,9 @@ function desactivateTurn(name) {
     const turnActive = document.querySelector("#turn-enable");
     turnActive.classList.add("hidden");
     isMyTurn = false;
-    changeCurrentTurn(name)
+    changeCurrentTurn(name);
+    clearInterval(intervalo);
+    document.querySelector("#temporizador").classList.add("hidden");
 }
 
 // Comprobar que la pieza sea valida
@@ -387,6 +404,9 @@ function isValid(piece) {
                 return true;
             }
         }
+        desactivateTurn();
+        socket.emit("skipTurn");
+        alert("Pieza invalida");
         return false;
     }
 }
@@ -541,3 +561,14 @@ socket.on("inLineGames", (data) => {
     });
 
 })
+socket.on("lessThanTwoPlayers", ({message}) => alert(message));
+
+const actualizarContador = () => {
+    console.log('hola cada segundo');
+    const contador = document.getElementById('tiempo');
+    contador.innerText = tiempoRestante;
+    tiempoRestante--;
+    if(tiempoRestante === 0){
+        socket.emit("skipTurn");
+    }
+}

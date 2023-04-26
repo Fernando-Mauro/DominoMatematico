@@ -1,7 +1,7 @@
 const Player = require("./player.js");
 
-function returnRandomPiece() {
-   return Math.floor(Math.random() * (28 - 0) + 0);
+function returnRandomPiece(min,max) {
+   return Math.floor(Math.random() * (max - min) + min);
 }
 
 class Game {
@@ -39,7 +39,7 @@ class Game {
       // Generar las 7 fichas para cada jugador
       this.players.forEach((player, index) => {
          while (player.hand.length < 7) {
-            let positionRandom = returnRandomPiece();
+            let positionRandom = returnRandomPiece(0,28);
 
             while (this.piezas[positionRandom].used && positionRandom < 28) {
                positionRandom = positionRandom === 27 ? 0 : positionRandom + 1;
@@ -191,9 +191,10 @@ class Game {
    }
    eatPieces(){
       if(this.numberUse <= 28){
+         const randomNumber = returnRandomPiece(0, 28-this.numberUse);
          this.numberUse++;
-         const last = this.notUsed[0];
-         this.notUsed.shift();
+         const last = this.notUsed[randomNumber];
+         this.notUsed.splice(randomNumber, 1);
          return last;
       }
    }
