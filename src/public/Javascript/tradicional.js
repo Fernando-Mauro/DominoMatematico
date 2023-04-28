@@ -17,7 +17,7 @@ newGameBtn.addEventListener("click", () => {
 
     if (name.length != 0) {
         userName = name;
-        socket.emit("newGame", {userName, modeGame});
+        socket.emit("newGame", { userName, modeGame });
     }
 
 });
@@ -137,7 +137,7 @@ socket.on("sendPieces", data => {
     const temporizador = document.createElement("div");
     temporizador.textContent = "Tiempo restante:";
     temporizador.setAttribute("id", "temporizador");
-    temporizador.classList.add("hidden","block", "text-center", "mx-auto", "bg-orange-200", "text-red-800", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
+    temporizador.classList.add("hidden", "block", "text-center", "mx-auto", "bg-orange-200", "text-red-800", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
     const tiempo = document.createElement("span");
     tiempo.setAttribute("id", "tiempo");
     tiempo.classList.add("text-black");
@@ -232,7 +232,7 @@ function activeTurn(name) {
     isMyTurn = true;
     changeCurrentTurn(name);
     document.querySelector("#temporizador").classList.remove("hidden");
-    tiempoRestante =60;
+    tiempoRestante = 60;
     intervalo = setInterval(actualizarContador, 1000);
 }
 
@@ -446,7 +446,7 @@ function checkWin() {
     }
 }
 socket.on("winner", (data) => {
-    
+
     document.addEventListener("click", () => {
         window.location.href = "../Html/index.html";
     });
@@ -464,6 +464,14 @@ const toggleCustomModal = () => {
     const modal = document.querySelector("#desition-modal");
     const overlay = document.querySelector("#overlay")
 
+    const zoomImage = document.querySelector("#zoom-image");
+    zoomImage.innerHTML="";
+    
+    const copyLast = lastContainPiece.cloneNode(true);
+    copyLast.classList.remove("piece");
+
+    zoomImage.appendChild(copyLast);
+
     modal.classList.toggle("hidden");
     overlay.classList.toggle("hidden");
 }
@@ -475,10 +483,10 @@ overlay.addEventListener("click", toggleCustomModal)
 const clickPiece = (piece, containPiece) => {
     if (isMyTurn) {
         if (queueGame.length != 0) {
-            toggleCustomModal();
             lastFirst = piece.first;
             lastSecond = piece.second;
             lastContainPiece = containPiece;
+            toggleCustomModal();
         } else {
             lastFirst = piece.first;
             lastSecond = piece.second;
@@ -504,19 +512,19 @@ socket.on("inLineGames", (data) => {
     llaves.forEach(room => {
         // Crea el elemento LI
         const li = document.createElement("li");
-        li.classList.add("flex", "justify-between","snap-center", "items-center", "py-2","flex-col","md:flex-row", "border-b-[1px]", "border-gray-500",  "p-4", "gap-8");
+        li.classList.add("flex", "justify-between", "snap-center", "items-center", "py-2", "flex-col", "md:flex-row", "border-b-[1px]", "border-gray-500", "p-4", "gap-8");
 
         // Crea el elemento DIV para el idRoom y ownerRoom
         const idOwnerDiv = document.createElement("div");
         idOwnerDiv.classList.add("flex", "items-center", "mr-4");
 
         const ownerDiv = document.createElement("div");
-        ownerDiv.classList.add("flex", "items-center", "mr-4", );
+        ownerDiv.classList.add("flex", "items-center", "mr-4",);
 
         // Crea el elemento SPAN para el idRoom
         const idRoomSpan = document.createElement("span");
         idRoomSpan.textContent = `ID: ${room.idGame}`;
-        idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2", );
+        idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2",);
 
         // Crea el elemento SPAN para el ownerRoom
         const ownerRoomSpan = document.createElement("span");
@@ -561,14 +569,14 @@ socket.on("inLineGames", (data) => {
     });
 
 })
-socket.on("lessThanTwoPlayers", ({message}) => alert(message));
+socket.on("lessThanTwoPlayers", ({ message }) => alert(message));
 
 const actualizarContador = () => {
     console.log('hola cada segundo');
     const contador = document.getElementById('tiempo');
     contador.innerText = tiempoRestante;
     tiempoRestante--;
-    if(tiempoRestante === 0){
+    if (tiempoRestante === 0) {
         socket.emit("skipTurn");
     }
 }

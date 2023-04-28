@@ -78,16 +78,26 @@ class Game {
          }
       }
    }
+   deletePieceFromHand({first, second}){
+   //    let indice;
+   //    if(piece.first === first && piece.second === second){
+   //       indice = index;   
+   //    }  
+   // })
+   // this.players[this.turn].hand.splice(indice,1);
+   // console.log(this.pllayers[this.turn].hand);
+      // this.players[this.turn].hand.forEach((piece, index) => {
+   }
    pushingPiece(piece) {
       if (piece.isMyTurn) {
          if (this.queueGame.length != 0) {
-            console.log(piece.side);
             if (piece.side == "tail") {
                const tail = this.queueGame.at(-1);
                if (piece.first == tail.first) {
                   piece.first = "*" + piece.first;
                   this.queueGame.at(-1).first = "*";
                   this.queueGame.push(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "tail",
@@ -97,6 +107,7 @@ class Game {
                   piece.first = "*" + piece.first;
                   this.queueGame.at(-1).second = "*";
                   this.queueGame.push(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "tail",
@@ -106,6 +117,7 @@ class Game {
                   piece.second = "*" + piece.second;
                   this.queueGame.at(-1).first = "*";
                   this.queueGame.push(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "tail",
@@ -115,6 +127,7 @@ class Game {
                   piece.second = "*" + piece.second;
                   this.queueGame.at(-1).second = "*";
                   this.queueGame.push(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "tail",
@@ -129,6 +142,7 @@ class Game {
                   piece.first = "*" + piece.first;
                   this.queueGame[0].first = "*";
                   this.queueGame.unshift(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "head",
@@ -138,6 +152,7 @@ class Game {
                   piece.first = "*" + piece.first;
                   this.queueGame[0].second = "*";
                   this.queueGame.unshift(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "head",
@@ -147,6 +162,7 @@ class Game {
                   piece.second = "*" + piece.second;
                   this.queueGame[0].first = "*";
                   this.queueGame.unshift(piece);
+                  this.deletePieceFromHand(piece);
                   this.nextTurn();
                   return {
                      side: "head",
@@ -156,6 +172,7 @@ class Game {
                   piece.second = "*" + piece.second;
                   this.queueGame[0].second = "*";
                   this.queueGame.unshift(piece);
+                  this.deletePieceFromHand(piece); 
                   this.nextTurn();
                   return {
                      side: "head",
