@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
    socket.on("joinGame", ({ idRoom, userName, modeGame }) => {
 
       // Comprobar que la sala exista, que solo esta conectado a una sala, y que la sala aun no este llena
-      if (gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4 && gamesInline.get(idRoom).modeGame === modeGame) {
+      if (gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4 && gamesInline.get(idRoom).modeGame === modeGame && gamesInline.get(idRoom).startedGame === false) {
 
          const memberRoom = new Player(socket, userName);
          gamesInline.get(idRoom).players.push(memberRoom);
