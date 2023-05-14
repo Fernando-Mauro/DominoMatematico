@@ -140,10 +140,16 @@
 }
 .container-cards{
    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+   justify-items: center;
+   align-items: center;
 }
 .card{
    @apply cursor-pointer w-40 h-40 flex flex-col justify-center content-center items-center gap-5 rounded-xl ring-2 ring-creme shadow-custom hover:shadow-custom-hover hover:ease-in duration-200;
 }
+.card:hover {
+   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
 .image-slider{
    @apply bg-cover bg-center bg-no-repeat;
 }

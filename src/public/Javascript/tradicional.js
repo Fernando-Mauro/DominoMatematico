@@ -66,8 +66,11 @@ function remakeDom({ idRoom }) {
     const modal = new Modal(container);
     modal.hide();
 
-    document.querySelector("[modal-backdrop]").remove();
-
+    try{
+        document.querySelector("[modal-backdrop]").remove();
+    }catch(err){
+        console.log(err);
+    }
     // Re-make the DOM
     document.querySelector("#main-container").remove();
     // Contenedor de las fichas
