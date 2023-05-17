@@ -1986,6 +1986,7 @@ input:checked + .toggle-bg {
 }
 
 .piece {
+  position: relative;
   cursor: pointer;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
@@ -1999,8 +2000,25 @@ input:checked + .toggle-bg {
 
 .piece-row{
   /* @apply w-12 sm:w-20 sm:h-40 h-24; */
+  position: relative;
   display: flex;
   flex-direction: row;
+}
+
+.piece-column {
+  position: relative;
+}
+
+.piece::after, .piece-row::after, .piece-column::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: #000000;
+  border-radius: 50%;
 }
 
 /* Parte de arriba horizontal */
