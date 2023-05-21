@@ -539,10 +539,10 @@ const actualizarContador = () => {
 }
 function selectBackground(firstContainer, secondContainer, first, second) {
     if (first == second) {
-        firstContainer.style.backgroundImage = `url(${piecesCode}${first}/${first}.png)`;
-        secondContainer.style.backgroundImage = `url(${piecesCode}${first}/${first + 1}.png)`;
+        firstContainer.style.backgroundImage = `url(${piecesCode}${first}/${first}.svg)`;
+        secondContainer.style.backgroundImage = `url(${piecesCode}${first}/${first + 1}.svg)`;
     } else {
-        firstContainer.style.backgroundImage = `url(${piecesCode}${first}/${second}.png)`;
-        secondContainer.style.backgroundImage = `url(${piecesCode}${second}/${first}.png)`;
+        firstContainer.style.backgroundImage = `url(${piecesCode}${first}/${second}.svg)`;
+        secondContainer.style.backgroundImage = `url(${piecesCode}${second}/${first}.svg)`;
     }
 }
