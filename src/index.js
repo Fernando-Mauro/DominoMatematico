@@ -180,6 +180,21 @@ io.on("connection", (socket) => {
       socket.emit("inLineGames", llaves);
 
    });
+   socket.on("globallyInlineGames", () => {
+      let llaves = [];
+      gamesInline.forEach(gameActive => {
+         if (gameActive.players.length < 4 && gameActive.startedGame === false) {
+            llaves.push({
+               idGame: gameActive.idRoom,
+               numberPlayers: gameActive.players.length,
+               ownerName: gameActive.owner.name,
+               type: gameActive.modeGame
+            });
+         }
+      });
+      socket.emit("inLineGamesGlobally", llaves);
+
+   });
 
 });
 
