@@ -485,7 +485,7 @@ socket.on("inLineGames", (data) => {
 
         // Crea el elemento SPAN para el ownerRoom
         const ownerRoomSpan = document.createElement("span");
-        ownerRoomSpan.textContent = `Owner: ${room.ownerName}`;
+        ownerRoomSpan.textContent = `Dueño: ${room.ownerName}`;
         ownerRoomSpan.classList.add("text-red-500");
 
         // Agrega los elementos SPAN al DIV idOwnerDiv
@@ -494,7 +494,7 @@ socket.on("inLineGames", (data) => {
 
         // Crea el elemento SPAN para el numberPlayers
         const numberPlayersSpan = document.createElement("span");
-        numberPlayersSpan.textContent = `Number of Players: ${room.numberPlayers}`;
+        numberPlayersSpan.textContent = `Número de jugadores: ${room.numberPlayers}`;
         numberPlayersSpan.classList.add("text-yellow-500", "border-1", "border-black");
 
         // Crea el elemento BUTTON para unirse a la sala
