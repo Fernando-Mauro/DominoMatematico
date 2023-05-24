@@ -18,6 +18,13 @@ class Game {
       this.notUsed = [];
       this.modeGame = modeGame;
    }
+   
+   checkIsClosed(){
+      console.log('-----------------------------------------------------');
+      this.players.forEach(player => {
+         console.log(player.hand);
+      })
+   }
 
    // Generar las piezas
    generarPiezas() {
@@ -79,14 +86,15 @@ class Game {
       }
    }
    deletePieceFromHand({first, second}){
-   //    let indice;
-   //    if(piece.first === first && piece.second === second){
-   //       indice = index;   
-   //    }  
-   // })
-   // this.players[this.turn].hand.splice(indice,1);
-   // console.log(this.pllayers[this.turn].hand);
-      // this.players[this.turn].hand.forEach((piece, index) => {
+      this.players.forEach(player => {
+         player.hand.forEach((piece, index) => {
+            if(piece.first == first && piece.second == second || piece.first == second && piece.second == first){
+               console.log('llegue');
+               player.hand.splice(index, 1);
+               return;
+            }
+         });
+      });
    }
    pushingPiece(piece) {
       if (piece.isMyTurn) {
@@ -187,6 +195,7 @@ class Game {
                first: piece.first,
                second: piece.second
             });
+            this.deletePieceFromHand(piece)
             this.nextTurn();
             return {
                side: "middle",
