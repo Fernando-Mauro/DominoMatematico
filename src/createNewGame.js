@@ -19,6 +19,25 @@ class Game {
       this.modeGame = modeGame;
    }
 
+   countPoints() {
+      let name = '';
+      let min = 1000;
+      this.players.forEach(player => {
+         let sum = 0;
+         player.hand.forEach(piece => {
+            sum += piece.first;
+            sum += piece.second;
+         })
+         if(sum < min){
+            name = player.name;
+            min = sum;
+         }
+      });
+      this.players.forEach(player => {
+         player.socketPlayer.emit("winner", {name});
+      });
+   }
+
    checkIsClosed() {
       const head = typeof (this.queueGame[0].first) === "string" ? this.queueGame[0].second : this.queueGame[0].first;
       const tail = typeof (this.queueGame.at(-1).first) === "string" ? this.queueGame.at(-1).second : this.queueGame.at(-1).first;
@@ -58,7 +77,10 @@ class Game {
             }
          })
       });
-
+      if(bandera == true){
+         this.countPoints();
+         console.log('Cerrado D:');  
+      } 
       return bandera;
    }
 
@@ -294,7 +316,8 @@ class Game {
       // this.players[this.turn].socketPlayer.emit("myTurn", this.players[this.turn].name);
       this.players.forEach((player) => {
          player.socketPlayer.emit("changeCurrentTurn", { name: this.players[this.turn].name });
-      })
+      });
+      this.checkIsClosed();
    }
    eatPieces() {
       if (this.numberUse <= 28) {

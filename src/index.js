@@ -158,12 +158,10 @@ io.on("connection", (socket) => {
       }
    });
    socket.on("winner", (data) => {
-
       const [, idRoom] = [...socket.rooms];
       gamesInline.get(idRoom).players.forEach(player => {
          player.socketPlayer.emit("winner", data);
       });
-
    });
 
    socket.on("inLineGames", ({ modeGame }) => {
