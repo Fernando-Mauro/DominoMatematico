@@ -20,7 +20,7 @@
 .piece-column{
    @apply relative;
 }
-.piece::after, .piece-row::after, .piece-column::after {
+/* .piece::after, .piece-row::after, .piece-column::after {
    content: "";
    position: absolute;
    top: 50%;
@@ -30,7 +30,7 @@
    height: 15px;
    background-color: #000000;
    border-radius: 50%;
- }
+ } */
 /* Parte de arriba horizontal */
 .top-half-row{
    @apply sm:w-28 sm:h-28 rounded-l-xl w-20 h-20 border-2 border-gray-600;

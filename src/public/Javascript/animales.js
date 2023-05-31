@@ -8,6 +8,8 @@ const piecesCode = ["../assets/animales/conejo.png", "../assets/animales/gato.pn
 let modeGame = "animales";
 let tiempoRestante = 60; // tiempo en segundos
 let intervalo;
+let sumaPuntos = 0;
+
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
 
@@ -155,6 +157,12 @@ socket.on("sendPieces", data => {
         }
     });
 
+    // mostrar puntos
+    const puntos = document.createElement("button");
+    puntos.classList.add("block", "text-center", "bg-orange-600", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
+    puntos.setAttribute("id", "show-points");
+    puntos.textContent = "Puntos: ";
+
     // comer piezas
     const eatPieces = document.createElement("button");
     eatPieces.classList.add("block", "text-center", "bg-rose-600", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
@@ -171,6 +179,7 @@ socket.on("sendPieces", data => {
     parentNode[0].insertBefore(temporizador, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(currentTurn, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(skipButton, document.querySelector("#pieces-container"));
+    parentNode[0].insertBefore(puntos, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
 
     const piecesContainer = document.querySelector("#pieces-container");
@@ -183,19 +192,20 @@ socket.on("sendPieces", data => {
         // Mitad de arriba
         const topHalf = document.createElement("div");
         topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
-        topHalf.style.backgroundImage= `url( ${piecesCode[piece.first]} )` 
-        
-        
+        topHalf.style.backgroundImage = `url( ${piecesCode[piece.first]} )`
+
+
         // Mitad de abajo
         const bottomHalf = document.createElement("div");
         bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
-        bottomHalf.style.backgroundImage= `url( ${piecesCode[piece.second]} )` 
+        bottomHalf.style.backgroundImage = `url( ${piecesCode[piece.second]} )`
 
         containPiece.appendChild(topHalf);
         containPiece.appendChild(bottomHalf);
         piecesContainer.appendChild(containPiece);
         containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
     })
+    firstTimeCountPoints(data.pieces);
 });
 
 // change current turn
@@ -247,10 +257,12 @@ function comprobatePiece(first, second, side) {
         if (isMyTurn && isValid({ first: first, second: second, side: side })) {
             socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
             lastContainPiece.remove();
+            actualizarPuntos(first,second);
         }
     } else {
         socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
         lastContainPiece.remove();
+        actualizarPuntos(first,second);
     }
 }
 
@@ -270,8 +282,8 @@ const construirCola = (data) => {
         const firstHalf = document.createElement("div");
         const secondHalf = document.createElement("div");
 
-        firstHalf.style.backgroundImage= `url( ${piecesCode[first]} )`; 
-        secondHalf.style.backgroundImage= `url( ${piecesCode[second]} )`; 
+        firstHalf.style.backgroundImage = `url( ${piecesCode[first]} )`;
+        secondHalf.style.backgroundImage = `url( ${piecesCode[second]} )`;
         // for (let i = 0; i < first; ++i) {
         //     const bolita = document.createElement("div");
         //     bolita.classList.add("bolita");
@@ -309,9 +321,9 @@ const construirCola = (data) => {
         const second = typeof (piece.second) === "string" ? parseInt(piece.second.at(-1)) : piece.second;
         const firstHalf = document.createElement("div");
         const secondHalf = document.createElement("div");
-        
-        firstHalf.style.backgroundImage= `url( ${piecesCode[first]} )`; 
-        secondHalf.style.backgroundImage= `url( ${piecesCode[second]} )`; 
+
+        firstHalf.style.backgroundImage = `url( ${piecesCode[first]} )`;
+        secondHalf.style.backgroundImage = `url( ${piecesCode[second]} )`;
 
         const rowCase = (first == second) ? '-row' : '-column';
         // si first esta ocupado
@@ -335,16 +347,16 @@ const construirCola = (data) => {
         let first = data.queueGame[0].first;
         first = parseInt(first);
         firstHalf.classList.add("top-half-row", piecesCode[first - 1]);
-        
+
 
         const secondHalf = document.createElement("div");
         let second = data.queueGame[0].first;
         second = parseInt(second);
         secondHalf.classList.add("bottom-half-row", piecesCode[second - 1]);
-        
-        firstHalf.style.backgroundImage= `url( ${piecesCode[first]} )`; 
-        secondHalf.style.backgroundImage= `url( ${piecesCode[second]} )`; 
-        
+
+        firstHalf.style.backgroundImage = `url( ${piecesCode[first]} )`;
+        secondHalf.style.backgroundImage = `url( ${piecesCode[second]} )`;
+
         const containPiece = document.createElement("div");
         containPiece.classList.add("piece-row");
         containPiece.appendChild(firstHalf);
@@ -397,12 +409,12 @@ socket.on("eatedPiece", (piece) => {
     containPiece.classList.add("piece");
     const topHalf = document.createElement("div");
     topHalf.classList.add("top-half-column", `${piecesCode[piece.first - 1]}`);
-    topHalf.style.backgroundImage= `url( ${piecesCode[piece.first]} )` 
-    
+    topHalf.style.backgroundImage = `url( ${piecesCode[piece.first]} )`
+
 
     const bottomHalf = document.createElement("div");
     bottomHalf.classList.add("bottom-half-column", `${piecesCode[piece.second - 1]}`);
-    bottomHalf.style.backgroundImage= `url( ${piecesCode[piece.second]} )`
+    bottomHalf.style.backgroundImage = `url( ${piecesCode[piece.second]} )`
 
     containPiece.appendChild(topHalf);
     containPiece.appendChild(bottomHalf);
@@ -439,8 +451,8 @@ const toggleCustomModal = () => {
     const overlay = document.querySelector("#overlay")
 
     const zoomImage = document.querySelector("#zoom-image");
-    zoomImage.innerHTML="";
-    
+    zoomImage.innerHTML = "";
+
     const copyLast = lastContainPiece.cloneNode(true);
     copyLast.classList.remove("piece");
 
@@ -554,3 +566,16 @@ const actualizarContador = () => {
         socket.emit("skipTurn");
     }
 }
+const firstTimeCountPoints = (pieces) => {
+    pieces.forEach(piece => {
+        sumaPuntos += piece.first;
+        sumaPuntos += piece.second;
+    });
+    const puntos = document.getElementById("show-points");
+    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+}
+const actualizarPuntos = (first, second) => {
+    sumaPuntos -= (first + second);
+    const puntos = document.getElementById("show-points");
+    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+};

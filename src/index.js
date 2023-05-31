@@ -157,6 +157,12 @@ io.on("connection", (socket) => {
 
       }
    });
+
+   socket.on("endGame", () => {
+      const [, idRoom] = [...socket.rooms];
+      gamesInline.get(idRoom).countPoints();
+   })
+
    socket.on("winner", (data) => {
       const [, idRoom] = [...socket.rooms];
       gamesInline.get(idRoom).players.forEach(player => {

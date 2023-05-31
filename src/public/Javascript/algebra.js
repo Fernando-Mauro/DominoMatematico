@@ -8,6 +8,8 @@ const piecesCode = '../assets/algebra/'
 let modeGame = "algebra";
 let tiempoRestante = 60; // tiempo en segundos
 let intervalo;
+let sumaPuntos = 0;
+
 // Create a new game
 const newGameBtn = document.querySelector("#btn-new-game");
 
@@ -155,6 +157,12 @@ socket.on("sendPieces", data => {
         }
     });
 
+    // mostrar puntos
+    const puntos = document.createElement("button");
+    puntos.classList.add("block", "text-center", "bg-orange-600", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
+    puntos.setAttribute("id", "show-points");
+    puntos.textContent = "Puntos: ";
+
     // comer piezas
     const eatPieces = document.createElement("button");
     eatPieces.classList.add("block", "text-center", "bg-rose-600", "text-white", "text-md", "font-medium", "px-2.5", "py-2.5", "rounded", "my-4");
@@ -171,6 +179,7 @@ socket.on("sendPieces", data => {
     parentNode[0].insertBefore(temporizador, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(currentTurn, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(skipButton, document.querySelector("#pieces-container"));
+    parentNode[0].insertBefore(puntos, document.querySelector("#pieces-container"));
     parentNode[0].insertBefore(eatPieces, document.querySelector("#pieces-container"));
 
     const piecesContainer = document.querySelector("#pieces-container");
@@ -194,6 +203,7 @@ socket.on("sendPieces", data => {
         piecesContainer.appendChild(containPiece);
         containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
     })
+    firstTimeCountPoints(data.pieces);
 });
 
 // change current turn
@@ -245,10 +255,14 @@ function comprobatePiece(first, second, side) {
         if (isMyTurn && isValid({ first: first, second: second, side: side })) {
             socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
             lastContainPiece.remove();
+            actualizarPuntos(first,second);
+
         }
     } else {
         socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
         lastContainPiece.remove();
+        actualizarPuntos(first,second);
+
     }
 }
 
@@ -426,7 +440,7 @@ const toggleCustomModal = () => {
 
     const copyLast = lastContainPiece.cloneNode(true);
     copyLast.classList.remove("piece");
-
+    copyLast.classList.add("transition", "transform" ,"hover:scale-[2]")
     zoomImage.appendChild(copyLast);
 
     modal.classList.toggle("hidden");
@@ -546,3 +560,17 @@ function selectBackground(firstContainer, secondContainer, first, second) {
         secondContainer.style.backgroundImage = `url(${piecesCode}${second}/${first}.svg)`;
     }
 }
+
+const firstTimeCountPoints = (pieces) => {
+    pieces.forEach(piece => {
+        sumaPuntos += piece.first;
+        sumaPuntos += piece.second;
+    });
+    const puntos = document.getElementById("show-points");
+    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+}
+const actualizarPuntos = (first, second) => {
+    sumaPuntos -= (first + second);
+    const puntos = document.getElementById("show-points");
+    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+};
