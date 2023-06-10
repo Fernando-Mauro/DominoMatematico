@@ -255,13 +255,15 @@ function comprobatePiece(first, second, side) {
         if (isMyTurn && isValid({ first: first, second: second, side: side })) {
             socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
             lastContainPiece.remove();
-            actualizarPuntos(first,second);
+            actualizarPuntos(first, second);
 
         }
     } else {
-        socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
-        lastContainPiece.remove();
-        actualizarPuntos(first,second);
+        if (first == second) {
+            socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
+            lastContainPiece.remove();
+            actualizarPuntos(first, second);
+        }
 
     }
 }
@@ -405,6 +407,8 @@ socket.on("eatedPiece", (piece) => {
     containPiece.appendChild(bottomHalf);
     piecesContainer.appendChild(containPiece);
     containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
+    sumaPuntos += (piece.first + piece.second);
+    document.querySelector("#show-points").innerHTML = `Puntos ${sumaPuntos}`;
 });
 function checkWin() {
     const piecesContainer = document.querySelector("#pieces-container");
@@ -440,7 +444,7 @@ const toggleCustomModal = () => {
 
     const copyLast = lastContainPiece.cloneNode(true);
     copyLast.classList.remove("piece");
-    copyLast.classList.add("transition", "transform" ,"hover:scale-[2]")
+    copyLast.classList.add("transition", "transform", "hover:scale-[2]")
     zoomImage.appendChild(copyLast);
 
     modal.classList.toggle("hidden");
@@ -567,10 +571,10 @@ const firstTimeCountPoints = (pieces) => {
         sumaPuntos += piece.second;
     });
     const puntos = document.getElementById("show-points");
-    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+    puntos.innerHTML = `Puntos: ${sumaPuntos}`;
 }
 const actualizarPuntos = (first, second) => {
     sumaPuntos -= (first + second);
     const puntos = document.getElementById("show-points");
-    puntos.innerHTML =`Puntos: ${sumaPuntos}`;
+    puntos.innerHTML = `Puntos: ${sumaPuntos}`;
 };

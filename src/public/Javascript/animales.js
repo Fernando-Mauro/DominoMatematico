@@ -260,9 +260,11 @@ function comprobatePiece(first, second, side) {
             actualizarPuntos(first,second);
         }
     } else {
-        socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
-        lastContainPiece.remove();
-        actualizarPuntos(first,second);
+        if (first == second) {
+            socket.emit("pushPiece", { first: first, second: second, isMyTurn, id: socket.id });
+            lastContainPiece.remove();
+            actualizarPuntos(first, second);
+        }
     }
 }
 
@@ -420,6 +422,8 @@ socket.on("eatedPiece", (piece) => {
     containPiece.appendChild(bottomHalf);
     piecesContainer.appendChild(containPiece);
     containPiece.addEventListener("click", () => clickPiece(piece, containPiece));
+    sumaPuntos += (piece.first + piece.second);
+    document.querySelector("#show-points").innerHTML = `Puntos ${sumaPuntos}`;
 });
 function checkWin() {
     const piecesContainer = document.querySelector("#pieces-container");
