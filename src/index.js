@@ -12,13 +12,13 @@ const io = new Server(httpServer);
 
 const uuidv4 = require("uuid");
 // Clases que intervienen
-const Game = require("./src/createNewGame.js");
-const Player = require("./src/player.js")
+const Game = require("./createNewGame.js");
+const Player = require("./player.js")
 
 const path = require('path');
-
-app.use(express.static(path.join(__dirname, 'src')));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, '../node_modules/flowbite/dist/flowbite.js')));
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public/Html')));
 
 app.get("/node_modules/flowbite/dist/flowbite.js", (req, res) => {
    res.sendFile(path.resolve(__dirname + "/../node_modules/flowbite/dist/flowbite.js"))
@@ -34,7 +34,7 @@ app.get("/node_modules/swiper/swiper.min.css", (req, res) => {
 
 // servidor con http
 app.get('/', (req, res) => {
-   res.sendFile(__dirname + "/src/Html/index.html")
+   res.sendFile(__dirname + "/public/Html/index.html")
 });
 
 // Juegos activos
@@ -202,6 +202,22 @@ io.on("connection", (socket) => {
 
 });
 
+// // Función para eliminar las salas sin sockets conectados
+// function eliminarSalasVacias() {
+//    const salas = io.sockets.adapter.rooms;
+//    for (let sala in salas) {
+//       console.log(sala);
+//       if (salas.hasOwnProperty(sala)) {
+//          if (salas[sala].length === 0) {
+//             io.sockets.adapter.del(sala);
+//             console.log(`Sala ${sala} eliminada.`);
+//          }
+//       }
+//    }
+// }
+
+// // Llamamos a la función cada 5 minutos para comprobar las salas vacías
+// setInterval(eliminarSalasVacias, 3000);
 
 // Puerto
 httpServer.listen(3300);

@@ -4,7 +4,7 @@
   "description": "Some fun",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "tailstart": "npx tailwindcss -i ./src/public/CSS/input.css -o ./src/public/CSS/output.css --watch"
   },
   "author": "Fernando Mauro",
