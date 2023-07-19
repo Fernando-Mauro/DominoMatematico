@@ -20,8 +20,8 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/node_modules/flowbite/dist/flowbite.js", (req, res) => {
-   res.sendFile(path.resolve(__dirname + "/../node_modules/flowbite/dist/flowbite.js"))
+app.get("/flowbite.js", (req, res) => {
+   res.sendFile(path.resolve(__dirname + "/node_modules/flowbite/dist/flowbite.js"))
 });
 
 app.get("/node_modules/swiper/swiper-bundle.min.js", (req, res) => {
