@@ -5,7 +5,7 @@
   "main": "./app.js",
   "scripts": {
     "start": "nodemon ./app.js",
-    "tailstart": "npx tailwindcss -i ./src/public/CSS/input.css -o ./src/public/CSS/output.css --watch"
+    "tailstart": "npx tailwindcss -i ./src/input.css -o ./public/CSS/output.css --watch"
   },
   "author": "Fernando Mauro",
   "license": "MIT",
