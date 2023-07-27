@@ -1,4 +1,4 @@
-const Player = require("./player.js");
+const Player = require("./Player.js");
 
 function returnRandomPiece(min, max) {
    return Math.floor(Math.random() * (max - min) + min);
