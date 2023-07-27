@@ -8,6 +8,7 @@ const { Server } = require('socket.io');
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
+const routes = require("./src/Routes/index");
 // Para crear ID unicos
 
 const uuidv4 = require("uuid");
@@ -17,20 +18,10 @@ const Player = require("./src/player.js")
 
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'src')));
+// Mostrar toda la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/flowbite.js", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/node_modules/flowbite/dist/flowbite.js"))
-});
-
-app.get("/node_modules/swiper/swiper-bundle.min.js", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/../node_modules/swiper/swiper-bundle.min.js"))
-});
-
-app.get("/node_modules/swiper/swiper.min.css", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/../node_modules/swiper/swiper.min.css"))
-});
+app.use("/", routes);
 
 // Juegos activos
 const gamesInline = new Map();
