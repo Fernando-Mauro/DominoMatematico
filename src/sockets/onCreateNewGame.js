@@ -3,26 +3,26 @@ const uuidv4 = require("uuid");
 const { Game } = require("../classes/")
 const { setGamesOnline } = require("../context/globalContext")
 
-const onCreateNewGame = ({userName, modeGame, socket}) => {
+const onCreateNewGame = ({userName, gameMode, socket}) => {
     
     // Abandonar todas las salas
     if (socket.connectedRooms.length != 0) {
         socket.connectedRooms.forEach( room => socket.leave(room) );
     }
 
-    const idGame = uuidv4.v4().split("-")[0];
-    const game = new Game(socket, idGame, userName, modeGame);
+    const gameId = uuidv4.v4().split("-")[0];
+    const game = new Game(socket, gameId, userName, gameMode);
 
     // Crear la sala
-    socket.join(idGame);
+    socket.join(gameId);
     socket.actualGame = game;
-    socket.connectedRooms.push(idGame);
+    socket.connectedRooms.push(gameId);
     
-    setGamesOnline(idGame);
+    setGamesOnline(gameId,game);
 
     socket.emit("newGameCreated", {
         piezas: game.piezas,
-        idGame: game.idGame
+        gameId: game.gameId
     });
 };
 

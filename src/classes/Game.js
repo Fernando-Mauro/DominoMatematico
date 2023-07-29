@@ -5,9 +5,9 @@ function returnRandomPiece(min, max) {
 }
 
 class Game {
-   constructor(owner, idGame, userName, modeGame) {
+   constructor(owner, gameId, userName, gameMode) {
       this.owner = new Player(owner, userName);
-      this.idGame = idGame;
+      this.gameId = gameId;
       this.piezas = this.generarPiezas();
       this.players = [this.owner];
       this.startedGame = false;
@@ -16,7 +16,7 @@ class Game {
       this.mula = false;
       this.numberUse = 0;
       this.notUsed = [];
-      this.modeGame = modeGame;
+      this.gameMode = gameMode;
    }
 
    checkIsClosed() {

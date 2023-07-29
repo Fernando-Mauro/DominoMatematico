@@ -19,7 +19,10 @@ newGameBtn.addEventListener("click", () => {
 
     if (name.length != 0) {
         userName = name;
-        socket.emit("onCreateNewGame", { userName, modeGame });
+        socket.emit("onCreateNewGame", { 
+            userName,
+            gameMode: modeGame
+        });
     }
 
 });
@@ -39,10 +42,10 @@ const joinBtn = document.querySelector("#joinToGame");
 const jointToRoom = (idRoom) => {
     userName = document.querySelector("#userNameJoin").value;
     if (idRoom.length != 0 && userName.length != 0) {
-        socket.emit("joinGame", {
-            idRoom,
+        socket.emit("onJoiningGame", {
+            gameId: idRoom,
             userName,
-            modeGame
+            gameMode : modeGame
         });
     }
 }
@@ -54,7 +57,7 @@ joinBtn.addEventListener("click", () => {
 });
 
 // Joined succesfully
-socket.on("connectedRoom", (data) => {
+socket.on("onConnectedGame", (data) => {
     remakeDom(data)
 });
 
@@ -63,7 +66,7 @@ socket.on("error", (data) => {
     console.error(data);
 });
 
-function remakeDom({ idGame }) {
+function remakeDom({ gameId }) {
     // Seleccionar el modal y ocultarlo
     const container = document.querySelector("#new-game-modal");
     const modal = new Modal(container);
@@ -98,7 +101,7 @@ function remakeDom({ idGame }) {
 
     const span = document.createElement("span");
     span.classList.add("text-black", "text-center", "w-full");
-    span.textContent = idGame;
+    span.textContent = gameId;
     containerSpan.appendChild(span);
     parentNode[0].insertBefore(containerSpan, tableGame);
 }
@@ -542,7 +545,7 @@ socket.on("inLineGames", (data) => {
 
         // Crea el elemento SPAN para el idRoom
         const idRoomSpan = document.createElement("span");
-        idRoomSpan.textContent = `ID: ${room.idGame}`;
+        idRoomSpan.textContent = `ID: ${room.gameId}`;
         idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2",);
 
         // Crea el elemento SPAN para el ownerRoom
@@ -571,7 +574,7 @@ socket.on("inLineGames", (data) => {
             firstTargetModal.hide();
             // Mostrar el otro modal
             const inputCodeGame = document.querySelector("#codigoGame");
-            inputCodeGame.value = room.idGame;
+            inputCodeGame.value = room.gameId;
             inputCodeGame.disabled = "disabled";
             const target = document.querySelector("#authentication-modal");
             const modal = new Modal(target);

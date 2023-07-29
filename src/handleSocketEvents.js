@@ -1,36 +1,20 @@
-const { onCreateNewGame } = require("./sockets/index")
+const { onCreateNewGame , onJoiningGame } = require("./sockets/index")
 
 const handleSocketEvents = (socket) => {
     socket.connectedRooms = [];
 
     // Create a new game
-    socket.on("onCreateNewGame", ({ userName, modeGame }) => {
-        
-        onCreateNewGame({ userName , modeGame, socket});
+    socket.on("onCreateNewGame", (data) => {
+
+        onCreateNewGame({ ...data, socket});
 
     });
 
     // Join to room
-    socket.on("onJoiningGame", ({ idRoom, userName, modeGame }) => {
-
-        // Comprobar que la sala exista, que solo esta conectado a una sala, y que la sala aun no este llena
-        if (gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4 && gamesInline.get(idRoom).modeGame === modeGame && gamesInline.get(idRoom).startedGame === false) {
-
-            const memberRoom = new Player(socket, userName);
-            gamesInline.get(idRoom).players.push(memberRoom);
-
-            socket.join(idRoom);
-
-            socket.emit("connectedRoom", {
-                idRoom: idRoom
-            });
-
-        } else {
-            socket.emit("error", {
-                message: "No existe la sala o ya te encuentras en otra sala",
-                id: idRoom
-            });
-        }
+    socket.on("onJoiningGame", (data) => {
+        
+        onJoiningGame({...data, socket});
+        
     });
 
     // Start the game
@@ -117,7 +101,7 @@ const handleSocketEvents = (socket) => {
         gamesInline.forEach(gameActive => {
             if (gameActive.modeGame === modeGame && gameActive.players.length < 4 && gameActive.startedGame === false) {
                 llaves.push({
-                    idGame: gameActive.idRoom,
+                    gameId: gameActive.idRoom,
                     numberPlayers: gameActive.players.length,
                     ownerName: gameActive.owner.name
                 });
@@ -131,7 +115,7 @@ const handleSocketEvents = (socket) => {
         gamesInline.forEach(gameActive => {
             if (gameActive.players.length < 4 && gameActive.startedGame === false) {
                 llaves.push({
-                    idGame: gameActive.idRoom,
+                    gameId: gameActive.idRoom,
                     numberPlayers: gameActive.players.length,
                     ownerName: gameActive.owner.name,
                     type: gameActive.modeGame
