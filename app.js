@@ -16,7 +16,6 @@ app.use("/", routes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Clases que intervienen
-const { Game , Player} = require("./src/classes/");
 const handleSocketEvents = require("./src/handleSocketEvents.js")
 
 // Cuando se conecte un usuario
