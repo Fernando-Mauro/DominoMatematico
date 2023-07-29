@@ -19,13 +19,14 @@ newGameBtn.addEventListener("click", () => {
 
     if (name.length != 0) {
         userName = name;
-        socket.emit("newGame", { userName, modeGame });
+        socket.emit("onCreateNewGame", { userName, modeGame });
     }
 
 });
 
 //Event when return pieces and idRoom 
-socket.on("newGameCreate", (data) => {
+socket.on("newGameCreated", (data) => {
+    console.log(data);
     remakeDom(data);
     ownerConstruction();
 });
@@ -62,7 +63,7 @@ socket.on("error", (data) => {
     console.error(data);
 });
 
-function remakeDom({ idRoom }) {
+function remakeDom({ idGame }) {
     // Seleccionar el modal y ocultarlo
     const container = document.querySelector("#new-game-modal");
     const modal = new Modal(container);
@@ -97,7 +98,7 @@ function remakeDom({ idRoom }) {
 
     const span = document.createElement("span");
     span.classList.add("text-black", "text-center", "w-full");
-    span.textContent = idRoom;
+    span.textContent = idGame;
     containerSpan.appendChild(span);
     parentNode[0].insertBefore(containerSpan, tableGame);
 }

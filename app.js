@@ -17,9 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Clases que intervienen
 const { Game , Player} = require("./src/classes/");
-const handleSocketEvents = require("./src/main.js")
-// Juegos activos
-const gamesInline = new Map();
+const handleSocketEvents = require("./src/handleSocketEvents.js")
 
 // Cuando se conecte un usuario
 io.on("connection", handleSocketEvents);

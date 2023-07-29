@@ -1,13 +1,17 @@
-const { onNewGame } = require("./sockets/index")
+const { onCreateNewGame } = require("./sockets/index")
 
 const handleSocketEvents = (socket) => {
     socket.connectedRooms = [];
 
     // Create a new game
-    socket.on("newGame", ({userName, modeGame}) => onNewGame({userName, modeGame, socket}));
+    socket.on("onCreateNewGame", ({ userName, modeGame }) => {
+        
+        onCreateNewGame({ userName , modeGame, socket});
+
+    });
 
     // Join to room
-    socket.on("joinGame", ({ idRoom, userName, modeGame }) => {
+    socket.on("onJoiningGame", ({ idRoom, userName, modeGame }) => {
 
         // Comprobar que la sala exista, que solo esta conectado a una sala, y que la sala aun no este llena
         if (gamesInline.has(idRoom) && socket.rooms.size == 1 && gamesInline.get(idRoom).players.length < 4 && gamesInline.get(idRoom).modeGame === modeGame && gamesInline.get(idRoom).startedGame === false) {

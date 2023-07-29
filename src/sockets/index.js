@@ -1,5 +1,5 @@
-const onNewGame = require("./onNewGame");
+const onCreateNewGame = require("./onCreateNewGame");
 
 module.exports = {
-    onNewGame
+    onCreateNewGame
 };

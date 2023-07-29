@@ -5,9 +5,9 @@ function returnRandomPiece(min, max) {
 }
 
 class Game {
-   constructor(owner, idRoom, userName, modeGame) {
+   constructor(owner, idGame, userName, modeGame) {
       this.owner = new Player(owner, userName);
-      this.idRoom = idRoom;
+      this.idGame = idGame;
       this.piezas = this.generarPiezas();
       this.players = [this.owner];
       this.startedGame = false;
