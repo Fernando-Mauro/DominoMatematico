@@ -1,6 +1,6 @@
-const { onCreateNewGame, onJoiningGame, onStartGame } = require("./sockets/index")
+const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece } = require("./sockets/index")
 
-const handleSocketEvents = (socket) => {
+const handleSocketEvents = ({socket, io}) => {
     socket.connectedRooms = [];
 
     // Create a new game
@@ -24,17 +24,8 @@ const handleSocketEvents = (socket) => {
 
 
     // Pushing a piece
-    socket.on("pushPiece", (piece) => {
-        // Socket.rooms contiene las salas a las cuales esta conectada el socket
-        // pero la posicion [0] es el id del socket y a partir de la segunda es una sala
-
-        const [, idRoom] = [...socket.rooms];
-        const last = gamesInline.get(idRoom).pushingPiece(piece);
-
-        io.in(idRoom).emit("sendQueue", {
-            queueGame: gamesInline.get(idRoom).queueGame,
-            lastInformation: last
-        });
+    socket.on("onPushPiece", (piece) => {
+        onPushPiece({socket, piece, io});
     });
 
 

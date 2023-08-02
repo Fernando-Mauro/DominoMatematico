@@ -16,9 +16,18 @@ const setPlayerInGame = ( gameId, player ) => {
     gamesOnline.get(gameId).players.push(player);
 }
 
+const setNewPieceInQueue = () => {
+    
+};
+
+const getGame = ({ gameId }) => {
+    return gamesOnline.get(gameId);
+};
+
 module.exports = {
     getGamesOnline,
     setGamesOnline,
     hasGameOnline,
-    setPlayerInGame
+    setPlayerInGame,
+    getGame
 }

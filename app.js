@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const handleSocketEvents = require("./src/handleSocketEvents.js")
 
 // Cuando se conecte un usuario
-io.on("connection", handleSocketEvents);
+io.on("connection", (socket) => handleSocketEvents({io,socket}));
 
 // Puerto
 httpServer.listen(port, () => {
