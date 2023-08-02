@@ -1,4 +1,4 @@
-const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece } = require("./sockets/index")
+const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece, onSkipTurn } = require("./sockets/index")
 
 const handleSocketEvents = ({socket, io}) => {
     socket.connectedRooms = [];
@@ -28,13 +28,7 @@ const handleSocketEvents = ({socket, io}) => {
         onPushPiece({socket, piece, io});
     });
 
-
-    socket.on("skipTurn", () => {
-
-        const [, idRoom] = [...socket.rooms];
-        gamesInline.get(idRoom).nextTurn();
-
-    });
+    socket.on("skipTurn", () => onSkipTurn({ socket }));
 
     socket.on("eat-piece", () => {
         const [, idRoom] = [...socket.rooms];
