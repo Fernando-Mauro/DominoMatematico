@@ -464,7 +464,7 @@ function checkWin() {
         const modal = document.querySelector("#wined-game");
         const smmodal = new Modal(modal);
         smmodal.show();
-        socket.emit("winner", { name: userName });
+        socket.emit("winner", { winnerName: userName });
     }
 }
 socket.on("winner", (data) => {

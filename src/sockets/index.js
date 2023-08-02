@@ -1,16 +1,19 @@
+const emitWinner = require("./emitWinner");
 const onCreateNewGame = require("./onCreateNewGame");
+const onEatPiece = require("./onEatPiece");
+const onFinishGame = require("./onFinishGame");
 const onJoiningGame = require("./onJoiningGame");
-const onStartGame = require("./onStartGame");
 const onPushPiece = require("./onPushPiece");
 const onSkipTurn = require("./onSkipTurn");
-const onEatPiece = require("./onEatPiece");
-const onFinishGame = require("./onFinishGame")
+const onStartGame = require("./onStartGame");
+
 module.exports = {
+    emitWinner,
     onCreateNewGame, 
+    onEatPiece,
+    onFinishGame,
     onJoiningGame,
     onPushPiece,
-    onStartGame,
     onSkipTurn,
-    onEatPiece,
-    onFinishGame
+    onStartGame,
 };

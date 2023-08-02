@@ -1,8 +1,9 @@
 const { getGame } = require("../context/globalContext");
+const { getGameId } = require("../getGameId.js");
 
 const onEatPiece = ({ socket }) => {
+    const gameId = getGameId({ socket });
 
-    const [, gameId] = [...socket.rooms];
     const game = getGame({ gameId });
 
     if (game.players.length < 4) {
