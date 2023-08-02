@@ -15,7 +15,6 @@ const routes = require("./src/Routes/index");
 app.use("/", routes);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Clases que intervienen
 const handleSocketEvents = require("./src/handleSocketEvents.js")
 
 // Cuando se conecte un usuario
