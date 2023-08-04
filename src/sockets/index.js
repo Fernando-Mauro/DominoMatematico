@@ -7,6 +7,7 @@ const onPushPiece = require("./onPushPiece");
 const onSkipTurn = require("./onSkipTurn");
 const onStartGame = require("./onStartGame");
 const sendOnlineGames = require("./sendOnlineGames");
+const onEmitGloballyGames = require("./onEmitGloballyGames");
 
 module.exports = {
     emitWinner,
@@ -17,5 +18,6 @@ module.exports = {
     onPushPiece,
     onSkipTurn,
     onStartGame,
-    sendOnlineGames
+    sendOnlineGames,
+    onEmitGloballyGames
 };

@@ -32,7 +32,7 @@ socket.on("inLineGamesGlobally", (data) => {
 
         // Crea el elemento SPAN para el idRoom
         const idRoomSpan = document.createElement("span");
-        idRoomSpan.textContent = `ID: ${room.idGame}`;
+        idRoomSpan.textContent = `ID: ${room.gameId}`;
         idRoomSpan.classList.add("font-bold", "text-green-500", "mr-2",);
 
         // Crea el elemento SPAN para el ownerRoom

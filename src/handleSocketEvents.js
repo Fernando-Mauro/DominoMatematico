@@ -1,4 +1,4 @@
-const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece, onSkipTurn, onEatPiece, onFinishGame, emitWinner, sendOnlineGames } = require("./sockets/index")
+const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece, onSkipTurn, onEatPiece, onFinishGame, emitWinner, sendOnlineGames, onEmitGloballyGames } = require("./sockets/index")
 
 const handleSocketEvents = ({ socket, io }) => {
     socket.connectedRooms = [];
@@ -43,23 +43,11 @@ const handleSocketEvents = ({ socket, io }) => {
     });
 
     socket.on("inLineGames", ({ gameMode }) => {
-        sendOnlineGames({socket, gameMode});
+        sendOnlineGames({ socket, gameMode });
     });
 
     socket.on("globallyInlineGames", () => {
-        let llaves = [];
-        gamesInline.forEach(gameActive => {
-            if (gameActive.players.length < 4 && gameActive.startedGame === false) {
-                llaves.push({
-                    gameId: gameActive.idRoom,
-                    numberPlayers: gameActive.players.length,
-                    ownerName: gameActive.owner.name,
-                    type: gameActive.modeGame
-                });
-            }
-        });
-        socket.emit("inLineGamesGlobally", llaves);
-
+        onEmitGloballyGames({ socket })
     });
 };
 
