@@ -5,7 +5,7 @@ let isMyTurn = false;
 let queueGame = [];
 let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
-let modeGame = "tradicional";
+let gameMode = "tradicional";
 let tiempoRestante = 60; // tiempo en segundos
 let intervalo;
 let sumaPuntos = 0;
@@ -21,7 +21,7 @@ newGameBtn.addEventListener("click", () => {
         userName = name;
         socket.emit("onCreateNewGame", { 
             userName,
-            gameMode: modeGame
+            gameMode: gameMode
         });
     }
 
@@ -45,7 +45,7 @@ const jointToRoom = (idRoom) => {
         socket.emit("onJoiningGame", {
             gameId: idRoom,
             userName,
-            gameMode : modeGame
+            gameMode : gameMode
         });
     }
 }
@@ -522,11 +522,12 @@ const seeInlineGames = document.querySelector("#see-inline-games");
 
 seeInlineGames.addEventListener("click", () => {
     socket.emit("inLineGames", {
-        modeGame
+        gameMode
     });
 });
 
 socket.on("inLineGames", (data) => {
+    console.log(data);
     const roomList = document.querySelector("#unordered-list-inline-games");
     roomList.innerHTML = "";
     let llaves = [...data];
