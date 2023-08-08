@@ -1,22 +1,19 @@
 const Player = require("./Player.js");
-
-function returnRandomPiece(min, max) {
-   return Math.floor(Math.random() * (max - min) + min);
-}
+const { generatePieces, startGame } = require("../logic/index.js");
 
 class Game {
-   constructor(owner, gameId, userName, gameMode) {
-      this.owner = new Player(owner, userName);
+   constructor({ socket, gameId, userName, gameMode }) {
+      this.owner = new Player(socket, userName);
       this.gameId = gameId;
-      this.piezas = this.generarPiezas();
+      this.gameMode = gameMode;
+      this.pieces = this.generatePieces();
       this.players = [this.owner];
       this.startedGame = false;
       this.queueGame = [];
       this.turn = undefined;
-      this.mula = false;
-      this.numberUse = 0;
+      this.double = false;
+      this.usedNumber = 0;
       this.notUsed = [];
-      this.gameMode = gameMode;
    }
 
    checkIsClosed() {
@@ -58,71 +55,26 @@ class Game {
             }
          })
       });
-      if(bandera == true){
+      if (bandera == true) {
          // this.countPoints();
-         console.log('Cerrado D:');  
-      } 
+         console.log('Cerrado D:');
+      }
       return bandera;
    }
 
-   // Generar las piezas
-   generarPiezas() {
-      const piezas = [];
-      for (let i = 0; i < 7; ++i) {
-         for (let j = i; j < 7; ++j) {
-            piezas.push({
-               first: i,
-               second: j,
-               used: false
-            });
-         }
-      }
-      return piezas;
+   generatePieces() {
+      return generatePieces();
    }
    // start game
    startGame() {
-
-      // Generar las 7 fichas para cada jugador
-      this.players.forEach((player, index) => {
-         while (player.hand.length < 7) {
-            let positionRandom = returnRandomPiece(0, 28);
-
-            while (this.piezas[positionRandom].used && positionRandom < 28) {
-               positionRandom = positionRandom === 27 ? 0 : positionRandom + 1;
-            }
-            // Si aleatoriamente se asigna la mula del 6 el primer turno es del jugador con la mula del 6
-            if (this.piezas[positionRandom].first === 6 && this.piezas[positionRandom].second === 6) {
-               this.turn = index;
-               this.mula = true;
-            }
-            player.hand.push(this.piezas[positionRandom]);
-            this.piezas[positionRandom].used = true;
-            this.numberUse++;
-         }
+      return startGame({
+         players: this.players,
+         pieces: this.pieces,
+         usedNumber: this.usedNumber,
+         notUsed : this.notUsed,
+         double: this.double,
+         turn: this.turn
       });
-
-      // Agregar al set las piezas que no se estan ocupando
-      this.piezas.forEach(pieza => {
-         if (!pieza.used) {
-            this.notUsed.push(pieza);
-         }
-      });
-
-      // Si no se repartio la mula del 6
-      let bandera = true;
-      if (!this.mula) {
-         for (let i = 5; i >= 0; --i) {
-            this.players.forEach((player, index) => {
-               player.hand.forEach(pieza => {
-                  if (pieza.first == i && pieza.second == i && bandera) {
-                     this.turn = index;
-                     bandera = false;
-                     return;
-                  }
-               })
-            })
-         }
-      }
    }
    deletePieceFromHand({ first, second }) {
       this.players.forEach(player => {
@@ -301,9 +253,9 @@ class Game {
       this.checkIsClosed();
    }
    eatPieces() {
-      if (this.numberUse <= 28) {
-         const randomNumber = returnRandomPiece(0, 28 - this.numberUse);
-         this.numberUse++;
+      if (this.usedNumber <= 28) {
+         const randomNumber = returnRandomPiece(0, 28 - this.usedNumber);
+         this.usedNumber++;
          const last = this.notUsed[randomNumber];
          this.notUsed.splice(randomNumber, 1);
          return last;
@@ -311,4 +263,3 @@ class Game {
    }
 }
 module.exports = Game;
-// module.exports = Player; 

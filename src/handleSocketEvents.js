@@ -1,29 +1,31 @@
-const { onCreateNewGame, onJoiningGame, onStartGame, onPushPiece, onSkipTurn, onEatPiece, onFinishGame, emitWinner, sendOnlineGames, onEmitGloballyGames } = require("./sockets/index")
+const {
+    emitWinner,
+    onCreateNewGame,
+    onEatPiece,
+    onEmitGloballyGames,
+    onFinishGame,
+    onJoiningGame,
+    onPushPiece,
+    onSkipTurn,
+    onStartGame,
+    sendOnlineGames
+} = require("./sockets/index")
 
 const handleSocketEvents = ({ socket, io }) => {
     socket.connectedRooms = [];
 
-    // Create a new game
     socket.on("onCreateNewGame", (data) => {
-
         onCreateNewGame({ ...data, socket });
-
     });
 
-    // Join to room
     socket.on("onJoiningGame", (data) => {
-
         onJoiningGame({ ...data, socket });
-
     });
 
-    // Start the game
     socket.on("startGame", () => {
         onStartGame(socket);
     });
 
-
-    // Pushing a piece
     socket.on("onPushPiece", (piece) => {
         onPushPiece({ socket, piece, io });
     });
