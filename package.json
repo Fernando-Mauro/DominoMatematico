@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Domino Matematico",
   "main": "./app.js",
+  "engines": {
+    "node": ">=19 <20"
+  },
   "scripts": {
     "start": "nodemon ./app.js",
     "tailstart": "npx tailwindcss -i ./src/input.css -o ./public/CSS/output.css --watch"
