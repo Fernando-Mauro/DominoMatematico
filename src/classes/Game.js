@@ -67,15 +67,10 @@ class Game {
    }
    // start game
    startGame() {
-      return startGame({
-         players: this.players,
-         pieces: this.pieces,
-         usedNumber: this.usedNumber,
-         notUsed : this.notUsed,
-         double: this.double,
-         turn: this.turn
-      });
+      const boundStartGame = startGame.bind(this);
+      boundStartGame();
    }
+   
    deletePieceFromHand({ first, second }) {
       this.players.forEach(player => {
          player.hand.forEach((piece, index) => {
