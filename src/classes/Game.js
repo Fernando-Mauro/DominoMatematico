@@ -1,6 +1,6 @@
 const Player = require("./Player.js");
-const { generatePieces, startGame } = require("../logic/index.js");
-
+const { generatePieces, startGame, isValidPiece } = require("../logic/index.js");
+const assert = require("assert");
 class Game {
    constructor({ socket, gameId, userName, gameMode }) {
       this.owner = new Player(socket, userName);
@@ -9,7 +9,7 @@ class Game {
       this.pieces = this.generatePieces();
       this.players = [this.owner];
       this.startedGame = false;
-      this.queueGame = [];
+      this.queueGame = [-1 , -1];
       this.turn = undefined;
       this.double = false;
       this.usedNumber = 0;
@@ -70,171 +70,21 @@ class Game {
       const boundStartGame = startGame.bind(this);
       boundStartGame();
    }
-   
+
    deletePieceFromHand({ first, second }) {
       this.players.forEach(player => {
          player.hand.forEach((piece, index) => {
             if (piece.first == first && piece.second == second || piece.first == second && piece.second == first) {
-               console.log('llegue');
                player.hand.splice(index, 1);
                return;
             }
          });
       });
    }
+
    pushingPiece(piece) {
-      if (piece.isMyTurn) {
-         if (this.queueGame.length != 0) {
-            if (piece.side == "tail") {
-               const tail = this.queueGame.at(-1);
-               if (piece.first == tail.first) {
-                  piece.first = "*" + piece.first;
-                  this.queueGame.at(-1).first = "*";
-                  this.queueGame.push(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "tail",
-                        half: "first"
-                     };
-                  } else {
-                     console.log("EL juego se ha cerrado");
-                  }
-
-               } else if (piece.first == tail.second) {
-                  piece.first = "*" + piece.first;
-                  this.queueGame.at(-1).second = "*";
-                  this.queueGame.push(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "tail",
-                        half: "first"
-                     };
-                  } else {
-                     console.log("EL juego se ha cerrado");
-                  }
-
-               } else if (piece.second == tail.first) {
-                  piece.second = "*" + piece.second;
-                  this.queueGame.at(-1).first = "*";
-                  this.queueGame.push(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "tail",
-                        half: "second"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado')
-                  }
-
-               } else if (piece.second == tail.second) {
-                  piece.second = "*" + piece.second;
-                  this.queueGame.at(-1).second = "*";
-                  this.queueGame.push(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "tail",
-                        half: "second"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado');
-                  }
-
-               } else {
-                  this.players[this.turn].socketPlayer.emit("badPiece");
-               }
-            } else if (piece.side == "head") {
-               const head = this.queueGame[0];
-               if (piece.first == head.first) {
-                  piece.first = "*" + piece.first;
-                  this.queueGame[0].first = "*";
-                  this.queueGame.unshift(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "head",
-                        half: "first"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado');
-                  }
-
-               } else if (piece.first == head.second) {
-                  piece.first = "*" + piece.first;
-                  this.queueGame[0].second = "*";
-                  this.queueGame.unshift(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "head",
-                        half: "first"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado');
-                  }
-
-               } else if (piece.second == head.first) {
-                  piece.second = "*" + piece.second;
-                  this.queueGame[0].first = "*";
-                  this.queueGame.unshift(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "head",
-                        half: "second"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado');
-                  }
-
-               } else if (piece.second == head.second) {
-                  piece.second = "*" + piece.second;
-                  this.queueGame[0].second = "*";
-                  this.queueGame.unshift(piece);
-                  this.deletePieceFromHand(piece);
-                  if (!this.checkIsClosed()) {
-                     this.nextTurn();
-                     return {
-                        side: "head",
-                        half: "second"
-                     };
-                  } else {
-                     console.log('El juego se ha cerrado');
-                  }
-
-               } else {
-                  this.players[this.turn].socketPlayer.emit("badPiece");
-               }
-            }
-         } else {
-            this.queueGame.push({
-               first: piece.first,
-               second: piece.second
-            });
-            this.deletePieceFromHand(piece)
-            if (!this.checkIsClosed()) {
-               this.nextTurn();
-               return {
-                  side: "middle",
-                  half: undefined
-               };
-            } else {
-               console.log('El juego se ha cerrado');
-            }
-
-         }
-      }
-
+      const boundIsValidPiece = isValidPiece.bind(this, piece);
+      return boundIsValidPiece()
    }
    nextTurn() {
       this.turn++;
@@ -245,7 +95,7 @@ class Game {
       this.players.forEach((player) => {
          player.socketPlayer.emit("changeCurrentTurn", { name: this.players[this.turn].name });
       });
-      this.checkIsClosed();
+      // this.checkIsClosed();
    }
    eatPieces() {
       if (this.usedNumber <= 28) {

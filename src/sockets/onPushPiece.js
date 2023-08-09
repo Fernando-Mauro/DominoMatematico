@@ -9,8 +9,7 @@ const onPushPiece = ({io,socket, piece}) => {
 
     const last = game.pushingPiece(piece);
     io.in(gameId).emit("sendQueue", {
-        queueGame: game.queueGame,
-        lastInformation: last
+        last
     });
 }
 

@@ -269,14 +269,14 @@ function desactivateTurn(name) {
 function comprobatePiece(first, second, side) {
     if (queueGame.length != 0) {
         if (isMyTurn && isValid({ first: first, second: second, side: side })) {
-            socket.emit("onPushPiece", { first: first, second: second, isMyTurn, id: socket.id, side: side });
+            socket.emit("onPushPiece", { first: first, second: second, isTurn: isMyTurn, id: socket.id, side: side });
             lastContainPiece.remove();
             actualizarPuntos(first,second);
 
         }
     } else {
         if(first == 6 && second === 6){
-            socket.emit("onPushPiece", { first: first, second: second, isMyTurn, id: socket.id });
+            socket.emit("onPushPiece", { first: first, second: second, isTurn: isMyTurn, id: socket.id , side: "middle"});
             lastContainPiece.remove();
             actualizarPuntos(first,second);
         }
@@ -289,6 +289,7 @@ socket.on("sendQueue", (data) => {
 });
 
 const construirCola = (data) => {
+    console.log(data);
     const contenedor = document.getElementById("gameContainer");
     const lastInformation = data.lastInformation;
     // Si la ultima pieza se agrego abajo
