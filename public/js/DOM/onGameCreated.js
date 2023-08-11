@@ -1,7 +1,7 @@
 import { hideModal } from "./hideModal.js";
 
-export const gameCreated = ({gameId}) => {
-    hideModal();
+export const onGameCreated = ({gameId}) => {
+    hideModal(`new-game-modal`);
 
     // Re-make the DOM
     document.querySelector("#main-container").remove();

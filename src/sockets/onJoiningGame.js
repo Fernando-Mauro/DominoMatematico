@@ -11,7 +11,7 @@ const onJoiningGame = ({ socket, gameId, userName, gameMode }) => {
         
         setPlayerInGame(gameId, memberRoom);
 
-        socket.emit("onConnectedGame", {
+        socket.emit("onJoinedGame", {
             gameId: gameId
         });
 

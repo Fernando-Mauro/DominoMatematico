@@ -1,6 +1,6 @@
-export const hideModal = () => {
+export const hideModal = (idModal) => {
 
-    const container = document.querySelector("#new-game-modal");
+    const container = document.querySelector(`#${idModal}`);
     const modal = new Modal(container);
     
     try{

@@ -3,7 +3,7 @@ import { getGameMode, setUserName } from "../sharedModule.js";
 
 export const emitJoin = ({ socket }) => {
 
-    hideModal();
+    hideModal(`authentication-modal`);
     const gameId = document.querySelector("#codigoGame").value;
     const gameMode = getGameMode();
 

@@ -1,6 +1,6 @@
 const socket = io();
 
-import { gameCreated } from "./DOM/gameCreated.js";
+import { onGameCreated } from "./DOM/onGameCreated.js";
 import { ownerConstruction } from "./DOM/hostConstruccion.js";
 import { emitCreateGame } from "./eventsHandler/emitCreateGame.js";
 import { emitJoin } from "./eventsHandler/emitJoin.js";
@@ -14,9 +14,11 @@ newGameBtn.addEventListener("click", () => {
 });
 
 socket.on("gameCreated", (gameId) => {
-    gameCreated({ gameId });
+    onGameCreated({ gameId });
     ownerConstruction({socket});
 });
 
 const joinGameBtn = document.querySelector("#joinToGame");
 joinGameBtn.addEventListener("click", () => emitJoin({ socket }));
+
+socket.on("onJoinedGame", onGameCreated);
