@@ -20,10 +20,7 @@ const onCreateNewGame = ({ userName, gameMode, socket }) => {
 
     setGamesOnline(gameId, game);
 
-    socket.emit("newGameCreated", {
-        pieces: game.pieces,
-        gameId: game.gameId
-    });
+    socket.emit("gameCreated", game.gameId);
 };
 
 module.exports = onCreateNewGame;

@@ -18,7 +18,7 @@ const onJoiningGame = ({ socket, gameId, userName, gameMode }) => {
     } else {
         socket.emit("error", {
             message: "No existe la sala o ya te encuentras en otra sala",
-            id: idRoom
+            id: gameId
         });
     }
 }
