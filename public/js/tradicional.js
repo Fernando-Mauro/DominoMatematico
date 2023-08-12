@@ -28,8 +28,7 @@ newGameBtn.addEventListener("click", () => {
 });
 
 //Event when return pieces and idRoom 
-socket.on("newGameCreated", (data) => {
-    console.log(data);
+socket.on("gameCreated", (data) => {
     remakeDom(data);
     ownerConstruction();
 });
@@ -121,6 +120,7 @@ function ownerConstruction() {
 
 // Recibir las piezas cuando se inicia el juego
 socket.on("sendPieces", data => {
+    
     // Eliminar boton de start game, en caso de que exista
     const button = document.querySelector("#btn-start");
     if (button) button.remove();

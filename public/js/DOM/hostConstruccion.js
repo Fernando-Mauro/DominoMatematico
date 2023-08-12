@@ -1,4 +1,8 @@
-export const ownerConstruction = ({ socket }) => {
+import { getSocket } from "../sharedModule.js";
+
+const socket = getSocket();
+
+export const ownerConstruction = () => {
     const button = document.createElement("button");
     button.setAttribute("type", "button");
     button.setAttribute("id", "btn-start");

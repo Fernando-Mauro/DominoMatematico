@@ -169,3 +169,8 @@
 .image-slider{
    @apply bg-cover bg-center bg-no-repeat;
 }
+.top-half-column, .top-half-row, .bottom-half-row, .bottom-half-column{
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
