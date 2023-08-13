@@ -14,20 +14,22 @@ const onStartGame = (socket) => {
 
     // Emitir los eventos de enviar piezas a cada jugador
     socket.actualGame.players.forEach((player, index) => {
+        const { name } = socket.actualGame.players[socket.actualGame.turn];
         player.socketPlayer.emit("sendedPieces", {
             pieces: player.hand,
-            gameMode: socket.actualGame.gameMode
+            gameMode: socket.actualGame.gameMode,
+            currentTurn: name
         });
-        if (socket.actualGame.turn === index) {
-            player.socketPlayer.emit("turn", {
-                name: player.name
-            })
-        } else {
-            const { name } = socket.actualGame.players[socket.actualGame.turn];
-            player.socketPlayer.emit("notTurn", {
-                name: name
-            })
-        }
+        // if (socket.actualGame.turn === index) {
+        //     player.socketPlayer.emit("activateTurn", {
+        //         name: player.name
+        //     })
+        // } else {
+        //     const { name } = socket.actualGame.players[socket.actualGame.turn];
+        //     player.socketPlayer.emit("notTurn", {
+        //         name: name
+        //     })
+        // }
     });
 
     socket.actualGame.startedGame = true;

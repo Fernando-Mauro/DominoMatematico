@@ -33,3 +33,48 @@ export const setGameMode = (newGameMode) => {
 export const getPiecesCode = () => {
     return piecesCode;
 }
+
+export const getQueueGame = () => {
+    return queueGame;
+}
+
+export const setMyTurn = (val) => {
+    isMyTurn = val;
+}
+export const getMyTurn = () => {
+    return isMyTurn;
+}
+
+export const setLastClicked = ({first, second, container}) => {
+    lastFirst = first;
+    lastSecond = second;
+    lastContainPiece = container;
+};
+export const getLastClicked = () => {
+    return {
+        first: lastFirst,
+        second: lastSecond,
+        container: lastContainPiece
+    }
+}
+
+export const setTimeLeft = () => {
+    tiempoRestante = 60;
+    intervalo = setInterval(updateCounter, 1000);
+}
+
+const updateCounter = () => {
+    const contador = document.getElementById('tiempo');
+    contador.innerText = tiempoRestante;
+    tiempoRestante--;
+    if (tiempoRestante === 0) {
+        socket.emit("skipTurn");
+    }
+}
+
+export const clearTimeLeft = () => {
+    clearInterval(intervalo);
+}
+export const getTimeLeft = () => {
+    return tiempoRestante;
+}

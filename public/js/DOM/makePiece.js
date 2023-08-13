@@ -1,5 +1,6 @@
 import { fillPoints } from "./fillPoints.js";
 import { fillImg } from "./fillImg.js";
+import { onClickPiece } from "../eventsHandler/onClickPiece.js";
 
 export const makePiece = ({ gameMode, orientation = "column", pointsTop = 0, pointsBottom = 0 }) => {
     // Contenedor de la pieza
@@ -25,7 +26,7 @@ export const makePiece = ({ gameMode, orientation = "column", pointsTop = 0, poi
     containPiece.appendChild(bottomHalf);
 
     containPiece.addEventListener("click", () => 
-        clickPiece(piece, containPiece)
+        onClickPiece({pointsTop, pointsBottom, containPiece})
     );
     return containPiece;
 };

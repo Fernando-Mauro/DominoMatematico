@@ -6,11 +6,15 @@ import { makeSpanActive } from "./makeSpanActive.js";
 import { makeSpanInactive } from "./makeSpanInactive.js";
 import { makeTimer } from "./makeTimer.js";
 import { makePiece } from "./makePiece.js";
+import { countPoints } from "../logic/countPoints.js";
+import { changeCurrentTurn } from "../logic/changeCurrentTurn.js";
 
 export const onSendedPieces = ({
     pieces,
-    gameMode
+    gameMode,
+    currentTurn
 }) => {
+
     // Eliminar boton de start game, en caso de que exista
     const button = document.querySelector("#btn-start");
     if (button) button.remove();
@@ -27,12 +31,13 @@ export const onSendedPieces = ({
     parentNode[0].insertBefore(makeEatBtn(), piecesContainer);
 
     pieces.forEach(piece => {
-        piecesContainer.appendChild(makePiece({
-            gameMode,
-            pointsTop: piece.first,
-            pointsBottom: piece.second
-        }));
+        piecesContainer.appendChild(
+            makePiece({
+                gameMode,
+                pointsTop: piece.first,
+                pointsBottom: piece.second
+            }));
     });
-
-    firstTimeCountPoints(data.pieces);
+    changeCurrentTurn(currentTurn);
+    countPoints({ pieces });
 }

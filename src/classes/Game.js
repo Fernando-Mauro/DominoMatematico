@@ -1,6 +1,5 @@
 const Player = require("./Player.js");
 const { generatePieces, startGame, isValidPiece } = require("../logic/index.js");
-const assert = require("assert");
 class Game {
    constructor({ socket, gameId, userName, gameMode }) {
       this.owner = new Player(socket, userName);
