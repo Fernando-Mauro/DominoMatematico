@@ -9,7 +9,7 @@
 #pieces-container{
    @apply flex-wrap;
 }
-.piece{
+.piece, .piece-row, .piece-column{
    @apply hover:scale-125 cursor-pointer ease-in duration-300 relative;
 }
 
@@ -168,4 +168,17 @@
 
 .image-slider{
    @apply bg-cover bg-center bg-no-repeat;
+}
+.top-half-column, .top-half-row, .bottom-half-row, .bottom-half-column{
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.font-montserrat {
+   font-family: 'Montserrat', sans-serif;
+}
+
+.font-rubik {
+   font-family: 'Rubik Wet Paint', cursive;
 }
