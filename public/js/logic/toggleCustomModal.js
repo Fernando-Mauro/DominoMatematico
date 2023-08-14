@@ -13,9 +13,6 @@ export const toggleCustomModal = () => {
     copyLast.classList.remove("piece");
 
     zoomImage.appendChild(copyLast);
-    console.log('====================================');
-    console.log('llegue');
-    console.log('====================================');
     modal.classList.toggle("hidden");
     overlay.classList.toggle("hidden");
 }

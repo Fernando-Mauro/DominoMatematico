@@ -4,7 +4,7 @@
   "description": "Domino Matematico",
   "main": "./app.js",
   "engines": {
-    "node": ">=19 <20"
+    "node": ">=18 <20"
   },
   "scripts": {
     "start": "nodemon ./app.js",

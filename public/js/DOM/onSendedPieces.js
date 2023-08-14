@@ -34,8 +34,8 @@ export const onSendedPieces = ({
         piecesContainer.appendChild(
             makePiece({
                 gameMode,
-                pointsTop: piece.first,
-                pointsBottom: piece.second
+                first: piece.first,
+                second: piece.second
             }));
     });
     changeCurrentTurn({name : currentTurn});
