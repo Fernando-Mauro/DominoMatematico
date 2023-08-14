@@ -4,6 +4,8 @@ import { emitCreateGame } from "./eventsHandler/emitCreateGame.js";
 import { emitJoin } from "./eventsHandler/emitJoin.js";
 import { onSendedPieces } from "./DOM/onSendedPieces.js";
 import { getSocket } from "./sharedModule.js";
+import { buildQueue } from "./DOM/buildQueue.js";
+import { changeCurrentTurn } from "./logic/changeCurrentTurn.js";
 
 const socket = getSocket();
 
@@ -25,3 +27,7 @@ joinGameBtn.addEventListener("click", emitJoin);
 socket.on("onJoinedGame", onGameCreated);
 
 socket.on("sendedPieces", onSendedPieces);
+
+socket.on("sendQueue", buildQueue);
+
+socket.on("changeCurrentTurn", changeCurrentTurn);

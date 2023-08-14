@@ -26,8 +26,8 @@ const handleSocketEvents = ({ socket, io }) => {
         onStartGame(socket);
     });
 
-    socket.on("onPushPiece", (piece) => {
-        onPushPiece({ socket, piece, io });
+    socket.on("onPushPiece", (data) => {
+        onPushPiece({ socket, data, io });
     });
 
     socket.on("skipTurn", () => onSkipTurn({ socket }));

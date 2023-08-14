@@ -9,7 +9,7 @@
 #pieces-container{
    @apply flex-wrap;
 }
-.piece{
+.piece, .piece-row, .piece-column{
    @apply hover:scale-125 cursor-pointer ease-in duration-300 relative;
 }
 

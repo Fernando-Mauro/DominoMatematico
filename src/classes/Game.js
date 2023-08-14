@@ -81,10 +81,11 @@ class Game {
       });
    }
 
-   pushingPiece(piece) {
-      const boundIsValidPiece = isValidPiece.bind(this, piece);
+   pushingPiece(data) {
+      const boundIsValidPiece = isValidPiece.bind(this, data);
       return boundIsValidPiece()
    }
+
    nextTurn() {
       this.turn++;
       if (this.turn >= this.players.length) {

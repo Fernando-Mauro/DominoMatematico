@@ -272,7 +272,6 @@ function comprobatePiece(first, second, side) {
             socket.emit("onPushPiece", { first: first, second: second, isTurn: isMyTurn, id: socket.id, side: side });
             lastContainPiece.remove();
             actualizarPuntos(first,second);
-
         }
     } else {
         if(first == 6 && second === 6){

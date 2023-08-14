@@ -1,6 +1,6 @@
 import { getUserName, setMyTurn, setTimeLeft } from "../sharedModule.js";
 
-export const changeCurrentTurn = (name) => {
+export const changeCurrentTurn = ({name}) => {
     const turnActive = document.querySelector("#turn-enable");
     const turnDisactive = document.querySelector("#turn-disable");
     

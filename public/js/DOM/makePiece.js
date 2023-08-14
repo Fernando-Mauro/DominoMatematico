@@ -4,8 +4,8 @@ import { onClickPiece } from "../eventsHandler/onClickPiece.js";
 
 export const makePiece = ({ gameMode, orientation = "column", pointsTop = 0, pointsBottom = 0 }) => {
     // Contenedor de la pieza
-    const containPiece = document.createElement("div");
-    containPiece.classList.add("piece");
+    const containerPiece = document.createElement("div");
+    containerPiece.classList.add(`piece-${orientation}`);
 
     // Mitad de arriba
     const topHalf = document.createElement("div");
@@ -13,7 +13,7 @@ export const makePiece = ({ gameMode, orientation = "column", pointsTop = 0, poi
 
     // Mitad de abajo
     const bottomHalf = document.createElement("div");
-    bottomHalf.classList.add("bottom-half-column");
+    bottomHalf.classList.add(`bottom-half-${orientation}`);
 
     if (gameMode === "tradicional") {
         fillPoints(topHalf, pointsTop);
@@ -22,11 +22,11 @@ export const makePiece = ({ gameMode, orientation = "column", pointsTop = 0, poi
         fillImg(topHalf, pointsTop, gameMode);
         fillImg(bottomHalf, pointsBottom, gameMode);
     }
-    containPiece.appendChild(topHalf);
-    containPiece.appendChild(bottomHalf);
+    containerPiece.appendChild(topHalf);
+    containerPiece.appendChild(bottomHalf);
 
-    containPiece.addEventListener("click", () => 
-        onClickPiece({pointsTop, pointsBottom, containPiece})
+    containerPiece.addEventListener("click", () => 
+        onClickPiece({pointsTop, pointsBottom, containerPiece})
     );
-    return containPiece;
+    return containerPiece;
 };

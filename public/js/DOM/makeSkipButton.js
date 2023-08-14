@@ -1,4 +1,4 @@
-import { getSocket } from "../sharedModule.js";
+import { getMyTurn, getSocket } from "../sharedModule.js";
 
 const socket = getSocket();
 
@@ -9,8 +9,7 @@ export const makeSkipButton = () => {
     skipButton.setAttribute("id", "skip-turn");
     skipButton.textContent = "Saltar turno";
     skipButton.addEventListener("click", () => {
-        if (isMyTurn) {
-            desactivateTurn();
+        if (getMyTurn()) {
             socket.emit("skipTurn");
         }
     });

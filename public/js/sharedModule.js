@@ -6,7 +6,7 @@ let queueGame = [];
 let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Leer del localstorage
-let gameMode = "animales";
+let gameMode = "tradicional";
 let tiempoRestante = 60; // tiempo en segundos
 let intervalo;
 let sumaPuntos = 0;
@@ -38,6 +38,10 @@ export const getQueueGame = () => {
     return queueGame;
 }
 
+export const setQueueGame = ({first, second}) => {
+    queueGame = [first, second];
+}
+
 export const setMyTurn = (val) => {
     isMyTurn = val;
 }
@@ -45,11 +49,12 @@ export const getMyTurn = () => {
     return isMyTurn;
 }
 
-export const setLastClicked = ({first, second, container}) => {
+export const setLastClicked = ({first, second, containerPiece}) => {
     lastFirst = first;
     lastSecond = second;
-    lastContainPiece = container;
+    lastContainPiece = containerPiece;
 };
+
 export const getLastClicked = () => {
     return {
         first: lastFirst,

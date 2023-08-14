@@ -38,6 +38,6 @@ export const onSendedPieces = ({
                 pointsBottom: piece.second
             }));
     });
-    changeCurrentTurn(currentTurn);
+    changeCurrentTurn({name : currentTurn});
     countPoints({ pieces });
 }
