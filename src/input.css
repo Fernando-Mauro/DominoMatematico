@@ -174,3 +174,11 @@
    background-position: center;
    background-repeat: no-repeat;
 }
+
+.font-montserrat {
+   font-family: 'Montserrat', sans-serif;
+}
+
+.font-rubik {
+   font-family: 'Rubik Wet Paint', cursive;
+}
