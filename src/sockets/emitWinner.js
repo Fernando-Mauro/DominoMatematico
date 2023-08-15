@@ -6,11 +6,10 @@ const emitWinner = ({socket, winnerName}) => {
     const game = getGame({gameId});
 
     game.players.forEach(player => {
-        player.socketPlayer.emit("winner", {
+        player.socketPlayer.emit("onWinner", {
             name: winnerName
         });
     });
-
 }
 
 module.exports = emitWinner;

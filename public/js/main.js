@@ -3,12 +3,13 @@ import { ownerConstruction } from "./DOM/hostConstruccion.js";
 import { emitCreateGame } from "./eventsHandler/emitCreateGame.js";
 import { emitJoin } from "./eventsHandler/emitJoin.js";
 import { onSendedPieces } from "./DOM/onSendedPieces.js";
-import { getLastClicked, getSocket } from "./sharedModule.js";
+import { getGameMode, getLastClicked, getSocket } from "./sharedModule.js";
 import { buildQueue } from "./DOM/buildQueue.js";
 import { changeCurrentTurn } from "./logic/changeCurrentTurn.js";
 import { toggleCustomModal } from "./logic/toggleCustomModal.js";
-import { onClickPiece } from "./eventsHandler/onClickPiece.js";
-import { onEmitPiece } from "./eventsHandler/onEmitPiece.js";
+import { onClickDesitionBtn } from "./eventsHandler/onClickDesitionBtn.js";
+import { onWinner } from "./eventsHandler/onWinner.js";
+import { showOnlineGames } from "./DOM/showOnlineGames.js";
 
 const socket = getSocket();
 
@@ -31,34 +32,31 @@ socket.on("onJoinedGame", onGameCreated);
 
 socket.on("sendedPieces", onSendedPieces);
 
-socket.on("sendQueue", (data) => {
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
-    buildQueue(data)
-});
+socket.on("sendQueue", buildQueue);
 
 socket.on("changeCurrentTurn", changeCurrentTurn);
+
+socket.on("onWinner", onWinner);
 
 const customModal = document.querySelector("#toggle-custom-modal-btn");
 customModal.addEventListener("click", toggleCustomModal);
 
 const pushHead = document.querySelector("#push-head");
 pushHead.addEventListener("click", () => {
-    const { first, second } = getLastClicked();
-    onEmitPiece({
-        side: "head",
-        first,
-        second
-    })
+    onClickDesitionBtn({ side: "head" });
 });
 
 const pushTail = document.querySelector("#push-tail");
 pushTail.addEventListener("click", () => {
-    const { first, second } = getLastClicked();
-    onEmitPiece({
-        side: "tail",
-        first,
-        second
-    })
+    onClickDesitionBtn({ side: "tail" });
 });
+
+const inlineGames = document.querySelector("#see-inline-games");
+
+inlineGames.addEventListener("click", () => {
+    socket.emit("getOnlineGames", {
+        gameMode : getGameMode()
+    });
+});
+
+socket.on("emitOnlineGames", showOnlineGames);

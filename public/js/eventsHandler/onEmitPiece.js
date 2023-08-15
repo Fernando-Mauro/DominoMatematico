@@ -1,4 +1,5 @@
-import { getMyTurn, getSocket } from "../sharedModule.js"
+import { checkWin } from "../logic/checkWin.js";
+import { getMyTurn, getSocket , getLastClicked} from "../sharedModule.js"
 
 export const onEmitPiece = ({side, first, second}) => {
     const socket = getSocket();
@@ -9,4 +10,7 @@ export const onEmitPiece = ({side, first, second}) => {
         second,
         isTurn: getMyTurn()
     });
+    const {container} = getLastClicked();
+    container.remove();
+    checkWin();
 }

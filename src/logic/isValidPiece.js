@@ -34,6 +34,10 @@ function isValidPiece({ isTurn, side, first, second }) {
             match: 1
         }
     }
+    data = {
+        ...data,
+        queue: this.queueGame
+    }
     this.deletePieceFromHand({ first, second, used: false })
     this.nextTurn();
     return data;

@@ -612,6 +612,7 @@ const firstTimeCountPoints = (pieces) => {
     const puntos = document.getElementById("show-points");
     puntos.innerHTML =`Puntos: ${sumaPuntos}`;
 }
+
 const actualizarPuntos = (first, second) => {
     sumaPuntos -= (first + second);
     const puntos = document.getElementById("show-points");

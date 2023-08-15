@@ -44,7 +44,7 @@ const handleSocketEvents = ({ socket, io }) => {
         emitWinner({ socket, winnerName })
     });
 
-    socket.on("inLineGames", ({ gameMode }) => {
+    socket.on("getOnlineGames", ({ gameMode }) => {
         sendOnlineGames({ socket, gameMode });
     });
 

@@ -9,7 +9,7 @@ const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-
 let gameMode = "tradicional";
 let tiempoRestante = 60; // tiempo en segundos
 let intervalo;
-let sumaPuntos = 0;
+let totalPoints = 0;
 
 export const getSocket = () => {
     return socket;
@@ -82,4 +82,12 @@ export const clearTimeLeft = () => {
 }
 export const getTimeLeft = () => {
     return tiempoRestante;
+}
+
+export const getPoints = () => {
+    return totalPoints;
+}
+
+export const setPoints = ({value}) => {
+    totalPoints = value;
 }

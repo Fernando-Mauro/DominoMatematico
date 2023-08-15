@@ -1,4 +1,5 @@
 import { toggleCustomModal } from "../logic/toggleCustomModal.js";
+import { updatePoints } from "../logic/updatePoints.js";
 import { getQueueGame, setLastClicked, getMyTurn } from "../sharedModule.js";
 import { onEmitPiece } from "./onEmitPiece.js";
 
@@ -21,6 +22,7 @@ export const onClickPiece = ({ second, first, containerPiece }) => {
                 second: second,
                 side: "middle"
             });
+            updatePoints({first, second});
         }
     }
 }

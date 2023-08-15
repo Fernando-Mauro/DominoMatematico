@@ -1,4 +1,4 @@
-import { getUserName, setMyTurn, setTimeLeft } from "../sharedModule.js";
+import { clearTimeLeft, getUserName, setMyTurn, setTimeLeft } from "../sharedModule.js";
 
 export const changeCurrentTurn = ({name}) => {
     const turnActive = document.querySelector("#turn-enable");
@@ -15,6 +15,7 @@ export const changeCurrentTurn = ({name}) => {
         turnActive.classList.add("hidden");
         setMyTurn(false);
         document.querySelector("#temporizador").classList.add("hidden");
+        clearTimeLeft();
     }
     const spanTurn = document.querySelector("#current-turn");
     spanTurn.innerText = `Es turno de: ${name}`;

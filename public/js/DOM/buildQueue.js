@@ -1,7 +1,7 @@
 import { getGameMode, setQueueGame , getLastClicked, getQueueGame} from "../sharedModule.js";
 import { makePiece } from "./makePiece.js";
 
-export const buildQueue = ({ halves, orientation, side, match }) => {
+export const buildQueue = ({ halves, orientation, side, match , queue}) => {
     const containerQueue = document.getElementById("gameContainer");
     const reference = document.getElementById("gameContainer").childNodes[0];
      
@@ -25,8 +25,6 @@ export const buildQueue = ({ halves, orientation, side, match }) => {
             second = halves[1]
     }
 
-    console.log({first,second});
-
     const gameMode = getGameMode();
     const piece = makePiece({
         gameMode,
@@ -36,8 +34,8 @@ export const buildQueue = ({ halves, orientation, side, match }) => {
     });
 
     setQueueGame({
-        first, 
-        second
+        first: queue[0], 
+        second: queue[1]
     });
     
     if(side === "head"){
