@@ -1,10 +1,13 @@
 import { clearTimeLeft, getUserName, setMyTurn, setTimeLeft } from "../sharedModule.js";
 
+const ring = document.querySelector("#ring");
+
 export const changeCurrentTurn = ({name}) => {
     const turnActive = document.querySelector("#turn-enable");
     const turnDisactive = document.querySelector("#turn-disable");
     
     if (name === getUserName()) {
+        ring.play();
         turnActive.classList.remove("hidden");
         turnDisactive.classList.add("hidden");
         setMyTurn(true);

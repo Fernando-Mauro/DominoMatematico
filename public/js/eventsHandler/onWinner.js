@@ -1,6 +1,6 @@
 export const onWinner = ({ name }) => {
     document.addEventListener("click", () => {
-        window.location.href = "../Html/index.html";
+        window.location.href = "./index.html";
     });
 
     if (name != userName) {

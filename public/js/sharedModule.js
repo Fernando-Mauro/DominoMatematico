@@ -8,6 +8,9 @@ const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-
 // Leer del localstorage
 let gameMode = sessionStorage.getItem("gameMode");
 
+if(gameMode === null){
+    window.location.href = "./index.html";
+}
 let tiempoRestante = 60;
 let intervalo;
 let totalPoints = 0;
