@@ -13,4 +13,16 @@ anchors.forEach((el) => {
 
 const setGameMode = (gameMode) => {
     sessionStorage.setItem("gameMode", gameMode);
+    let extension = undefined;
+    if(gameMode === "princesas" || gameMode === "heroes" || gameMode === "ecuaciones"){
+        extension = "png";
+    }else{
+        extension = "svg";
+    }
+    sessionStorage.setItem("extension", extension);
+    let nested = "false";
+    if(gameMode === "ecuaciones" || gameMode === "algebra"){
+        nested = "true";
+    }
+    sessionStorage.setItem("nested", nested);
 }

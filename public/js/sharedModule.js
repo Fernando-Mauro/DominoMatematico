@@ -92,3 +92,10 @@ export const getPoints = () => {
 export const setPoints = ({value}) => {
     totalPoints = value;
 }
+
+export const isNestedGame = () => {
+    return sessionStorage.getItem("nested") === "true";
+}
+export const getExtension = () => {
+    return sessionStorage.getItem("extension");
+}
