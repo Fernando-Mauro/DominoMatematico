@@ -6,8 +6,9 @@ let queueGame = [];
 let lastContainPiece = "";
 const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-balls", "six-balls"];
 // Leer del localstorage
-let gameMode = "tradicional";
-let tiempoRestante = 60; // tiempo en segundos
+let gameMode = sessionStorage.getItem("gameMode");
+
+let tiempoRestante = 60;
 let intervalo;
 let totalPoints = 0;
 
