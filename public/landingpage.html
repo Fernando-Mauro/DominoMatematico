@@ -6,22 +6,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display+SC:wght@400;700;900&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="./CSS/output.css">
     <title>Dominó Matemático</title>
 </head>
 <body>
-    <header>
-        <div>
-            <h1 class="">Dominó matemático</h1>
-            <img src="./assets/landingpage/logo.svg" alt="">
+    <header class="flex w-full items-center justify-between p-5">
+        <div class="flex w-[30%] justify-between">
+            <h1 class="font-rubikwet uppercase text-green-950 w-[60%] text-[25px]">Dominó matemático</h1>
+            <img class="w-40" src="./assets/landingpage/logo.svg" alt="">
         </div>
-        <nav class="opciones">
-            <ul>
-                <li class="font-rubikwet">Objetivo</li>
+        <nav class="w-[50%]" class="opciones">
+            <ul class="font-playfair flex text-[12px] text-center">
+                <li>Objetivo</li>
                 <li>Trayectoria</li>
                 <li>Características</li>
             </ul>
         </nav>
+        <div>
+            <input class="w-[150px]" type="text">
+        </div>
     </header>
     <main></main>
 </body>
