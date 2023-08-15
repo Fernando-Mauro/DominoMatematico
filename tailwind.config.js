@@ -38,7 +38,12 @@ module.exports = {
       },
       animation: {
         'rotando': 'rotar 5s linear infinite'
-      }
+      },
+      fontFamily: {
+        'rubikwet': ["Rubik Wet Paint", 'cursive'],
+        'playfair': ["Playfair Display SC", 'serif'],
+        'montserrat': ["Montserrat", 'sans-serif']
+      }      
     },
   },
   plugins: [

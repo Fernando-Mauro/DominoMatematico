@@ -1815,6 +1815,10 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
+.font-rubikwet {
+  font-family: Rubik Wet Paint, cursive;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -2378,14 +2382,6 @@ input:checked + .toggle-bg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.font-montserrat {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.font-rubik {
-  font-family: 'Rubik Wet Paint', cursive;
 }
 
 .hover\:scale-150:hover {
