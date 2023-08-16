@@ -18,7 +18,11 @@ module.exports = {
         "creme": "#f2e9e4",
         "bring-yellow": "#ffd23f",
         "cobao": "#ed1b24",
-        "creme-black": "#efc3ab"
+        "creme-black": "#efc3ab",
+        "pinkbg": "#F8E8EE",
+        "bluesb": "#374259",
+        "greenl": "#5C8984",
+        "pinkh": "#F15A59"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",
@@ -41,7 +45,7 @@ module.exports = {
       },
       fontFamily: {
         'rubikwet': ["Rubik Wet Paint", 'cursive'],
-        'playfair': ["Playfair Display SC", 'serif'],
+        'ptsans': ["PT Sans", 'sans-serif'],
         'montserrat': ["Montserrat", 'sans-serif']
       }      
     },

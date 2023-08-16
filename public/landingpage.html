@@ -2,30 +2,31 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg" href="./assets/landingpage/logo2.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display+SC:wght@400;700;900&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/landingpage.css">
     <title>Dominó Matemático</title>
 </head>
 <body>
-    <header class="flex w-full items-center justify-between p-5">
+    <header class="flex w-full items-center justify-between py-2 px-5 h-[90px] bg-pinkbg">
         <div class="flex w-[30%] justify-between">
-            <h1 class="font-rubikwet uppercase text-green-950 w-[60%] text-[25px]">Dominó matemático</h1>
-            <img class="w-40" src="./assets/landingpage/logo.svg" alt="">
+            <h1 class="font-rubikwet uppercase w-[187px] text-[27px] text-black">Dominó matemático</h1>
+            <img class="w-[38%]" src="./assets/landingpage/logo.svg" alt="">
         </div>
-        <nav class="w-[50%]" class="opciones">
-            <ul class="font-playfair flex text-[12px] text-center">
-                <li>Objetivo</li>
-                <li>Trayectoria</li>
-                <li>Características</li>
+        <nav class="w-[50%] h-[81px] pt-[28px]" class="opciones">
+            <ul class="font-ptsans flex text-[16px] w-full justify-evenly items-center text-bluesb uppercase font-bold ">
+                <li class="hover:text-greenl">Objetivo</li>
+                <li class="hover:text-greenl">Trayectoria</li>
+                <li class="hover:text-greenl">Características</li>
             </ul>
         </nav>
         <div>
-            <input class="w-[150px]" type="text">
+            <button class="w-[150px] rounded-[50px] h-[30px] border-solid bg-cobao text-white font-bold font-ptsans text-[15px] hover:bg-pinkh">JUGAR</button>
         </div>
     </header>
-    <main></main>
+    <main class="bg-pinkbg w-full h-screen"></main>
 </body>
 </html>
