@@ -8,7 +8,7 @@ const piecesCode = ["one-ball", "two-balls", "three-balls", "four-balls", "five-
 // Leer del localstorage
 let gameMode = sessionStorage.getItem("gameMode");
 
-if(gameMode === null){
+if (gameMode === null) {
     window.location.href = "./index.html";
 }
 let tiempoRestante = 60;
@@ -18,6 +18,7 @@ let totalPoints = 0;
 export const getSocket = () => {
     return socket;
 }
+
 export const getUserName = () => {
     return userName;
 }
@@ -42,7 +43,7 @@ export const getQueueGame = () => {
     return queueGame;
 }
 
-export const setQueueGame = ({first, second}) => {
+export const setQueueGame = ({ first, second }) => {
     queueGame = [first, second];
 }
 
@@ -53,7 +54,7 @@ export const getMyTurn = () => {
     return isMyTurn;
 }
 
-export const setLastClicked = ({first, second, containerPiece}) => {
+export const setLastClicked = ({ first, second, containerPiece }) => {
     lastFirst = first;
     lastSecond = second;
     lastContainPiece = containerPiece;
@@ -92,13 +93,14 @@ export const getPoints = () => {
     return totalPoints;
 }
 
-export const setPoints = ({value}) => {
+export const setPoints = ({ value }) => {
     totalPoints = value;
 }
 
 export const isNestedGame = () => {
     return sessionStorage.getItem("nested") === "true";
 }
+
 export const getExtension = () => {
     return sessionStorage.getItem("extension");
 }

@@ -20,16 +20,6 @@ const onStartGame = (socket) => {
             gameMode: socket.actualGame.gameMode,
             currentTurn: name
         });
-        // if (socket.actualGame.turn === index) {
-        //     player.socketPlayer.emit("activateTurn", {
-        //         name: player.name
-        //     })
-        // } else {
-        //     const { name } = socket.actualGame.players[socket.actualGame.turn];
-        //     player.socketPlayer.emit("notTurn", {
-        //         name: name
-        //     })
-        // }
     });
 
     socket.actualGame.startedGame = true;

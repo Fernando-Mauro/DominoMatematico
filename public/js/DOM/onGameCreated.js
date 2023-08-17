@@ -1,6 +1,8 @@
+import { setGameId } from "../computerSharedModule.js";
 import { hideModal } from "./hideModal.js";
 
 export const onGameCreated = ({gameId}) => {
+    setGameId(gameId);
     hideModal(`new-game-modal`);
 
     // Re-make the DOM

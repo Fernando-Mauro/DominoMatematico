@@ -10,6 +10,7 @@ import { toggleCustomModal } from "./logic/toggleCustomModal.js";
 import { onClickDesitionBtn } from "./eventsHandler/onClickDesitionBtn.js";
 import { onWinner } from "./eventsHandler/onWinner.js";
 import { showOnlineGames } from "./DOM/showOnlineGames.js";
+import { createComputerPlayer } from "./logic/createComputerPlayer.js";
 
 const socket = getSocket();
 
@@ -17,7 +18,7 @@ const socket = getSocket();
 const newGameBtn = document.querySelector("#btn-new-game");
 
 newGameBtn.addEventListener("click", () => {
-    emitCreateGame({ socket });
+    emitCreateGame({ socket , input: "#input-name"});
 });
 
 socket.on("gameCreated", (gameId) => {
@@ -60,3 +61,10 @@ inlineGames.addEventListener("click", () => {
 });
 
 socket.on("emitOnlineGames", showOnlineGames);
+
+const computerCreateGame = document.querySelector("#computer-create-game-btn");
+
+computerCreateGame.addEventListener("click", () => {
+    emitCreateGame({ socket , input: "#input-computer-name"});
+    createComputerPlayer();
+})

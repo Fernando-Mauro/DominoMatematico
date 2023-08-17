@@ -1,11 +1,12 @@
 import { hideModal } from "../DOM/hideModal.js";
 import { getGameMode, getSocket, setUserName } from "../sharedModule.js";
 
-const socket = getSocket();
 
 export const emitJoin = () => {
-
+    const socket = getSocket();
+    
     hideModal(`authentication-modal`);
+    
     const gameId = document.querySelector("#codigoGame").value;
     const gameMode = getGameMode();
 
