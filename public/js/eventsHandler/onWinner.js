@@ -1,4 +1,8 @@
+import { getUserName } from "../sharedModule.js";
+
 export const onWinner = ({ name }) => {
+    const userName = getUserName();
+    
     document.addEventListener("click", () => {
         window.location.href = "./index.html";
     });
