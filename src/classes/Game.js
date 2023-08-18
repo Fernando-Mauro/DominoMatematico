@@ -1,5 +1,6 @@
 const Player = require("./Player.js");
 const { generatePieces, startGame, isValidPiece } = require("../logic/index.js");
+const getRandomInt = require("../logic/getRamdonInt.js");
 class Game {
    constructor({ socket, gameId, userName, gameMode }) {
       this.owner = new Player(socket, userName);
@@ -99,7 +100,7 @@ class Game {
    }
    eatPieces() {
       if (this.usedNumber <= 28) {
-         const randomNumber = returnRandomPiece(0, 28 - this.usedNumber);
+         const randomNumber = getRandomInt(0, 28 - this.usedNumber);
          this.usedNumber++;
          const last = this.notUsed[randomNumber];
          this.notUsed.splice(randomNumber, 1);

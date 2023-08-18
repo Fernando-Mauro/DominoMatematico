@@ -3,14 +3,14 @@ import { ownerConstruction } from "./DOM/hostConstruccion.js";
 import { emitCreateGame } from "./eventsHandler/emitCreateGame.js";
 import { emitJoin } from "./eventsHandler/emitJoin.js";
 import { onSendedPieces } from "./DOM/onSendedPieces.js";
-import { getGameMode, getLastClicked, getSocket } from "./sharedModule.js";
+import { getGameMode, getSocket } from "./sharedModule.js";
 import { buildQueue } from "./DOM/buildQueue.js";
 import { changeCurrentTurn } from "./logic/changeCurrentTurn.js";
 import { toggleCustomModal } from "./logic/toggleCustomModal.js";
 import { onClickDesitionBtn } from "./eventsHandler/onClickDesitionBtn.js";
 import { onWinner } from "./eventsHandler/onWinner.js";
 import { showOnlineGames } from "./DOM/showOnlineGames.js";
-import { createComputerPlayer } from "./logic/createComputerPlayer.js";
+import { setComputerSocket } from "./computerSharedModule.js";
 
 const socket = getSocket();
 
@@ -66,5 +66,5 @@ const computerCreateGame = document.querySelector("#computer-create-game-btn");
 
 computerCreateGame.addEventListener("click", () => {
     emitCreateGame({ socket , input: "#input-computer-name"});
-    createComputerPlayer();
+    setComputerSocket();
 })

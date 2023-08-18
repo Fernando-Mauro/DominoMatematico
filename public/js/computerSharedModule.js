@@ -4,7 +4,7 @@ import { setComputerEvents } from "./logic/setComputerEvents.js";
 let computerSocket;
 const computerName = "computer";
 let gameId;
-const pieces = [];
+let pieces = [];
 export const setGameId = (id) => {
     gameId = id;
 }
@@ -26,6 +26,10 @@ export const getComputerSocket = () => {
     return computerSocket;
 }
 
-export const setComputerPieces = (pieces) => {
-    pieces = [...pieces];
+export const setComputerPieces = (newPieces) => {
+    pieces = [...newPieces];
+}
+
+export const getComputerPieces = () => {
+    return pieces;
 }

@@ -1,4 +1,4 @@
-import { getGameMode, setQueueGame , getLastClicked, getQueueGame} from "../sharedModule.js";
+import { getGameMode, setQueueGame } from "../sharedModule.js";
 import { makePiece } from "./makePiece.js";
 
 export const buildQueue = ({ halves, orientation, side, match , queue}) => {
