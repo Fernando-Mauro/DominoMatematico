@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/landingpage.css">
     <title>Dominó Matemático</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 </head>
 <body>
     <header class="flex w-full items-center justify-between py-2 px-5 h-[90px] bg-pinkbg">
@@ -20,13 +21,52 @@
             <ul class="font-ptsans flex text-[16px] w-full justify-evenly items-center text-bluesb uppercase font-bold ">
                 <li class="hover:text-greenl">Objetivo</li>
                 <li class="hover:text-greenl">Trayectoria</li>
-                <li class="hover:text-greenl">Características</li>
+                <li class="hover:text-greenl">Cómo jugar</li>
             </ul>
         </nav>
         <div>
             <button class="w-[150px] rounded-[50px] h-[30px] border-solid bg-cobao text-white font-bold font-ptsans text-[15px] hover:bg-pinkh">JUGAR</button>
         </div>
     </header>
-    <main class="bg-pinkbg w-full h-screen"></main>
+
+    <main class="bg-pinkbg w-full h-screen">
+        <p>
+            Lorem ipsum dolor sit amet.
+        </p>
+
+        <section class="w-[45%] object-cover" class="slider">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide"><img src="./assets/slider/1.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/2.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/3.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/4.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/5.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/6.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/7.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/8.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/9.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/10.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="./assets/slider/11.jpg" alt=""></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="./js/landingpage.js"></script>
+
 </body>
 </html>
