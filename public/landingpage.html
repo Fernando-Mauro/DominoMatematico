@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/landingpage.css">
     <title>Dominó Matemático</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 </head>
-<body>
+<body class="bg-pinkbg">
     <header class="flex w-full items-center justify-between py-5 px-5 h-[132px] bg-pinkbg">
         <div class="flex w-[405px] justify-between">
             <h1 class="font-rubikwet uppercase w-[242px] text-[35px] text-black">Dominó matemático</h1>
             <img class="w-[38%]" src="./assets/landingpage/logo.svg" alt="">
         </div>
         <nav class="w-[50%] h-[81px] pt-[28px]" class="opciones">
-            <ul class="font-ptsans flex text-[20px] w-full justify-evenly items-center text-bluesb uppercase font-bold ">
+            <ul class="font-ptsans flex text-[20px] w-full justify-evenly items-center text-bluesub uppercase font-bold">
                 <li class="hover:text-greenl">Objetivo</li>
                 <li class="hover:text-greenl">Trayectoria</li>
                 <li class="hover:text-greenl">Cómo jugar</li>
@@ -30,38 +30,40 @@
     </header>
 
     <main class="bg-pinkbg w-full h-screen">
-        <p>
-            Lorem ipsum dolor sit amet.
+        <p class="flex justify-center h-[50px] my-[20px] font-garamond text-[25px]">
+            En el choque de fichas se refleja la pasión y estrategia de quienes saben que, a veces, para ganar, es necesario derribar.
         </p>
 
-        <section class="w-[45%] object-cover relative" class="slider">
-            <!-- Slider main container -->
-            <div class="swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                  <!-- Slides -->
-                  <div class="swiper-slide"><img src="./assets/slider/1.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/2.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/3.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/4.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/5.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/6.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/7.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/8.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/9.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/10.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="./assets/slider/11.jpg" alt=""></div>
+        <section class="flex justify-center" class="slider">
+            <section class="w-[45%] object-cover relative" class="slider-content">
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                      <!-- Slides -->
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/1.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/2.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/3.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/4.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/5.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/6.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/7.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/8.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/9.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/10.jpg" alt=""></div>
+                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/11.jpg" alt=""></div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                
+                    <!-- If we need scrollbar
+                    <div class="swiper-scrollbar"></div>-->
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-            
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev after:text-white font-[25px]"></div>
-                <div class="swiper-button-next after:text-white font-[25px]"></div>
-            
-                <!-- If we need scrollbar -->
-                <div class="swiper-scrollbar"></div>
-            </div>
+            </section>
         </section>
     </main>
 

@@ -20,9 +20,10 @@ module.exports = {
         "cobao": "#ed1b24",
         "creme-black": "#efc3ab",
         "pinkbg": "#F8E8EE",
-        "bluesb": "#374259",
+        "bluesub": "#374259",
         "greenl": "#5C8984",
-        "pinkh": "#F15A59"
+        "pinkh": "#F15A59",
+        "bluebp": "#141E46"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",
@@ -46,7 +47,8 @@ module.exports = {
       fontFamily: {
         'rubikwet': ["Rubik Wet Paint", 'cursive'],
         'ptsans': ["PT Sans", 'sans-serif'],
-        'montserrat': ["Montserrat", 'sans-serif']
+        'montserrat': ["Montserrat", 'sans-serif'],
+        'garamond': ["EB Garamond", 'serif;']
       }      
     },
   },
