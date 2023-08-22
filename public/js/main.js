@@ -11,6 +11,7 @@ import { onClickDesitionBtn } from "./eventsHandler/onClickDesitionBtn.js";
 import { onWinner } from "./eventsHandler/onWinner.js";
 import { showOnlineGames } from "./DOM/showOnlineGames.js";
 import { setComputerSocket } from "./computerSharedModule.js";
+import { makePiece } from "./DOM/makePiece.js";
 
 const socket = getSocket();
 
@@ -18,7 +19,7 @@ const socket = getSocket();
 const newGameBtn = document.querySelector("#btn-new-game");
 
 newGameBtn.addEventListener("click", () => {
-    emitCreateGame({ socket , input: "#input-name"});
+    emitCreateGame({ socket, input: "#input-name" });
 });
 
 socket.on("gameCreated", (gameId) => {
@@ -56,7 +57,7 @@ const inlineGames = document.querySelector("#see-inline-games");
 
 inlineGames.addEventListener("click", () => {
     socket.emit("getOnlineGames", {
-        gameMode : getGameMode()
+        gameMode: getGameMode()
     });
 });
 
@@ -65,6 +66,18 @@ socket.on("emitOnlineGames", showOnlineGames);
 const computerCreateGame = document.querySelector("#computer-create-game-btn");
 
 computerCreateGame.addEventListener("click", () => {
-    emitCreateGame({ socket , input: "#input-computer-name"});
+    emitCreateGame({ socket, input: "#input-computer-name" });
     setComputerSocket();
 })
+
+socket.on("eated-piece", (data) => {
+    if (data === null) {
+        const fail = document.getElementById("fail");
+        fail.play();
+        return;
+    }
+    const {first, second} = data;
+    const gameMode = getGameMode();
+    const piece = makePiece({ gameMode, first, second });
+    document.querySelector("#pieces-container").appendChild(piece);
+});

@@ -8,7 +8,7 @@ const onEatPiece = ({ socket }) => {
 
     if (game.players.length < 4) {
         const piece = game.eatPieces();
-        socket.emit("eatedPiece", piece);
+        socket.emit("eated-piece", piece);
     }
 
 }
