@@ -15,7 +15,8 @@ export const setComputerEvents = () => {
         // choosePieceComputer();
     });
 
-    computerSocket.on("eatedPiece", (piece) => {
+    computerSocket.on("eated-piece", (piece) => {
+        console.log("comi una pieza");
         const computerPieces = getComputerPieces();
         const newComputerPieces = [...computerPieces, piece];
         setComputerPieces(newComputerPieces);

@@ -8,6 +8,7 @@ export const choosePieceComputer = (loop=false) => {
     const computerPieces = getComputerPieces();
     let choosedPiece = {};
     const computerSocket = getComputerSocket();
+    let eatedPiece = false;
     if (queueGame[0] === undefined && queueGame[1] === undefined ) {
         for (let i = 6; i >= 0; --i) {
             computerPieces.find(piece => {
@@ -36,7 +37,9 @@ export const choosePieceComputer = (loop=false) => {
             })
         })
         if(bandera && !loop){
+            console.log("comer pieza");
             computerSocket.emit("eat-piece");
+            eatedPiece = true;
         }
     }
 
@@ -50,6 +53,9 @@ export const choosePieceComputer = (loop=false) => {
             second: choosedPiece.second
         });
     }else{
-        computerSocket.on("skipTurn");
+        if(!eatedPiece){
+            console.log('salte turno');
+            computerSocket.emit("skipTurn");
+        }
     }
 }

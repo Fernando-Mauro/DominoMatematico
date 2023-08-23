@@ -8,7 +8,7 @@ export const checkComputerWin = () => {
 
     if(piecesComputer.length === 0){
         socket.emit("winner", {
-            winnerName: getUserName()
+            winnerName: "computer"
         });
     }
 }

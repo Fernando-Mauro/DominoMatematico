@@ -3,6 +3,7 @@ import { clearTimeLeft, getUserName, setMyTurn, setTimeLeft } from "../sharedMod
 const ring = document.querySelector("#ring");
 
 export const changeCurrentTurn = ({name}) => {
+    console.log('El turno es de: ', name);
     const turnActive = document.querySelector("#turn-enable");
     const turnDisactive = document.querySelector("#turn-disable");
     
