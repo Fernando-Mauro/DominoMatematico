@@ -20,7 +20,7 @@ export const makePiece = ({ gameMode, orientation = "column", first = 0, second 
         fillPoints(bottomHalf, second);
     }else{
         fillImg(topHalf, first, gameMode, second);
-        fillImg(bottomHalf, second, gameMode, second);
+        fillImg(bottomHalf, second, gameMode, first);
     }
     containerPiece.appendChild(topHalf);
     containerPiece.appendChild(bottomHalf);
