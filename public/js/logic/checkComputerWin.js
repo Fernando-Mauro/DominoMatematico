@@ -1,5 +1,5 @@
 import { getComputerPieces } from "../computerSharedModule.js";
-import { getSocket, getUserName } from "../sharedModule.js";
+import { getSocket } from "../sharedModule.js";
 
 const socket = getSocket();
 

@@ -14,13 +14,13 @@ export const makePiece = ({ gameMode, orientation = "column", first = 0, second 
     // Mitad de abajo
     const bottomHalf = document.createElement("div");
     bottomHalf.classList.add(`bottom-half-${orientation}`);
-
+    // console.log(gameMode, orientation, first,second);
     if (gameMode === "tradicional") {
         fillPoints(topHalf, first);
         fillPoints(bottomHalf, second);
     }else{
-        fillImg(topHalf, first, gameMode);
-        fillImg(bottomHalf, second, gameMode);
+        fillImg(topHalf, first, gameMode, second);
+        fillImg(bottomHalf, second, gameMode, second);
     }
     containerPiece.appendChild(topHalf);
     containerPiece.appendChild(bottomHalf);
