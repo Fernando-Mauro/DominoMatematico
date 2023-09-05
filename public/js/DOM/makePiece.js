@@ -2,7 +2,7 @@ import { fillPoints } from "./fillPoints.js";
 import { fillImg } from "./fillImg.js";
 import { onClickPiece } from "../eventsHandler/onClickPiece.js";
 
-export const makePiece = ({ gameMode, orientation = "column", first = 0, second = 0 }) => {
+export const makePiece = ({ gameMode, orientation = "column", first = 0, second = 0 , bandera = false}) => {
     // Contenedor de la pieza
     const containerPiece = document.createElement("div");
     containerPiece.classList.add(`piece-${orientation}`);
@@ -18,15 +18,18 @@ export const makePiece = ({ gameMode, orientation = "column", first = 0, second 
     if (gameMode === "tradicional") {
         fillPoints(topHalf, first);
         fillPoints(bottomHalf, second);
-    }else{
+    } else {
         fillImg(topHalf, first, gameMode, second);
         fillImg(bottomHalf, second, gameMode, first);
     }
     containerPiece.appendChild(topHalf);
     containerPiece.appendChild(bottomHalf);
 
-    containerPiece.addEventListener("click", () => 
-        onClickPiece({first, second, containerPiece})
-    );
+    if (!bandera) {
+        containerPiece.addEventListener("click", () =>
+            onClickPiece({ first, second, containerPiece })
+        );
+
+    }
     return containerPiece;
 };

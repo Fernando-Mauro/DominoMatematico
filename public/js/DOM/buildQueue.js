@@ -30,7 +30,8 @@ export const buildQueue = ({ halves, orientation, side, match , queue}) => {
         gameMode,
         orientation,
         first,
-        second
+        second,
+        bandera: true
     });
 
     setQueueGame({

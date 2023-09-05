@@ -35,7 +35,7 @@ export const onSendedPieces = ({
             makePiece({
                 gameMode,
                 first: piece.first,
-                second: piece.second
+                second: piece.second,
             }));
     });
     changeCurrentTurn({name : currentTurn});

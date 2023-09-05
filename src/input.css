@@ -10,7 +10,7 @@
    @apply flex-wrap;
 }
 .piece, .piece-row, .piece-column{
-   @apply hover:scale-125 cursor-pointer ease-in duration-300 relative;
+   @apply hover:scale-150 cursor-pointer ease-in duration-300 relative;
 }
 
 .piece-row{
