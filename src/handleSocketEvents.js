@@ -14,6 +14,7 @@ const {
 const handleSocketEvents = ({ socket, io }) => {
     socket.connectedRooms = [];
 
+    
     socket.on("onCreateNewGame", (data) => {
         onCreateNewGame({ ...data, socket });
     });

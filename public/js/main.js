@@ -81,3 +81,12 @@ socket.on("eated-piece", (data) => {
     const piece = makePiece({ gameMode, first, second });
     document.querySelector("#pieces-container").appendChild(piece);
 });
+socket.io.on("reconnect", () => {
+    const modalContainer = document.querySelector("#modalDisconnect");
+    console.log(modalContainer);
+    const modalDisconnect = new Modal(modalContainer);
+    modalDisconnect.show();
+    window.addEventListener("click", () => {
+        window.location.reload();
+    })
+})
