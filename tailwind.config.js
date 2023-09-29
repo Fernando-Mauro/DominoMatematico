@@ -19,11 +19,11 @@ module.exports = {
         "bring-yellow": "#ffd23f",
         "cobao": "#ed1b24",
         "creme-black": "#efc3ab",
-        "pinkbg": "#F8E8EE",
-        "bluesub": "#374259",
-        "greenl": "#5C8984",
-        "pinkh": "#F15A59",
-        "bluebp": "#141E46"
+        "black-letras": "#00010D",
+        "yellow-light": "#F2DC6D",
+        "yellow-d": "#F2A922",
+        "marron-v": "#73541A",
+        "azul-light": "#326FA8"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",

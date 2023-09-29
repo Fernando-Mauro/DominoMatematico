@@ -11,28 +11,39 @@
     <title>Dominó Matemático</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 </head>
-<body class="bg-pinkbg">
-    <header class="flex w-full items-center justify-between py-5 px-5 h-[132px] bg-pinkbg">
-        <div class="flex w-[405px] justify-between">
-            <h1 class="font-rubikwet uppercase w-[242px] text-[35px] text-black">Dominó matemático</h1>
-            <img class="w-[38%]" src="./assets/landingpage/logo.svg" alt="">
-        </div>
-        <nav class="w-[50%] h-[81px] pt-[28px]" class="opciones">
-            <ul class="font-ptsans flex text-[20px] w-full justify-evenly items-center text-bluesub uppercase font-bold">
-                <li class="hover:text-greenl">Objetivo</li>
-                <li class="hover:text-greenl">Trayectoria</li>
-                <li class="hover:text-greenl">Cómo jugar</li>
-            </ul>
+<body class="bg-yellow-light">
+    <header class="flex w-full h-[80px] items-start">
+        <nav class="flex justify-between items-center bg-yellow-d w-full px-[30px] fixed h-[80px]">
+            <div class="flex w-[280px] justify-between">
+                <h1 class="font-rubikwet uppercase w-[180px] text-[25px] text-black-letras">Dominó matemático</h1>
+                <img class="w-[69px] h-[69px]" src="./assets/landingpage/LogoAmarillo.png" alt="">
+            </div>
+            <div class="w-[800px] h-[30px]">
+                <ul class="font-ptsans flex text-[18px] w-full justify-between items-center text-azul-light uppercase font-bold pl-[45%] pr-[5%]">
+                    <li class="hover:text-marron-v">
+                        <a href="#">Objetivo</a>
+                    </li>
+                    <li class="hover:text-marron-v">
+                        <a href="#">Trayectoria</a>
+                    </li>
+                    <li class="hover:text-marron-v">
+                        <a href="#">Cómo jugar</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <button class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-marron-v">JUGAR</button>
+            </div>
         </nav>
-        <div>
-            <button class="w-[160px] rounded-[50px] h-[40px] border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-pinkh">JUGAR</button>
-        </div>
     </header>
 
-    <main class="bg-pinkbg w-full h-screen">
-        <p class="flex justify-center h-[50px] my-[20px] font-garamond text-[25px]">
+    <main class="bg-yellow-light w-full h-screen">
+        <!--<p class="flex justify-center h-[50px] my-[20px] font-garamond text-[25px]">
             En el choque de fichas se refleja la pasión y estrategia de quienes saben que, a veces, para ganar, es necesario derribar.
-        </p>
+        </p>-->
+
+        <div class="bg-cover bg-no-repeat bg-center w-full h-[900px]" style="background-image: url('./assets/landingpage/banner.png')">
+        </div>
 
         <section class="flex justify-center" class="slider">
             <section class="w-[45%] object-cover relative" class="slider-content">
@@ -40,7 +51,7 @@
                 <div class="swiper">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
-                      <!-- Slides -->
+                      <!-- Slides 
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/1.jpg" alt=""></div>
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/2.jpg" alt=""></div>
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/3.jpg" alt=""></div>
@@ -52,13 +63,13 @@
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/9.jpg" alt=""></div>
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/10.jpg" alt=""></div>
                       <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/11.jpg" alt=""></div>
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
+                    </div> -->
+                    <!-- If we need pagination 
+                    <div class="swiper-pagination"></div> -->
                 
-                    <!-- If we need navigation buttons -->
+                    <!-- If we need navigation buttons 
                     <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-next"></div> -->
                 
                     <!-- If we need scrollbar
                     <div class="swiper-scrollbar"></div>-->
