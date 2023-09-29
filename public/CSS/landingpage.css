@@ -1098,6 +1098,10 @@ input:checked + .toggle-bg {
   top: 0.75rem;
 }
 
+.left-full {
+  left: 100%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1120,6 +1124,10 @@ input:checked + .toggle-bg {
 
 .z-50 {
   z-index: 50;
+}
+
+.-z-10 {
+  z-index: -10;
 }
 
 .mx-auto {
@@ -1258,10 +1266,6 @@ input:checked + .toggle-bg {
   height: 80px;
 }
 
-.h-\[900px\] {
-  height: 900px;
-}
-
 .h-auto {
   height: auto;
 }
@@ -1276,6 +1280,18 @@ input:checked + .toggle-bg {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[900px\] {
+  height: 900px;
+}
+
+.h-2\/5 {
+  height: 40%;
+}
+
+.h-1\/5 {
+  height: 20%;
 }
 
 .min-h-\[100px\] {
@@ -1340,6 +1356,18 @@ input:checked + .toggle-bg {
 
 .w-full {
   width: 100%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .max-w-md {
@@ -1538,6 +1566,14 @@ input:checked + .toggle-bg {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-l-lg {
@@ -1754,6 +1790,11 @@ input:checked + .toggle-bg {
   background-color: rgb(242 220 109 / var(--tw-bg-opacity));
 }
 
+.bg-marron-v {
+  --tw-bg-opacity: 1;
+  background-color: rgb(115 84 26 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1772,10 +1813,6 @@ input:checked + .toggle-bg {
 
 .bg-repeat {
   background-repeat: repeat;
-}
-
-.bg-no-repeat {
-  background-repeat: no-repeat;
 }
 
 .object-cover {

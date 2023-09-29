@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'domino' : "url('../assets/background.jpg')",
+        'banner' : "url('../assets/landingpage/bannerYoutube.png')",
         'domino-second' : "url('../assets/second-background.jpg')"
       },
       colors:{

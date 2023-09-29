@@ -1,85 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg" href="./assets/landingpage/logo2.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./CSS/landingpage.css">
     <title>Dominó Matemático</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
+
 <body class="bg-yellow-light">
-    <header class="flex w-full h-[80px] items-start">
-        <nav class="flex justify-between items-center bg-yellow-d w-full px-[30px] fixed h-[80px]">
-            <div class="flex w-[280px] justify-between">
-                <h1 class="font-rubikwet uppercase w-[180px] text-[25px] text-black-letras">Dominó matemático</h1>
-                <img class="w-[69px] h-[69px]" src="./assets/landingpage/LogoAmarillo.png" alt="">
-            </div>
-            <div class="w-[800px] h-[30px]">
-                <ul class="font-ptsans flex text-[18px] w-full justify-between items-center text-azul-light uppercase font-bold pl-[45%] pr-[5%]">
-                    <li class="hover:text-marron-v">
-                        <a href="#">Objetivo</a>
-                    </li>
-                    <li class="hover:text-marron-v">
-                        <a href="#">Trayectoria</a>
-                    </li>
-                    <li class="hover:text-marron-v">
-                        <a href="#">Cómo jugar</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <button class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-marron-v">JUGAR</button>
-            </div>
+    <header class="w-full h-[80px] z-20 flex items-center justify-center">
+        <nav class="flex justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-full">
+            <ul
+                class="font-ptsans flex text-[18px] w-full justify-around items-center text-azul-light uppercase font-bold ">
+                <li class="hover:text-marron-v">
+                    <a href="#">Objetivo</a>
+                </li>
+                <li class="hover:text-marron-v">
+                    <a href="#">Trayectoria</a>
+                </li>
+                <li class="hover:text-marron-v">
+                    <a href="#">Cómo jugar</a>
+                </li>
+                <li>
+                    <div>
+                        <button
+                            class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-marron-v">JUGAR</button>
+                    </div>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <main class="bg-yellow-light w-full h-screen">
-        <!--<p class="flex justify-center h-[50px] my-[20px] font-garamond text-[25px]">
-            En el choque de fichas se refleja la pasión y estrategia de quienes saben que, a veces, para ganar, es necesario derribar.
-        </p>-->
-
-        <div class="bg-cover bg-no-repeat bg-center w-full h-[900px]" style="background-image: url('./assets/landingpage/banner.png')">
-        </div>
-
-        <section class="flex justify-center" class="slider">
-            <section class="w-[45%] object-cover relative" class="slider-content">
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                      <!-- Slides 
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/1.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/2.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/3.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/4.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/5.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/6.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/7.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/8.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/9.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/10.jpg" alt=""></div>
-                      <div class="swiper-slide shadow-[-5px_-5px_10px_#DF5E5E,5px_5px_10px_#DF5E5E] rounded-[20px]"><img src="./assets/slider/11.jpg" alt=""></div>
-                    </div> -->
-                    <!-- If we need pagination 
-                    <div class="swiper-pagination"></div> -->
-                
-                    <!-- If we need navigation buttons 
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div> -->
-                
-                    <!-- If we need scrollbar
-                    <div class="swiper-scrollbar"></div>-->
-                </div>
-            </section>
-        </section>
-    </main>
+    <div class="objects z-10 w-full h-full">
+        <img class="relative top-0 left-0 w-1/5 h-1/5" src="./assets/objects/beeCell.svg" alt="">
+        <img class="relative bottom-0 right-0 w-1/5 h-1/5" src="./assets/objects/beeCell.svg" alt="">
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="./js/landingpage.js"></script>
 
 </body>
+
 </html>

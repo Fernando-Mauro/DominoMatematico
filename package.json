@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon ./app.js",
-    "tailstart": "npx tailwindcss -i ./src/input.css -o ./public/CSS/output.css --watch",
+    "tailstart": "npx tailwindcss -i ./src/CSS/input.css -o ./public/CSS/output.css --watch",
     "build": "npx tailwindcss -i ./src/CSS/landingpage.css -o ./public/CSS/landingpage.css --watch"
   },
   "author": "Fernando Mauro",
