@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.abejita {
+    animation: vuelodeabeja 3s 4s infinite alternate;
+}
+
+@keyframes vuelodeabeja {
+    from {
+        transform: translateX(0px) translateY(0px);
+
+    }
+    to {
+        transform: translateX(35px) translateY(-40px);
+    }
+}

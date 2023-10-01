@@ -24,7 +24,8 @@ module.exports = {
         "yellow-light": "#F2DC6D",
         "yellow-d": "#F2A922",
         "marron-v": "#73541A",
-        "azul-light": "#326FA8"
+        "azul-light": "#326FA8",
+        "café": "#6A4018"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",

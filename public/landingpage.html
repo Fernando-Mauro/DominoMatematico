@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg" href="./assets/landingpage/logo2.svg">
+    <link rel="icon" type="image/svg" href="./assets/landingpage/LogoAmarillo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +11,13 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./CSS/landingpage.css">
-    <title>Dominó Matemático</title>
+    <title>MATEMÁTICAS EN ACCIÓN</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
-<body class="bg-yellow-light">
+<body class="bg-café">
     <header class="w-full h-[80px] flex items-center justify-center">
-        <nav class="flex z-50 justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-full">
+        <nav class="flex z-50 justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px]">
             <ul
                 class="font-ptsans flex text-[18px] w-full justify-around items-center text-azul-light uppercase font-bold ">
                 <li class="hover:text-marron-v">
@@ -41,13 +41,46 @@
         </nav>
     </header>
 
-    <div class="objects z-0 w-full h-screen fixed top-0 left-0">
-        <img class="absolute top-0 left-0 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
-        <img class="absolute bottom-0 right-0 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
-        <img class="absolute bottom-0 left-0 w-[300px] h-[300px]" src="./assets/objects/abejita.svg    " alt="">
+    <div class="objects -z-10 w-full h-screen fixed top-0 left-0">
+        <img class="absolute -top-16 -left-16 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
+        <img class="absolute -bottom-16 -right-6 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
+        <img class="abejita absolute bottom-5 left-0 w-[150px] h-[150px]" src="./assets/objects/abejita.svg    " alt="">
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <main class="w-full h-screen z-20">
+        <div class="main flex flex-col items-center justify-center ">
+            <img class="w-[900px] pb-[50px] pt-16" src="./assets/objects/letras.svg" alt="">
+            <ul>
+                <li>
+                    <div>
+                        <button class="uppercase font-ptsans w-[220px] rounded-[50px] h-[55px] border-solid bg-azul-light text-white font-bold text-[20px] hover:bg-marron-v hover:z-30">learn more
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <section class="information w-full h-auto bg-yellow-light">
+        <div class="descriptions w-full h-auto flex justify-evenly">
+            <div class="w-[25%]">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos soluta voluptatibus, animi libero enim totam.
+                </p>
+            </div>
+            <div class="w-[25%]">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum inventore consequuntur maxime iste repellat eius.
+                </p>
+            </div>
+            <div class="w-[25%]">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis sed eaque perspiciatis et rem!
+                </p>
+            </div>
+        </div>
+    </section>
+
     <script src="./js/landingpage.js"></script>
 
 </body>
