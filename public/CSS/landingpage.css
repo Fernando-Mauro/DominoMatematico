@@ -1118,10 +1118,6 @@ input:checked + .toggle-bg {
   top: 0.75rem;
 }
 
-.-z-10 {
-  z-index: -10;
-}
-
 .z-0 {
   z-index: 0;
 }
@@ -1261,6 +1257,10 @@ input:checked + .toggle-bg {
   height: 2.25rem;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .h-\[300px\] {
   height: 300px;
 }
@@ -1287,10 +1287,6 @@ input:checked + .toggle-bg {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[150px\] {
-  height: 150px;
 }
 
 .min-h-\[100px\] {
@@ -1333,6 +1329,10 @@ input:checked + .toggle-bg {
   width: 16rem;
 }
 
+.w-\[150px\] {
+  width: 150px;
+}
+
 .w-\[160px\] {
   width: 160px;
 }
@@ -1355,10 +1355,6 @@ input:checked + .toggle-bg {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[150px\] {
-  width: 150px;
 }
 
 .max-w-md {
@@ -1435,6 +1431,12 @@ input:checked + .toggle-bg {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .resize {
@@ -2136,6 +2138,12 @@ input:checked + .toggle-bg {
   transition-duration: 150ms;
 }
 
+.transition-\[background\2c transform\2c color\] {
+  transition-property: background,transform,color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-opacity {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2152,8 +2160,16 @@ input:checked + .toggle-bg {
   transition-duration: 150ms;
 }
 
+.duration-500 {
+  transition-duration: 500ms;
+}
+
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ease-linear {
+  transition-timing-function: linear;
 }
 
 .ease-out {
@@ -2161,21 +2177,99 @@ input:checked + .toggle-bg {
 }
 
 .abejita {
-  animation: vuelodeabeja 3s 4s infinite alternate;
+  animation: vueloDeAbeja 7s infinite linear;
 }
 
-@keyframes vuelodeabeja {
-  from {
-    transform: translateX(0px) translateY(0px);
+::-webkit-scrollbar{
+  display:none;
+}
+
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+@keyframes vueloDeAbeja {
+  0% {
+    bottom: 0;
+    left: 0;
+    transform: scaleX(1);
   }
 
-  to {
-    transform: translateX(35px) translateY(-40px);
+  10% {
+    bottom: 20%;
+    left: 20%;
+    transform: scaleX(1);
+  }
+
+  20% {
+    bottom: 40%;
+    left: 40%;
+    transform: scaleX(1);
+  }
+
+  30% {
+    bottom: 60%;
+    left: 60%;
+    transform: scaleX(1);
+  }
+
+  40% {
+    bottom: 80%;
+    left: 80%;
+    transform: scaleX(1);
+  }
+
+  50% {
+    bottom: 100%;
+    left: 100%;
+    transform: scaleX(1);
+  }
+
+  51%{
+    transform: scaleX(-1);
+  }
+
+  60% {
+    bottom: 80%;
+    left: 80%;
+    transform: scaleX(-1);
+  }
+
+  70% {
+    bottom: 60%;
+    left: 60%;
+    transform: scaleX(-1);
+  }
+
+  80% {
+    bottom: 40%;
+    left: 40%;
+    transform: scaleX(-1);
+  }
+
+  90% {
+    bottom: 20%;
+    left: 20%;
+    transform: scaleX(-1);
+  }
+
+  100% {
+    bottom: 0;
+    left: 0;
+    transform: scaleX(-1);
   }
 }
 
 .hover\:z-30:hover {
   z-index: 30;
+}
+
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .hover\:scale-150:hover {
@@ -2228,6 +2322,16 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-yellow-d:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 169 34 / var(--tw-bg-opacity));
+}
+
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .hover\:text-blue-600:hover {

@@ -3,15 +3,88 @@
 @tailwind utilities;
 
 .abejita {
-    animation: vuelodeabeja 3s 4s infinite alternate;
+    animation: vueloDeAbeja 7s infinite linear;
 }
 
-@keyframes vuelodeabeja {
-    from {
-        transform: translateX(0px) translateY(0px);
+::-webkit-scrollbar{
+    display:none;
+}
+img{
+    @apply select-none;
+}
+
+@keyframes vueloDeAbeja {
+    0% {
+        bottom: 0;
+        left: 0;
+        transform: scaleX(1);
+    }
+
+    10% {
+        bottom: 20%;
+        left: 20%;
+        transform: scaleX(1);
+    }
+
+    20% {
+        bottom: 40%;
+        left: 40%;
+        transform: scaleX(1);
+    }
+
+    30% {
+        bottom: 60%;
+        left: 60%;
+        transform: scaleX(1);
+    }
+
+    40% {
+        bottom: 80%;
+        left: 80%;
+        transform: scaleX(1);
+    }
+
+    50% {
+        bottom: 100%;
+        left: 100%;
+        transform: scaleX(1);
+    }
+    51%{
+        transform: scaleX(-1);
+    }
+    60% {
+        bottom: 80%;
+        left: 80%;
+        transform: scaleX(-1);
+    }
+
+    70% {
+        bottom: 60%;
+        left: 60%;
+        transform: scaleX(-1);
 
     }
-    to {
-        transform: translateX(35px) translateY(-40px);
+
+    80% {
+        bottom: 40%;
+        left: 40%;
+        transform: scaleX(-1);
+
     }
+
+    90% {
+        bottom: 20%;
+        left: 20%;
+        transform: scaleX(-1);
+
+    }
+
+
+    100% {
+        bottom: 0;
+        left: 0;
+        transform: scaleX(-1);
+
+    }
+
 }
