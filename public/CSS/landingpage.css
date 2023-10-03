@@ -1066,16 +1066,16 @@ input:checked + .toggle-bg {
   inset: 0px;
 }
 
-.-bottom-16 {
-  bottom: -4rem;
+.-bottom-\[120px\] {
+  bottom: -120px;
 }
 
 .-left-16 {
   left: -4rem;
 }
 
-.-right-6 {
-  right: -1.5rem;
+.-right-\[24px\] {
+  right: -24px;
 }
 
 .-top-16 {
@@ -1140,6 +1140,10 @@ input:checked + .toggle-bg {
 
 .z-50 {
   z-index: 50;
+}
+
+.m-\[10px\] {
+  margin: 10px;
 }
 
 .mx-auto {
@@ -1269,6 +1273,10 @@ input:checked + .toggle-bg {
   height: 55px;
 }
 
+.h-\[70\%\] {
+  height: 70%;
+}
+
 .h-\[80px\] {
   height: 80px;
 }
@@ -1341,12 +1349,12 @@ input:checked + .toggle-bg {
   width: 220px;
 }
 
-.w-\[25\%\] {
-  width: 25%;
-}
-
 .w-\[300px\] {
   width: 300px;
+}
+
+.w-\[80px\] {
+  width: 80px;
 }
 
 .w-\[900px\] {
@@ -1459,6 +1467,10 @@ input:checked + .toggle-bg {
   grid-auto-rows: auto;
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1501,10 +1513,6 @@ input:checked + .toggle-bg {
 
 .justify-around {
   justify-content: space-around;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
 }
 
 .justify-items-center {
@@ -1874,6 +1882,11 @@ input:checked + .toggle-bg {
   padding-right: 1.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1933,8 +1946,20 @@ input:checked + .toggle-bg {
   padding-top: 1rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.font-garamond {
+  font-family: EB Garamond, serif;;
+}
+
+.font-montserrat {
+  font-family: Montserrat, sans-serif;
 }
 
 .font-ptsans {
@@ -1949,6 +1974,10 @@ input:checked + .toggle-bg {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-\[16px\] {
+  font-size: 16px;
 }
 
 .text-\[18px\] {
@@ -2019,6 +2048,11 @@ input:checked + .toggle-bg {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-black-letras {
+  --tw-text-opacity: 1;
+  color: rgb(0 1 13 / var(--tw-text-opacity));
 }
 
 .text-blue-600 {
