@@ -65,8 +65,8 @@
         </div>
     </main>
 
-    <section class="information w-full h-[600px] bg-yellow-light">
-        <div class="descriptions w-full h-[70%] grid grid-cols-3 gap-8 px-8 pt-8">
+    <section class="information w-full bg-yellow-light">
+        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pt-8">
             <article class="uppercase text-center flex flex-col items-center">
                 <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/historia.svg" alt="">
                 <h1 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Nuestra historia</h1>
@@ -103,7 +103,7 @@
         <div class="swiper-wrapper w-full flex">
             <!-- Slides -->
             <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex justify-center items-center">
+                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
                     <img class="w-[250px] h-[250px] rounded-full object-cover"
                         src="./assets/landingpage/fotoPrueba.webp" alt="">
                     <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
@@ -113,52 +113,40 @@
                             computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
                             advanced programming - a fundamental part of my career."
                         </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex justify-center items-center">
+                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
                     <img class="w-[250px] h-[250px] rounded-full object-cover"
                         src="./assets/landingpage/fotoPrueba.webp" alt="">
                     <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Sindientes</h1>
+                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h1>
                         <q>
                             "omegaUp is a platform that helped me a lot to grow and better understand programming and
                             computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
                             advanced programming - a fundamental part of my career."
                         </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex justify-center items-center">
+                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
                     <img class="w-[250px] h-[250px] rounded-full object-cover"
                         src="./assets/landingpage/fotoPrueba.webp" alt="">
                     <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Pelon</h1>
+                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h1>
                         <q>
                             "omegaUp is a platform that helped me a lot to grow and better understand programming and
                             computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
                             advanced programming - a fundamental part of my career."
                         </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the Olympiad​ in Informatics Chihuahua, Mexico.</footer>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex justify-center items-center">
-                    <img class="w-[250px] h-[250px] rounded-full object-cover"
-                        src="./assets/landingpage/fotoPrueba.webp" alt="">
-                    <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Chocolate 🍫</h1>
-                        <q>
-                            "omegaUp is a platform that helped me a lot to grow and better understand programming and
-                            computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
-                            advanced programming - a fundamental part of my career."
-                        </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
                     </div>
                 </div>
             </div>
@@ -170,14 +158,73 @@
         <!-- If we need scrollbar -->
     </div>
 
-    <section class="testimonios bg-yellow-light w-full h-screen">
-        <div class="grid gap-4 grid-cols-3">
+    <section class="testimonios bg-yellow-light w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            <!-- Contenido de cada columna -->
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-3xl font-bold">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-2xl">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-xl text-center">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-3xl font-bold">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-2xl">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-xl text-center">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-3xl font-bold">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-2xl">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-xl text-center">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
 
         </div>
     </section>
 
-    <section class="funcionamiento bg-yellow-light w-full h-screen">
-
+    <section class="funcionamiento bg-yellow-light w-full">
+        <h2 class="text-4xl font-bold text-center py-5">¿Cuál es nuestro objetivo?</h2>
+        <div class="objetivos w-1/2 mx-auto flex flex-col justify-center items-center">
+            <article class="flex justify-center items-center">
+                <img class="w-2/5" src="./assets/landingpage/laptopImage.png" alt="">
+                <div class="flex items-center justify-between flex-col gap-5 px-6">
+                    <h3 class="text-bold text-2xl text-black-letras font-bold justify-self-start">Social Justice through education</h3>
+                    <p class="">
+                        We are proud to offer a free competitive programming platform to equip our students with the
+                        technical skills and problem-solving abilities they need to thrive in today's economy.
+                        <br>
+                        omegaUp.com is designed to be accessible to students from underserved communities in Latin
+                        America. We make the platform available in Spanish, which is the native language for many of our
+                        students removing a significant barrier to entry for many students who might not have had the
+                        opportunity to learn computer science in English.</p>
+                </div>
+            </article>
+        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

@@ -6,6 +6,12 @@
     animation: vueloDeAbeja 7s infinite linear;
 }
 
+.container-testimonios{
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    justify-items: center;
+    align-items: center;
+ }
+
 ::-webkit-scrollbar{
     display:none;
 }
