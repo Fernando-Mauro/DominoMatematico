@@ -1142,6 +1142,14 @@ input:checked + .toggle-bg {
   z-index: 50;
 }
 
+.-z-10 {
+  z-index: -10;
+}
+
+.z-\[1\] {
+  z-index: 1;
+}
+
 .m-\[10px\] {
   margin: 10px;
 }
@@ -1273,8 +1281,16 @@ input:checked + .toggle-bg {
   height: 55px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .h-\[70\%\] {
   height: 70%;
+}
+
+.h-\[700px\] {
+  height: 700px;
 }
 
 .h-\[80px\] {
@@ -1297,36 +1313,33 @@ input:checked + .toggle-bg {
   height: 100vh;
 }
 
-.h-96 {
-  height: 24rem;
+.h-\[250px\] {
+  height: 250px;
 }
 
-.h-\[800px\] {
-  height: 800px;
+.h-\[500px\] {
+  height: 500px;
 }
 
-.h-\[700px\] {
-  height: 700px;
+.h-\[400px\] {
+  height: 400px;
 }
 
-.h-\[1000px\] {
-  height: 1000px;
+.h-\[350px\] {
+  height: 350px;
 }
 
-.h-\[900px\] {
-  height: 900px;
-}
-
-.h-\[600px\] {
-  height: 600px;
-}
-
-.h-12 {
-  height: 3rem;
+.max-h-max {
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 
 .min-h-\[100px\] {
   min-height: 100px;
+}
+
+.w-1\/12 {
+  width: 8.333333%;
 }
 
 .w-1\/2 {
@@ -1393,12 +1406,16 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
-.w-12 {
-  width: 3rem;
+.w-\[250px\] {
+  width: 250px;
 }
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-\[500px\] {
+  max-width: 500px;
 }
 
 .flex-1 {
@@ -1407,6 +1424,10 @@ input:checked + .toggle-bg {
 
 .flex-shrink {
   flex-shrink: 1;
+}
+
+.grow {
+  flex-grow: 1;
 }
 
 .-translate-x-full {
@@ -1571,6 +1592,10 @@ input:checked + .toggle-bg {
   gap: 2rem;
 }
 
+.gap-\[40px\] {
+  gap: 40px;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1603,6 +1628,10 @@ input:checked + .toggle-bg {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-l-lg {
@@ -1849,6 +1878,11 @@ input:checked + .toggle-bg {
   background-repeat: repeat;
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -2040,6 +2074,16 @@ input:checked + .toggle-bg {
   line-height: 1rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2145,6 +2189,16 @@ input:checked + .toggle-bg {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(194 120 3 / var(--tw-text-opacity));
+}
+
+.text-caf\E9 {
+  --tw-text-opacity: 1;
+  color: rgb(106 64 24 / var(--tw-text-opacity));
+}
+
+.text-\[\#00010d\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 1 13 / var(--tw-text-opacity));
 }
 
 .underline {
