@@ -21,19 +21,19 @@
         <nav class="flex z-50 justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px]">
             <ul
                 class="font-ptsans flex text-[18px] w-full justify-around items-center text-azul-light uppercase font-bold ">
-                <li class="hover:text-marron-v">
+                <li class="hover:text-café hover:z-30 transition-[background,transform,color] ease-linear duration-500">
                     <a href="#">Objetivo</a>
                 </li>
-                <li class="hover:text-marron-v">
+                <li class="hover:text-café hover:z-30 transition-[background,transform,color] ease-linear duration-500">
                     <a href="#">Trayectoria</a>
                 </li>
-                <li class="hover:text-marron-v">
+                <li class="hover:text-café hover:z-30 transition-[background,transform,color] ease-linear duration-500">
                     <a href="#">Cómo jugar</a>
                 </li>
                 <li>
                     <div>
                         <button
-                            class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-marron-v">
+                            class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café hover:z-30 transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
                             JUGAR
                         </button>
                     </div>
@@ -42,16 +42,16 @@
         </nav>
     </header>
 
-    <!-- <div class="z- objects w-full h-screen fixed top-0 left-0">
-        <img class=" absolute -top-16 -left-16 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
-        <img class=" absolute -bottom-[120px] -right-[24px] w-[300px] h-[300px]" src="./assets/objects/beeCell.svg"
+    <div class="objects w-full top-0 left-0 absolute">
+        <img class="fixed -top-16 -left-16 w-[300px] h-[300px] z-40" src="./assets/objects/beeCell.svg" alt="">
+        <img class="fixed -bottom-[120px] -right-[24px] w-[300px] h-[300px] z-40" src="./assets/objects/beeCell.svg"
             alt="">
-        <img class=" abejita absolute bottom-5 left-0 w-[150px] h-[150px]" src="./assets/objects/abejita.svg" alt="">
-    </div> -->
+        <img class="abejita fixed bottom-5 left-0 w-[150px] h-[150px] z-40" src="./assets/objects/abejita.svg" alt="">
+    </div>
 
-    <main class="w-full h-screen z-40">
+    <main class="w-full h-[850px] flex justify-center" >
         <div class="main flex flex-col items-center justify-center ">
-            <img class="w-[900px] pb-[50px] pt-16 select-none" src="./assets/objects/letras.svg" alt="">
+            <img class="w-[900px] pb-[50px] select-none" src="./assets/objects/letras.svg" alt="">
             <ul>
                 <li>
                     <div>
@@ -66,10 +66,10 @@
     </main>
 
     <section class="information w-full bg-yellow-light">
-        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pt-8">
+        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pt-8 pb-20">
             <article class="uppercase text-center flex flex-col items-center">
                 <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/historia.svg" alt="">
-                <h1 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Nuestra historia</h1>
+                <h2 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Nuestra historia</h2>
                 <p class="font-montserrat text-[16px] m-[10px] text-black-letras">Lorem, ipsum dolor sit amet
                     consectetur adipisicing elit. Distinctio dolore nesciunt iusto ut est eveniet, molestiae velit eius
                     inventore deserunt numquam, asperiores sunt vel, commodi id. Voluptates repudiandae pariatur
@@ -78,7 +78,7 @@
             </article>
             <article class="uppercase text-center flex flex-col items-center">
                 <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/impacto.svg" alt="">
-                <h1 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Nuestro impacto</h1>
+                <h2 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Nuestro impacto</h2>
                 <p class="font-montserrat text-[16px] m-[10px] text-black-letras">Lorem, ipsum dolor sit amet
                     consectetur adipisicing elit. Distinctio dolore nesciunt iusto ut est eveniet, molestiae velit eius
                     inventore deserunt numquam, asperiores sunt vel, commodi id. Voluptates repudiandae pariatur
@@ -87,7 +87,7 @@
             </article>
             <article class="uppercase text-center flex flex-col items-center">
                 <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/inclusion.svg" alt="">
-                <h1 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Inclusión</h1>
+                <h2 class="font-garamond text-[18px] m-[10px] text-black-letras font-bold ">Inclusión</h2>
                 <p class="font-montserrat text-[16px] m-[10px] text-black-letras">Lorem, ipsum dolor sit amet
                     consectetur adipisicing elit. Distinctio dolore nesciunt iusto ut est eveniet, molestiae velit eius
                     inventore deserunt numquam, asperiores sunt vel, commodi id. Voluptates repudiandae pariatur
@@ -97,66 +97,68 @@
         </div>
     </section>
 
-    <!-- Slider main container -->
-    <div class="swiper bg-yellow-d w-full h-[700px] flex">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper w-full flex">
-            <!-- Slides -->
-            <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
-                    <img class="w-[250px] h-[250px] rounded-full object-cover"
-                        src="./assets/landingpage/fotoPrueba.webp" alt="">
-                    <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h1>
-                        <q>
-                            "omegaUp is a platform that helped me a lot to grow and better understand programming and
-                            computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
-                            advanced programming - a fundamental part of my career."
-                        </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
-                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+    <section class="slide">
+        <!-- Slider main container -->
+        <div class="swiper bg-yellow-d w-full h-[700px] flex">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper w-full flex">
+                <!-- Slides -->
+                <div class="swiper-slide w-full flex">
+                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
+                        <img class="w-[250px] h-[250px] rounded-full object-cover"
+                            src="./assets/landingpage/fotoPrueba.webp" alt="">
+                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
+                            <h2 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h2>
+                            <q>
+                                "omegaUp is a platform that helped me a lot to grow and better understand programming and
+                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
+                                advanced programming - a fundamental part of my career."
+                            </q>
+                            <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide w-full flex">
+                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
+                        <img class="w-[250px] h-[250px] rounded-full object-cover"
+                            src="./assets/landingpage/fotoPrueba.webp" alt="">
+                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
+                            <h2 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h2>
+                            <q>
+                                "omegaUp is a platform that helped me a lot to grow and better understand programming and
+                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
+                                advanced programming - a fundamental part of my career."
+                            </q>
+                            <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide w-full flex">
+                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
+                        <img class="w-[250px] h-[250px] rounded-full object-cover"
+                            src="./assets/landingpage/fotoPrueba.webp" alt="">
+                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
+                            <h2 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h2>
+                            <q>
+                                "omegaUp is a platform that helped me a lot to grow and better understand programming and
+                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
+                                advanced programming - a fundamental part of my career."
+                            </q>
+                            <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
+                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
-                    <img class="w-[250px] h-[250px] rounded-full object-cover"
-                        src="./assets/landingpage/fotoPrueba.webp" alt="">
-                    <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h1>
-                        <q>
-                            "omegaUp is a platform that helped me a lot to grow and better understand programming and
-                            computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
-                            advanced programming - a fundamental part of my career."
-                        </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
-                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide w-full flex">
-                <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
-                    <img class="w-[250px] h-[250px] rounded-full object-cover"
-                        src="./assets/landingpage/fotoPrueba.webp" alt="">
-                    <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                        <h1 class="text-black-letras font-bold text-4xl">Meet omegaUp Alum, Elsy</h1>
-                        <q>
-                            "omegaUp is a platform that helped me a lot to grow and better understand programming and
-                            computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic and
-                            advanced programming - a fundamental part of my career."
-                        </q>
-                        <footer class="font-bold text-xl text-black-letras">- Mariana Valdivia, competitor of the
-                            Olympiad​ in Informatics Chihuahua, Mexico.</footer>
-                    </div>
-                </div>
-            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination text-azul-light w"></div>
+
+        
+            <!-- If we need scrollbar -->
         </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-
-
-        <!-- If we need scrollbar -->
-    </div>
+    </section>
 
     <section class="testimonios bg-yellow-light w-full">
         <div class="grid grid-cols-1 md:grid-cols-3">
@@ -226,6 +228,36 @@
             </article>
         </div>
     </section>
+    
+    <footer class="footer w-full bg-yellow-d h-32 flex justify-center">
+        <div class="redesSociales flex w-[20%] justify-evenly pt-8">
+            <a href="https://www.facebook.com/profile.php?id=61551011581423">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/facebook.svg" alt="">
+                </div>
+            </a>
+            <a href="https://twitter.com/Mate_en_accion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/twitter-x.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.instagram.com/matematicasenaccion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/instagram.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@MatematicasEnAccion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/youtube.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.tiktok.com/@mate_.en_accion_">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/tiktok.svg" alt="">
+                </div>
+            </a>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="./js/landingpage.js"></script>

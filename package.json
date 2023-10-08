@@ -14,6 +14,7 @@
   "author": "Fernando Mauro",
   "license": "MIT",
   "dependencies": {
+    "caniuse-lite": "^1.0.30001546",
     "express": "^4.18.2",
     "flowbite": "^1.5.5",
     "socket.io": "^4.5.3",
