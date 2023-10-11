@@ -1086,10 +1086,6 @@ input:checked + .toggle-bg {
   bottom: 0px;
 }
 
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
 .bottom-\[60px\] {
   bottom: 60px;
 }
@@ -1116,6 +1112,18 @@ input:checked + .toggle-bg {
 
 .top-3 {
   top: 0.75rem;
+}
+
+.-z-10 {
+  z-index: -10;
+}
+
+.-z-20 {
+  z-index: -20;
+}
+
+.-z-30 {
+  z-index: -30;
 }
 
 .z-0 {
@@ -1265,8 +1273,8 @@ input:checked + .toggle-bg {
   height: 2.25rem;
 }
 
-.h-\[150px\] {
-  height: 150px;
+.h-\[100px\] {
+  height: 100px;
 }
 
 .h-\[200px\] {
@@ -1291,10 +1299,6 @@ input:checked + .toggle-bg {
 
 .h-\[80px\] {
   height: 80px;
-}
-
-.h-\[850px\] {
-  height: 850px;
 }
 
 .h-auto {
@@ -1357,8 +1361,8 @@ input:checked + .toggle-bg {
   width: 16rem;
 }
 
-.w-\[150px\] {
-  width: 150px;
+.w-\[100px\] {
+  width: 100px;
 }
 
 .w-\[160px\] {
@@ -1569,6 +1573,10 @@ input:checked + .toggle-bg {
 
 .gap-10 {
   gap: 2.5rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .gap-20 {
@@ -1963,11 +1971,6 @@ input:checked + .toggle-bg {
   padding-right: 1.5rem;
 }
 
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2040,6 +2043,10 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .font-garamond {
   font-family: EB Garamond, serif;;
 }
@@ -2050,11 +2057,6 @@ input:checked + .toggle-bg {
 
 .font-ptsans {
   font-family: PT Sans, sans-serif;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-3xl {
@@ -2072,16 +2074,24 @@ input:checked + .toggle-bg {
   line-height: 1;
 }
 
-.text-\[16px\] {
-  font-size: 16px;
-}
-
 .text-\[18px\] {
   font-size: 18px;
 }
 
 .text-\[20px\] {
   font-size: 20px;
+}
+
+.text-\[25px\] {
+  font-size: 25px;
+}
+
+.text-\[30px\] {
+  font-size: 30px;
+}
+
+.text-\[40px\] {
+  font-size: 40px;
 }
 
 .text-lg {
@@ -2102,30 +2112,6 @@ input:checked + .toggle-bg {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[25px\] {
-  font-size: 25px;
-}
-
-.text-\[19px\] {
-  font-size: 19px;
-}
-
-.text-\[21px\] {
-  font-size: 21px;
-}
-
-.text-\[23px\] {
-  font-size: 23px;
-}
-
-.text-\[40px\] {
-  font-size: 40px;
-}
-
-.text-\[30px\] {
-  font-size: 30px;
 }
 
 .font-bold {
@@ -2420,10 +2406,6 @@ img {
     left: 0;
     transform: scaleX(-1);
   }
-}
-
-.hover\:z-30:hover {
-  z-index: 30;
 }
 
 .hover\:scale-110:hover {
@@ -2724,6 +2706,10 @@ img {
 @media (min-width: 768px) {
   .md\:inset-0 {
     inset: 0px;
+  }
+
+  .md\:mt-16 {
+    margin-top: 4rem;
   }
 
   .md\:h-auto {
