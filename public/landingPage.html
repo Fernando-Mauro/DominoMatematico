@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg" href="./assets/landingpage/LogoAmarillo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap"
+        rel="stylesheet">
+    <title>MENA</title>
+    <link rel="stylesheet" href="./CSS/landingpage.css">
+    <link rel="stylesheet" href="/swiper.css" />
+
+</head>
+
+<body class="bg-café">
+
+    <!-- <header class="w-full h-[80px] flex items-center justify-center">
+        <nav
+            class="flex justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px] z-50 border-solid border-black border-2">
+            <ul
+                class="font-ptsans flex text-[18px] w-full justify-around items-center text-azul-light uppercase font-bold ">
+                <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
+                    <a href="#objetivo">Objetivo</a>
+                </li>
+                <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
+                    <a href="#testimonios">Testimonios</a>
+                </li>
+                <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
+                    <a href="#">Cómo jugar</a>
+                </li>
+                <li>
+                    <a href="">
+                        <button
+                            class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                            JUGAR
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <header class="w-full h-[80px] flex items-center justify-center">
+
+        <nav class="bg-yellow-d fixed z-50 w-3/4 h-[80px] rounded-[15px] flex items-center px-8">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
+                <a href="/"
+                    class="flex items-center transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                    <img src="./assets/landingpage/logoSinFondo.png" class="h-14 mr-3"
+                        alt="Matemáticas en acción Logo" />
+                    <span
+                        class="self-center text-café text-xl font-semibold whitespace-nowrap  md:block hidden">Matemáticas
+                        en acción</span>
+                </a>
+                <button data-collapse-toggle="navbar" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden z-[100]"
+                    aria-controls="navbar" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden md:static fixed top-[80px] left-0 w-full md:block md:w-auto" id="navbar">
+                    <ul
+                        class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg bg-yellow-d md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#objetivo"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Objetivo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#testimonios"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Testimonios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#learn-more"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Leer Más
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/domino">
+                                <button
+                                    class="w-[120px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                                    JUGAR
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="objects w-full top-0 left-0 absolute z-30 md:block hidden">
+        <img class="fixed -top-16 -left-16 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
+        <img class="fixed -bottom-[120px] -right-[24px] w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
+    </div>
+
+    <div class="bug z-50">
+        <div class="bee1">
+            <div class="eye"></div>
+        </div>
+        <div class="bee2">
+            <div class="wing"></div>
+            <div class="wing2"></div>
+        </div>
+        <div class="black"></div>
+    </div>
+    <div class="bug-top z-[51]">
+        <div class="bee1-top">
+            <div class="eye-top"></div>
+        </div>
+        <div class="bee2-top">
+            <div class="wing-top"></div>
+            <div class="wing2-top"></div>
+        </div>
+        <div class="black-top"></div>
+    </div>
+    <main class="w-full h-screen flex justify-center">
+        <div class="main flex flex-col items-center justify-center ">
+            <img class="w-[900px] pb-[50px] select-none -z-20" src="./assets/objects/letras.svg" alt="">
+            <ul>
+                <li>
+                    <a href="#learn-more"
+                        class="uppercase text-center align-middle font-ptsans w-[220px] rounded-[50px] h-[55px] border-solid bg-azul-light text-white font-bold text-[20px] hover:bg-yellow-d transition-[background,transform,color] ease-linear duration-500 hover:text-black hover:scale-110 flex items-center justify-center">
+                        Leer Más
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <section class="information w-full bg-yellow-light relative -z-30 py-32 px-10" id="objetivo">
+        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-16 h-auto">
+            <article class="text-center flex flex-col items-center md:mt-16">
+                <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/objetive.svg" alt="">
+                <h2 class="text-center text-[30px] m-[10px] text-black-letras font-bold ">
+                    Nuestro objetivo
+                </h2>
+                <p class="font-montserrat text-justify text-[20px] m-[10px] text-black-letras">
+                    Nuestro principal objetivo es transformar la manera en que las matemáticas se aprenden y se
+                    perciben. Nos apasiona hacer que las matemáticas sean más accesibles, comprensibles y emocionantes
+                    para todos, independientemente de su nivel de habilidad.
+                </p>
+            </article>
+            <article class="text-center flex flex-col items-center">
+                <img class="w-[100px] h-[100px] m-[10px]" src="./assets/landingpage/computer.svg" alt="">
+                <h2 class="text-center text-[30px] m-[10px] text-black-letras font-bold ">
+                    La tecnologia como aliada
+                </h2>
+                <p class="font-montserrat text-justify text-[20px] m-[10px] text-black-letras">
+                    Aprovechamos la tecnología de vanguardia para llevar el aprendizaje de las matemáticas a un nivel
+                    superior. Estamos trabajando en el desarrollo de una variedad de juegos en línea que desafíen y
+                    estimulen las mentes, aprovechando la potencia de la tecnología para hacer que el aprendizaje sea
+                    interactivo y entretenido.
+                </p>
+            </article>
+            <article class="text-center flex flex-col items-center md:mt-16">
+                <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/hands.svg" alt="">
+                <h2 class="text-center text-[30px] m-[10px] text-black-letras font-bold ">
+                    Nuestro compromiso
+                </h2>
+                <p class="font-montserrat text-justify text-[20px] m-[10px] text-black-letras">
+                    En Matemáticas en Acción, estamos comprometidos en eliminar la intimidación que a menudo rodea a las
+                    matemáticas y en convertirlas en una aventura apasionante para todos. Nuestro objetivo es inspirar
+                    la curiosidad, fomentar la confianza y abrir las puertas a un mundo de oportunidades.
+                </p>
+            </article>
+        </div>
+    </section>
+
+
+    <section class="slide" id="testimonios">
+        <!-- Slider main container -->
+        <div class="swiper z-30 bg-yellow-d w-full flex items-center justify-center">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper w-full flex items-center justify-center">
+                <!-- Slides -->
+                <div class="swiper-slide w-full flex items-center justify-center">
+                    <div class="w-full gap-20 flex flex-col md:flex-row justify-center items-center py-40">
+                        <img class="w-[250px] h-[250px] rounded-full object-cover"
+                            src="./assets/landingpage/team/fernandoImg.png"
+                            alt="Foto de intregante del club de matemáticas">
+                        <div class="flex flex-col max-w-[600px] h-[300px] items-start gap-[40px] justify-center">
+                            <h2 class="text-black-letras font-bold text-[40px] font-ptsans">Integrante de matemáticas en
+                                acción</h2>
+                            <q class="font-montserrat text-[20px]">
+                                Como miembro de "Matemáticas en Acción", he descubierto que las matemáticas pueden ser
+                                emocionantes y accesibles.Esta comunidad me ha motivado a aprender, y la tecnología ha
+                                hecho que el aprendizaje sea
+                                interactivo. "Matemáticas en Acción" no solo cambió mi enfoque hacia las matemáticas,
+                                sino que me inspiró a explorar nuevas oportunidades.
+                            </q>
+                            <footer class="font-bold text-[20px] text-black-letras">
+                                -Fernando Mauro, programador y estudiante del cobao, Mexico.
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination text-azul-light"></div>
+        </div>
+    </section>
+
+    <section class="testimonios bg-yellow-light w-full relative -z-30">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            <!-- Contenido de cada columna -->
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-[30px] font-bold font-ptsans">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-[25px] font-ptsans">SWE AT <img
+                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-[20px] text-center font-montserrat">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-[30px] font-bold font-ptsans">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-[25px] font-ptsans">SWE AT <img
+                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-[20px] text-center font-montserrat">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
+            <div
+                class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
+                <img class=" w-[200px] h-[200px] object-cover rounded-full"
+                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <div class="flex flex-col justify-center items-center">
+                    <h3 class="text-black-letras text-[30px] font-bold font-ptsans">Luis A. Citalan, MX</h3>
+                    <span class="flex items-center justify-center gap-4 text-[25px] font-ptsans">SWE AT <img
+                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <q class="w-3/4 text-black-letras text-[20px] text-center font-montserrat">
+                        "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
+                        and evaluate educational content is invaluable"
+                    </q>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="funcionamiento bg-yellow-light w-full p-[50px] relative -z-30" id="learn-more">
+        <h2 class="text-4xl font-bold text-center py-5 uppercase font-garamond">¿Cuál es nuestro objetivo?</h2>
+        <div class="objetivos w-1/2 mx-auto flex flex-col justify-center items-center">
+            <article class="flex justify-center items-center m-[20px]">
+                <img class="w-2/5" src="./assets/landingpage/laptopImage.png" alt="">
+                <div class="flex items-center justify-between flex-col gap-5 px-6">
+                    <h3 class="text-bold text-[30px] text-black-letras font-bold justify-self-start font-ptsans">Social
+                        Justice through education</h3>
+                    <p class="font-montserrat text-black-letras text-[20px]">
+                        We are proud to offer a free competitive programming platform to equip our students with the
+                        technical skills and problem-solving abilities they need to thrive in today's economy.
+                        <br>
+                        omegaUp.com is designed to be accessible to students from underserved communities in Latin
+                        America. We make the platform available in Spanish, which is the native language for many of our
+                        students removing a significant barrier to entry for many students who might not have had the
+                        opportunity to learn computer science in English.
+                    </p>
+                </div>
+            </article>
+        </div>
+        <div class="w-1/2 mx-auto flex flex-col justify-center items-center">
+            <article class="flex justify-center items-center m-[20px]">
+                <div class="flex items-center justify-between flex-col gap-5 px-6">
+                    <h3 class="text-bold text-[30px] text-black-letras font-bold justify-self-start font-ptsans">
+                        Advancing education</h3>
+                    <p class="font-montserrat text-black-letras text-[20px]">
+                        Our platform is a powerful tool for programming courses in the classroom. It fosters
+                        collaboration among students, allowing them to learn, compete, and grow together while
+                        developing critical thinking skills and technical abilities essential to success in the tech
+                        industry.
+                        <br>
+                        Our platform is equally valuable to teachers looking for a more engaging and productive way to
+                        teach coding. With its user-friendly interface, teachers can create and manage coding
+                        challenges, track student progress, and provide feedback to students. This allows for
+                        personalized support that improves student engagement and outcomes, freeing teachers to focus on
+                        the individual needs of their students.
+                    </p>
+                </div>
+                <img class="w-2/5" src="./assets/landingpage/educacionPrueba.png" alt="">
+            </article>
+        </div>
+        <div class="w-1/2 mx-auto flex flex-col justify-center items-center">
+            <article class="flex justify-center items-center m-[20px]">
+                <img class="w-2/5" src="./assets/landingpage/mujeresPrueba.png" alt="">
+                <div class="flex items-center justify-between flex-col gap-5 px-6">
+                    <h3 class="text-bold text-[30px] text-black-letras font-bold justify-self-start font-ptsans">
+                        Empowering girls in tech</h3>
+                    <p class="font-montserrat text-black-letras text-[20px]">
+                        It is important for all members of society to be represented in the development of technology.
+                        Increasing the representation of women in tech can help to address the gender imbalance in the
+                        industry and create a more equitable society.
+                        <br>
+                        The Mexican Girls Olympiad in Informatics (OFMI) is a project created by omegaUp that provides
+                        girls with a platform to compete and show their skills in informatics. They have the opportunity
+                        to demonstrate their potential and contribute to the improvement of the tech sector. The best
+                        participants represented Mexico in the European Girls Olympiad in Informatics, held in Turkey
+                        last September. They won 3 silver medals, and 7th place in the competition, an impressive result
+                        for a Latin American country.
+                    </p>
+                </div>
+            </article>
+        </div>
+        <div class="w-1/2 mx-auto flex flex-col justify-center items-center">
+            <article class="flex justify-center items-center m-[20px]">
+                <div class="flex items-center justify-between flex-col gap-5 px-6">
+                    <h3 class="text-bold text-[30px] text-black-letras font-bold justify-self-start font-ptsans">
+                        Preparing tech leaders</h3>
+                    <p class="font-montserrat text-black-letras text-[20px]">
+                        Programming clubs provide a fun and engaging way for students to learn and practice computer
+                        science skills. By fostering a collaborative and supportive environment, students can explore
+                        new concepts and work on projects that interest them. These clubs also provide a great
+                        opportunity for students to build friendships and develop social skills while learning about
+                        technology.
+                        <br>
+                        Our organization is dedicated to providing these opportunities to all students, including those
+                        in public schools. We believe that every student should have access to quality computer science
+                        education, regardless of their background or socioeconomic status. Programming clubs are just
+                        one of the ways we strive to make this goal a reality.
+                    </p>
+                </div>
+                <img class="w-2/5" src="./assets/landingpage/lideresPrueba.png" alt="">
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer w-full bg-yellow-d h-32 flex justify-center relative -z-30">
+        <div class="redesSociales flex w-[20%] justify-evenly pt-8">
+            <a href="https://www.facebook.com/profile.php?id=61551011581423">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/facebook.svg" alt="">
+                </div>
+            </a>
+            <a href="https://twitter.com/Mate_en_accion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/twitter-x.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.instagram.com/matematicasenaccion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/instagram.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@MatematicasEnAccion">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/youtube.svg" alt="">
+                </div>
+            </a>
+            <a href="https://www.tiktok.com/@mate_.en_accion_">
+                <div>
+                    <img class="w-[35px]" src="./assets/landingpage/tiktok.svg" alt="">
+                </div>
+            </a>
+        </div>
+    </footer>
+
+    <script src="/flowbite.js" type="module"></script>
+    <script src="./swiper.js"></script>
+    <script src="./js/landingpage.js"></script>
+
+
+</body>
+
+</html>

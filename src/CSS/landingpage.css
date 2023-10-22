@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    scroll-behavior: smooth;
+}
+
+.container-testimonios {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    justify-items: center;
+    align-items: center;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    @apply select-none;
+}
+
+.swiper-slide{
+    display: flex !important;
+}
+.bug {
+    margin-left: 0%;
+    transform: rotate(-360deg);
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    animation: bee 10s linear infinite;
+}
+
+.bee1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #FFC107;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 6;
+}
+
+.bee2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 18px 20px 18px;
+    background-color: #FFC107;
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    z-index: 4;
+}
+
+.black {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 18px 20px 18px;
+    background-color: black;
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    z-index: 5;
+}
+
+.eye {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 6;
+    animation: eye 0.5s 2.2s 2 linear;
+}
+
+.wing {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #BBDEFB;
+    position: absolute;
+    right: 10px;
+    top: -15px;
+    z-index: 2;
+    border: 0.5px solid #90CAF9;
+    animation: wings 1s linear infinite;
+}
+
+.wing2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #BBDEFB;
+    position: absolute;
+    right: 0;
+    top: -15px;
+    border: 0.5px solid #90CAF9;
+    z-index: 1;
+    animation: wings2 1s linear infinite;
+}
+
+@keyframes bee {
+    0% {
+        transform: rotate(0deg);
+        left: 0%;
+    }
+
+    20% {
+        transform: rotate(-10deg);
+        left: 0;
+    }
+
+    40% {
+        transform: rotate(-20deg);
+        left: 10%;
+    }
+
+    60% {
+        left: 80%;
+        transform: rotate(-360deg);
+    }
+
+    80% {
+        left: 90%;
+        transform: rotate(-360deg) scaleX(-1);
+    }
+
+    100% {
+        left: 0%;
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes wings {
+    20% {
+        right: 12px;
+    }
+
+    30% {
+        right: 8px;
+    }
+
+    40% {
+        right: 12px;
+    }
+
+    50% {
+        right: 8px;
+    }
+
+    60% {
+        right: 12px;
+    }
+
+    70% {
+        right: 8px;
+    }
+
+    80% {
+        right: 12px;
+    }
+
+    90% {
+        right: 8px;
+    }
+}
+
+@keyframes wings2 {
+    20% {
+        right: -2px;
+    }
+
+    30% {
+        right: 2px;
+    }
+
+    40% {
+        right: -2px;
+    }
+
+    50% {
+        right: 2px;
+    }
+
+    60% {
+        right: -2px;
+    }
+
+    70% {
+        right: 2px;
+    }
+
+    80% {
+        right: -2px;
+    }
+
+    90% {
+        right: 2px;
+    }
+}
+
+@keyframes eye {
+    0% {
+        width: 5px;
+        height: 5px;
+    }
+
+    10% {
+        width: 0;
+        height: 0;
+    }
+
+    40% {
+        width: 5px;
+        height: 5px;
+    }
+
+    50% {
+        width: 5px;
+        height: 5px;
+    }
+
+    100% {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+
+.bug-top {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    animation: bee-top 10s linear infinite;
+}
+
+.bee1-top {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #FFC107;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 6;
+}
+
+.bee2-top {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 18px 20px 18px;
+    background-color: #FFC107;
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    z-index: 4;
+}
+
+.black-top {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 18px 20px 18px;
+    background-color: black;
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    z-index: 5;
+}
+
+.eye-top {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 6;
+    animation: eye 0.5s 2.2s 2 linear;
+}
+
+.wing-top {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #BBDEFB;
+    position: absolute;
+    right: 10px;
+    top: -15px;
+    z-index: 2;
+    border: 0.5px solid #90CAF9;
+    animation: wings 1s linear infinite;
+}
+
+.wing2-top {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #BBDEFB;
+    position: absolute;
+    right: 0;
+    top: -15px;
+    border: 0.5px solid #90CAF9;
+    z-index: 1;
+    animation: wings2 1s linear infinite;
+}
+
+@keyframes bee-top {
+    0% {
+        transform: rotate(0deg) scaleX(1);
+        right: 0%;
+    }
+
+    20% {
+        transform: rotate(-10deg);
+        right: 0;
+    }
+
+    40% {
+        transform: rotate(-20deg);
+        right: 10%;
+    }
+
+    60% {
+        right: 80%;
+        transform: rotate(-360deg);
+    }
+
+    80% {
+        right: 90%;
+        transform: rotate(-360deg);
+    }
+
+    100% {
+        right: 0%;
+    }
+}
+
+@keyframes wings-top {
+    20% {
+        right: 12px;
+    }
+
+    30% {
+        right: 8px;
+    }
+
+    40% {
+        right: 12px;
+    }
+
+    50% {
+        right: 8px;
+    }
+
+    60% {
+        right: 12px;
+    }
+
+    70% {
+        right: 8px;
+    }
+
+    80% {
+        right: 12px;
+    }
+
+    90% {
+        right: 8px;
+    }
+}
+
+@keyframes wings2-top {
+    20% {
+        right: -2px;
+    }
+
+    30% {
+        right: 2px;
+    }
+
+    40% {
+        right: -2px;
+    }
+
+    50% {
+        right: 2px;
+    }
+
+    60% {
+        right: -2px;
+    }
+
+    70% {
+        right: 2px;
+    }
+
+    80% {
+        right: -2px;
+    }
+
+    90% {
+        right: 2px;
+    }
+}
+
+@keyframes eye-top {
+    0% {
+        width: 5px;
+        height: 5px;
+    }
+
+    10% {
+        width: 0;
+        height: 0;
+    }
+
+    40% {
+        width: 5px;
+        height: 5px;
+    }
+
+    50% {
+        width: 5px;
+        height: 5px;
+    }
+
+    100% {
+        width: 5px;
+        height: 5px;
+    }
+}

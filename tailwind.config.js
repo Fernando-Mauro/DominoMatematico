@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'domino' : "url('../assets/background.jpg')",
+        'banner' : "url('../assets/landingpage/bannerYoutube.png')",
         'domino-second' : "url('../assets/second-background.jpg')"
       },
       colors:{
@@ -18,7 +19,13 @@ module.exports = {
         "creme": "#f2e9e4",
         "bring-yellow": "#ffd23f",
         "cobao": "#ed1b24",
-        "creme-black": "#efc3ab"
+        "creme-black": "#efc3ab",
+        "black-letras": "#00010D",
+        "yellow-light": "#F2DC6D",
+        "yellow-d": "#F2A922",
+        "marron-v": "#73541A",
+        "azul-light": "#326FA8",
+        "café": "#6A4018"
       },
       boxShadow: {
         'custom' : "0px 6px 20px -4px rgba(255,255,255,0.89);",
@@ -38,7 +45,13 @@ module.exports = {
       },
       animation: {
         'rotando': 'rotar 5s linear infinite'
-      }
+      },
+      fontFamily: {
+        'rubikwet': ["Rubik Wet Paint", 'cursive'],
+        'ptsans': ["PT Sans", 'sans-serif'],
+        'montserrat': ["Montserrat", 'sans-serif'],
+        'garamond': ["EB Garamond", 'serif;']
+      }      
     },
   },
   plugins: [
