@@ -17,74 +17,143 @@
 </head>
 
 <body class="bg-café">
-    <header class="w-full h-[80px] flex items-center justify-center">
-        <nav class="flex justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px]">
+
+    <!-- <header class="w-full h-[80px] flex items-center justify-center">
+        <nav
+            class="flex justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px] z-50 border-solid border-black border-2">
             <ul
                 class="font-ptsans flex text-[18px] w-full justify-around items-center text-azul-light uppercase font-bold ">
                 <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
-                    <a href="#">Objetivo</a>
+                    <a href="#objetivo">Objetivo</a>
                 </li>
                 <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
-                    <a href="#">Trayectoria</a>
+                    <a href="#testimonios">Testimonios</a>
                 </li>
                 <li class="hover:text-café transition-[background,transform,color] ease-linear duration-500">
                     <a href="#">Cómo jugar</a>
                 </li>
                 <li>
-                    <div>
+                    <a href="">
                         <button
                             class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
                             JUGAR
                         </button>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </nav>
+    </header> -->
+
+    <header class="w-full h-[80px] flex items-center justify-center">
+
+        <nav class="bg-yellow-d fixed z-50 w-3/4 h-[80px] rounded-[15px] flex items-center px-8">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
+                <a href="/"
+                    class="flex items-center transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                    <img src="./assets/landingpage/logoSinFondo.png" class="h-14 mr-3"
+                        alt="Matemáticas en acción Logo" />
+                    <span
+                        class="self-center text-café text-xl font-semibold whitespace-nowrap  md:block hidden">Matemáticas
+                        en acción</span>
+                </a>
+                <button data-collapse-toggle="navbar" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden z-[100]"
+                    aria-controls="navbar" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden md:static fixed top-[80px] left-0 w-full md:block md:w-auto" id="navbar">
+                    <ul
+                        class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg bg-yellow-d md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#objetivo"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Objetivo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#testimonios"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Testimonios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#learn-more"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Leer Más
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/domino">
+                                <button
+                                    class="w-[120px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                                    JUGAR
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
     </header>
 
-    <div class="objects w-full top-0 left-0 absolute z-50">
+    <div class="objects w-full top-0 left-0 absolute z-30 md:block hidden">
         <img class="fixed -top-16 -left-16 w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
         <img class="fixed -bottom-[120px] -right-[24px] w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
-        <div class="bug">
-            <div class="bee1">
-                <div class="eye"></div>
-            </div>
-            <div class="bee2">
-                <div class="wing"></div>
-                <div class="wing2"></div>
-            </div>
-            <div class="black"></div>
-        </div>
-        <div class="bug-top">
-            <div class="bee1-top">
-                <div class="eye-top"></div>
-            </div>
-            <div class="bee2-top">
-                <div class="wing-top"></div>
-                <div class="wing2-top"></div>
-            </div>
-            <div class="black-top"></div>
-        </div>
     </div>
 
+    <div class="bug z-50">
+        <div class="bee1">
+            <div class="eye"></div>
+        </div>
+        <div class="bee2">
+            <div class="wing"></div>
+            <div class="wing2"></div>
+        </div>
+        <div class="black"></div>
+    </div>
+    <div class="bug-top z-[51]">
+        <div class="bee1-top">
+            <div class="eye-top"></div>
+        </div>
+        <div class="bee2-top">
+            <div class="wing-top"></div>
+            <div class="wing2-top"></div>
+        </div>
+        <div class="black-top"></div>
+    </div>
     <main class="w-full h-screen flex justify-center">
         <div class="main flex flex-col items-center justify-center ">
             <img class="w-[900px] pb-[50px] select-none -z-20" src="./assets/objects/letras.svg" alt="">
             <ul>
                 <li>
-                    <div>
-                        <button
-                            class="uppercase font-ptsans w-[220px] rounded-[50px] h-[55px] border-solid bg-azul-light text-white font-bold text-[20px] hover:bg-yellow-d transition-[background,transform,color] ease-linear duration-500 hover:text-black hover:scale-110">
-                            Learn more
-                        </button>
-                    </div>
+                    <a href="#learn-more"
+                        class="uppercase text-center align-middle font-ptsans w-[220px] rounded-[50px] h-[55px] border-solid bg-azul-light text-white font-bold text-[20px] hover:bg-yellow-d transition-[background,transform,color] ease-linear duration-500 hover:text-black hover:scale-110 flex items-center justify-center">
+                        Leer Más
+                    </a>
                 </li>
             </ul>
         </div>
     </main>
 
-    <section class="information w-full bg-yellow-light relative -z-30">
-        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-16 p-14 pb-20">
+    <section class="information w-full bg-yellow-light relative -z-30 py-32 px-10" id="objetivo">
+        <div class="descriptions w-full grid grid-cols-1 md:grid-cols-3 gap-16 h-auto">
             <article class="text-center flex flex-col items-center md:mt-16">
                 <img class="w-[80px] h-[80px] m-[10px]" src="./assets/landingpage/objetive.svg" alt="">
                 <h2 class="text-center text-[30px] m-[10px] text-black-letras font-bold ">
@@ -122,69 +191,31 @@
         </div>
     </section>
 
-    <section class="slide">
+
+    <section class="slide" id="testimonios">
         <!-- Slider main container -->
-        <div class="swiper bg-yellow-d w-full h-[700px] flex">
+        <div class="swiper z-30 bg-yellow-d w-full flex items-center justify-center">
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper w-full flex">
+            <div class="swiper-wrapper w-full flex items-center justify-center">
                 <!-- Slides -->
-                <div class="swiper-slide w-full flex">
-                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
+                <div class="swiper-slide w-full flex items-center justify-center">
+                    <div class="w-full gap-20 flex flex-col md:flex-row justify-center items-center py-40">
                         <img class="w-[250px] h-[250px] rounded-full object-cover"
-                            src="./assets/landingpage/fotoPrueba.webp" alt="">
-                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                            <h2 class="text-black-letras font-bold text-[40px] font-ptsans">Meet omegaUp Alum, primero
-                            </h2>
+                            src="./assets/landingpage/team/fernandoImg.png"
+                            alt="Foto de intregante del club de matemáticas">
+                        <div class="flex flex-col max-w-[600px] h-[300px] items-start gap-[40px] justify-center">
+                            <h2 class="text-black-letras font-bold text-[40px] font-ptsans">Integrante de matemáticas en
+                                acción</h2>
                             <q class="font-montserrat text-[20px]">
-                                "omegaUp is a platform that helped me a lot to grow and better understand programming
-                                and
-                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic
-                                and
-                                advanced programming - a fundamental part of my career."
+                                Como miembro de "Matemáticas en Acción", he descubierto que las matemáticas pueden ser
+                                emocionantes y accesibles.Esta comunidad me ha motivado a aprender, y la tecnología ha
+                                hecho que el aprendizaje sea
+                                interactivo. "Matemáticas en Acción" no solo cambió mi enfoque hacia las matemáticas,
+                                sino que me inspiró a explorar nuevas oportunidades.
                             </q>
-                            <footer class="font-bold text-[20px] text-black-letras font-garamond">- Mariana Valdivia,
-                                competitor of the
-                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide w-full flex">
-                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
-                        <img class="w-[250px] h-[250px] rounded-full object-cover"
-                            src="./assets/landingpage/fotoPrueba.webp" alt="">
-                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                            <h2 class="text-black-letras font-bold text-[40px] font-ptsans">Meet omegaUp Alum, segunday
-                            </h2>
-                            <q class="font-montserrat text-[20px]">
-                                "omegaUp is a platform that helped me a lot to grow and better understand programming
-                                and
-                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic
-                                and
-                                advanced programming - a fundamental part of my career."
-                            </q>
-                            <footer class="font-bold text-[20px] text-black-letras font-garamond">- Mariana Valdivia,
-                                competitor of the
-                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide w-full flex">
-                    <div class="w-full gap-20 h-full flex flex-col md:flex-row justify-center items-center">
-                        <img class="w-[250px] h-[250px] rounded-full object-cover"
-                            src="./assets/landingpage/fotoPrueba.webp" alt="">
-                        <div class="flex flex-col max-w-[500px] h-[300px] items-start gap-[40px] justify-center">
-                            <h2 class="text-black-letras font-bold text-[40px] font-ptsans">Meet omegaUp Alum tercera
-                            </h2>
-                            <q class="font-montserrat text-[20px]">
-                                "omegaUp is a platform that helped me a lot to grow and better understand programming
-                                and
-                                computing. I plan to study Aerospace Engineering, and omegaUp helps me learn both basic
-                                and
-                                advanced programming - a fundamental part of my career."
-                            </q>
-                            <footer class="font-bold text-[20px] text-black-letras font-garamond">- Mariana Valdivia,
-                                competitor of the
-                                Olympiad​ in Informatics Chihuahua, Mexico.</footer>
+                            <footer class="font-bold text-[20px] text-black-letras">
+                                -Fernando Mauro, programador y estudiante del cobao, Mexico.
+                            </footer>
                         </div>
                     </div>
                 </div>
@@ -242,7 +273,7 @@
         </div>
     </section>
 
-    <section class="funcionamiento bg-yellow-light w-full p-[50px] relative -z-30">
+    <section class="funcionamiento bg-yellow-light w-full p-[50px] relative -z-30" id="learn-more">
         <h2 class="text-4xl font-bold text-center py-5 uppercase font-garamond">¿Cuál es nuestro objetivo?</h2>
         <div class="objetivos w-1/2 mx-auto flex flex-col justify-center items-center">
             <article class="flex justify-center items-center m-[20px]">
@@ -356,9 +387,8 @@
             </a>
         </div>
     </footer>
-    <!-- <canvas class="fixed top-0 left-0" id="bee-animation">
-    </canvas> -->
 
+    <script src="/flowbite.js" type="module"></script>
     <script src="./swiper.js"></script>
     <script src="./js/landingpage.js"></script>
 

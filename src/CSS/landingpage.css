@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    scroll-behavior: smooth;
+}
 
 .container-testimonios {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -17,11 +20,9 @@ img {
     @apply select-none;
 }
 
-body {
-    background-color: #FFF59D;
-    overflow: hidden;
+.swiper-slide{
+    display: flex !important;
 }
-
 .bug {
     margin-left: 0%;
     transform: rotate(-360deg);
