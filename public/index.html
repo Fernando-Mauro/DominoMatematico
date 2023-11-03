@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- PRUEBA -->
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +11,7 @@
 </head>
 
 <body class="">
-    <main class="w-full md:h-screen p-20 bg-main-light pt-10 bg-domino-second bg-cover bg-center bg-repeat">
+    <!-- <main class="w-full md:h-screen p-20 bg-main-light pt-10 bg-domino-second bg-cover bg-center bg-repeat">
         <h1 class="font-semibold text-5xl text-shadow text-center" style="text-shadow:black .1em .1em .2em;">Jugar <span
                 class="text-bring-yellow">Dominó</span></h1>
         <div class="container-cards grid gap-20 justify-items-center auto-rows-auto w-full justify-center mt-20 ">
@@ -37,7 +36,6 @@
                 <h3 class="text-3xl">Princesas</h3>
             </a>
             <a href="./main.html" class="card anchor rainbown">
-                <!-- <i class="fa-regular fa-square animate-rotar animate-rotando"></i> -->
                 <img class="w-20 animate-rotar animate-rotando" src="/assets/iconsMenu/colors.svg" alt="">
                 <h3 class="text-3xl">Colores</h3>
             </a>
@@ -46,7 +44,6 @@
                 <h3 class="text-3xl">Héroes</h3>
             </a>
             <a href="./main.html" class="card anchor bg-orange-700">
-                <!-- <i class="fa-solid fa-hippo"></i> -->
                 <img class="w-20" src="/assets/iconsMenu/animales.svg" alt="">
                 <h3 class="text-3xl">Animales</h3>
             </a>
@@ -55,33 +52,175 @@
                 <h3 class="text-3xl">Ecuaciones</h3>
             </a>
         </div>
-        <main />
-        <div id="list-inline-games" tabindex="-1" aria-hidden="true"
-            class="fixed top-0 left-0 right-0 z-50 hidden w-full p-10 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-            <div class="relative w-full h-full md:h-auto">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <button type="button"
-                        class="absolute top-3 right-2.5  text-gray-400 bg-cobao hover:bg-red-800 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                        data-modal-toggle="list-inline-games">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="p-4 snap-mandatory snap-y lg:px-8 flex flex-col justify-center gap-3"
-                        id="unordered-list-inline-games">
-                    </div>
+    </main>
+    <div id="list-inline-games" tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-10 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div class="relative w-full h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button"
+                    class="absolute top-3 right-2.5  text-gray-400 bg-cobao hover:bg-red-800 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                    data-modal-toggle="list-inline-games">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 snap-mandatory snap-y lg:px-8 flex flex-col justify-center gap-3"
+                    id="unordered-list-inline-games">
                 </div>
             </div>
         </div>
+    </div> -->
 
-        
-        <script src="/flowbite.js" type="module"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="./index.js"></script>
+    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+        type="button"
+        class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <span class="sr-only">Open sidebar</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" fill-rule="evenodd"
+                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+            </path>
+        </svg>
+    </button>
+
+    <aside id="logo-sidebar"
+        class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
+        <div class="h-full px-5 py-4 overflow-y-auto bg-gray-50">
+            <a href="/" class="flex items-center pl-2.5 mb-5">
+                <img src="./assets/landingpage/logoSinFondo.png" class="h-6 mr-3 sm:h-7" alt="Logo" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap ">Dómino</span>
+            </a>
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            fill=" currentColor" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M356.522 303.712c50.542 32.395 76.17 87.364 51.594 125.682-24.565 38.338-85.213 38.014-135.757 5.618a161.796 161.796 0 01-18.258-13.595c-14.54 20.659-34.561 39.64-58.329 54.875-69.395 44.479-151.525 44.924-183.737-5.351-32.225-50.274 2.475-124.708 71.869-169.186 57.754-37.022 124.671-43.701 164.142-15.211 29.97-13.058 72.006-6.215 108.476 17.168zm-22.106 34.483c-29.846-19.136-62.199-21.927-75.69-10.658-8.543 7.136-21.222 6.141-28.548-2.24-20.325-23.251-74.607-20.829-124.17 10.942-52.732 33.798-76.844 85.522-59.487 112.601 17.347 27.073 74.417 26.764 127.147-7.033 26.801-17.179 47.328-39.842 57.785-62.662 6.411-13.99 25.384-16.176 34.809-4.011 7.303 9.427 16.926 18.164 28.203 25.395 33.877 21.713 69.465 21.903 79.168 6.759 9.7-15.124-5.338-47.379-39.217-69.094zm-62.975 280.373c-9.279 22.895-31.566 38.197-56.683 38.197-25.971 0-48.852-16.351-57.527-40.378-3.841-10.639-15.579-16.149-26.218-12.309s-16.149 15.579-12.309 26.218c14.49 40.134 52.685 67.429 96.053 67.429 41.942 0 79.153-25.549 94.644-63.773 4.248-10.483-.806-22.424-11.288-26.673s-22.424.806-26.673 11.288zm-90.552-71.918c0 16.927-13.722 30.638-30.648 30.638-16.916 0-30.638-13.711-30.638-30.638s13.722-30.648 30.638-30.648c16.927 0 30.648 13.722 30.648 30.648zm135.196 0c0 16.927-13.722 30.638-30.638 30.638-16.927 0-30.648-13.711-30.648-30.638s13.722-30.648 30.648-30.648c16.916 0 30.638 13.722 30.638 30.648z" />
+                            <path
+                                d="M360.506 453.639c21.761 29.897 33.659 65.841 33.659 103.629 0 97.369-78.939 176.302-176.323 176.302-97.377 0-176.323-78.937-176.323-176.302 0-25.956 5.596-51.066 16.264-74.059 4.76-10.26.302-22.437-9.959-27.197s-22.437-.302-27.197 9.959C7.466 494.338.559 525.329.559 557.268c0 119.988 97.285 217.262 217.283 217.262 120.005 0 217.283-97.271 217.283-217.262 0-46.524-14.687-90.891-41.502-127.733-6.656-9.145-19.465-11.163-28.61-4.506s-11.163 19.465-4.506 28.61zm445.747 151.383c-9.279 22.895-31.566 38.197-56.683 38.197-25.971 0-48.852-16.351-57.527-40.378-3.841-10.639-15.579-16.149-26.218-12.309s-16.149 15.579-12.309 26.218c14.49 40.134 52.685 67.429 96.053 67.429 41.942 0 79.153-25.549 94.644-63.773 4.248-10.483-.806-22.424-11.288-26.673s-22.424.806-26.673 11.288zm-93.326-66.898c0 16.927-13.722 30.648-30.638 30.648-16.927 0-30.648-13.722-30.648-30.648s13.722-30.638 30.648-30.638c16.916 0 30.638 13.711 30.638 30.638zm135.197 0c0 16.927-13.722 30.648-30.638 30.648-16.927 0-30.648-13.722-30.648-30.648s13.722-30.638 30.648-30.638c16.916 0 30.638 13.711 30.638 30.638z" />
+                            <path
+                                d="M901.307 466.294c16.211 27.09 24.895 58.079 24.895 90.378 0 97.369-78.939 176.302-176.323 176.302-97.377 0-176.323-78.937-176.323-176.302 0-33.625 9.412-65.809 26.904-93.643 6.019-9.577 3.134-22.219-6.442-28.237s-22.219-3.134-28.237 6.442c-21.566 34.315-33.184 74.045-33.184 115.438 0 119.988 97.285 217.262 217.283 217.262 120.005 0 217.283-97.271 217.283-217.262 0-39.758-10.719-78.008-30.708-111.411-5.808-9.706-18.384-12.866-28.09-7.058s-12.866 18.384-7.058 28.09z" />
+                            <path
+                                d="M516.628 520.14c0-128.916 104.505-233.421 233.421-233.421 126.376 0 228.833 102.457 228.833 228.833v113.664h-51.364c-11.311 0-20.48 9.169-20.48 20.48s9.169 20.48 20.48 20.48h54.333c20.977 0 37.99-17.013 37.99-37.99V515.552c0-148.998-120.795-269.793-269.793-269.793-151.537 0-274.381 122.843-274.381 274.381v112.046c0 20.979 17.004 37.99 37.99 37.99h61.471c11.311 0 20.48-9.169 20.48-20.48s-9.169-20.48-20.48-20.48h-58.501V520.14z" />
+                            <path
+                                d="M583.592 472.932h332.913c11.311 0 20.48-9.169 20.48-20.48s-9.169-20.48-20.48-20.48H583.592c-11.311 0-20.48 9.169-20.48 20.48s9.169 20.48 20.48 20.48z" />
+                        </svg>
+                        <span class="ml-3">Nivel Preescolar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            fill="#ed1b24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 498.281 498.281"
+                            xml:space="preserve" stroke="#ed1b24">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g id="XMLID_293_">
+                                    <path id="XMLID_298_"
+                                        d="M171.057,165.49c-5.503-14.221-19.228-24.352-35.395-24.352h-25.625c-16.168,0-29.895,10.13-35.395,24.352 L5.121,268.998c-6.258,9.326-3.775,21.97,5.541,28.226c9.215,6.208,21.888,3.863,28.227-5.542l33.11-49.3v10.627v4.876 l-18.095,71.41c-0.535,2.134-0.061,4.4,1.289,6.137c1.352,1.739,3.439,2.751,5.624,2.751h11.182v114.413 c0,11.231,9.099,20.34,20.341,20.34s20.34-9.108,20.34-20.34V338.182h20.34v114.413c0,11.231,9.098,20.34,20.34,20.34 c11.242,0,20.34-9.108,20.34-20.34V338.182h11.184c2.184,0,4.271-1.012,5.621-2.751c1.351-1.737,1.828-4.003,1.289-6.137 l-18.094-71.41v-4.876v-10.627l33.111,49.3c6.298,9.356,18.949,11.778,28.227,5.542c9.314-6.256,11.799-18.899,5.543-28.226 L171.057,165.49z">
+                                    </path>
+                                    <path id="XMLID_297_"
+                                        d="M122.848,121.434c26.915,0,48.745-21.82,48.745-48.735c0-26.915-21.83-48.734-48.745-48.734 c-26.913,0-48.745,21.82-48.745,48.734C74.103,99.614,95.935,121.434,122.848,121.434z">
+                                    </path>
+                                    <path id="XMLID_296_"
+                                        d="M52.078,98.978c11.002,0,19.921-8.918,19.921-19.922c0-10.995-8.919-19.914-19.921-19.914 c-9.357,0-23.996,15.076-44.635,5.383c-2.045-0.963-4.47-0.506-6.018,1.132c-1.551,1.639-1.867,4.082-0.797,6.068 C7.523,84.419,23.016,98.978,52.078,98.978z">
+                                    </path>
+                                    <path id="XMLID_295_"
+                                        d="M494.828,270.379l-69.522-103.518c-5.502-14.212-19.228-24.342-35.396-24.342h-25.623 c-16.168,0-29.893,10.13-35.395,24.342l-69.523,103.518c-6.258,9.326-3.773,21.969,5.543,28.226 c9.215,6.208,21.888,3.863,28.227-5.543l33.111-49.3c0,321.774,0-123.182,0,210.214c0,11.232,9.096,20.34,20.34,20.34 c11.24,0,20.34-9.108,20.34-20.34V339.563h20.34v114.413c0,11.232,9.098,20.34,20.34,20.34c11.242,0,20.341-9.108,20.341-20.34 c0-317.645,0,109.435,0-210.214l33.11,49.3c6.297,9.356,18.951,11.779,28.225,5.543 C498.601,292.349,501.086,279.705,494.828,270.379z">
+                                    </path>
+                                    <path id="XMLID_294_"
+                                        d="M377.1,122.814c26.913,0,48.743-21.819,48.743-48.734c0-26.914-21.83-48.734-48.743-48.734 c-26.915,0-48.746,21.82-48.746,48.734C328.354,100.995,350.185,122.814,377.1,122.814z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="ml-3">Nivel Primaria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 496.176 496.176"
+                            xml:space="preserve">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g id="XMLID_285_">
+                                    <path id="XMLID_290_"
+                                        d="M93.148,152.212l-29.712,35.651l-26.407,2.574c-3.65-2.118-7.836-3.421-12.349-3.421 C9.954,187.016,0,199.925,0,210.629c0,2.633,0.277,60.285,0.277,80.85c0,5.132,13.831,42.299,15.688,47.642l-10.312,62.57 c-1.483,8.993,4.594,17.497,13.602,18.978c9.27,1.458,17.529-4.813,18.961-13.61l4.171-25.217 c1.271,5.523,5.083,10.327,10.899,12.144c8.715,2.728,17.967-2.134,20.672-10.817l17.023-54.336 c1.924-6.125,0.115-12.813-4.643-17.138l-36.896-33.607v-55.698l23.945-2.329c4.316-0.416,8.293-2.517,11.078-5.857l34.063-40.856 c5.832-7.006,4.871-17.415-2.117-23.247C109.357,144.262,98.98,145.214,93.148,152.212z M56.351,329.02l-11.095,35.383 l3.958-24.062c0.457-2.712,0.212-5.506-0.685-8.104l-5.261-15.135L56.351,329.02z">
+                                    </path>
+                                    <path id="XMLID_289_"
+                                        d="M32.939,180.825c17.09,0,30.951-13.855,30.951-30.952c0-17.097-13.861-30.951-30.951-30.951 c-17.089,0-30.95,13.853-30.95,30.951C1.989,166.97,15.851,180.825,32.939,180.825z">
+                                    </path>
+                                    <path id="XMLID_288_"
+                                        d="M479.674,316.396h-44.197l-4.853-31.229c0-1.995,0-3.592,0-5.018c0-5.18,0-6.866,0-6.736 c0-8.756,0-27.571,0-65.358c0-13.602-11.225-24.76-24.763-24.76c-3.079,0-5.978,0.627-8.683,1.653l-25.967-5.36l-39.699-44.44 c-6.094-6.793-16.535-7.372-23.313-1.303c-6.793,6.069-7.381,16.503-1.32,23.304l43.334,48.505 c2.377,2.631,5.522,4.447,8.977,5.165l21.91,4.521V276.5c0,0.074,0.016,0.153,0.033,0.235l-25.56,39.44 c-2.037,3.128-2.933,6.858-2.591,10.573l7.053,72.956c0.848,8.943,8.748,15.679,18.002,14.84 c9.074-0.871,15.736-8.943,14.857-18.016l-6.484-67.231l14.254-21.985l4.365,28.134c1.256,8.032,8.178,13.971,16.307,13.971h58.338 c9.121,0,16.502-7.396,16.502-16.512C496.176,323.79,488.795,316.396,479.674,316.396z">
+                                    </path>
+                                    <path id="XMLID_287_"
+                                        d="M397.619,177.104c17.088,0,30.95-13.856,30.95-30.953s-13.862-30.952-30.95-30.952 c-17.09,0-30.953,13.855-30.953,30.952S380.529,177.104,397.619,177.104z">
+                                    </path>
+                                    <path id="XMLID_286_"
+                                        d="M234.355,75.296c-15.754,0-28.543,12.788-28.543,28.542c0,15.769,12.789,28.548,28.543,28.548 c15.77,0,28.557-12.779,28.557-28.548C262.912,88.083,250.125,75.296,234.355,75.296z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="ml-3">Nivel Secundaria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <style type="text/css">
+                                    .st0 {
+                                        fill: #ed1b24;
+                                    }
+                                </style>
+                                <g>
+                                    <path class="st0"
+                                        d="M116.738,231.551c0,23.245,14.15,43.315,34.513,49.107c15.262,42.368,55.574,70.776,100.582,70.776 s85.32-28.408,100.58-70.776c20.365-5.792,34.515-25.854,34.515-49.107c0-15.691-6.734-30.652-18.061-40.248l1.661-8.921 c0-3.323-0.229-6.568-0.491-9.821l-0.212-2.593l-2.213,1.374c-30.871,19.146-80.885,27.71-116.754,27.71 c-34.85,0-83.895-8.214-114.902-26.568l-2.259-0.59l-0.188,2.554c-0.192,2.632-0.384,5.256-0.357,8.23l1.632,8.649 C123.466,200.923,116.738,215.876,116.738,231.551z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M356.151,381.077c-9.635-5.97-18.734-11.607-26.102-17.43l-0.937-0.738l-0.972,0.691 c-6.887,4.914-31.204,30.17-51.023,51.172l-10.945-21.273l5.697-4.076v-20.854h-40.07v20.854l5.697,4.076l-10.949,21.281 c-19.825-21.009-44.154-46.265-51.034-51.18l-0.973-0.691l-0.937,0.738c-7.368,5.823-16.469,11.46-26.102,17.43 c-30.029,18.61-64.062,39.697-64.062,77.344c0,22.244,52.241,53.579,168.388,53.579c116.146,0,168.388-31.335,168.388-53.579 C420.213,420.774,386.178,399.687,356.151,381.077z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M131.67,131.824c0,18.649,56.118,42.306,119.188,42.306s119.188-23.656,119.188-42.306v-25.706l43.503-17.702 v55.962c-5.068,0.792-8.964,5.186-8.964,10.45c0,4.503,2.966,8.432,7.242,9.852l-8.653,57.111h40.704l-8.651-57.111 c4.27-1.421,7.232-5.35,7.232-9.852c0-5.295-3.919-9.697-9.014-10.466l-0.21-67.197c0.357-0.621,0.357-1.266,0.357-1.607 c0-0.342,0-0.978-0.149-0.978h-0.002c-0.262-2.446-2.011-4.612-4.56-5.652l-11.526-4.72L267.551,3.238 C262.361,1.118,256.59,0,250.858,0s-11.502,1.118-16.69,3.238L72.834,68.936c-2.863,1.172-4.713,3.773-4.713,6.622 c0,2.842,1.848,5.443,4.716,6.63l58.833,23.928V131.824z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="ml-3">Nivel Bachillerato</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="p-4 sm:ml-64">
+    </div>
+
+
+    <script src="/flowbite.js" type="module"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
