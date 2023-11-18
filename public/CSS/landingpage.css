@@ -1696,6 +1696,10 @@ input:checked + .toggle-bg {
   gap: 25px;
 }
 
+.gap-\[15px\] {
+  gap: 15px;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -2213,6 +2217,16 @@ input:checked + .toggle-bg {
   padding-right: 15px;
 }
 
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.py-\[80px\] {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -2353,6 +2367,14 @@ input:checked + .toggle-bg {
 
 .text-\[22px\] {
   font-size: 22px;
+}
+
+.text-\[19px\] {
+  font-size: 19px;
+}
+
+.text-\[35px\] {
+  font-size: 35px;
 }
 
 .font-bold {
@@ -3428,6 +3450,10 @@ img {
     height: 300px;
   }
 
+  .md\:h-\[250px\] {
+    height: 250px;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -3442,6 +3468,10 @@ img {
 
   .md\:w-3\/4 {
     width: 75%;
+  }
+
+  .md\:w-\[250px\] {
+    width: 250px;
   }
 
   .md\:grid-cols-3 {
@@ -3470,6 +3500,10 @@ img {
 
   .md\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .md\:gap-20 {
+    gap: 5rem;
   }
 
   .md\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
@@ -3507,8 +3541,17 @@ img {
     padding: 100px;
   }
 
+  .md\:py-40 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
   .md\:text-center {
     text-align: center;
+  }
+
+  .md\:text-start {
+    text-align: start;
   }
 
   .md\:font-ptsans {
@@ -3530,6 +3573,10 @@ img {
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .md\:text-\[40px\] {
+    font-size: 40px;
   }
 
   .md\:font-bold {
