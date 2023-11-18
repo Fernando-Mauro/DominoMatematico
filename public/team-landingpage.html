@@ -11,125 +11,184 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&family=Rubik+Wet+Paint&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./CSS/landingpage.css">
+    <link rel="stylesheet" href="/swiper.css" />
 </head>
 <body class="bg-yellow-light">
     <header class="w-full h-[80px] flex items-center justify-center">
-        <nav class="flex justify-center items-center bg-yellow-d w-3/4 fixed h-[80px] rounded-[15px] z-20">
-            <ul class="font-ptsans flex text-[18px] w-full justify-evenly items-center text-azul-light uppercase font-bold ">
-                <li class="text-café transition-[background,transform,color] ease-linear duration-500">
-                    <a href="#">Equipo</a>
-                </li>
-                <li>
-                    <div>
-                        <button
-                            class="w-[160px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
-                            JUGAR
-                        </button>
-                    </div>
-                </li>
-            </ul>
+        <nav class="bg-yellow-d fixed z-40 w-3/4 h-[80px] rounded-[15px] flex items-center px-8">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto w-full">
+                <a href="/"
+                    class="flex items-center transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                    <img src="./assets/landingpage/logoSinFondo.png" class="h-14 mr-3"
+                        alt="Matemáticas en acción Logo" />
+                    <span
+                        class="self-center text-café text-xl font-semibold whitespace-nowrap  md:block hidden">Matemáticas
+                        en acción</span>
+                </a>
+                <button data-collapse-toggle="navbar" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden z-[100]"
+                    aria-controls="navbar" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden md:static fixed top-[80px] left-0 w-full md:block md:w-auto" id="navbar">
+                    <ul
+                        class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg bg-yellow-d md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#objetivo"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Objetivo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#testimonios"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Testimonios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#learn-more"
+                                class="block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Leer Más
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./team-landingpage.html"
+                                class="block py-2 pl-3 pr-4 text-red-600 hover:text-red-600 hover:scale-110 rounded md:p-0 transition-[background,transform,color] ease-linear duration-500 "
+                                aria-current="page">
+                                Equipo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/domino">
+                                <button
+                                    class="w-[120px] rounded-[50px] h-10 border-solid bg-cobao text-white font-bold font-ptsans text-[20px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110">
+                                    JUGAR
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
     
-    <div class="objects w-full top-0 left-0 absolute z-10">
+    <div class="objects hidden md:block w-full top-0 left-0 absolute z-10">
         <img class="fixed -top-[80px] -left-[140px] w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
         <img class="fixed -top-[60px] -right-[140px] w-[300px] h-[300px]" src="./assets/objects/beeCell.svg" alt="">
     </div>
 
     <main class="">
-        <div class="flex flex-col items-center gap-16 p-[100px]">
-            <h1 class="uppercase font-ptsans font-bold text-café text-6xl">¡Conoce a nuestro equipo!</h1>
-            <div class="container-team grid grid-cols-3 gap-5 text-black-letras">
+        <div class="py-[50px] px-[30px] flex flex-col items-center gap-16 md:p-[100px]">
+            <h1 class="text-[25px] uppercase font-ptsans font-bold text-café md:text-6xl">¡Conoce a nuestro equipo!</h1>
+            
+            <div class="container-team grid font-montserrat gap-[25px] md:gap-5 text-black-letras grid-cols-1 md:grid-cols-3">
 
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/marlonImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrollador y Revisor de Material Educativo</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">HÉCTOR MARLON AGUILAR ARELLANES</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/marlonImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrollador y Revisor de Material Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold ">HÉCTOR MARLON AGUILAR ARELLANES</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Héctor Marlon Aguilar Arellanes. Maestro en Ciencias de la Educación. Coordinador y asesor del club de matemáticas del Colegio de Bachilleres del Estado de Oaxaca Plantel 32 Cuilapam (COBAO).
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/fernandoImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrollador de Back-end y Front-end</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">FERNANDO FRANCISCO LÓPEZ MAURO</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/fernandoImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrollador de Back-end y Front-end</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">FERNANDO FRANCISCO LÓPEZ MAURO</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Fernando Mauro es un entusiaste de la tecnologia, siempre se encuentra en constante aprendizaje, ha sido medallista de la OMI y de la OOI, es front-end developer y le gusta mucho la programación competitiva
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/anaiImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrolladora Front-end</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">ANAI HERNÁNDEZ PERALTA</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/anaiImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora Front-end</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">ANAI HERNÁNDEZ PERALTA</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Cursa el tercer semestre en el COBAO, es front-end developer en el equipo de Matemáticas en Acción, le gusta programar y tiene un gran cariño por los gatos.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/valeriaImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Diseñadora Gráfica</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">VALERIA ALEJANDRA PÉREZ</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/valeriaImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Diseñadora Gráfica</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">VALERIA ALEJANDRA PÉREZ</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Valeria es diseñadora gráfica, con gran pasión al uso de diversos colores en cada una de sus
                         publicaciones. Actualmente forma parte de el equipo de matemáticas en acción MENA.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/mariaImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrolladora de Material  Educativo</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">MARÍA VICTORIA JIMENEZ SÁNCHEZ</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/mariaImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora de Material  Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">MARÍA VICTORIA JIMENEZ SÁNCHEZ</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                     Me pueden decir Vicky, no cuento con un pasatiempo en especifico, soy cristiana y me fascinan las matemáticas, no tengo un gran conoiemiento en algunas cosas, pero siempre puedo apoyar en lo que se necesite.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/leslieImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrolladora de Material Educativo</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">LESLIE MORALES GONZÁLES</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/leslieImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora de Material Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">LESLIE MORALES GONZÁLES</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Leslie una persona tranquila a quien le gusta pasar tiempo con sus amigos y su perrita. Le gusta leer  novelas danmei y también le gustan las matemáticas.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/vivianaImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans"></h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">VIVIANA MANUEL ANTONIO</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/vivianaImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora de Material Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">VIVIANA MANUEL ANTONIO</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Es una amante de los animales más que nada de los perritos como también del básquetbol que disfruta tanto jugandolo cómo siguiendo los emocionantes partidos en la cancha.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/ximenaImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrolladora de Material Educativo</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">XIMENA CORTES GUZMÁN</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/ximenaImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora de Material Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">XIMENA CORTES GUZMÁN</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Ximena forma parte del área de desarrollo de material educativo, ha estado desde el ingreso al cobao en el club de matemáticas y en todo este tiempo ha aprendido muchas cosas, además de vivir grandes experiencias.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/stephanyImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Desarrolladora de Material Educativo</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">STEPHANY HERNÁNDEZ CASTELLANOS</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/stephanyImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Desarrolladora de Material Educativo</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">STEPHANY HERNÁNDEZ CASTELLANOS</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Integrante del club de matemáticas desde 2021 que ingresó al COBAO, participó en la 9° Guelaguetza Matemática de 2022, representante del COBAO en la etapa estatal de la Olimpiada Mexicana de Matemáticas de Oaxaca en 2022 y 2023.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/camilaImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Creadora de Contenido</h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">CAMILA</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/camilaImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Creadora de Contenido</h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">CAMILA</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Camila tiene 15 años, cursa el primer semestre en el COBAO y es
                         parte del CLUB DE “MATEMÁTICAS EN ACCIÓN”, le gusta
                         mucho las matemáticas, su deporte favorito es el voleibol y su pasatiempo favorito
                         es salir con sus amigos.
                     </p>
                 </div>
-                <div class="flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] rounded-[50px] text-center">
-                    <img class="w-[300px] h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/karimeImg.png" alt="">
-                    <h2 class="text-[25px] font-ptsans">Creadora de Contenido<h2>
-                    <h3 class="text-[26px] font-bold font-ptsans">KARIME JOSSELYN MATEE</h3>
-                    <p class="w-3/4 text-[20px] text-center font-montserrat">
+                <div class="border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none">
+                    <img class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%]" src="./assets/landingpage/team/karimeImg.png" alt="">
+                    <h2 class="text-[20px] px-[3px] md:text-[25px]">Creadora de Contenido<h2>
+                    <h3 class="text-[22px] px-[3px] md:text-[26px] font-bold">KARIME JOSSELYN MATEE</h3>
+                    <p class="hidden md:w-3/4 text-[20px] text-center md:block">
                         Tiene 14 años apoya en la creación de contenido de las respectivas redes sociales de Matemáticas en Acción con la intención de que otras personas conozcan más sobre esta materia tan interesante y así se interesen en la misma y sus deportes favoritos son el patinaje y el básquetbol.
                     </p>
                 </div>
@@ -234,6 +293,7 @@
         </div>
     </footer>
 
+    <script src="/flowbite.js" type="module"></script>
     <script src="./js/landingpage.js"></script>
 </body>
 </html>
