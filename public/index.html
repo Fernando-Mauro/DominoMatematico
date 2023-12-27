@@ -10,71 +10,7 @@
     <title>Dominó Matemático</title>
 </head>
 
-<body class="">
-    <!-- <main class="w-full md:h-screen p-20 bg-main-light pt-10 bg-domino-second bg-cover bg-center bg-repeat">
-        <h1 class="font-semibold text-5xl text-shadow text-center" style="text-shadow:black .1em .1em .2em;">Jugar <span
-                class="text-bring-yellow">Dominó</span></h1>
-        <div class="container-cards grid gap-20 justify-items-center auto-rows-auto w-full justify-center mt-20 ">
-            <a href="./Html/reglas.html" class="card bg-red-600">
-                <img class="w-20" src="/assets/iconsMenu/reglas.svg" alt="">
-                <h3 class="text-3xl">Reglas</h3>
-            </a>
-            <div onclick="seeInlineGames()" data-modal-toggle="list-inline-games" class="card  bg-teal-500">
-                <img class="w-16" src="/assets/iconsMenu/gamepad-retro.png" alt="">
-                <h3 class="text-3xl text-center pb-2">Juegos activos</h3>
-            </div>
-            <a href="./main.html" class="card anchor blanco bg-blue-50" style="outline: 4px solid black !important">
-                <img class="w-20" src="/assets/domino-svgrepo-com.svg" alt="">
-                <h3 class="text-3xl text-black">Tradicional</h3>
-            </a>
-            <a href="./main.html" class="card anchor bg-purple-600">
-                <img class="w-20" src="/assets/iconsMenu/algebra.svg" alt="">
-                <h3 class="text-3xl">Álgebra</h3>
-            </a>
-            <a href="./main.html" class="card anchor  bg-pink-400">
-                <img class="w-20" src="/assets/iconsMenu/princesas.svg" alt="">
-                <h3 class="text-3xl">Princesas</h3>
-            </a>
-            <a href="./main.html" class="card anchor rainbown">
-                <img class="w-20 animate-rotar animate-rotando" src="/assets/iconsMenu/colors.svg" alt="">
-                <h3 class="text-3xl">Colores</h3>
-            </a>
-            <a href="./main.html" class="card anchor bg-blue-600">
-                <img class="w-20" src="/assets/iconsMenu/hero.svg" alt="">
-                <h3 class="text-3xl">Héroes</h3>
-            </a>
-            <a href="./main.html" class="card anchor bg-orange-700">
-                <img class="w-20" src="/assets/iconsMenu/animales.svg" alt="">
-                <h3 class="text-3xl">Animales</h3>
-            </a>
-            <a href="./main.html" class="card anchor bg-rose-600">
-                <img class="w-20" src="/assets/iconsMenu/ecuaciones.svg" alt="">
-                <h3 class="text-3xl">Ecuaciones</h3>
-            </a>
-        </div>
-    </main>
-    <div id="list-inline-games" tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-10 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-        <div class="relative w-full h-full md:h-auto">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button type="button"
-                    class="absolute top-3 right-2.5  text-gray-400 bg-cobao hover:bg-red-800 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                    data-modal-toggle="list-inline-games">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 snap-mandatory snap-y lg:px-8 flex flex-col justify-center gap-3"
-                    id="unordered-list-inline-games">
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+<body class="bg-[#f2dc6d]">
     <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
         type="button"
         class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -90,15 +26,15 @@
     <aside id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full px-5 py-4 overflow-y-auto bg-gray-50">
+        <div class="h-full px-5 py-4 overflow-y-auto bg-[#f2a922]">
             <a href="/" class="flex items-center pl-2.5 mb-5">
                 <img src="./assets/landingpage/logoSinFondo.png" class="h-6 mr-3 sm:h-7" alt="Logo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap ">Dómino</span>
             </a>
             <ul class="space-y-2 font-medium">
-                <li class="level-selector">
+                <li class="level-selector" data-drawer-toggle="logo-sidebar">
                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg transition-all duration-500 hover:bg-[#ffc047] dark:hover:bg-gray-700 group">
                         <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             fill=" currentColor" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -116,9 +52,9 @@
                     </a>
                 </li>
 
-                <li class="level-selector">
+                <li class="level-selector" data-drawer-toggle="logo-sidebar">
                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg transition-all duration-500 hover:bg-[#ffc047] dark:hover:bg-gray-700 group">
                         <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             fill="#ed1b24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 498.281 498.281"
@@ -148,9 +84,9 @@
                         <span class="ml-3">Nivel Primaria</span>
                     </a>
                 </li>
-                <li class="level-selector">
+                <li class="level-selector" data-drawer-toggle="logo-sidebar">
                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg transition-all duration-500 hover:bg-[#ffc047] dark:hover:bg-gray-700 group">
                         <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 496.176 496.176"
@@ -180,9 +116,9 @@
                         <span class="ml-3">Nivel Secundaria</span>
                     </a>
                 </li>
-                <li class="level-selector">
+                <li class="level-selector" data-drawer-toggle="logo-sidebar">
                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg transition-all duration-500 hover:bg-[#ffc047] dark:hover:bg-gray-700 group">
                         <svg class="w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
@@ -210,6 +146,7 @@
                         <span class="ml-3">Nivel Bachillerato</span>
                     </a>
                 </li>
+
             </ul>
         </div>
     </aside>

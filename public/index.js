@@ -54,6 +54,7 @@ const remakeDom = async (level) => {
                 setGameMode(innerText);
             })
         })
+        document.querySelector(".container-cards").click();
     } catch (error) {
         console.error('Error al cargar el archivo JSON:', error);
     }
@@ -61,4 +62,7 @@ const remakeDom = async (level) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     remakeDom("preescolar");
-})
+    document.querySelectorAll(".level-selector").forEach(el => {
+        el.click();
+    })
+});
