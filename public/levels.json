@@ -1,10 +1,13 @@
 [
     {
         "preescolar": [
-            "<a href='./main.html' class='card anchor  bg-pink-400'><img class='w-20' src='/assets/iconsMenu/princesas.svg' alt='Castillo de princesas'><h3 class='text-3xl'>Princesas</h3></a>",
+            "<a href='./main.html' class='card anchor bg-pink-400'><img class='w-20' src='/assets/iconsMenu/princesas.svg' alt='Castillo de princesas'><h3 class='text-3xl'>Princesas</h3></a>",
             "<a href='./main.html' class='card anchor rainbown'><img class='w-20 animate-rotar animate-rotando' src='/assets/iconsMenu/colors.svg' alt='Cubo'><h3 class='text-3xl'>Colores</h3></a>",
             "<a href='./main.html' class='card anchor bg-blue-600'><img class='w-20' src='/assets/iconsMenu/hero.svg' alt='DedPool'><h3 class='text-3xl'>Héroes</h3></a>",
             "<a href='./main.html' class='card anchor bg-orange-700'><img class='w-20' src='/assets/iconsMenu/animales.svg' alt='Imagen de una aveztrus'><h3 class='text-3xl'>Animales</h3></a>"
+        ],
+        "primaria": [
+            "<a href='./main.html' class='card anchor bg-orange-400'><img class='w-20' src='/assets/iconsMenu/reyleon.png' alt='Rey León'><h3 class='text-3xl'>Rey León</h3></a>"
         ],
         "bachillerato": [
             "<a href='./main.html' class='card anchor bg-rose-600'><img class='w-20' src='/assets/iconsMenu/ecuaciones.svg' alt='Calculadora'><h3 class='text-3xl'>Ecuaciones</h3></a>",

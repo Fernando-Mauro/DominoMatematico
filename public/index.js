@@ -1,7 +1,8 @@
 
 const levelSelector = document.querySelectorAll(".level-selector");
 const removeAccents = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const strnew =  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return strnew.replace(" ", "");
 }
 
 levelSelector.forEach(el => {
@@ -50,9 +51,9 @@ const remakeDom = async (level) => {
 
         anchors.forEach((el) => {
             const innerText = removeAccents(el.innerText.toLowerCase());
-            el.addEventListener("click", () => {
+            el.addEventListener("click", (event) => {
                 setGameMode(innerText);
-            })
+            });
         })
         document.querySelector(".container-cards").click();
     } catch (error) {
@@ -62,7 +63,7 @@ const remakeDom = async (level) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     remakeDom("preescolar");
-    document.querySelectorAll(".level-selector").forEach(el => {
-        el.click();
-    })
+    // document.querySelectorAll(".level-selector").forEach(el => {
+    //     el.click();
+    // })
 });
