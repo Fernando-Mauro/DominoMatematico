@@ -437,3 +437,19 @@ img {
         height: 5px;
     }
 }
+
+.textButton {
+    @apply rounded-[50px] border-solid text-white font-bold text-[20px] font-ptsans uppercase text-center items-center justify-center hover:scale-110;
+}
+
+/* bg-cobao hover:bg-café transition-[background,transform,color] ease-linear duration-500 
+
+align-middle bg-azul-light hover:bg-yellow-d transition-[background,transform,color] ease-linear duration-500 hover:text-black  flex */
+
+.title {
+    @apply ;
+}
+
+.subtitle {
+    @apply text-center text-[30px] m-[10px] text-black-letras font-bold font-firaSans;
+}

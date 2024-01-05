@@ -50,7 +50,7 @@ module.exports = {
         'rubikwet': ["Rubik Wet Paint", 'cursive'],
         'ptsans': ["PT Sans", 'sans-serif'],
         'montserrat': ["Montserrat", 'sans-serif'],
-        'garamond': ["EB Garamond", 'serif;']
+        'firaSans': ["Fira Sans", 'sans-serif'],
       }      
     },
   },
