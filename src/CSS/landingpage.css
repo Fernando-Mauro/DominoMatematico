@@ -438,18 +438,50 @@ img {
     }
 }
 
-.textButton {
-    @apply rounded-[50px] border-solid text-white font-bold text-[20px] font-ptsans uppercase text-center items-center justify-center hover:scale-110;
-}
-
-/* bg-cobao hover:bg-café transition-[background,transform,color] ease-linear duration-500 
-
-align-middle bg-azul-light hover:bg-yellow-d transition-[background,transform,color] ease-linear duration-500 hover:text-black  flex */
-
 .title {
-    @apply ;
+    @apply text-black-letras font-bold text-[35px] md:text-[45px] font-firaSans;
 }
 
 .subtitle {
     @apply text-center text-[30px] m-[10px] text-black-letras font-bold font-firaSans;
+}
+
+.textP {
+    @apply text-[20px] text-black-letras;
+}
+
+.textNav {
+    @apply block py-2 pl-3 pr-4 text-café hover:text-red-600 hover:scale-110 md:p-0 transition-[background,transform,color] ease-linear duration-500;
+}
+
+.text-sm {
+    @apply font-bold text-[18px] text-black-letras;
+}
+
+.button {
+    @apply rounded-[50px] border-solid text-white font-bold text-[25px] font-firaSans uppercase text-center items-center justify-center hover:scale-110 transition-[background,transform,color] ease-linear duration-500;
+}
+
+.img-slider {
+    @apply w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full object-cover;
+}
+
+.img-testimonios {
+    @apply w-[200px] h-[200px] object-cover rounded-full;
+}
+
+.imgCardTeam {
+    @apply w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-[50%];
+}
+
+.cardTeam {
+    @apply border-[5px] border-solid border-café rounded-[40px] flex flex-col justify-between py-[60px] items-center bg-yellow-d gap-[10px] md:rounded-[50px] text-center px-[15px] md:border-none;
+}
+
+.teamCardh2 {
+    @apply text-[20px] px-[3px] md:text-[25px] font-firaSans;
+}
+
+.teamCardh3 {
+    @apply text-[22px] px-[3px] md:text-[26px] font-bold font-firaSans;
 }

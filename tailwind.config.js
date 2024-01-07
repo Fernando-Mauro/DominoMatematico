@@ -47,8 +47,6 @@ module.exports = {
         'rotando': 'rotar 5s linear infinite'
       },
       fontFamily: {
-        'rubikwet': ["Rubik Wet Paint", 'cursive'],
-        'ptsans': ["PT Sans", 'sans-serif'],
         'montserrat': ["Montserrat", 'sans-serif'],
         'firaSans': ["Fira Sans", 'sans-serif'],
       }      
