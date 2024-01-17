@@ -11,7 +11,7 @@ let gameMode = sessionStorage.getItem("gameMode");
 if (gameMode === null) {
     window.location.href = "./index.html";
 }
-let tiempoRestante = 600;
+let tiempoRestante = 60;
 let intervalo;
 let totalPoints = 0;
 
