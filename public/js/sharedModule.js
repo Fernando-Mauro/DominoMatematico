@@ -69,7 +69,7 @@ export const getLastClicked = () => {
 }
 
 export const setTimeLeft = () => {
-    tiempoRestante = 600;
+    tiempoRestante = 60;
     intervalo = setInterval(updateCounter, 1000);
 }
 

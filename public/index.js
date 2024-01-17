@@ -23,7 +23,7 @@ const setGameMode = (gameMode) => {
     }
     sessionStorage.setItem("extension", extension);
     let nested = "false";
-    if (gameMode === "ecuaciones" || gameMode === "algebra") {
+    if (gameMode === "ecuaciones" || gameMode === "algebra" || gameMode === "notacioncientifica" || gameMode === "fracciones" || gameMode === "porcentajes") {
         nested = "true";
     }
     sessionStorage.setItem("nested", nested);
