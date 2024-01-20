@@ -2,7 +2,8 @@
 const levelSelector = document.querySelectorAll(".level-selector");
 const removeAccents = (str) => {
     const strnew =  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    return strnew.replace(" ", "");
+    console.log(strnew.replace(/ /g, ""))
+    return strnew.replace(/ /g, "");
 }
 
 levelSelector.forEach(el => {
@@ -23,7 +24,7 @@ const setGameMode = (gameMode) => {
     }
     sessionStorage.setItem("extension", extension);
     let nested = "false";
-    if (gameMode === "ecuaciones" || gameMode === "algebra" || gameMode === "notacioncientifica" || gameMode === "fracciones" || gameMode === "porcentajes") {
+    if (gameMode === "ecuaciones" || gameMode === "algebra" || gameMode === "notacioncientifica" || gameMode === "fracciones" || gameMode === "porcentajes" || gameMode === "multiplicaciondefracciones") {
         nested = "true";
     }
     sessionStorage.setItem("nested", nested);
