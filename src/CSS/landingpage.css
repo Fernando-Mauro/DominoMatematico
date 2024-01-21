@@ -485,3 +485,19 @@ img {
 .teamCardh3 {
     @apply text-[22px] px-[3px] md:text-[26px] font-bold font-firaSans;
 }
+
+.funcio-section {
+    @apply bg-yellow-light w-full p-0 md:p-[50px] relative -z-30;
+}
+
+.funcio-div {
+    @apply md:w-[50%] md:mx-auto flex flex-col justify-center items-center m-0 p-[30px] w-[100%] text-center md:text-start;
+}
+
+.funcio-article {
+    @apply flex justify-center items-center md:m-[20px] md:flex-row flex-col;
+}
+
+.funcio-img {
+    @apply md:w-[40%] bg-cover rounded-[15px] w-[100%] md:m-0 my-[30px]; 
+}

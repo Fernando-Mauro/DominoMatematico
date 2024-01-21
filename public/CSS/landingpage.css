@@ -1178,12 +1178,12 @@ input:checked + .toggle-bg {
   z-index: 51;
 }
 
-.m-\[10px\] {
-  margin: 10px;
+.m-0 {
+  margin: 0px;
 }
 
-.m-\[20px\] {
-  margin: 20px;
+.m-\[10px\] {
+  margin: 10px;
 }
 
 .mx-auto {
@@ -1935,6 +1935,11 @@ input:checked + .toggle-bg {
   background-color: rgb(241 126 184 / var(--tw-bg-opacity));
 }
 
+.bg-pink-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(231 70 148 / var(--tw-bg-opacity));
+}
+
 .bg-purple-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(126 58 242 / var(--tw-bg-opacity));
@@ -1992,10 +1997,6 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-cover {
-  background-size: cover;
-}
-
 .p-1 {
   padding: 0.25rem;
 }
@@ -2030,10 +2031,6 @@ input:checked + .toggle-bg {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-\[50px\] {
-  padding: 50px;
 }
 
 .px-10 {
@@ -2124,6 +2121,11 @@ input:checked + .toggle-bg {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.py-\[30px\] {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .py-\[50px\] {
@@ -3085,6 +3087,70 @@ img {
   }
 }
 
+.funcio-section {
+  position: relative;
+  z-index: -30;
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 220 109 / var(--tw-bg-opacity));
+  padding: 0px;
+}
+
+@media (min-width: 768px) {
+  .funcio-section {
+    padding: 50px;
+  }
+}
+
+.funcio-div {
+  margin: 0px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .funcio-div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: start;
+  }
+}
+
+.funcio-article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .funcio-article {
+    margin: 20px;
+    flex-direction: row;
+  }
+}
+
+.funcio-img {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  border-radius: 15px;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .funcio-img {
+    margin: 0px;
+    width: 40%;
+  }
+}
+
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
@@ -3468,6 +3534,11 @@ img {
     inset: 0px;
   }
 
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -3501,6 +3572,10 @@ img {
   }
 
   .md\:w-3\/4 {
+    width: 75%;
+  }
+
+  .md\:w-\[75\%\] {
     width: 75%;
   }
 
