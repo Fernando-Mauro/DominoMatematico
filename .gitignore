@@ -1,2 +1,4 @@
 node_modules
 notas.md
+.yarn
+.yarnrc.yml
