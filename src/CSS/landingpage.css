@@ -495,9 +495,9 @@ img {
 }
 
 .funcio-article {
-    @apply flex justify-center items-center md:m-[20px] md:flex-row flex-col;
+    @apply flex justify-center items-center md:m-[20px] md:flex-col flex-col gap-10;
 }
 
 .funcio-img {
-    @apply md:w-[40%] bg-cover rounded-[15px] w-[100%] md:m-0 my-[30px]; 
+    @apply md:w-[100%] md:h-[400px] object-cover bg-cover rounded-[15px] w-[100%] md:m-0 my-[30px]; 
 }
