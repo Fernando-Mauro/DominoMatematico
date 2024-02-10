@@ -11,7 +11,7 @@ let gameMode = sessionStorage.getItem("gameMode");
 if (gameMode === null) {
     window.location.href = "./index.html";
 }
-let tiempoRestante = 60;
+let tiempoRestante = 120;
 let intervalo;
 let totalPoints = 0;
 
@@ -69,7 +69,7 @@ export const getLastClicked = () => {
 }
 
 export const setTimeLeft = () => {
-    tiempoRestante = 60;
+    tiempoRestante = 120;
     intervalo = setInterval(updateCounter, 1000);
 }
 
