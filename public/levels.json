@@ -14,7 +14,8 @@
             "<a href='./main.html' class='card anchor bg-green-400'><img class='w-20' src='/assets/iconsMenu/percent.svg' alt='Shrek'><h3 class='text-2xl'>Porcentajes</h3></a>"
         ],
         "secundaria" : [
-            "<a href='./main.html' class='card anchor bg-blue-500'><img class='w-20' src='/assets/iconsMenu/notation.svg' alt='Math'><h3 class='text-xl text-center'>Notación cientifica</h3></a>"
+            "<a href='./main.html' class='card anchor bg-blue-500'><img class='w-20' src='/assets/iconsMenu/notation.svg' alt='Math'><h3 class='text-xl text-center'>Notación cientifica</h3></a>",
+            "<a href='./main.html' class='card anchor bg-orange-500'><img class='w-20' src='/assets/iconsMenu/binomio.svg' alt='Math'><h3 class='text-xl text-center'>Binomio al cuadrado</h3></a>"
         ],
         "bachillerato": [
             "<a href='./main.html' class='card anchor bg-rose-600'><img class='w-20' src='/assets/iconsMenu/ecuaciones.svg' alt='Calculadora'><h3 class='text-3xl'>Ecuaciones</h3></a>",

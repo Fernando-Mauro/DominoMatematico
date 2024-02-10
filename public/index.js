@@ -15,6 +15,7 @@ levelSelector.forEach(el => {
 
 
 const setGameMode = (gameMode) => {
+    console.log(gameMode)
     sessionStorage.setItem("gameMode", gameMode);
     let extension = undefined;
     if (gameMode === "princesas" || gameMode === "heroes" || gameMode === "ecuaciones") {
@@ -24,7 +25,7 @@ const setGameMode = (gameMode) => {
     }
     sessionStorage.setItem("extension", extension);
     let nested = "false";
-    if (gameMode === "ecuaciones" || gameMode === "algebra" || gameMode === "notacioncientifica" || gameMode === "fracciones" || gameMode === "porcentajes" || gameMode === "multiplicaciondefracciones") {
+    if (gameMode === "ecuaciones" || gameMode === "algebra" || gameMode === "notacioncientifica" || gameMode === "fracciones" || gameMode === "porcentajes" || gameMode === "multiplicaciondefracciones" || gameMode === "binomioalcuadrado") {
         nested = "true";
     }
     sessionStorage.setItem("nested", nested);
