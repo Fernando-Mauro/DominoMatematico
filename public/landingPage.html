@@ -7,11 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>MENA</title>
     <link rel="stylesheet" href="./CSS/landingpage.css">
     <link rel="stylesheet" href="/swiper.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MCJ7Q373P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-1MCJ7Q373P');
+    </script>
 </head>
 
 <body class="bg-café font-montserrat">
@@ -44,45 +54,34 @@
                     <ul
                         class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg bg-yellow-d md:flex-row md:space-x-8 md:mt-0 md:border-0">
                         <li>
-                            <a href="#"
-                                class="textNav"
-                                aria-current="page">
+                            <a href="#" class="textNav" aria-current="page">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="#objetivo"
-                                class="textNav"
-                                aria-current="page">
+                            <a href="#objetivo" class="textNav" aria-current="page">
                                 Objetivo
                             </a>
                         </li>
                         <li>
-                            <a href="#testimonios"
-                                class="textNav"
-                                aria-current="page">
+                            <a href="#testimonios" class="textNav" aria-current="page">
                                 Testimonios
                             </a>
                         </li>
                         <li>
-                            <a href="#learn-more"
-                                class="textNav"
-                                aria-current="page">
+                            <a href="#learn-more" class="textNav" aria-current="page">
                                 Leer Más
                             </a>
                         </li>
                         <li>
-                            <a href="./team-landingpage.html"
-                                class="textNav"
-                                aria-current="page">
+                            <a href="./team-landingpage.html" class="textNav" aria-current="page">
                                 Equipo
                             </a>
                         </li>
                         <!-- w-[150px] rounded-[50px] h-[50px] border-solid bg-cobao text-white font-bold text-[19px] hover:bg-café transition-[background,transform,color] ease-linear duration-500 hover:scale-110 font-ptsans -->
                         <li>
                             <a href="/domino">
-                                <button
-                                    class="button w-[150px] h-[50px] bg-cobao hover:bg-café">
+                                <button class="button w-[150px] h-[50px] bg-cobao hover:bg-café">
                                     JUGAR
                                 </button>
                             </a>
@@ -96,7 +95,8 @@
 
     <div class="objects w-full top-0 left-0 absolute md:block hidden">
         <img class="fixed -top-16 -left-16 w-[300px] h-[300px] z-[45]" src="./assets/objects/beeCell.svg" alt="">
-        <img class="fixed -bottom-[120px] -right-[24px] w-[300px] h-[300px] z-[45]" src="./assets/objects/beeCell.svg" alt="">
+        <img class="fixed -bottom-[120px] -right-[24px] w-[300px] h-[300px] z-[45]" src="./assets/objects/beeCell.svg"
+            alt="">
     </div>
 
     <div class="bug z-[51]">
@@ -180,11 +180,11 @@
             <div class="swiper-wrapper w-full flex items-center justify-center">
                 <!-- Slides -->
                 <div class="swiper-slide w-full flex items-center justify-center">
-                    <div class="w-full text-center px-[20px] py-[80px] gap-[15px] md:gap-20 flex md:text-start flex-col md:flex-row justify-center items-center md:py-40">
+                    <div
+                        class="w-full text-center px-[20px] py-[80px] gap-[15px] md:gap-20 flex md:text-start flex-col md:flex-row justify-center items-center md:py-40">
                         <div>
-                        <img class="img-slider"
-                            src="./assets/landingpage/team/fernandoImg.png"
-                            alt="Foto de intregante del club de matemáticas">
+                            <img class="img-slider" src="./assets/landingpage/team/fernandoImg.png"
+                                alt="Foto de intregante del club de matemáticas">
                         </div>
                         <div class="flex flex-col max-w-[600px] h-auto items-start gap-[40px] justify-center">
                             <h2 class="title">
@@ -203,11 +203,11 @@
                         </div>
                     </div>
 
-                    <div class="w-full text-center px-[20px] py-[80px] gap-[15px] md:gap-20 flex md:text-start flex-col md:flex-row justify-center items-center md:py-40">
+                    <div
+                        class="w-full text-center px-[20px] py-[80px] gap-[15px] md:gap-20 flex md:text-start flex-col md:flex-row justify-center items-center md:py-40">
                         <div>
-                        <img class="img-slider"
-                            src="./assets/landingpage/team/fernandoImg.png"
-                            alt="Foto de intregante del club de matemáticas">
+                            <img class="img-slider" src="./assets/landingpage/team/fernandoImg.png"
+                                alt="Foto de intregante del club de matemáticas">
                         </div>
                         <div class="flex flex-col max-w-[600px] h-auto items-start gap-[40px] justify-center">
                             <h2 class="title">Integrante de matemáticas en
@@ -237,12 +237,11 @@
             <!-- Contenido de cada columna -->
             <div
                 class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
-                <img class="img-testimonios"
-                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <img class="img-testimonios" src="./assets/landingpage/fotoPruebaDos.webp" alt="">
                 <div class="flex flex-col justify-center items-center">
                     <h3 class="subtitle">Luis A. Citalan, MX</h3>
-                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img
-                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
                     <q class="w-3/4 textP text-center">
                         "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
                         and evaluate educational content is invaluable"
@@ -251,12 +250,11 @@
             </div>
             <div
                 class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
-                <img class="img-testimonios"
-                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <img class="img-testimonios" src="./assets/landingpage/fotoPruebaDos.webp" alt="">
                 <div class="flex flex-col justify-center items-center">
                     <h3 class="subtitle">Luis A. Citalan, MX</h3>
-                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img
-                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
                     <q class="w-3/4 textP text-center">
                         "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
                         and evaluate educational content is invaluable"
@@ -265,12 +263,11 @@
             </div>
             <div
                 class="bg-yellow-light p-14 flex flex-col justify-between items-center gap-10 border-solid border-2 border-black">
-                <img class="img-testimonios"
-                    src="./assets/landingpage/fotoPruebaDos.webp" alt="">
+                <img class="img-testimonios" src="./assets/landingpage/fotoPruebaDos.webp" alt="">
                 <div class="flex flex-col justify-center items-center">
                     <h3 class="subtitle">Luis A. Citalan, MX</h3>
-                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img
-                            class="w-32" src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
+                    <span class="flex items-center justify-center gap-4 text-[25px]">SWE AT <img class="w-32"
+                            src="./assets/landingpage/microsoftLogo.svg" alt=""></span>
                     <q class="w-3/4 textP text-center">
                         "omegaUp allowed me to advance by leaps and bounds, the ability to automatically share, maintain
                         and evaluate educational content is invaluable"
@@ -282,12 +279,12 @@
 
     <section class="funcio-section" id="learn-more">
         <!-- <h2 class="text-4xl font-bold text-center py-5 uppercase font-garamond">¿Quiénes somos?</h2> -->
-        <div class="objetivos md:w-[75%] md:mx-auto flex flex-col justify-center items-center m-0 w-100% text-center py-[30px] md:p-0">
+        <div
+            class="objetivos md:w-[75%] md:mx-auto flex flex-col justify-center items-center m-0 w-100% text-center py-[30px] md:p-0">
             <article class="funcio-article">
                 <!-- <img class="w-2/5" src="./assets/landingpage/laptopImage.png" alt=""> -->
                 <div class="flex items-center justify-between flex-col gap-5 px-6">
-                    <h3
-                        class="title">
+                    <h3 class="title">
                         Un poco de nosotros...
                     </h3>
                     <p class="textP">
@@ -333,21 +330,20 @@
         <div class="objetivos funcio-div">
             <article class="funcio-article">
                 <div class="flex items-center justify-between flex-col gap-5 px-6">
-                    <h3
-                    class="text-start subtitle">
-                    La tecnologia como aliada
+                    <h3 class="text-start subtitle">
+                        La tecnologia como aliada
                     </h3>
                     <p class="textP">
-                    En la era digital en la que vivimos, la tecnología se ha convertido en un recurso esencial en
-                    todos los aspectos de nuestras vidas, y la educación no es la excepción. Tener a la tecnología
-                    como aliada en la educación es fundamental.
-                    Utilizamos la tecnología de vanguardia para hacer que el aprendizaje sea interactivo y
-                    entretenido.A través de la tecnología hacemos videos con contenido enfocado a las matemáticas,
-                    publicaciones en redes sociales, hilos en Twitter: desmitificamos conceptos matemáticos
-                    complejos de manera amigable y accesible.
+                        En la era digital en la que vivimos, la tecnología se ha convertido en un recurso esencial en
+                        todos los aspectos de nuestras vidas, y la educación no es la excepción. Tener a la tecnología
+                        como aliada en la educación es fundamental.
+                        Utilizamos la tecnología de vanguardia para hacer que el aprendizaje sea interactivo y
+                        entretenido.A través de la tecnología hacemos videos con contenido enfocado a las matemáticas,
+                        publicaciones en redes sociales, hilos en Twitter: desmitificamos conceptos matemáticos
+                        complejos de manera amigable y accesible.
                     </p>
                 </div>
-            <img class="funcio-img" src="./assets/landingpage/computadora.jpg" alt="">
+                <img class="funcio-img" src="./assets/landingpage/computadora.jpg" alt="">
             </article>
         </div>
         <div class="funcio-div">
@@ -454,9 +450,10 @@
                         </svg>
                         <span class="sr-only">GitHub account</span>
                     </a>
-                    <a href="https://www.youtube.com/@MatematicasEnAccion" class="text-white hover:text-gray-900 dark:hover:text-white">
-                        <svg class="w-4 h-4" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                    <a href="https://www.youtube.com/@MatematicasEnAccion"
+                        class="text-white hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 14">
                             <path fill-rule="evenodd"
                                 d="M19.7 3.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.84c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.84A4.225 4.225 0 0 0 .3 3.038a30.148 30.148 0 0 0-.2 3.206v1.5c.01 1.071.076 2.142.2 3.206.094.712.363 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.15 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965c.124-1.064.19-2.135.2-3.206V6.243a30.672 30.672 0 0 0-.202-3.206ZM8.008 9.59V3.97l5.4 2.819-5.4 2.8Z"
                                 clip-rule="evenodd" />
